@@ -12,8 +12,11 @@ export default gql`
     token: String!
   }
 
+  extend type Query {
+    login(email: String!, password: String!): AuthResponse!
+  }
+
   extend type Mutation {
     createUser(user: UserCreationPayload): AuthResponse!
-    login(email: String!, password: String!): AuthResponse!
   }
 `;

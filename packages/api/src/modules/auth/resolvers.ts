@@ -42,6 +42,8 @@ async function createUser(parent, args) {
 
     await user.remove();
 
+    console.error(err);
+
     throw err;
   }
 
@@ -58,4 +60,5 @@ async function login(parent, args) {
   return { token: await signToken({ id: auth.user }) };
 }
 
-export const mutations = { createUser, login };
+export const queries = { login };
+export const mutations = { createUser };

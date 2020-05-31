@@ -4,7 +4,7 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, rule, shield } from 'graphql-shield';
 
-import { auth, user } from '../modules';
+import { auth, user, project } from '../modules';
 
 const typeDefs = gql`
   scalar Date
@@ -23,6 +23,7 @@ const typeDefs = gql`
 
   ${auth.types}
   ${user.types}
+  ${project.types}
 `;
 
 const isAuthenticated = rule()((parent, args, { user }) => !!user);
@@ -36,10 +37,12 @@ export default function ApolloMiddleware(app) {
           resolvers: {
             Date: GraphQLDateTime,
             Query: {
+              ...auth.resolvers.queries,
               ...user.resolvers.queries,
             },
             Mutation: {
               ...auth.resolvers.mutations,
+              ...project.resolvers.mutations,
             },
           },
         },
@@ -48,13 +51,19 @@ export default function ApolloMiddleware(app) {
         {
           Query: {
             me: isAuthenticated,
+            login: not(isAuthenticated),
           },
           Mutation: {
             createUser: not(isAuthenticated),
-            login: not(isAuthenticated),
+            createProject: isAuthenticated,
           },
         },
-        { fallbackError: new Error('Unauthorized.') }
+        {
+          fallbackError: (err): Error => {
+            console.error(err);
+            return new Error('Internal error.');
+          },
+        }
       )
     ),
     context: async ({ req: { auth } }: any) => {
