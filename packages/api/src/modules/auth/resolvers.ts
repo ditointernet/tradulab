@@ -42,8 +42,6 @@ async function createUser(parent, args) {
 
     await user.remove();
 
-    console.error(err);
-
     throw err;
   }
 

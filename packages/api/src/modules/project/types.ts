@@ -5,12 +5,23 @@ export default gql`
     id: ID!
     slug: String!
     displayName: String!
-    owner: User!
+    owner: String!
+    private: Boolean!
     createdAt: Date!
     updatedAt: Date!
   }
 
+  type MyProject {
+    role: String!
+    user: String!
+    project: Project!
+  }
+
+  extend type Query {
+    myProjects: [MyProject!]!
+  }
+
   extend type Mutation {
-    createProject(displayName: String!): Project!
+    createProject(displayName: String!, private: Boolean): Project!
   }
 `;

@@ -2,6 +2,8 @@ import * as mongoose from 'mongoose';
 
 import { ERROR_MESSAGES, REGEXES } from './constants';
 
+const { Types } = mongoose.Schema;
+
 const schema = new mongoose.Schema(
   {
     username: {

@@ -28,6 +28,10 @@ const schema = new mongoose.Schema(
       required: true,
       index: true,
     },
+    private: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

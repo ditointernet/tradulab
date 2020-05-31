@@ -1,3 +1,5 @@
-const me = (parent, args, context) => context.user;
+async function me(parent, args, context) {
+  return context.user;
+}
 
 export const queries = { me };
