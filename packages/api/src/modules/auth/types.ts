@@ -5,7 +5,7 @@ export default gql`
     email: String!
     password: String!
     username: String!
-    displayName: String!
+    displayName: String
   }
 
   type AuthResponse {

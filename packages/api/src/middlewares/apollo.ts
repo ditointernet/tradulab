@@ -52,8 +52,9 @@ export default function ApolloMiddleware(app) {
       shield(
         {
           Query: {
-            me: isAuthenticated,
             login: not(isAuthenticated),
+            me: isAuthenticated,
+            myProjects: isAuthenticated,
           },
           Mutation: {
             createUser: not(isAuthenticated),
