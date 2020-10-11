@@ -3,7 +3,7 @@ export const ROLES = {
   CONTRIBUTOR: 'role:contributor',
   PROOFREADER: 'role:proofreader',
   DEVELOPER: 'role:developer',
-  ADMIN: 'role:admin',
+  MANAGER: 'role:manager',
   OWNER: 'role:owner',
 };
 
@@ -12,6 +12,6 @@ export const ROLES_LIST = [
   ROLES.CONTRIBUTOR,
   ROLES.PROOFREADER,
   ROLES.DEVELOPER,
-  ROLES.ADMIN,
+  ROLES.MANAGER,
   ROLES.OWNER,
 ];
