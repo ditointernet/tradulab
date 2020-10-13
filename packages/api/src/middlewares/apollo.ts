@@ -2,9 +2,10 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 import { ApolloServer, gql } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
-import { not, rule, shield } from 'graphql-shield';
+import { not, and, rule, shield } from 'graphql-shield';
 
 import { auth, user, project, role } from '../modules';
+import { ROLES } from '../modules/role/constants';
 
 const typeDefs = gql`
   scalar Date
@@ -28,6 +29,26 @@ const typeDefs = gql`
 `;
 
 const isAuthenticated = rule()((parent, args, { user }) => !!user);
+const isManagerOrOwner = rule()(
+  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+    if (user) {
+      try {
+        const projectRole = await role.model.findOne({
+          project: projectId,
+          user: currentUserId,
+        });
+
+        if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role))
+          return true;
+      } catch (err) {
+        console.error(err);
+        return false;
+      }
+    }
+
+    return false;
+  }
+);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
@@ -41,10 +62,12 @@ export default function ApolloMiddleware(app) {
               ...auth.resolvers.queries,
               ...user.resolvers.queries,
               ...project.resolvers.queries,
+              ...role.resolvers.queries,
             },
             Mutation: {
               ...auth.resolvers.mutations,
               ...project.resolvers.mutations,
+              ...role.resolvers.mutations,
             },
           },
         },
@@ -59,6 +82,21 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
+            inviteUserToProject: and(
+              isAuthenticated,
+              isManagerOrOwner,
+              isNotTargetingHigherRoles
+            ),
+            removeUserFromProject: and(
+              isAuthenticated,
+              isManagerOrOwner,
+              isNotTargetingHigherRoles
+            ),
+            updateUserProjectRole: and(
+              isAuthenticated,
+              isManagerOrOwner,
+              isNotTargetingHigherRoles
+            ),
           },
         },
         {

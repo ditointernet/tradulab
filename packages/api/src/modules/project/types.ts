@@ -11,14 +11,8 @@ export default gql`
     updatedAt: Date!
   }
 
-  type MyProject {
-    role: String!
-    user: String!
-    project: Project!
-  }
-
   extend type Query {
-    myProjects: [MyProject!]!
+    myProjects: [RoleWithProject!]!
   }
 
   extend type Mutation {
