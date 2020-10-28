@@ -37,6 +37,8 @@ async function inviteUserToProject(parent, args, context) {
     throw new Error('The provided user does not exist.');
   }
 
+  // TODO: i shouldnt be able to invite an user with the same or higher role
+
   const role = new Role({
     role: ROLES[args.role.toUpperCase()],
     project,
@@ -96,6 +98,8 @@ async function removeUserFromProject(parent, args, context) {
   if (!role) {
     throw new Error('The provided user is not part of the project.');
   }
+
+  // TODO: i shouldnt be able to remove an user with the same or higher role
 
   try {
     await role.remove();
