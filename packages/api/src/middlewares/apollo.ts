@@ -84,24 +84,24 @@ export default function ApolloMiddleware(app) {
             createProject: isAuthenticated,
             inviteUserToProject: and(
               isAuthenticated,
-              isManagerOrOwner,
-              isNotTargetingHigherRoles
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
             ),
             removeUserFromProject: and(
               isAuthenticated,
-              isManagerOrOwner,
-              isNotTargetingHigherRoles
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
             ),
             updateUserProjectRole: and(
               isAuthenticated,
-              isManagerOrOwner,
-              isNotTargetingHigherRoles
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
             ),
           },
         },
         {
           fallbackError: (err): Error => {
-            console.error(err);
+            console.error('error:', err);
             return new Error('Internal error.');
           },
         }
