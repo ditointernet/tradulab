@@ -9,9 +9,13 @@
     "lint": "eslint",
     "build": "tsc",
     "prestart": "npm run build",
+<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
     "start": "node $npm_package_main",
     "dev": "ts-node-dev --respawn src/index.ts",
+=======
+    "start": "node $npm_package_main",
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
