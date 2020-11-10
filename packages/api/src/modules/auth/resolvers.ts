@@ -52,12 +52,16 @@ async function createUser(_, args) {
   } catch (err) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+    //  Duvidas sobre as linhas abaixo
+>>>>>>> Criado o module files e a resolver create File
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -100,6 +104,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -116,13 +121,19 @@ async function login(_, args) {
 =======
     throw new AuthenticationError('Invalid credentials.');
 =======
+    throw new AuthenticationError('Invalid credentials.');
+>>>>>>> Criado o module files e a resolver create File
+=======
     // Error sem estar na constant de error
     throw new Error('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Criado o module files e a resolver create File
   }
 
   return { token: await signToken({ id: auth.user }) };
