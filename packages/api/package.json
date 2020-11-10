@@ -34,6 +34,7 @@
 >>>>>>> pull
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -63,6 +64,14 @@
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+<<<<<<< HEAD
+    "dev": "ts-node-dev --respawn src/index.ts",
+=======
+>>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
