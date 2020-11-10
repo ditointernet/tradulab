@@ -59,8 +59,8 @@ async function inviteUserToProject(_, args, context) {
     project: args.projectId,
   });
 
-  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
-  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
+  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role);
+  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1);
 
   if (!rolesPossiveis.includes(args.role)) {
     throw new Error('You cannot invite an user with the same or higher role.');
