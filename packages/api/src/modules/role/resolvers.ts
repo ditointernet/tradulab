@@ -2,12 +2,18 @@ import { model as Project } from '../project';
 import { model as User } from '../user';
 import { model as Role } from '../role';
 import { ROLES, ROLES_LIST } from '../role/constants';
+<<<<<<< HEAD
 import { IRole } from './model';
 import { ApolloError, ForbiddenError } from 'apollo-server-express';
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
+=======
+=======
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
 async function projectUsers(parent, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -37,13 +43,36 @@ async function inviteUserToProject(parent, args, context) {
     throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
   }
 
+<<<<<<< HEAD
   const targetUser = await User.findById(args.userId);
+=======
+  console.log("chegou aqui antes do user")
+  const user = await User.findById(args.userId);
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
   if (!targetUser) {
     throw new TradulabError(userCodes.USER_NOT_FOUND);
   }
+<<<<<<< HEAD
 
   const targetUserRole = new Role({
+=======
+  console.log("chegou aqui sem erro do user")
+  // TODO: i shouldnt be able to invite an user with the same or higher role
+
+  const roleDeQuemTaConvidando = await Role.findOne({
+    user: context.user.id,
+    project: args.projectId,
+  });
+
+  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
+  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
+
+  if (!rolesPossiveis.includes(args.role)) {
+    throw new Error('You cannot invite an user with the same or higher role.');
+  }
+  const role = new Role({
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
