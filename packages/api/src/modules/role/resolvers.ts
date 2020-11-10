@@ -11,10 +11,17 @@ import { ERROR_CODES as userCodes } from '../user/constants';
 =======
 import { ROLES, ROLES_LIST } from '../role/constants';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 import { IRole } from './model';
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+import { IRole } from './model';
+import { ApolloError, ForbiddenError } from 'apollo-server-express';
+=======
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -90,14 +97,40 @@ async function inviteUserToProject(_, args, context) {
     throw new Error('The provided project does not exist.');
   }
 
+<<<<<<< HEAD
   const targetUser = await User.findById(args.userId);
+=======
+  console.log("chegou aqui antes do user")
+  const user = await User.findById(args.userId);
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
   if (!targetUser) {
     throw new Error('The provided user does not exist.');
   }
+<<<<<<< HEAD
 >>>>>>> we tested everything and it seems ok, including a project fix
+=======
+<<<<<<< HEAD
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
   const targetUserRole = new Role({
+=======
+  console.log("chegou aqui sem erro do user")
+  // TODO: i shouldnt be able to invite an user with the same or higher role
+
+  const roleDeQuemTaConvidando = await Role.findOne({
+    user: context.user.id,
+    project: args.projectId,
+  });
+
+  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
+  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
+
+  if (!rolesPossiveis.includes(args.role)) {
+    throw new Error('You cannot invite an user with the same or higher role.');
+  }
+  const role = new Role({
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
