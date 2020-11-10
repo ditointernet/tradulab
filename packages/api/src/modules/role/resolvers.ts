@@ -54,6 +54,7 @@ async function inviteUserToProject(_, args, context) {
   }
 >>>>>>> merge
 
+<<<<<<< HEAD
   const project = await Project.findById(projectId);
 
   if (!project) throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
@@ -82,30 +83,46 @@ async function inviteUserToProject(_, args, context) {
 =======
   console.log("chegou aqui antes do user")
   const user = await User.findById(args.userId);
+=======
+  const targetProject = await Project.findById(args.projectId);
 
-  if (!user) {
+  if (!targetProject) {
+    throw new Error('The provided project does not exist.');
+  }
+
+  const targetUser = await User.findById(args.userId);
+>>>>>>> we tested everything and it seems ok, including a project fix
+
+  if (!targetUser) {
     throw new Error('The provided user does not exist.');
   }
+<<<<<<< HEAD
   console.log("chegou aqui sem erro do user")
   // TODO: i shouldnt be able to invite an user with the same or higher role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
 
-  const roleDeQuemTaConvidando = await Role.findOne({
+  const currentUserRole = await Role.findOne({
     user: context.user.id,
     project: args.projectId,
   });
 
-  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
-  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
+  const roleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const rolesToInvite = ROLES_LIST.slice(roleIndex + 1);
 
-  if (!rolesPossiveis.includes(args.role)) {
+  if (!rolesToInvite.includes(args.role)) {
     throw new Error('You cannot invite an user with the same or higher role.');
   }
+
   const role = new Role({
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
+<<<<<<< HEAD
 >>>>>>> merge
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
   });
 
   if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
