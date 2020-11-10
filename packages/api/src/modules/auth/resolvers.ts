@@ -54,6 +54,7 @@ async function createUser(
       id: user.id,
     };
   } catch (err) {
+    //  Duvidas sobre as linhas abaixo
     if (!auth.isNew) {
       await auth.remove();
     }
