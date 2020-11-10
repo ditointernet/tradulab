@@ -11,11 +11,14 @@ import { model as User } from '../user';
 import { IRole } from './model';
 =======
 import { ROLES, ROLES_LIST } from '../role/constants';
-<<<<<<< HEAD
 import { IRole } from './model';
 import { ApolloError, ForbiddenError } from 'apollo-server-express';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+<<<<<<< HEAD
+>>>>>>> we tested everything and it seems ok, including a project fix
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
 >>>>>>> merge
@@ -44,6 +47,7 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
+<<<<<<< HEAD
 import { IRole } from './model';
 import { ApolloError, ForbiddenError } from 'apollo-server-express';
 >>>>>>> we tested everything and it seems ok, including a project fix
@@ -53,6 +57,9 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
+>>>>>>> we tested everything and it seems ok, including a project fix
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -121,8 +128,8 @@ async function inviteUserToProject(_, args, context) {
     throw new Error('The provided project does not exist.');
   }
 
-<<<<<<< HEAD
   const targetUser = await User.findById(args.userId);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -140,6 +147,8 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> we tested everything and it seems ok, including a project fix
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
 
   if (!targetUser) {
     throw new Error('The provided user does not exist.');
@@ -148,6 +157,7 @@ async function inviteUserToProject(_, args, context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.log("chegou aqui sem erro do user")
   // TODO: i shouldnt be able to invite an user with the same or higher role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -159,25 +169,10 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> we tested everything and it seems ok, including a project fix
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
 
   const targetUserRole = new Role({
-=======
-  console.log("chegou aqui sem erro do user")
-  // TODO: i shouldnt be able to invite an user with the same or higher role
-
-  const roleDeQuemTaConvidando = await Role.findOne({
-    user: context.user.id,
-    project: args.projectId,
-  });
-
-  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
-  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
-
-  if (!rolesPossiveis.includes(args.role)) {
-    throw new Error('You cannot invite an user with the same or higher role.');
-  }
-  const role = new Role({
->>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
