@@ -14,6 +14,7 @@
 <<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
     "start": "node $npm_package_main",
+<<<<<<< HEAD
     "dev": "ts-node-dev --respawn src/index.ts",
 =======
     "start": "node $npm_package_main",
@@ -24,6 +25,12 @@
 =======
     "start": "node $npm_package_main",
 >>>>>>> pull
+=======
+<<<<<<< HEAD
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
