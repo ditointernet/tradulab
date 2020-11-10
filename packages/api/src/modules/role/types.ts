@@ -78,6 +78,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 # Por que esses diferentes tipos de Role... ?
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -102,6 +103,9 @@ export default gql`
 =======
 # Por que esses diferentes tipos de Role... ?
 >>>>>>> Update Role
+=======
+
+>>>>>>> we tested everything and it seems ok, including a project fix
   type RoleWithProject {
     id: ID!
     role: String!
