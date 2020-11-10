@@ -1,8 +1,28 @@
 import { gql } from 'apollo-server-express';
 
 export default gql`
+<<<<<<< HEAD
   enum InvitedRole {
     # viewer
+=======
+  enum RoleSlug {
+<<<<<<< HEAD
+=======
+    # viewer
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+    contributor
+    developer
+    manager
+    owner
+    proofreader
+  }
+
+  enum AvailableRoleSlugs {
+<<<<<<< HEAD
+=======
+    # viewer
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     contributor
     proofreader
     developer
@@ -16,6 +36,10 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+<<<<<<< HEAD
+=======
+# Por que esses diferentes tipos de Role... ?
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   type RoleWithProject {
     id: ID!
     role: String!
