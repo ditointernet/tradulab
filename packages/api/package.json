@@ -21,6 +21,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "dev": "ts-node-dev --respawn src/index.ts",
 =======
     "start": "node $npm_package_main",
@@ -57,6 +58,11 @@
 =======
     "dev": "ts-node-dev --respawn src/index.ts",
 >>>>>>> removido transpile only ts-node-dev, engine node 12
+=======
+    "dev": "ts-node-dev --respawn src/index.ts",
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
