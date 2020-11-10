@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -18,6 +19,8 @@
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
 <<<<<<< HEAD
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
@@ -50,11 +53,18 @@ export const EXTENSION_LIST = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+export const EXTENSION_LIST = ['json', 'txt', 'csv'];
+export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+=======
+export const EXTENSION_LIST = [
+>>>>>>> Criado o module files e a resolver create File
   '.txt',
   '.csv',
   '.json',
 ];
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 =======
   'json',
 <<<<<<< HEAD
@@ -119,3 +129,5 @@ export const EXTENSION_LIST = [
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
