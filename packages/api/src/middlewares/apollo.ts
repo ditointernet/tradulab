@@ -137,6 +137,7 @@ import cors from "cors";
 import cors from 'cors';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
+<<<<<<< HEAD
 =======
 import cors from 'cors';
 >>>>>>> file size limit from content length header
@@ -146,6 +147,9 @@ import cors from 'cors';
 =======
 import { auth, user, project, role, file } from '../modules';
 >>>>>>> changes
+=======
+import { auth, user, project, role, file } from '../modules';
+>>>>>>> Criado o module files e a resolver create File
 =======
 import { auth, user, project, role, file } from '../modules';
 >>>>>>> Criado o module files e a resolver create File
@@ -252,7 +256,11 @@ const typeDefs = gql`
   ${role.types}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   ${user.types}
+=======
+  ${file.types}
+>>>>>>> Criado o module files e a resolver create File
 =======
   ${file.types}
 >>>>>>> Criado o module files e a resolver create File
@@ -761,6 +769,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -802,6 +811,9 @@ export default function ApolloMiddleware(app) {
 =======
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 >>>>>>> file size limit from content length header
+=======
+            createFile: isAuthenticated,
+>>>>>>> Criado o module files e a resolver create File
 =======
             createFile: isAuthenticated,
 >>>>>>> Criado o module files e a resolver create File

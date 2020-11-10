@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -194,3 +195,10 @@ export const REGEXES = {
   'json',
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+export const EXTENSION_LIST = [
+  '.txt',
+  '.csv',
+  '.json',
+];
+>>>>>>> Criado o module files e a resolver create File
