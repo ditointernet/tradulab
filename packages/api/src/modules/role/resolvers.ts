@@ -258,6 +258,7 @@ async function inviteUserToProject(_, args, context) {
   if (!availableRoles.includes(args.role)) {
     throw new Error('You cannot invite an user with the same or higher role.');
   }
+
   const role = new Role({
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
