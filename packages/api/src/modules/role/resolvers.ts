@@ -25,36 +25,34 @@ async function inviteUserToProject(parent, args, context) {
     throw new Error('The provided user is already part of the project.');
   }
 
-  const project = await Project.findById(args.projectId);
+  const targetProject = await Project.findById(args.projectId);
 
-  if (!project) {
+  if (!targetProject) {
     throw new Error('The provided project does not exist.');
   }
 
-  console.log("chegou aqui antes do user")
-  const user = await User.findById(args.userId);
+  const targetUser = await User.findById(args.userId);
 
-  if (!user) {
+  if (!targetUser) {
     throw new Error('The provided user does not exist.');
   }
-  console.log("chegou aqui sem erro do user")
-  // TODO: i shouldnt be able to invite an user with the same or higher role
 
-  const roleDeQuemTaConvidando = await Role.findOne({
+  const currentUserRole = await Role.findOne({
     user: context.user.id,
     project: args.projectId,
   });
 
-  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
-  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
+  const roleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const rolesToInvite = ROLES_LIST.slice(roleIndex + 1);
 
-  if (!rolesPossiveis.includes(args.role)) {
+  if (!rolesToInvite.includes(args.role)) {
     throw new Error('You cannot invite an user with the same or higher role.');
   }
+
   const role = new Role({
     role: ROLES[args.role.toUpperCase()],
-    project,
-    user,
+    project: targetProject,
+    user: targetUser,
   });
 
   try {
