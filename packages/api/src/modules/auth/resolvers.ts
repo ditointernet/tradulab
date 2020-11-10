@@ -147,6 +147,7 @@ async function createUser(_, args) {
 =======
   } catch (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 >>>>>>> changes
 =======
@@ -154,6 +155,9 @@ async function createUser(_, args) {
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+    //  Duvidas sobre as linhas abaixo
+>>>>>>> Criado o module files e a resolver create File
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -193,6 +197,7 @@ async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -284,6 +289,13 @@ async function login(_parent, { payload: { email, password } }) {
 =======
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    throw new AuthenticationError('Invalid credentials.');
+=======
+    // Error sem estar na constant de error
+    throw new Error('Invalid credentials.');
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
   }
 <<<<<<< HEAD
 =======

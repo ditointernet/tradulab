@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Back-End Review
@@ -34,9 +35,12 @@ export const ERROR_MESSAGES = {
 export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 
 >>>>>>> update listFiles and error
+=======
+>>>>>>> Criado o module files e a resolver create File
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 export const ERROR_CODES = {
@@ -221,3 +225,12 @@ export const EXTENSION_LIST = [
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 >>>>>>> file size limit from content length header
+=======
+=======
+export const EXTENSION_LIST = [
+  '.txt',
+  '.csv',
+  '.json',
+];
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File

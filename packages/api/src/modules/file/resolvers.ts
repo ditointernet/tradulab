@@ -29,6 +29,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -36,6 +37,8 @@
 >>>>>>> formatting changes and some typings
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
 import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -407,6 +410,24 @@ async function createFile(parent, args: ICreateFileArgs, context) {
     approvalProgress: 0,
     sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+
+  const file = new File({
+    filename: args.filename,
+    translation_progress: 0,
+    approval_progress: 0,
+    source_language: args.source_language,
+    extension: args.extension,
+>>>>>>> Criado o module files e a resolver create File
     project,
   });
 =======
