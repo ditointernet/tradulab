@@ -63,6 +63,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // declarando uma nova variável
 >>>>>>> Update Role
@@ -135,6 +136,8 @@ const app = express();
 // declarando uma nova variável
 >>>>>>> Update Role
 >>>>>>> Update Role
+=======
+>>>>>>> Criado o module files e a resolver create File
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -199,6 +202,7 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -228,6 +232,9 @@ app.use(function (err, _req, res, _next) {
 >>>>>>> remove comments
 =======
 >>>>>>> Update Role
+=======
+  console.error('Error: ', err.name);
+>>>>>>> Criado o module files e a resolver create File
 });
 =======
 app.use(middlewares.error);
