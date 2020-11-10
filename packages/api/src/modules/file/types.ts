@@ -16,6 +16,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -156,10 +157,17 @@ export default gql`
     filename: String!
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+  type File {
+    id: ID!
+    key: String!
+    filename: String!
+>>>>>>> Criado o module files e a resolver create File
     translation_progress: Int!
     approval_progress: Int!
     source_language: String!
     extesion: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -191,12 +199,16 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
     project: Project!
 >>>>>>> Criado o module files e a resolver create File
+=======
+    project: Project!
+>>>>>>> Criado o module files e a resolver create File
     createdAt: Date!
     updatedAt: Date!
   }
 
   extend type Mutation {
     createFile(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -291,10 +303,13 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Criado o module files e a resolver create File
       filename: String!, 
       id: ID!, 
       extesion: String!, 
       source_language: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -331,6 +346,11 @@ export default gql`
 =======
       file: FileUpload!
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+    ): File!
+  }
+`;
+>>>>>>> Criado o module files e a resolver create File
+=======
     ): File!
   }
 `;
