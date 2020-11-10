@@ -3,6 +3,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   CONTRIBUTOR: 'contributor',
@@ -13,6 +14,8 @@ export const ROLES = {
 >>>>>>> remove comments
 =======
 >>>>>>> Update Role
+=======
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   CONTRIBUTOR: 'contributor',
   DEVELOPER: 'developer',
   MANAGER: 'manager',
@@ -45,6 +48,9 @@ export const ROLES_LIST = [
   // VIEWER: 'viewer',
 =======
 >>>>>>> Update Role
+=======
+  // VIEWER: 'viewer',
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',
@@ -53,11 +59,14 @@ export const ROLES_LIST = [
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Arrey ordenado Hierarquicamente
 export const ROLES_LIST = [ // mudar nome
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 // Array ordenado Hierarquicamente
+=======
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 export const ROLES_LIST = [
 >>>>>>> erase comments
   ROLES.OWNER,
