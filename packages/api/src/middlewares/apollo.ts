@@ -84,9 +84,13 @@ import cors from 'cors';
 >>>>>>> file size limit from content length header
 
 
+<<<<<<< HEAD
 =======
 import { auth, user, project, role, file } from '../modules';
 >>>>>>> changes
+=======
+import { auth, user, project, role, file } from '../modules';
+>>>>>>> Criado o module files e a resolver create File
 import { ROLES } from '../modules/role/constants';
 
 <<<<<<< HEAD
@@ -144,7 +148,11 @@ const typeDefs = gql`
   ${file.types}
   ${project.types}
   ${role.types}
+<<<<<<< HEAD
   ${user.types}
+=======
+  ${file.types}
+>>>>>>> Criado o module files e a resolver create File
 `;
 
 <<<<<<< HEAD
@@ -434,6 +442,7 @@ export default function ApolloMiddleware(app) {
             createProject: isAuthenticated,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
             createFile: and(
@@ -444,6 +453,9 @@ export default function ApolloMiddleware(app) {
 =======
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 >>>>>>> file size limit from content length header
+=======
+            createFile: isAuthenticated,
+>>>>>>> Criado o module files e a resolver create File
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
