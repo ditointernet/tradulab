@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -58,9 +59,12 @@ export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 
 >>>>>>> update listFiles and error
 >>>>>>> update listFiles and error
+=======
+>>>>>>> Criado o module files e a resolver create File
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -127,12 +131,15 @@ export const EXTENSION_LIST = [
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 <<<<<<< HEAD
 =======
+>>>>>>> Criado o module files e a resolver create File
+=======
 export const EXTENSION_LIST = [
   '.txt',
   '.csv',
   '.json',
 ];
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 =======
   'json',
 <<<<<<< HEAD
@@ -263,3 +270,5 @@ export const EXTENSION_LIST = [
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File

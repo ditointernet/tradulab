@@ -20,6 +20,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -142,6 +143,8 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
   scalar FileUpload
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -188,6 +191,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -206,6 +210,18 @@ export default gql`
 >>>>>>> changes
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+=======
+  type File {
+    id: ID!
+    key: String!
+    filename: String!
+    translation_progress: Int!
+    approval_progress: Int!
+    source_language: String!
+    extesion: String!
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     project: Project!
     sourceLanguage: String!
 =======
@@ -399,6 +415,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -481,13 +498,24 @@ export default gql`
 >>>>>>> changes
 =======
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
       file: FileUpload!
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
       sourceLanguage: String!
       projectId: ID!
+<<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+=======
+      filename: String!, 
+      id: ID!, 
+      extesion: String!, 
+      source_language: String!
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     ): File!
   }
 `;
