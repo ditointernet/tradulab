@@ -23,10 +23,13 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
 import { IProject } from '../project/model';
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -61,7 +64,12 @@ import { IProject } from '../project/model';
 >>>>>>> Back-End Review
 =======
 
+<<<<<<< HEAD
 >>>>>>> file size limit from content length header
+=======
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 =======
@@ -174,6 +182,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -220,11 +229,18 @@ const schema = new mongoose.Schema(
 =======
     translationProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    translationProgress: {
+=======
+    translation_progress: {
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -307,11 +323,18 @@ const schema = new mongoose.Schema(
 =======
     approvalProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    approvalProgress: {
+=======
+    approval_progress: {
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -561,6 +584,16 @@ const schema = new mongoose.Schema(
       required: true
 =======
 >>>>>>> file size limit from content length header
+=======
+    sourceLanguage: {
+      type: String,
+      required: true,
+=======
+    source_language: {
+      type: String,
+      required: true
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     },
     project: {
       type: Types.ObjectId,
@@ -573,6 +606,7 @@ const schema = new mongoose.Schema(
       required: true,
       enum: EXTENSION_LIST,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
     file_path: {
@@ -795,11 +829,22 @@ export default model;
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
     filePath: {
       type: String,
       required:true,
     },
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+=======
+    file_path: {
+      type: String,
+      required:true,
+    }
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
   },
   {
     timestamps: true,
@@ -807,6 +852,7 @@ export default model;
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -855,6 +901,8 @@ export default model;
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -872,6 +920,14 @@ const model = mongoose.model<IFile>('file', schema);
 
 export default model;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+=======
+const model = mongoose.model('file', schema);
+
+export default model;
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
