@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express';
 export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
   enum Extentions {
     csv
@@ -33,10 +34,17 @@ export default gql`
     id: ID!
     filename: String!
 <<<<<<< HEAD
+=======
+  type File {
+    id: ID!
+    key: String!
+    filename: String!
+>>>>>>> Criado o module files e a resolver create File
     translation_progress: Int!
     approval_progress: Int!
     source_language: String!
     extesion: String!
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -47,7 +55,12 @@ export default gql`
     sourceLanguage: String!
     extension: String!
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     project: Project!
     sourceLanguage: String!
     createdAt: Date!
@@ -57,16 +70,20 @@ export default gql`
     createFile(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       file: FileUpload!
       projectId: ID!
 <<<<<<< HEAD
       sourceLanguage: String!
 =======
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
       filename: String!, 
       id: ID!, 
       extesion: String!, 
       source_language: String!
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -74,7 +91,12 @@ export default gql`
 =======
       file: FileUpload!
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     ): File!
   }
   extend type Query {
