@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
+=======
+<<<<<<< HEAD
+>>>>>>> Criado o module files e a resolver create File
 import { FileUpload } from 'graphql-upload';
 import {
   ERROR_CODES,
@@ -33,7 +37,28 @@ async function createFile(_, args: ICreateFileArgs, context) {
 
   const file = new File({
     extension: filename.split('.').pop(),
+<<<<<<< HEAD
     filename,
+=======
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+
+  const file = new File({
+    filename: args.filename,
+    translation_progress: 0,
+    approval_progress: 0,
+    source_language: args.source_language,
+    extension: args.extension,
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     project,
     sourceLanguage,
   });

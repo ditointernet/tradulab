@@ -152,8 +152,79 @@ const permissions = shield(
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
     schema: applyMiddleware(
+<<<<<<< HEAD
       resolvers,
       permissions,      
+=======
+      buildFederatedSchema([
+        {
+          typeDefs,
+          resolvers: {
+            Date: GraphQLDateTime,
+            Query: {
+              ...auth.resolvers.queries,
+              ...user.resolvers.queries,
+              ...project.resolvers.queries,
+              ...role.resolvers.queries,
+            },
+            Mutation: {
+              ...auth.resolvers.mutations,
+              ...project.resolvers.mutations,
+              ...role.resolvers.mutations,
+              ...file.resolvers.mutations,
+            },
+          },
+        },
+      ]),
+      shield(
+        {
+          Query: {
+            login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
+            me: isAuthenticated,
+            myProjects: isAuthenticated,
+          },
+          Mutation: {
+            createUser: not(isAuthenticated),
+            createProject: isAuthenticated,
+            createFile: isAuthenticated,
+            inviteUserToProject: and(
+              isAuthenticated,
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
+            ),
+            removeUserFromProject: and(
+              isAuthenticated,
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
+            ),
+            updateUserProjectRole: and(
+              isAuthenticated,
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
+            ),
+          },
+        },
+        {
+          // https://github.com/maticzav/graphql-shield
+          fallbackError: (err, parent, args, context, info) => {
+            if (err instanceof ApolloError) {
+              // expected errors
+              return err;
+            } else if (err instanceof Error) {
+              // unexpected errors
+              console.error(err);
+              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+            } else {
+              // what the hell got thrown
+              console.error('The resolver threw something that is not an error.');
+              console.error(err);
+              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+            }
+          },
+          allowExternalErrors: true,
+        }
+      )
+>>>>>>> Criado o module files e a resolver create File
     ),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {

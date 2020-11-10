@@ -5,6 +5,7 @@ import * as middlewares from './middlewares';
 
 const app = express();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -12,6 +13,8 @@ const app = express();
 // declarando uma nova variável
 >>>>>>> Update Role
 >>>>>>> Update Role
+=======
+>>>>>>> Criado o module files e a resolver create File
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -25,11 +28,7 @@ app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
-<<<<<<< HEAD
   console.error('Error: ', err.name);
-=======
-  console.log("Error: ", err.name)
->>>>>>> Update Role
 });
 >>>>>>> Update Role
 
