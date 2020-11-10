@@ -153,6 +153,7 @@ const permissions = shield(
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+<<<<<<< HEAD
     schema: applyMiddleware(resolvers, permissions),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
@@ -160,6 +161,66 @@ export default function ApolloMiddleware(app) {
         user: undefined,
       };
 
+=======
+    schema: applyMiddleware(
+      buildFederatedSchema([
+        {
+          typeDefs,
+          resolvers: {
+            Date: GraphQLDateTime,
+            Query: {
+              ...auth.resolvers.queries,
+              ...user.resolvers.queries,
+              ...project.resolvers.queries,
+              ...role.resolvers.queries,
+            },
+            Mutation: {
+              ...auth.resolvers.mutations,
+              ...project.resolvers.mutations,
+              ...role.resolvers.mutations,
+              ...file.resolvers.mutations,
+            },
+          },
+        },
+      ]),
+      shield(
+        {
+          Query: {
+            login: not(isAuthenticated),
+            me: isAuthenticated,
+            myProjects: isAuthenticated,
+          },
+          Mutation: {
+            createUser: not(isAuthenticated),
+            createProject: isAuthenticated,
+            createFile: isAuthenticated,
+            inviteUserToProject: and(
+              isAuthenticated,
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
+            ),
+            removeUserFromProject: and(
+              isAuthenticated,
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
+            ),
+            updateUserProjectRole: and(
+              isAuthenticated,
+              isManagerOrOwner
+              // isNotTargetingHigherRoles
+            ),
+          },
+        },
+        {
+          fallbackError: (err): Error => {
+            console.error('error:', err);
+            return new Error('Internal error.');
+          },
+        }
+      )
+    ),
+    context: async ({ req: { auth } }: any) => {
+>>>>>>> Criado o module files e a resolver create File
       if (typeof auth === 'object' && auth.id) {
         baseContext.user = await user.model.findById(auth.id);
       }
