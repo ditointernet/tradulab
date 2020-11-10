@@ -17,11 +17,14 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
 import { IProject } from '../project/model';
@@ -58,6 +61,7 @@ import { EXTENSION_LIST } from './constants';
 >>>>>>> file size limit from content length header
 =======
 
+<<<<<<< HEAD
 >>>>>>> file size limit from content length header
 =======
 =======
@@ -86,6 +90,10 @@ import { EXTENSION_LIST } from './constants';
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -121,6 +129,7 @@ const schema = new mongoose.Schema(
       index: true,
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -227,6 +236,12 @@ export default model;
 =======
     translationProgress: {
 >>>>>>> Rebase and resolving conflicts with master
+=======
+    translationProgress: {
+=======
+    translation_progress: {
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
@@ -246,6 +261,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
     approvalProgress: {
@@ -380,12 +396,18 @@ export default model;
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
     approvalProgress: {
+=======
+    approval_progress: {
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 >>>>>>> Rebase and resolving conflicts with master
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -400,6 +422,9 @@ export default model;
 =======
     source_language: {
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Criado o module files e a resolver create File
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
@@ -411,10 +436,18 @@ export default model;
 =======
 =======
       required: true,
+<<<<<<< HEAD
 >>>>>>> file size limit from content length header
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+=======
+    source_language: {
+      type: String,
+      required: true
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     },
     project: {
       type: Types.ObjectId,
@@ -441,6 +474,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -517,11 +551,17 @@ export default model;
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 =======
+    filePath: {
+      type: String,
+    },
+>>>>>>> Criado o module files e a resolver create File
+=======
     file_path: {
       type: String,
       required:true,
     }
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
     filePath: {
@@ -530,6 +570,8 @@ export default model;
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+>>>>>>> Criado o module files e a resolver create File
   },
   {
     timestamps: true,
@@ -550,6 +592,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -566,6 +609,8 @@ export default model;
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+>>>>>>> Criado o module files e a resolver create File
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -702,6 +747,7 @@ const model = mongoose.model('file', schema);
 
 export default model;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -711,3 +757,10 @@ export default model;
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+=======
+const model = mongoose.model('file', schema);
+
+export default model;
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
