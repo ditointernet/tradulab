@@ -82,7 +82,13 @@ async function createUser(
       throw new TradulabError(errorCode);
     }
 
+<<<<<<< HEAD
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
+=======
+  if (!auth || !(await verifyPassword(args.password, auth.password))) {
+    // Error sem estar na constant de error
+    throw new Error('Invalid credentials.');
+>>>>>>> Criado o module files e a resolver create File
   }
 }
 
