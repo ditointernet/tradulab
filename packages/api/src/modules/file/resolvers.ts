@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 import { ApolloError } from 'apollo-server-express';
@@ -285,11 +286,20 @@ export const mutations = { createFile };
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+>>>>>>> Criado o module files e a resolver create File
   if (!project) {
     throw new Error('The provided project does not exist.');
   }
 
   const file = new File({
+<<<<<<< HEAD
     filename,
     translationProgress: 0,
     approvalProgress: 0,
@@ -379,11 +389,14 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
   const file = new File({
+=======
+>>>>>>> Criado o module files e a resolver create File
     filename: args.filename,
     translation_progress: 0,
     approval_progress: 0,
     source_language: args.source_language,
     extension: args.extension,
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
     project,
   });
@@ -406,6 +419,8 @@ async function createFile(parent, args: ICreateFileArgs, context) {
     extension: filename.split('.').pop(),
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
     project,
   });
 
@@ -420,6 +435,9 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 
 export const mutations = { createFile };
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> Criado o module files e a resolver create File
+=======
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
