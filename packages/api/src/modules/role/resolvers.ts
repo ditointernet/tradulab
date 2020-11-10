@@ -152,6 +152,7 @@ async function inviteUserToProject(_, args, context) {
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 >>>>>>> Back-End Review
 
+<<<<<<< HEAD
   const project = await Project.findById(projectId);
 
 <<<<<<< HEAD
@@ -170,6 +171,12 @@ async function inviteUserToProject(_, args, context) {
       'PROJECT_NOT_FOUND'
     );
 >>>>>>> changes
+=======
+  const targetProject = await Project.findById(args.projectId);
+
+  if (!targetProject) {
+    throw new Error('The provided project does not exist.');
+>>>>>>> we tested everything and it seems ok, including a project fix
   }
 >>>>>>> we tested everything and it seems ok, including a project fix
 
@@ -177,6 +184,7 @@ async function inviteUserToProject(_, args, context) {
 <<<<<<< HEAD
   const targetUser = await User.findById(userId);
 
+<<<<<<< HEAD
   if (!targetUser) throw new TradulabError(userCodes.USER_NOT_FOUND);
 =======
 <<<<<<< HEAD
@@ -262,10 +270,20 @@ async function inviteUserToProject(_, args, context) {
 =======
   const roleDeQuemTaConvidando = await Role.findOne({
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+  const targetUser = await User.findById(args.userId);
+
+  if (!targetUser) {
+    throw new Error('The provided user does not exist.');
+  }
+
+  const currentUserRole = await Role.findOne({
+>>>>>>> we tested everything and it seems ok, including a project fix
     user: context.user.id,
     project: args.projectId,
   });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const indexRole = ROLES_LIST.indexOf(targetUserRole.role);
   const availableRoles = ROLES_LIST.slice(indexRole + 1);
@@ -294,16 +312,27 @@ async function inviteUserToProject(_, args, context) {
 =======
   const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
   const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
+=======
+  const roleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const rolesToInvite = ROLES_LIST.slice(roleIndex + 1);
+>>>>>>> we tested everything and it seems ok, including a project fix
 
-  if (!rolesPossiveis.includes(args.role)) {
+  if (!rolesToInvite.includes(args.role)) {
     throw new Error('You cannot invite an user with the same or higher role.');
   }
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+
+>>>>>>> we tested everything and it seems ok, including a project fix
   const role = new Role({
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
+<<<<<<< HEAD
 >>>>>>> merge
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
   });
 =======
   if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
