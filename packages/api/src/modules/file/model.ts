@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { IProject } from '../project/model';
@@ -11,6 +12,8 @@ import { IProject } from '../project/model';
 =======
 
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Criado o module files e a resolver create File
 import { EXTENSION_LIST } from './constants';
 
 const { Types } = mongoose.Schema;
@@ -24,6 +27,7 @@ const schema = new mongoose.Schema(
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     translationProgress: {
 =======
     translation_progress: {
@@ -31,11 +35,15 @@ const schema = new mongoose.Schema(
 =======
     translationProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    translation_progress: {
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     approvalProgress: {
@@ -45,11 +53,15 @@ const schema = new mongoose.Schema(
 =======
     approvalProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    approval_progress: {
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     sourceLanguage: {
@@ -67,6 +79,11 @@ const schema = new mongoose.Schema(
 =======
       required: true,
 >>>>>>> file size limit from content length header
+=======
+    source_language: {
+      type: String,
+      required: true
+>>>>>>> Criado o module files e a resolver create File
     },
     project: {
       type: Types.ObjectId,
@@ -81,20 +98,26 @@ const schema = new mongoose.Schema(
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     filePath: {
       type: String,
     },
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
     file_path: {
       type: String,
       required:true,
     }
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
     filePath: {
       type: String,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Criado o module files e a resolver create File
   },
   {
     timestamps: true,
@@ -102,6 +125,7 @@ const schema = new mongoose.Schema(
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -149,3 +173,8 @@ export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+const model = mongoose.model('file', schema);
+
+export default model;
+>>>>>>> Criado o module files e a resolver create File
