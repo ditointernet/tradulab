@@ -20,6 +20,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 =======
 <<<<<<< HEAD
@@ -349,11 +350,25 @@ async function createFile(parent, args, context) {
 <<<<<<< HEAD
   const file = new File({
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+
+  const file = new File({
+>>>>>>> Criado o module files e a resolver create File
     filename: args.filename,
     translation_progress: 0,
     approval_progress: 0,
     source_language: args.source_language,
     extension: args.extension,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -490,6 +505,11 @@ async function createFile(parent, args, context) {
   });
 
 >>>>>>> Criado o module files e a resolver create File
+=======
+    project,
+  });
+
+>>>>>>> Criado o module files e a resolver create File
   try {
     await file.save();
   } catch (err) {
@@ -497,6 +517,7 @@ async function createFile(parent, args, context) {
   }
 
   return file;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -638,6 +659,11 @@ export const mutations = { createFile };
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+}
+
+export const mutations = { createFile };
+>>>>>>> Criado o module files e a resolver create File
+=======
 }
 
 export const mutations = { createFile };
