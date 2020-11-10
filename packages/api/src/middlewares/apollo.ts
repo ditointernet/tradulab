@@ -112,7 +112,11 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+=======
+            createFile: isAuthenticated,
+>>>>>>> Criado o module files e a resolver create File
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
