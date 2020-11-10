@@ -1,7 +1,10 @@
 import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { IProject } from '../project/model';
+=======
+>>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -21,6 +24,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     translationProgress: {
 =======
     translation_progress: {
@@ -34,11 +38,15 @@ const schema = new mongoose.Schema(
 =======
     translationProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    translation_progress: {
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -56,11 +64,15 @@ const schema = new mongoose.Schema(
 =======
     approvalProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    approval_progress: {
+>>>>>>> Criado o module files e a resolver create File
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -76,6 +88,11 @@ const schema = new mongoose.Schema(
 =======
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+      type: String,
+      required: true
+>>>>>>> Criado o module files e a resolver create File
+=======
+    source_language: {
       type: String,
       required: true
 >>>>>>> Criado o module files e a resolver create File
@@ -100,16 +117,20 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     filePath: {
       type: String,
     },
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Criado o module files e a resolver create File
     file_path: {
       type: String,
       required:true,
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -126,6 +147,8 @@ const schema = new mongoose.Schema(
       required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Criado o module files e a resolver create File
   },
   {
     timestamps: true,
@@ -133,6 +156,7 @@ const schema = new mongoose.Schema(
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export interface IFile extends mongoose.Document {
@@ -150,6 +174,11 @@ export interface IFile extends mongoose.Document {
 const model = mongoose.model<IFile>('file', schema);
 
 export default model;
+=======
+const model = mongoose.model('file', schema);
+
+export default model;
+>>>>>>> Criado o module files e a resolver create File
 =======
 const model = mongoose.model('file', schema);
 
