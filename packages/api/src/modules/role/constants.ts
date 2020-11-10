@@ -7,6 +7,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   CONTRIBUTOR: 'contributor',
@@ -110,6 +111,17 @@ export const ROLES_LIST = [ // mudar nome
 =======
 export const ROLES_LIST = [
 >>>>>>> erase comments
+=======
+  // VIEWER: 'viewer',
+  CONTRIBUTOR: 'contributor',
+  PROOFREADER: 'proofreader',
+  DEVELOPER: 'developer',
+  MANAGER: 'manager',
+  OWNER: 'owner',
+};
+
+export const ROLES_LIST = [ // mudar nome
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
