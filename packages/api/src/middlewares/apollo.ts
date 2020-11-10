@@ -4,7 +4,7 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, rule, shield } from 'graphql-shield';
 
-import { auth, user, project, role } from '../modules';
+import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
 const typeDefs = gql`
@@ -26,6 +26,7 @@ const typeDefs = gql`
   ${user.types}
   ${project.types}
   ${role.types}
+  ${file.types}
 `;
 
 const isAuthenticated = rule()((parent, args, { user }) => !!user);
@@ -68,6 +69,7 @@ export default function ApolloMiddleware(app) {
               ...auth.resolvers.mutations,
               ...project.resolvers.mutations,
               ...role.resolvers.mutations,
+              ...file.resolvers.mutations,
             },
           },
         },
@@ -82,6 +84,7 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
+            createFile: isAuthenticated,
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
