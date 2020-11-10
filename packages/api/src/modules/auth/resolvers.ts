@@ -78,6 +78,7 @@ async function createUser(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -89,6 +90,9 @@ async function createUser(
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> update listFiles and error
+=======
+    //  Duvidas sobre as linhas abaixo
+>>>>>>> Criado o module files e a resolver create File
     if (!auth.isNew) {
       await auth.remove();
     }

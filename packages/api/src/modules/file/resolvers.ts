@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -221,11 +222,25 @@ async function createFile(parent, args, context) {
 <<<<<<< HEAD
   const file = new File({
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+
+  const file = new File({
+>>>>>>> Criado o module files e a resolver create File
     filename: args.filename,
     translation_progress: 0,
     approval_progress: 0,
     source_language: args.source_language,
     extension: args.extension,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -401,6 +416,8 @@ export const queries = { listFiles };
     approvalProgress: 0,
     sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+=======
+>>>>>>> Criado o module files e a resolver create File
     project,
   });
 
@@ -413,6 +430,7 @@ export const queries = { listFiles };
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // return file;
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -424,6 +442,12 @@ export const queries = { listFiles };
 =======
   return file;
 >>>>>>> Corrigido erro de cors pra qualquer request
+}
+
+export const mutations = { createFile };
+>>>>>>> Criado o module files e a resolver create File
+=======
+  return file;
 }
 
 export const mutations = { createFile };
