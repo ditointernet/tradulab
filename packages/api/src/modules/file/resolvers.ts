@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 import {
@@ -71,6 +72,18 @@ async function createFile(parent, args, context) {
 
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+
+>>>>>>> Criado o module files e a resolver create File
   const file = new File({
     filename: args.filename,
     translation_progress: 0,
@@ -79,6 +92,9 @@ async function createFile(parent, args, context) {
     extension: args.extension,
     project,
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> Criado o module files e a resolver create File
+=======
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -87,6 +103,7 @@ async function createFile(parent, args, context) {
   try {
     await file.save();
   } catch (err) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     console.error(err);
@@ -170,6 +187,15 @@ export const mutations = { createFile };
   // }
 
   // return file;
+}
+
+export const mutations = { createFile };
+>>>>>>> Criado o module files e a resolver create File
+=======
+    throw err;
+  }
+
+  return file;
 }
 
 export const mutations = { createFile };
