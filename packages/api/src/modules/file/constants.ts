@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const ERROR_CODES = {
   MAX_ALLOWED_FILE_SIZE: 'MAX_ALLOWED_FILE_SIZE',
   NOT_A_MEMBER: 'NOT_A_MEMBER',
@@ -32,3 +33,10 @@ export const EXTENSION_LIST = [
   'json',
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+export const EXTENSION_LIST = [
+  '.txt',
+  '.csv',
+  '.json',
+];
+>>>>>>> Criado o module files e a resolver create File
