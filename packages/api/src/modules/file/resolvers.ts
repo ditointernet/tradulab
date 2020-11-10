@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 import {
@@ -130,6 +131,18 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+
+async function createFile(parent, args) {
+  const project = await Project.findOne({ project: args.project })
+
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+
+>>>>>>> Criado o module files e a resolver create File
   const file = new File({
     filename: args.filename,
     translation_progress: 0,
@@ -137,6 +150,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
     source_language: args.source_language,
     extension: args.extension,
     project,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -277,6 +291,9 @@ export const mutations = { createFile };
     project,
   });
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+  });
+>>>>>>> Criado o module files e a resolver create File
 
   try {
     await file.save();
@@ -288,4 +305,7 @@ export const mutations = { createFile };
 }
 
 export const mutations = { createFile };
+<<<<<<< HEAD
+>>>>>>> Criado o module files e a resolver create File
+=======
 >>>>>>> Criado o module files e a resolver create File
