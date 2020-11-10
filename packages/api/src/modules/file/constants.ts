@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
 <<<<<<< HEAD
@@ -53,3 +56,10 @@ export const EXTENSION_LIST = [
   'json',
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+export const EXTENSION_LIST = [
+  '.txt',
+  '.csv',
+  '.json',
+];
+>>>>>>> Criado o module files e a resolver create File
