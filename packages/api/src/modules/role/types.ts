@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   enum RoleSlug {
-    viewer
+    # viewer
     contributor
     proofreader
     developer
@@ -11,7 +11,7 @@ export default gql`
   }
 
   enum AvailableRoleSlugs {
-    viewer
+    # viewer
     contributor
     proofreader
     developer
@@ -26,7 +26,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
-
+# Por que esses diferentes tipos de Role... ?
   type RoleWithProject {
     id: ID!
     role: String!

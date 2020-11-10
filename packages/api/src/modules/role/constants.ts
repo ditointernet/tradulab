@@ -1,17 +1,17 @@
 export const ROLES = {
-  VIEWER: 'role:viewer',
-  CONTRIBUTOR: 'role:contributor',
-  PROOFREADER: 'role:proofreader',
-  DEVELOPER: 'role:developer',
-  MANAGER: 'role:manager',
-  OWNER: 'role:owner',
+  // VIEWER: 'viewer',
+  CONTRIBUTOR: 'contributor',
+  PROOFREADER: 'proofreader',
+  DEVELOPER: 'developer',
+  MANAGER: 'manager',
+  OWNER: 'owner',
 };
 
-export const ROLES_LIST = [
-  ROLES.VIEWER,
-  ROLES.CONTRIBUTOR,
-  ROLES.PROOFREADER,
-  ROLES.DEVELOPER,
-  ROLES.MANAGER,
+export const ROLES_LIST = [ // mudar nome
   ROLES.OWNER,
+  ROLES.MANAGER,
+  ROLES.DEVELOPER,
+  ROLES.PROOFREADER,
+  ROLES.CONTRIBUTOR,
+  // ROLES.VIEWER,
 ];
