@@ -6,11 +6,17 @@ import { ROLES } from '../role/constants';
 import { model as Project } from '.';
 import { model as Role } from '../role';
 
+<<<<<<< HEAD
 async function createProject(
   _parent,
   { payload: { name, private: isPrivate } },
   { user }
 ) {
+=======
+//Significado de context
+
+async function createProject(parent, args, context) {
+>>>>>>> Criado o module files e a resolver create File
   const project = new Project({
     name,
     owner: user,
@@ -53,11 +59,20 @@ async function createProject(
   }
 }
 
+<<<<<<< HEAD
 async function listProjects(_parent, _args, { user }) {
   try {
     const roles = await Role.find({ user: user._id })
       .populate('project')
       .exec();
+=======
+//Duvidas populate
+
+async function myProjects(parent, args, context) {
+  const roles = await Role.find({ user: context.user })
+    .populate('project')
+    .exec();
+>>>>>>> Criado o module files e a resolver create File
 
     return roles;
   } catch (err) {
