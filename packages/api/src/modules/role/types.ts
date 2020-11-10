@@ -32,7 +32,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
-# Por que esses diferentes tipos de Role... ?
+
   type RoleWithProject {
     id: ID!
     role: String!
