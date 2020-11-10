@@ -21,12 +21,12 @@ export default gql`
   type Role {
     id: ID!
     role: String!
-    user: User!
-    project: Project!
+    user: String!
+    project: String!
     createdAt: Date!
     updatedAt: Date!
   }
-# Por que esses diferentes tipos de Role... ?
+
   type RoleWithProject {
     id: ID!
     role: String!

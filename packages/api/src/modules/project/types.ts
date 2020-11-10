@@ -11,11 +11,21 @@ export default gql`
     updatedAt: Date!
   }
 
+  type ProjectWithUser {
+    id: ID!
+    slug: String!
+    displayName: String!
+    owner: User!
+    private: Boolean!
+    createdAt: Date!
+    updatedAt: Date!
+  }
+
   extend type Query {
     myProjects: [RoleWithProject!]!
   }
 
   extend type Mutation {
-    createProject(displayName: String!, private: Boolean): Project!
+    createProject(displayName: String!, private: Boolean): ProjectWithUser!
   }
 `;
