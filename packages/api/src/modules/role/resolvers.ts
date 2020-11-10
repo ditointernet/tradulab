@@ -21,6 +21,7 @@ import { ROLES, ROLES_LIST } from '../role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 import { IRole } from './model';
@@ -75,6 +76,10 @@ import { IRole } from './model';
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+import { IRole } from './model';
+import { ApolloError, ForbiddenError } from 'apollo-server-express';
+>>>>>>> we tested everything and it seems ok, including a project fix
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -179,8 +184,8 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> changes
   }
 
-<<<<<<< HEAD
   const targetUser = await User.findById(args.userId);
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> we tested everything and it seems ok, including a project fix
 =======
@@ -189,6 +194,8 @@ async function inviteUserToProject(_, args, context) {
   const user = await User.findById(args.userId);
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
 
   if (!targetUser) {
 <<<<<<< HEAD
@@ -200,6 +207,7 @@ async function inviteUserToProject(_, args, context) {
     );
 >>>>>>> changes
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -248,25 +256,10 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> we tested everything and it seems ok, including a project fix
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> we tested everything and it seems ok, including a project fix
 
   const targetUserRole = new Role({
-=======
-  console.log("chegou aqui sem erro do user")
-  // TODO: i shouldnt be able to invite an user with the same or higher role
-
-  const roleDeQuemTaConvidando = await Role.findOne({
-    user: context.user.id,
-    project: args.projectId,
-  });
-
-  const indexRole = ROLES_LIST.indexOf(roleDeQuemTaConvidando.role)
-  const rolesPossiveis = ROLES_LIST.slice(indexRole + 1)
-
-  if (!rolesPossiveis.includes(args.role)) {
-    throw new Error('You cannot invite an user with the same or higher role.');
-  }
-  const role = new Role({
->>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
