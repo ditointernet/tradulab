@@ -508,6 +508,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -548,6 +549,9 @@ export default function ApolloMiddleware(app) {
 =======
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 >>>>>>> file size limit from content length header
+=======
+            createFile: isAuthenticated,
+>>>>>>> Criado o module files e a resolver create File
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
