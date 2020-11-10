@@ -80,6 +80,7 @@ async function createUser(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -91,6 +92,9 @@ async function createUser(
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> update listFiles and error
+=======
+    //  Duvidas sobre as linhas abaixo
+>>>>>>> Criado o module files e a resolver create File
 =======
     //  Duvidas sobre as linhas abaixo
 >>>>>>> Criado o module files e a resolver create File
@@ -142,6 +146,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -163,9 +168,13 @@ async function login(_, args) {
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
 =======
+    throw new AuthenticationError('Invalid credentials.');
+>>>>>>> Criado o module files e a resolver create File
+=======
     // Error sem estar na constant de error
     throw new Error('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -198,6 +207,8 @@ async function login(_parent, { payload: { email, password } }) {
   } catch (err) {
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
 >>>>>>> Back-End Review
+=======
+>>>>>>> Criado o module files e a resolver create File
   }
 }
 <<<<<<< HEAD

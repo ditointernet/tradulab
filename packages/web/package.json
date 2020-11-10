@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@apollo/client": "3.2.5",
     "@material-ui/core": "4.11.0",
     "@testing-library/jest-dom": "4.2.4",
@@ -34,6 +35,8 @@
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Criado o module files e a resolver create File
     "@apollo/client": "^3.2.5",
     "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -44,6 +47,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -96,6 +100,8 @@
 =======
     "apollo-upload-client": "^14.1.3",
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Criado o module files e a resolver create File
     "graphql": "^15.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
