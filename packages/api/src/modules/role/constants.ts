@@ -7,6 +7,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   CONTRIBUTOR: 'contributor',
 =======
 =======
@@ -45,6 +46,9 @@ export const ROLES_LIST = [
 >>>>>>> Update Role
 =======
 >>>>>>> Update Role
+=======
+  // VIEWER: 'viewer',
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',
@@ -52,6 +56,7 @@ export const ROLES_LIST = [
   OWNER: 'owner',
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -70,6 +75,8 @@ export const ROLES_LIST = [ // mudar nome
 =======
 // Arrey ordenado Hierarquicamente
 >>>>>>> remove comments
+=======
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 export const ROLES_LIST = [
 >>>>>>> erase comments
 =======

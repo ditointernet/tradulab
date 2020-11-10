@@ -9,6 +9,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     # viewer
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -27,6 +28,11 @@ export default gql`
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 >>>>>>> Update Role
+=======
+=======
+    # viewer
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     contributor
     developer
     manager
@@ -35,6 +41,7 @@ export default gql`
   }
 
   enum AvailableRoleSlugs {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -62,6 +69,11 @@ export default gql`
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 >>>>>>> Update Role
+=======
+=======
+    # viewer
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+>>>>>>> Feita lógica de restrição de convites de cargos no módulo role
     contributor
     proofreader
     developer
@@ -76,7 +88,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
-
+# Por que esses diferentes tipos de Role... ?
   type RoleWithProject {
     id: ID!
     role: String!
