@@ -50,7 +50,11 @@ async function createUser(_, args) {
   try {
     await Promise.all([auth.save(), user.save()]);
   } catch (err) {
+<<<<<<< HEAD
     // Não entendi a condição
+=======
+    //  Duvidas sobre as linhas abaixo
+>>>>>>> Criado o module files e a resolver create File
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -91,6 +95,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -104,6 +109,13 @@ async function login(_, args) {
 >>>>>>> changes
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    throw new AuthenticationError('Invalid credentials.');
+=======
+    // Error sem estar na constant de error
+    throw new Error('Invalid credentials.');
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
   }
 
   return { token: await signToken({ id: auth.user }) };
