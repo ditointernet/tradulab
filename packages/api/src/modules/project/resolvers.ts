@@ -58,6 +58,7 @@ async function createProject(
 =======
 //Significado de context
 
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -67,6 +68,10 @@ async function createProject(
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+//Significado de context
+
+>>>>>>> Criado o module files e a resolver create File
 async function createProject(parent, args, context) {
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -128,6 +133,7 @@ async function createProject(_, args, context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
 async function listProjects(_parent, _args, { user }) {
@@ -165,6 +171,10 @@ async function listProjects(_parent, _args, { user }) {
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+//Duvidas populate
+
+>>>>>>> Criado o module files e a resolver create File
 async function myProjects(parent, args, context) {
 =======
 // Não estamos tratando o Erro do roles.exect(), conflito com tipagem
