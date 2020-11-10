@@ -17,6 +17,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
   enum Extentions {
     csv
@@ -57,6 +58,8 @@ export default gql`
 >>>>>>> Rebase and resolving conflicts with master
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+>>>>>>> Criado o module files e a resolver create File
   scalar FileUpload
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -69,6 +72,7 @@ export default gql`
     extension: String!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -127,11 +131,19 @@ export default gql`
     id: ID!
     filename: String!
 <<<<<<< HEAD
+>>>>>>> Criado o module files e a resolver create File
+=======
+=======
+  type File {
+    id: ID!
+    key: String!
+    filename: String!
 >>>>>>> Criado o module files e a resolver create File
     translation_progress: Int!
     approval_progress: Int!
     source_language: String!
     extesion: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -203,6 +215,9 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     project: Project!
     createdAt: Date!
     updatedAt: Date!
@@ -224,6 +239,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       file: FileUpload!
@@ -350,6 +366,17 @@ export default gql`
       sourceLanguage: String!
       projectId: ID!
 >>>>>>> Rebase and resolving conflicts with master
+=======
+      file: FileUpload!
+      sourceLanguage: String!
+      projectId: ID!
+=======
+      filename: String!, 
+      id: ID!, 
+      extesion: String!, 
+      source_language: String!
+>>>>>>> Criado o module files e a resolver create File
+>>>>>>> Criado o module files e a resolver create File
     ): File!
   }
 >>>>>>> Criado o module files e a resolver create File
