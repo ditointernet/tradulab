@@ -177,6 +177,7 @@ async function createUser(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -205,6 +206,9 @@ async function createUser(_, args) {
   } catch (err) {
     // Não entendi a condição
 >>>>>>> changes
+=======
+    //  Duvidas sobre as linhas abaixo
+>>>>>>> Criado o module files e a resolver create File
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -273,6 +277,7 @@ async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -362,7 +367,13 @@ async function login(_parent, { payload: { email, password } }) {
 >>>>>>> Back-End Review
   }
 =======
+=======
+>>>>>>> Criado o module files e a resolver create File
     throw new AuthenticationError('Invalid credentials.');
+=======
+    // Error sem estar na constant de error
+    throw new Error('Invalid credentials.');
+>>>>>>> Criado o module files e a resolver create File
   }
 
   return { token: await signToken({ id: auth.user }) };
