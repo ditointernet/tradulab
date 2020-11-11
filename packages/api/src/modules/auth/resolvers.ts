@@ -142,6 +142,11 @@ async function login(_, args) {
 
   return { token: await signToken({ id: auth.user }) };
 }
+<<<<<<< HEAD
 
+=======
+// Não acho legal este nomes e esta maneira de exportar
+export const queries = { login };
+>>>>>>> pull
 export const mutations = { createUser };
 export const queries = { login };
