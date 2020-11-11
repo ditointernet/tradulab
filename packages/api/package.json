@@ -11,6 +11,7 @@
     "prestart": "npm run build",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
     "start": "node $npm_package_main",
 <<<<<<< HEAD
@@ -51,6 +52,9 @@
 =======
     "start": "node $npm_package_main",
 >>>>>>> Criado o module files e a resolver create File
+=======
+    "start": "node $npm_package_main",
+>>>>>>> pull
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
