@@ -180,6 +180,7 @@ async function login(parent, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -204,6 +205,9 @@ async function login(parent, args) {
 =======
 
 >>>>>>> erase comments
+=======
+// Não acho legal este nomes e esta maneira de exportar
+>>>>>>> pull
 export const queries = { login };
 >>>>>>> pull
 export const mutations = { createUser };
