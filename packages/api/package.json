@@ -8,9 +8,9 @@
   "scripts": {
     "lint": "eslint",
     "build": "tsc",
-    "prestart": "yarn run build",
+    "prestart": "npm run build",
     "start": "node $npm_package_main",
-    "lint:all": "yarn run lint \"src/**/*.ts\""
+    "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
     "node": "14"
