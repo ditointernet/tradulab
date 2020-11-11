@@ -401,6 +401,7 @@ async function login(_parent, { payload: { email, password } }) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -436,6 +437,8 @@ export const queries = { login };
 =======
 
 =======
+=======
+>>>>>>> pull
 =======
 >>>>>>> pull
 // Não acho legal este nomes e esta maneira de exportar
