@@ -108,6 +108,11 @@ async function login(_parent, { payload: { email, password } }) {
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
 }
+<<<<<<< HEAD
 
+=======
+// Não acho legal este nomes e esta maneira de exportar
+export const queries = { login };
+>>>>>>> pull
 export const mutations = { createUser };
 export const queries = { login };
