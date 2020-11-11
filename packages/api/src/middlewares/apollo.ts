@@ -99,18 +99,22 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Update Role
 =======
 >>>>>>> remove comments
+=======
+>>>>>>> pull
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -148,6 +152,8 @@ const corsOptions: cors.CorsOptions = {
 =======
 >>>>>>> remove comments
 >>>>>>> remove comments
+=======
+>>>>>>> pull
 const typeDefs = gql`
   scalar Date
 
