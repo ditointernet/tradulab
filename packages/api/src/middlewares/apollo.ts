@@ -290,6 +290,7 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -741,6 +742,8 @@ import cors from "cors";
 =======
 =======
 >>>>>>> remove comments
+=======
+>>>>>>> pull
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -958,6 +961,7 @@ const permissions = shield(
   }
 )
 
+<<<<<<< HEAD
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
 <<<<<<< HEAD
@@ -1011,6 +1015,8 @@ const isDeveloper = rule()(
 =======
 >>>>>>> remove comments
 >>>>>>> remove comments
+=======
+>>>>>>> pull
 const typeDefs = gql`
   scalar Date
 
