@@ -147,6 +147,7 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -157,19 +158,14 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> Update Role
 =======
 >>>>>>> remove comments
+=======
+>>>>>>> pull
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
 };
 
-=======
-// A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
-// Create e object types;
-// Custon scalar types
->>>>>>> Update Role
-=======
->>>>>>> remove comments
 const typeDefs = gql`
   scalar Date
 >>>>>>> Create file resolver working at front-end and back-end without error treatment

@@ -232,6 +232,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -249,5 +250,12 @@ export const queries = { login };
 >>>>>>> pull
 =======
 >>>>>>> changes
+=======
+
+=======
+// Não acho legal este nomes e esta maneira de exportar
+export const queries = { login };
+>>>>>>> pull
+>>>>>>> pull
 export const mutations = { createUser };
 export const queries = { login };
