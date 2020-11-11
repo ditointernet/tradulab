@@ -22,6 +22,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> pull
     "dev": "ts-node-dev --respawn src/index.ts",
 =======
     "start": "node $npm_package_main",
@@ -72,6 +75,8 @@
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> pull
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
