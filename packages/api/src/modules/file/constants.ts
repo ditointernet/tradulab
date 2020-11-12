@@ -11,8 +11,13 @@ export const ERROR_MESSAGES = {
 };
 =======
 export const EXTENSION_LIST = [
+<<<<<<< HEAD
   '.txt',
   '.csv',
   '.json',
 ];
 >>>>>>> Criado o module files e a resolver create File
+=======
+  'json',
+];
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
