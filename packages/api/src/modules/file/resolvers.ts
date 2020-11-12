@@ -26,6 +26,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 =======
 <<<<<<< HEAD
@@ -432,16 +433,20 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   const file = new File({
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+import path from 'path';
+import fs from 'fs';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
 import { model as Project } from '../project';
 
-async function createFile(parent, args) {
-  const project = await Project.findOne({ project: args.project })
+async function createFile(parent, args, context) {
+  console.log(args.file);
+  const { filename, mimetype, encoding } = await args.file;
 
-  if (!project) {
-    throw new Error('The provided project does not exist.');
-  }
+  // const project = await Project.findOne({ project: args.project })
 
+<<<<<<< HEAD
   const file = new File({
 >>>>>>> Criado o module files e a resolver create File
     filename: args.filename,
@@ -488,6 +493,12 @@ async function createFile(parent, args) {
   // }
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  // if (!project) {
+  //   throw new Error('The provided project does not exist.');
+  // }
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   // const file = new File({
   //   filename,
   //   translation_progress: 0,
@@ -496,6 +507,7 @@ async function createFile(parent, args) {
   //   extension: filename.split('.').pop(),
   //   project,
   // });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -745,6 +757,9 @@ export const mutations = { createFile };
 =======
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   // try {
   //   await file.save();
   // } catch (err) {
@@ -752,6 +767,7 @@ export const mutations = { createFile };
   // }
 
   // return file;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -833,6 +849,8 @@ export const mutations = { createFile };
 export const queries = { listFiles };
 >>>>>>> changes
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 }
 
 export const mutations = { createFile };
