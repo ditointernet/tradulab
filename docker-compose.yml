@@ -19,10 +19,13 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
 >>>>>>> docker
+=======
+>>>>>>> revert docker compose port
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -241,6 +244,7 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> revert docker compose port
+<<<<<<< HEAD
 =======
 >>>>>>> fix
 =======
@@ -282,3 +286,5 @@ volumes:
 >>>>>>> bolivar
 =======
 >>>>>>> Create API and WEB Images
+=======
+>>>>>>> revert docker compose port
