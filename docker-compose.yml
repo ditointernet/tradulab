@@ -24,6 +24,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -379,3 +380,6 @@ volumes:
 volumes:
   tradulab:
 >>>>>>> fix
+=======
+      - "27018:27018"
+>>>>>>> Update Role
