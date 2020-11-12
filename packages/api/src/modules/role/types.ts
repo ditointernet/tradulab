@@ -1,5 +1,8 @@
 import { gql } from 'apollo-server-express';
-
+// Role: GraphQL Object Type
+// id: Fields
+// special kind of scalar that is restricted a particular set of allowed values
+// type modifiers: ! Non-Null
 export default gql`
 <<<<<<< HEAD
   enum InvitedRole {
@@ -7,9 +10,12 @@ export default gql`
 =======
   enum RoleSlug {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     # viewer
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+>>>>>>> Update Role
     contributor
     developer
     manager
@@ -19,10 +25,16 @@ export default gql`
 
   enum AvailableRoleSlugs {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     # viewer
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+=======
+>>>>>>> Update Role
+>>>>>>> Update Role
     contributor
     proofreader
     developer

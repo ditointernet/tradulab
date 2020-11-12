@@ -181,17 +181,36 @@ async function updateUserProjectRole(
     project: projectId,
   }).exec();
 
+<<<<<<< HEAD
   if (!targetUserRole)
     throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
+=======
+  if (!targetUserRole) {
+<<<<<<< HEAD
+    throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
+=======
+    throw new Error('The provided user is not part of the project.');
+>>>>>>> Update Role
+  }
+>>>>>>> Update Role
 
   const currentUserRole = await Role.findOne({
     user: ownId,
     project: projectId,
   });
 
+<<<<<<< HEAD
   const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
   const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
   const roleIndex = ROLES_LIST.indexOf(role);
+=======
+<<<<<<< HEAD
+  const inviteUserRole = new Role({
+    user: args.userId,
+    project: args.projectId,
+    role: args.role,
+  });
+>>>>>>> Update Role
 
   if (currentUserRoleIndex >= roleIndex)
     throw new TradulabError(roleCodes.UPDATED_TO_SAME_OR_HIGHER_ROLE);
@@ -209,7 +228,38 @@ async function updateUserProjectRole(
     return inviteUserRole;
   } catch (err) {
     console.error(err);
+<<<<<<< HEAD
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
+=======
+    throw err;
+=======
+
+  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+
+  const inviteUserRoleIndex = ROLES_LIST.indexOf(args.role);
+
+  if(inviteUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not give the same or higher role to a user than your own.'
+    );
+  }
+
+  if(targetUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not update someone with the same or higher role than your own.'
+    );
+  }
+
+  try {
+    targetUserRole.role = args.role
+    await targetUserRole.save();
+  } catch (err) {
+    console.error(err)
+    throw err
+>>>>>>> Update Role
+>>>>>>> Update Role
   }
 }
 
