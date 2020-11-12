@@ -80,7 +80,11 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
+=======
+    throw new AuthenticationError('Invalid credentials.');
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   }
 
   return { token: await signToken({ id: auth.user }) };
