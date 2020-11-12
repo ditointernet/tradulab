@@ -8,6 +8,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
 
   enum Extentions {
@@ -60,10 +61,14 @@ export default gql`
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+  scalar FileUpload
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   type File {
     id: ID!
-    key: String!
     filename: String!
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
     translation_progress: Int!
     approval_progress: Int!
@@ -78,10 +83,13 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     translationProgress: Int!
     approvalProgress: Int!
     sourceLanguage: String!
     extension: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -99,6 +107,8 @@ export default gql`
     project: Project!
     sourceLanguage: String!
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     project: Project!
 >>>>>>> Criado o module files e a resolver create File
     createdAt: Date!
@@ -107,6 +117,7 @@ export default gql`
 
   extend type Mutation {
     createFile(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -165,6 +176,9 @@ export default gql`
 
 // Acho que o progress pode ser colocado no futuro, pois ele vai ser mais complexo que isso, progress de translation para qual lingua?
 =======
+=======
+      file: FileUpload!
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     ): File!
   }
 `;

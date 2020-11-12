@@ -96,6 +96,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -116,6 +117,9 @@ async function login(_, args) {
     throw new Error('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+    throw new AuthenticationError('Invalid credentials.');
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   }
 
   return { token: await signToken({ id: auth.user }) };
