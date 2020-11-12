@@ -165,6 +165,7 @@ import { graphqlUploadExpress } from 'graphql-upload';
 const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
@@ -182,6 +183,14 @@ const app = express();
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
+=======
+
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+
+=======
+// declarando uma nova variável
+>>>>>>> Update Role
+>>>>>>> Update Role
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -242,10 +251,14 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update Role
   console.error('Error: ', err.name);
 =======
   console.log("Error: ", err.name)
 >>>>>>> Update Role
+<<<<<<< HEAD
 =======
   console.error("Error: ", err.name)
 >>>>>>> remove comments
@@ -258,6 +271,8 @@ app.use(function (err, req, res, next) {
 =======
   console.error('Error: ', err.name)
 >>>>>>> change aspas
+=======
+>>>>>>> Update Role
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
