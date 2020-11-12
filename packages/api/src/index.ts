@@ -5,9 +5,13 @@ import { env } from './helpers';
 // import { graphqlUploadExpress } from 'graphql-upload';
 
 const app = express();
+<<<<<<< HEAD
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 
+=======
+// declarando uma nova variável
+>>>>>>> Update Role
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -18,7 +22,11 @@ app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
+<<<<<<< HEAD
   console.error('Error: ', err.name);
+=======
+  console.log("Error: ", err.name)
+>>>>>>> Update Role
 });
 
 function start() {

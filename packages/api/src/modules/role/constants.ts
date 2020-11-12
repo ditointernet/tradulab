@@ -1,5 +1,4 @@
 export const ROLES = {
-  // VIEWER: 'viewer',
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',
