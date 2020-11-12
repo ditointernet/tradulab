@@ -3,6 +3,9 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -68,7 +71,17 @@ import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 import cors from 'cors';
+<<<<<<< HEAD
 >>>>>>> file size limit from content length header
+=======
+=======
+import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
+import { buildFederatedSchema } from '@apollo/federation';
+import { applyMiddleware } from 'graphql-middleware';
+import { not, and, rule, shield } from 'graphql-shield';
+import cors from "cors";
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -108,7 +121,11 @@ const corsOptions: cors.CorsOptions = {
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
+<<<<<<< HEAD
   allowedHeaders: ['Authorization', 'content-type'],
+=======
+  allowedHeaders: 'Authorization',  
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 };
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment

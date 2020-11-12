@@ -82,6 +82,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     filePath: {
       type: String,
       required: true,
@@ -125,6 +126,8 @@ export default model;
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     translationProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -133,6 +136,7 @@ export default model;
 =======
     translationProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 =======
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
@@ -145,6 +149,8 @@ export default model;
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
@@ -157,6 +163,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     approvalProgress: {
 =======
     approval_progress: {
@@ -177,16 +184,25 @@ export default model;
     approvalProgress: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     approvalProgress: {
 =======
     approval_progress: {
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -205,6 +221,8 @@ export default model;
     source_language: {
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
@@ -212,6 +230,7 @@ export default model;
 =======
     source_language: {
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
     sourceLanguage: {
@@ -227,6 +246,10 @@ export default model;
 =======
 =======
     source_language: {
+=======
+    sourceLanguage: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
       required: true
 >>>>>>> Criado o module files e a resolver create File
@@ -250,8 +273,11 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     filePath: {
       type: String,
     },
@@ -294,6 +320,12 @@ export default model;
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+    filePath: {
+      type: String,
+      required:true,
+    },
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
   {
     timestamps: true,

@@ -55,6 +55,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "apollo-upload-client": "^14.1.3",
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -69,6 +70,8 @@
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     "apollo-upload-client": "^14.1.3",
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -76,6 +79,9 @@
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+    "apollo-upload-client": "^14.1.3",
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     "graphql": "^15.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
