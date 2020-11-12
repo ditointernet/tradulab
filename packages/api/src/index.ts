@@ -171,6 +171,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
@@ -208,6 +209,9 @@ const app = express();
 >>>>>>> Update Role
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+// declarando uma nova variável
+>>>>>>> Update Role
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -284,6 +288,7 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -316,6 +321,9 @@ app.use(function (err, _req, res, _next) {
 =======
   console.error('Error: ', err.name);
 >>>>>>> Criado o module files e a resolver create File
+=======
+  console.log("Error: ", err.name)
+>>>>>>> Update Role
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
