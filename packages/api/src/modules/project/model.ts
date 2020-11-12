@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import * as slug from 'slug';
 
 import { ERROR_CODES, REGEXES } from './constants';
+
 import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;
