@@ -17,6 +17,9 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update Role
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -241,4 +244,10 @@ volumes:
       - api
 volumes:
   tradulab:
+<<<<<<< HEAD
 >>>>>>> fix
+=======
+=======
+      - "27018:27018"
+>>>>>>> Update Role
+>>>>>>> Update Role
