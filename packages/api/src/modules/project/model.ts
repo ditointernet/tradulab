@@ -3,7 +3,10 @@ import * as slug from 'slug';
 
 <<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
+<<<<<<< HEAD
 
+=======
+>>>>>>> we abstracted the role validation and finished all role mutations
 =======
 import { ERROR_MESSAGES, REGEXES } from './constants';
 >>>>>>> we abstracted the role validation and finished all role mutations
