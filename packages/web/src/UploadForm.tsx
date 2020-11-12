@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
+=======
+<<<<<<< HEAD
+import React from "react";
+import { useMutation, gql, useQuery } from "@apollo/client";
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 export const LOGIN = gql`
   query login($email: String!, $password: String!) {
@@ -53,12 +59,57 @@ export default function UploadForm() {
     const sourceLanguage = 'PT-BR';
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
+=======
+import React from 'react';
+import { useMutation, gql, useQuery } from '@apollo/client';
+
+// const LOGIN = gql`
+//   query login ($email: String!, $password: String!){
+//     login (
+//       email: $email
+//       password: $password
+//     ) {
+//       token
+//     }
+//   }
+// `
+
+const UPLOAD_FILE = gql`
+  mutation createFile($file: Upload!){
+    createFile(file: $file){
+      filename
+    }
+  }
+`
+export default function UploadForm() {
+  // const { data, refetch } = useQuery(LOGIN, {
+  //   variables: { email: 'julinho2801@gmail.com', password: '123456' }
+  // });
+
+  // if (data) console.log(data.login.token)
+
+  const [createFile, { data }] = useMutation(UPLOAD_FILE);
+
+  console.log(data)
+  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files![0]
+    if (!file) return
+    createFile({ variables: { file } })
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   };
 
   return (
     <div>
       <h1>Upload File</h1>
+<<<<<<< HEAD
       <input type="file" onChange={handleFileChange} />
     </div>
   );
 }
+=======
+      <input type='file' onChange={handleFileChange} />
+    </div>
+  )
+};
+>>>>>>> Create file resolver working at front-end and back-end without error treatment

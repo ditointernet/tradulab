@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
   enum Extentions {
     csv
@@ -33,14 +34,17 @@ export default gql`
     listFiles(projectId: ID!): [File]
   }
 =======
+=======
+  scalar FileUpload
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   type File {
     id: ID!
-    key: String!
     filename: String!
-    translation_progress: Int!
-    approval_progress: Int!
-    source_language: String!
-    extesion: String!
+    translationProgress: Int!
+    approvalProgress: Int!
+    sourceLanguage: String!
+    extension: String!
     project: Project!
     createdAt: Date!
     updatedAt: Date!
@@ -48,10 +52,7 @@ export default gql`
 
   extend type Mutation {
     createFile(
-      filename: String!, 
-      id: ID!, 
-      extesion: String!, 
-      source_language: String!
+      file: FileUpload!
     ): File!
   }
 >>>>>>> Criado o module files e a resolver create File
