@@ -1,4 +1,11 @@
 export const ROLES = {
+<<<<<<< HEAD
+=======
+  CONTRIBUTOR: 'contributor',
+  PROOFREADER: 'proofreader',
+  DEVELOPER: 'developer',
+  MANAGER: 'manager',
+>>>>>>> Update Role
   OWNER: 'owner',
   MANAGER: 'manager',
   DEVELOPER: 'developer',

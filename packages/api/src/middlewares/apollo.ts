@@ -7,6 +7,9 @@ import { not, and, rule, shield } from 'graphql-shield';
 import { auth, user, project, role } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
+// A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
+// Create e object types;
+// Custon scalar types
 const typeDefs = gql`
   scalar Date
 
