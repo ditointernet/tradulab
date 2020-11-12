@@ -6,6 +6,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   CONTRIBUTOR: 'contributor',
 =======
 <<<<<<< HEAD
@@ -17,7 +18,11 @@ export const ROLES = {
   MANAGER: 'manager',
 =======
 =======
+>>>>>>> Update Role
+=======
   // VIEWER: 'viewer',
+=======
+>>>>>>> Update Role
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',
