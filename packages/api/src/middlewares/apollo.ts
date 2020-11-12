@@ -7,6 +7,7 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -15,11 +16,14 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 =======
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import {
   ApolloError,
   ApolloServer,
   AuthenticationError,
   ForbiddenError,
+<<<<<<< HEAD
   gql,
   GraphQLUpload
 } from 'apollo-server-express';
@@ -62,10 +66,13 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   GraphQLUpload,
   gql,
 } from 'apollo-server-express';
 
+<<<<<<< HEAD
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 <<<<<<< HEAD
@@ -83,6 +90,8 @@ import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, Gr
   GraphQLUpload
 } from 'apollo-server-express';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
@@ -115,6 +124,7 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 <<<<<<< HEAD
 import { not, and, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 import { not, and, or, rule, shield } from 'graphql-shield';
@@ -123,6 +133,9 @@ import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> file size limit from content length header
+=======
+import cors from 'cors';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 =======
 import cors from 'cors';
@@ -141,6 +154,7 @@ import { auth, user, project, role, file } from '../modules';
 >>>>>>> Criado o module files e a resolver create File
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -176,6 +190,14 @@ const corsOptions: cors.CorsOptions = {
 // Create e object types;
 // Custon scalar types
 >>>>>>> Update Role
+=======
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  allowedHeaders: 'Authorization',
+};
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 const typeDefs = gql`
   scalar Date
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -260,9 +282,12 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (projectRole && allowedRoles.includes(projectRole.role)) return true;
 
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       if (
         projectRole &&
         [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
