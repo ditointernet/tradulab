@@ -25,6 +25,7 @@ const schema = new mongoose.Schema(
       required: true,
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     filePath: {
       type: String,
       required: true,
@@ -61,18 +62,21 @@ const model = mongoose.model<IFile>('file', schema);
 export default model;
 =======
     translation_progress: {
+=======
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
-    approval_progress: {
+    approvalProgress: {
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
-    source_language: {
+    sourceLanguage: {
       type: String,
       required: true
     },
@@ -87,10 +91,10 @@ export default model;
       required: true,
       enum: EXTENSION_LIST,
     },
-    file_path: {
+    filePath: {
       type: String,
       required:true,
-    }
+    },
   },
   {
     timestamps: true,
