@@ -5,6 +5,7 @@ services:
     ports:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -67,3 +68,6 @@ volumes:
 volumes:
   tradulab:
 >>>>>>> fix
+=======
+      - "27018:27018"
+>>>>>>> Update Role
