@@ -4,6 +4,7 @@ import {
   ApolloServer,
   AuthenticationError,
   ForbiddenError,
+<<<<<<< HEAD
   gql,
   GraphQLUpload
 } from 'apollo-server-express';
@@ -11,10 +12,21 @@ import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
+=======
+  GraphQLUpload,
+  gql,
+} from 'apollo-server-express';
+
+import { buildFederatedSchema } from '@apollo/federation';
+import { applyMiddleware } from 'graphql-middleware';
+import { not, and, rule, shield } from 'graphql-shield';
+import cors from 'cors';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
@@ -27,6 +39,14 @@ const corsOptions: cors.CorsOptions = {
 // Create e object types;
 // Custon scalar types
 >>>>>>> Update Role
+=======
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  allowedHeaders: 'Authorization',
+};
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 const typeDefs = gql`
   scalar Date
 
@@ -64,8 +84,17 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         user: currentUserId,
       });
 
+<<<<<<< HEAD
       if (projectRole && allowedRoles.includes(projectRole.role)) return true;
 
+=======
+      if (
+        projectRole &&
+        [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
+      ) {
+        return true;
+      }
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     } catch (err) {
       console.error(err);
       return err;
@@ -160,6 +189,7 @@ export default function ApolloMiddleware(app) {
         {
           typeDefs,
           resolvers: {
+            FileUpload: GraphQLUpload,
             Date: GraphQLDateTime,
             Query: {
               ...auth.resolvers.queries,
@@ -179,7 +209,13 @@ export default function ApolloMiddleware(app) {
       shield(
         {
           Query: {
-            login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
+            login: not(
+              isAuthenticated,
+              new ApolloError(
+                'Someone is already logged in.',
+                'ALREADY_LOGGED_IN'
+              )
+            ),
             me: isAuthenticated,
             myProjects: isAuthenticated,
           },
@@ -213,12 +249,20 @@ export default function ApolloMiddleware(app) {
             } else if (err instanceof Error) {
               // unexpected errors
               console.error(err);
-              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+              return new ApolloError(
+                'Internal server error',
+                'ERR_INTERNAL_SERVER'
+              );
             } else {
               // what the hell got thrown
-              console.error('The resolver threw something that is not an error.');
+              console.error(
+                'The resolver threw something that is not an error.'
+              );
               console.error(err);
-              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+              return new ApolloError(
+                'Internal server error',
+                'ERR_INTERNAL_SERVER'
+              );
             }
           },
           allowExternalErrors: true,
