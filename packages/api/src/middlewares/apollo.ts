@@ -1,11 +1,18 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, rule, shield } from 'graphql-shield';
+import cors from "cors";
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
+
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  allowedHeaders: 'Authorization',  
+};
 
 const typeDefs = gql`
   scalar Date
@@ -58,6 +65,7 @@ export default function ApolloMiddleware(app) {
         {
           typeDefs,
           resolvers: {
+            FileUpload: GraphQLUpload,
             Date: GraphQLDateTime,
             Query: {
               ...auth.resolvers.queries,
@@ -119,5 +127,5 @@ export default function ApolloMiddleware(app) {
     },
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: corsOptions });
 }

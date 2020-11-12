@@ -10,19 +10,19 @@ const schema = new mongoose.Schema(
       index: true,
       required: true,
     },
-    translation_progress: {
+    translationProgress: {
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
-    approval_progress: {
+    approvalProgress: {
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
-    source_language: {
+    sourceLanguage: {
       type: String,
       required: true
     },
@@ -37,10 +37,10 @@ const schema = new mongoose.Schema(
       required: true,
       enum: EXTENSION_LIST,
     },
-    file_path: {
+    filePath: {
       type: String,
       required:true,
-    }
+    },
   },
   {
     timestamps: true,

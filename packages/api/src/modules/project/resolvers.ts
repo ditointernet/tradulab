@@ -2,8 +2,6 @@ import { model as Project } from '.';
 import { model as Role } from '../role';
 import { ROLES } from '../role/constants';
 
-//Significado de context
-
 async function createProject(parent, args, context) {
   const project = new Project({
     owner: context.user,
@@ -28,8 +26,6 @@ async function createProject(parent, args, context) {
 
   return project;
 }
-
-//Duvidas populate
 
 async function myProjects(parent, args, context) {
   const roles = await Role.find({ user: context.user })
