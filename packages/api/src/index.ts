@@ -29,6 +29,7 @@ import { graphqlUploadExpress } from 'graphql-upload';
 
 const app = express();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
@@ -41,6 +42,8 @@ const app = express();
 =======
 // declarando uma nova variável
 >>>>>>> Update Role
+=======
+>>>>>>> removing comments
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -65,6 +68,7 @@ app.use(function (err, req, res, next) {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.error("Error: ", err.name)
 =======
   console.log("Error: ", err.name)
@@ -72,6 +76,9 @@ app.use(function (err, req, res, next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> remove comments
+=======
+  console.log('Error: ', err.name);
+>>>>>>> removing comments
 });
 
 function start() {
