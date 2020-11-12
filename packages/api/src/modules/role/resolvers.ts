@@ -333,9 +333,13 @@ async function updateUserProjectRole(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> we abstracted the role validation and finished all role mutations
   const inviteUserRole = new Role({
+=======
+  const targetUserRole = await Role.findOne({
+>>>>>>> Update Role
     user: args.userId,
     project: args.projectId,
     role: args.role,
@@ -347,6 +351,7 @@ async function updateUserProjectRole(
   const roleIndex = ROLES_LIST.indexOf(role);
 >>>>>>> Roles
 
+<<<<<<< HEAD
   if (currentUserRoleIndex >= roleIndex)
     throw new TradulabError(roleCodes.UPDATED_TO_SAME_OR_HIGHER_ROLE);
 
@@ -376,12 +381,38 @@ async function updateUserProjectRole(
   }
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+=======
+  if (!targetUserRole) {
+    throw new Error('The provided user is not part of the project.');
+  }
+
+  const currentUserRole = await Role.findOne({
+    user: context.user._id,
+    project: args.projectId,
+  });
+
+
+  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+
+  const inviteUserRoleIndex = ROLES_LIST.indexOf(args.role);
+
+  if(inviteUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not give the same or higher role to a user than your own.'
+    );
+  }
+
+  if(targetUserRoleIndex <= currentUserRoleIndex) {
+>>>>>>> Update Role
     throw new Error(
       'You can not update someone with the same or higher role than your own.'
     );
   }
 
   try {
+<<<<<<< HEAD
     targetUserRole.role = args.role;
     await targetUserRole.save();
   } catch (err) {
@@ -397,6 +428,16 @@ async function updateUserProjectRole(
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
 >>>>>>> Roles
   }
+=======
+    targetUserRole.role = args.role
+    await targetUserRole.save();
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
+
+  return targetUserRole;
+>>>>>>> Update Role
 }
 
 async function removeUserFromProject(
