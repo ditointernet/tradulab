@@ -22,6 +22,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -331,3 +332,6 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> revert docker compose port
+=======
+      - "27018:27018"
+>>>>>>> Update Role
