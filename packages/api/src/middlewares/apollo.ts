@@ -14,6 +14,7 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -30,6 +31,8 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 >>>>>>> crack the code
 =======
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import {
   ApolloError,
   ApolloServer,
@@ -123,6 +126,7 @@ import { not, and, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 <<<<<<< HEAD
 import cors from 'cors';
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
@@ -681,11 +685,21 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         if (projectRole.role === ROLES.DEVELOPER)
           return true;
 =======
+=======
+=======
+import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
+import { buildFederatedSchema } from '@apollo/federation';
+import { applyMiddleware } from 'graphql-middleware';
+import { not, and, rule, shield } from 'graphql-shield';
+import cors from "cors";
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
         if (allowedRoles.includes(projectRole?.role)) return true;
 >>>>>>> file size limit from content length header
 =======
 
+<<<<<<< HEAD
         if (allowedRoles.includes(projectRole?.role)) return true;
 >>>>>>> file size limit from content length header
       } catch (err) {
@@ -707,6 +721,17 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> Changing the function ForbiddenError
   });
 >>>>>>> file size limit from content length header
+=======
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+<<<<<<< HEAD
+  allowedHeaders: ['Authorization', 'content-type'],
+=======
+  allowedHeaders: 'Authorization',  
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+};
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 <<<<<<< HEAD
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
