@@ -43,6 +43,7 @@ export const EXTENSION_LIST = [
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 export const EXTENSION_LIST = [
+<<<<<<< HEAD
   '.txt',
   '.csv',
   '.json',
@@ -52,6 +53,7 @@ export const EXTENSION_LIST = [
   'json',
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 =======
 export const EXTENSION_LIST = [
   '.txt',
@@ -100,3 +102,5 @@ export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
