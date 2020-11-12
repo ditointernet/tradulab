@@ -4,11 +4,22 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> crack the code
 =======
+=======
+import {
+  ApolloError,
+  ApolloServer,
+  AuthenticationError,
+  ForbiddenError,
+  gql,
+  GraphQLUpload
+} from 'apollo-server-express';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 >>>>>>> changes
 import {
@@ -51,6 +62,7 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 <<<<<<< HEAD
 import { not, and, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 import cors from 'cors';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -82,6 +94,9 @@ import cors from 'cors';
 =======
 import cors from 'cors';
 >>>>>>> file size limit from content length header
+=======
+import cors from "cors";
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 
 <<<<<<< HEAD
@@ -100,11 +115,22 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
 };
+=======
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  allowedHeaders: 'Authorization',
+};
+
+const typeDefs = gql`
+  scalar Date
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 =======
 // A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
@@ -528,5 +554,5 @@ export default function ApolloMiddleware(app) {
     },
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: corsOptions });
 }
