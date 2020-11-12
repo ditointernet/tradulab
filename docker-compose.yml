@@ -6,6 +6,7 @@ services:
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   api:
     build: packages/api
     command: npm start
@@ -40,3 +41,5 @@ volumes:
     depends_on:
       - api
 >>>>>>> Create API and WEB Images
+=======
+>>>>>>> revert docker compose port
