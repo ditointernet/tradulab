@@ -118,13 +118,15 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-<<<<<<< HEAD
     throw new AuthenticationError('Invalid credentials.');
+<<<<<<< HEAD
 =======
     // Error sem estar na constant de error
     throw new Error('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   }
 }
 <<<<<<< HEAD
