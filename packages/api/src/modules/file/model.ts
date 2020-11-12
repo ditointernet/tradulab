@@ -548,6 +548,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
     filePath: {
@@ -555,6 +556,8 @@ export default model;
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     translationProgress: {
 =======
     translation_progress: {
@@ -565,11 +568,15 @@ export default model;
 =======
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
+=======
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -586,11 +593,15 @@ export default model;
 =======
     approval_progress: {
 >>>>>>> Criado o module files e a resolver create File
+=======
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -625,6 +636,9 @@ export default model;
 =======
 =======
     source_language: {
+=======
+    sourceLanguage: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
       required: true
 >>>>>>> Criado o module files e a resolver create File
@@ -650,6 +664,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 =======
@@ -658,6 +673,9 @@ export default model;
 =======
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     filePath: {
       type: String,
     },
@@ -694,7 +712,16 @@ export default model;
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+    filePath: {
+      type: String,
+      required:true,
+    },
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
   {
     timestamps: true,

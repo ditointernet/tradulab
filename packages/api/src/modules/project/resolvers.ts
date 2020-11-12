@@ -23,6 +23,7 @@ import { model as Role } from '../role';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 async function createProject(
   _parent,
   { payload: { name, private: isPrivate } },
@@ -79,6 +80,8 @@ async function createProject(
 //Significado de context
 
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 async function createProject(parent, args, context) {
 >>>>>>> Criado o module files e a resolver create File
   const project = new Project({
@@ -123,6 +126,7 @@ async function createProject(parent, args, context) {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -196,6 +200,8 @@ async function listProjects(_parent, _args, { user }) {
 //Duvidas populate
 
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 async function myProjects(parent, args, context) {
   const roles = await Role.find({ user: context.user })
     .populate('project')
