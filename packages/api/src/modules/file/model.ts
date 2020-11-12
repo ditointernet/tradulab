@@ -486,6 +486,7 @@ const schema = new mongoose.Schema(
       index: true,
       required: true,
     },
+<<<<<<< HEAD
     filePath: {
       type: String,
 >>>>>>> changes
@@ -540,8 +541,14 @@ const schema = new mongoose.Schema(
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
 >>>>>>> Criado o module files e a resolver create File
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
     filePath: {
@@ -553,12 +560,33 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+      type: Number,
+      min: [0, 'Out of range'],
+      max: [1, 'Out of range'],
+      required: true,
+    },
+<<<<<<< HEAD
+<<<<<<< HEAD
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
 >>>>>>> Criado o module files e a resolver create File
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
     filePath: {
       type: String,
+=======
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+      type: Number,
+      min: [0, 'Out of range'],
+      max: [1, 'Out of range'],
+      required: true,
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -566,6 +594,7 @@ const schema = new mongoose.Schema(
 =======
     filePath: {
       type: String,
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> changes
@@ -585,11 +614,17 @@ const schema = new mongoose.Schema(
 =======
 >>>>>>> file size limit from content length header
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     sourceLanguage: {
       type: String,
       required: true,
 =======
     source_language: {
+=======
+    sourceLanguage: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
       required: true
 >>>>>>> Criado o module files e a resolver create File
@@ -606,6 +641,7 @@ const schema = new mongoose.Schema(
       required: true,
       enum: EXTENSION_LIST,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -831,6 +867,8 @@ export default model;
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     filePath: {
       type: String,
       required:true,
@@ -844,7 +882,16 @@ export default model;
       required:true,
     }
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+    filePath: {
+      type: String,
+      required:true,
+    },
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
   {
     timestamps: true,
