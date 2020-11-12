@@ -5,6 +5,7 @@ import * as slug from 'slug';
 <<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 =======
@@ -13,6 +14,9 @@ import { ERROR_MESSAGES, REGEXES } from './constants';
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> Back-End Review
+=======
+
+>>>>>>> we abstracted the role validation and finished all role mutations
 import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;
