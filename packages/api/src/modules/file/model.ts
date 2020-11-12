@@ -366,10 +366,24 @@ export default model;
       type: String,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       required: true
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+    translationProgress: {
+=======
+    translation_progress: {
+>>>>>>> Criado o module files e a resolver create File
+=======
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+      type: Number,
+      min: [0, 'Out of range'],
+      max: [1, 'Out of range'],
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       required: true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -398,16 +412,22 @@ export default model;
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     approvalProgress: {
 =======
     approval_progress: {
 >>>>>>> Criado o module files e a resolver create File
+=======
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Rebase and resolving conflicts with master
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -425,6 +445,9 @@ export default model;
 =======
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
@@ -444,6 +467,9 @@ export default model;
 =======
 =======
     source_language: {
+=======
+    sourceLanguage: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
       required: true
 >>>>>>> Criado o module files e a resolver create File
@@ -475,6 +501,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -551,6 +578,8 @@ export default model;
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     filePath: {
       type: String,
     },
@@ -562,6 +591,7 @@ export default model;
     }
 >>>>>>> Criado o module files e a resolver create File
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
     filePath: {
@@ -572,6 +602,14 @@ export default model;
 >>>>>>> Rebase and resolving conflicts with master
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+    filePath: {
+      type: String,
+      required:true,
+    },
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
   {
     timestamps: true,
