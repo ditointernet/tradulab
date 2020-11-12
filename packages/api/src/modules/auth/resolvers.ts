@@ -147,6 +147,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -209,6 +210,9 @@ async function login(_parent, { payload: { email, password } }) {
 >>>>>>> Back-End Review
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+    throw new AuthenticationError('Invalid credentials.');
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   }
 }
 <<<<<<< HEAD
