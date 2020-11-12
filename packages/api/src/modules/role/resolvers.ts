@@ -38,6 +38,7 @@ import { ROLES, ROLES_LIST } from '../role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 <<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -99,6 +100,9 @@ import { ERROR_CODES as userCodes } from '../user/constants';
 =======
 import { ROLES, ROLES_LIST } from '../role/constants';
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
+=======
+import { IRole } from './model';
+>>>>>>> we abstracted the role validation and finished all role mutations
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -277,7 +281,14 @@ async function inviteUserToProject(_, args, context) {
     throw new Error('The provided user does not exist.');
   }
 
+  const targetUserRole = new Role({
+    role: ROLES[args.role.toUpperCase()],
+    project: targetProject,
+    user: targetUser,
+  });
+
   const currentUserRole = await Role.findOne({
+<<<<<<< HEAD
 >>>>>>> we tested everything and it seems ok, including a project fix
     user: context.user.id,
     project: args.projectId,
@@ -318,12 +329,20 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> we tested everything and it seems ok, including a project fix
 
   if (!rolesToInvite.includes(args.role)) {
+=======
+    user: context.user._id,
+    project: args.projectId,
+  });
+
+  if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+>>>>>>> we abstracted the role validation and finished all role mutations
     throw new Error('You cannot invite an user with the same or higher role.');
   }
 <<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 
+<<<<<<< HEAD
 >>>>>>> we tested everything and it seems ok, including a project fix
   const role = new Role({
     role: ROLES[args.role.toUpperCase()],
@@ -412,10 +431,13 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> Back-End Review
     throw err;
 =======
+=======
+>>>>>>> we abstracted the role validation and finished all role mutations
   try {
     await targetUserRole.save();
   } catch (err) {
     await targetUserRole.remove();
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
 <<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
@@ -425,6 +447,11 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> Back-End Review
 >>>>>>> Back-End Review
   }
+=======
+  }
+
+  return targetUserRole;
+>>>>>>> we abstracted the role validation and finished all role mutations
 }
 
 <<<<<<< HEAD
@@ -445,7 +472,11 @@ async function updateUserProjectRole(_parent, args, context) {
 >>>>>>> Roles
   if (args.userId === context.user.id) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(roleCodes.UPDATED_YOURSELF);
+=======
+    throw new Error('You cannot update your own role.');
+>>>>>>> we abstracted the role validation and finished all role mutations
 =======
     throw new Error('You cannot update your own role.');
 >>>>>>> we abstracted the role validation and finished all role mutations
@@ -579,27 +610,31 @@ async function updateUserProjectRole(
     project: args.projectId,
   });
 
+  const inviteUserRole = new Role({
+    user: args.userId,
+    project: args.projectId,
+    role: args.role,
+  });
 
-  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
-
-  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
-
-  const inviteUserRoleIndex = ROLES_LIST.indexOf(args.role);
-
-  if(inviteUserRoleIndex <= currentUserRoleIndex) {
+  if (!(await isCurrentRoleHigherThanTarget(currentUserRole, inviteUserRole))) {
     throw new Error(
-      'You can not give the same or higher role to a user than your own.'
+      'You can not give the same or higher role than your own to an user.'
     );
   }
 
+<<<<<<< HEAD
   if(targetUserRoleIndex <= currentUserRoleIndex) {
 >>>>>>> Update Role
+=======
+  if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+>>>>>>> we abstracted the role validation and finished all role mutations
     throw new Error(
       'You can not update someone with the same or higher role than your own.'
     );
   }
 
   try {
+<<<<<<< HEAD
 <<<<<<< HEAD
     targetUserRole.role = args.role;
     await targetUserRole.save();
@@ -625,16 +660,20 @@ async function updateUserProjectRole(
   }
 =======
     targetUserRole.role = args.role
+=======
+    targetUserRole.role = args.role;
+>>>>>>> we abstracted the role validation and finished all role mutations
     await targetUserRole.save();
   } catch (err) {
-    console.error(err)
-    throw err
+    console.error(err);
+    throw err;
   }
 
   return targetUserRole;
 >>>>>>> Update Role
 }
 
+<<<<<<< HEAD
 async function removeUserFromProject(
   _parent,
   { payload: { userId, projectId } },
@@ -669,11 +708,23 @@ async function removeUserFromProject(
 =======
 >>>>>>> Roles
 =======
+=======
+async function removeUserFromProject(parent, args, context) {
+  const targetUserRole = await Role.findOne({
+    user: args.userId,
+    project: args.projectId,
+  })
+    .populate('user')
+    .exec();
+
+  if (!targetUserRole) {
+>>>>>>> we abstracted the role validation and finished all role mutations
     throw new Error('The provided user is not part of the project.');
   }
 
   if (args.userId === context.user.id && targetUserRole.role === ROLES.OWNER) {
     throw new Error('You cannot remove your ownership from the project.');
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
   }
 <<<<<<< HEAD
@@ -721,10 +772,28 @@ async function removeUserFromProject(
       throw new TradulabError(roleCodes.REMOVED_SAME_OR_HIGHER_ROLE);
 >>>>>>> Roles
 >>>>>>> Roles
+=======
+  }
+
+  if (args.userId !== context.user.id) {
+    const currentUserRole = await Role.findOne({
+      user: context.user.id,
+      project: args.projectId,
+    });
+
+    if (
+      !(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))
+    ) {
+      throw new Error(
+        'You can not remove someone with the same or higher role than your own.'
+      );
+    }
+>>>>>>> we abstracted the role validation and finished all role mutations
   }
 
   try {
     await targetUserRole.remove();
+<<<<<<< HEAD
 <<<<<<< HEAD
   } catch (err) {
     console.error(err);
@@ -748,6 +817,8 @@ async function isCurrentRoleHigherThanTarget(
   const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
 
 =======
+=======
+>>>>>>> we abstracted the role validation and finished all role mutations
   } catch (err) {}
 
   return targetUserRole.user;
@@ -760,10 +831,14 @@ async function isCurrentRoleHigherThanTarget(
   const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
   const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
 
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
   return currentUserRoleIndex < targetUserRoleIndex;
 =======
 >>>>>>> Roles
+=======
+  return currentUserRoleIndex < targetUserRoleIndex;
+>>>>>>> we abstracted the role validation and finished all role mutations
 }
 
 <<<<<<< HEAD

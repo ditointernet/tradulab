@@ -1,8 +1,13 @@
 import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
+=======
+import { IProject } from '../project/model';
+import { IUser } from '../user/model';
+>>>>>>> we abstracted the role validation and finished all role mutations
 
 import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
