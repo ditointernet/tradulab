@@ -3,6 +3,7 @@ services:
   mongo:
     image: mongo
     ports:
+<<<<<<< HEAD
       - "27017:27017"
   api:
     build: packages/api
@@ -22,3 +23,6 @@ services:
       - api
 volumes:
   tradulab:
+=======
+      - "27018:27018"
+>>>>>>> Update Role

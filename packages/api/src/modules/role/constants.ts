@@ -1,5 +1,6 @@
 export const ROLES = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   CONTRIBUTOR: 'contributor',
   DEVELOPER: 'developer',
   MANAGER: 'manager',
@@ -12,6 +13,8 @@ export const ROLES = {
 export const ROLES_LIST = [
 =======
   // VIEWER: 'viewer',
+=======
+>>>>>>> Update Role
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',

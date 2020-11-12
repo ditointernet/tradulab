@@ -17,7 +17,7 @@ export default async function jwtMiddleware(
 ) {
   const { authorization } = req.headers;
   const bearerRegex = /^Bearer\s/i;
-
+  // testa de se o Bearer no Header
   if (bearerRegex.test(authorization)) {
     const token = authorization.split(bearerRegex)[1];
     let decodedToken;
