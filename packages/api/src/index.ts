@@ -215,6 +215,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -243,12 +244,15 @@ const app = express();
 =======
 >>>>>>> file size limit from content length header
 =======
+=======
+>>>>>>> Update Role
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 
+<<<<<<< HEAD
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
@@ -326,6 +330,11 @@ const app = express();
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
+=======
+=======
+// declarando uma nova variável
+>>>>>>> Update Role
+>>>>>>> Update Role
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -453,6 +462,7 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -500,6 +510,12 @@ app.use(function (err, _req, res, _next) {
 =======
   console.error('Error: ', err.name)
 >>>>>>> change aspas
+=======
+  console.error('Error: ', err.name);
+=======
+  console.log("Error: ", err.name)
+>>>>>>> Update Role
+>>>>>>> Update Role
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
