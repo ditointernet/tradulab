@@ -20,6 +20,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
   enum Extentions {
     csv
@@ -66,6 +67,8 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   scalar FileUpload
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -151,10 +154,14 @@ export default gql`
 <<<<<<< HEAD
 =======
 =======
+=======
+  scalar FileUpload
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   type File {
     id: ID!
-    key: String!
     filename: String!
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
     translation_progress: Int!
@@ -233,11 +240,15 @@ export default gql`
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     translationProgress: Int!
     approvalProgress: Int!
     sourceLanguage: String!
     extension: String!
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -245,12 +256,17 @@ export default gql`
 >>>>>>> Rebase and resolving conflicts with master
 =======
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     project: Project!
     createdAt: Date!
     updatedAt: Date!
@@ -275,6 +291,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       file: FileUpload!
@@ -359,6 +376,8 @@ export default gql`
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       file: FileUpload!
@@ -424,6 +443,7 @@ export default gql`
       extesion: String!, 
       source_language: String!
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 =======
@@ -438,6 +458,11 @@ export default gql`
       projectId: ID!
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+=======
+      file: FileUpload!
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     ): File!
   }
 >>>>>>> Criado o module files e a resolver create File

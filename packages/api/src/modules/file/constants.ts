@@ -61,10 +61,13 @@ export const EXTENSION_LIST = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 export const EXTENSION_LIST = [
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   '.txt',
@@ -231,3 +234,7 @@ export const EXTENSION_LIST = [
   '.json',
 ];
 >>>>>>> Criado o module files e a resolver create File
+=======
+  'json',
+];
+>>>>>>> Create file resolver working at front-end and back-end without error treatment

@@ -13,6 +13,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 =======
@@ -44,6 +45,9 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 <<<<<<< HEAD
 >>>>>>> formatting changes and some typings
 =======
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -56,6 +60,10 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 >>>>>>> Corrigido erro de cors pra qualquer request
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -480,6 +488,7 @@ export default function UploadForm() {
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -534,10 +543,46 @@ export default function UploadForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 <<<<<<< HEAD
+=======
+import React from 'react';
+import { useMutation, gql, useQuery } from '@apollo/client';
+
+// const LOGIN = gql`
+//   query login ($email: String!, $password: String!){
+//     login (
+//       email: $email
+//       password: $password
+//     ) {
+//       token
+//     }
+//   }
+// `
+
+const UPLOAD_FILE = gql`
+  mutation createFile($file: Upload!){
+    createFile(file: $file){
+      filename
+    }
+  }
+`
+export default function UploadForm() {
+  // const { data, refetch } = useQuery(LOGIN, {
+  //   variables: { email: 'julinho2801@gmail.com', password: '123456' }
+  // });
+
+  // if (data) console.log(data.login.token)
+
+  const [createFile, { data }] = useMutation(UPLOAD_FILE);
+
+  console.log(data)
+  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     const file = e.target.files![0]
     if (!file) return
     createFile({ variables: { file } })
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -554,6 +599,8 @@ export default function UploadForm() {
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   };
 
   return (
@@ -574,8 +621,11 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       <input type="file" onChange={handleFileChange} />
     </div>
   );
@@ -648,6 +698,7 @@ export default function UploadForm() {
   )
 };
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 =======
       <input type="file" onChange={handleFileChange} />
     </div>
@@ -699,3 +750,5 @@ export default function UploadForm() {
 };
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
