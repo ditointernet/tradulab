@@ -1,11 +1,15 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import {
   ApolloError,
   ApolloServer,
   AuthenticationError,
   ForbiddenError,
+<<<<<<< HEAD
 <<<<<<< HEAD
   gql,
   GraphQLUpload
@@ -29,15 +33,24 @@ import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
 =======
 import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, GraphQLUpload } from 'apollo-server-express';
 >>>>>>> fix issues
+=======
+  gql,
+  GraphQLUpload
+} from 'apollo-server-express';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, rule, shield } from 'graphql-shield';
 import cors from "cors";
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -55,12 +68,15 @@ const corsOptions: cors.CorsOptions = {
 // Custon scalar types
 >>>>>>> Update Role
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: 'Authorization',
 };
 
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 // A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
@@ -77,6 +93,8 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> remove comments
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 const typeDefs = gql`
   scalar Date
 
