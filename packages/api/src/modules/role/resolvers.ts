@@ -69,28 +69,50 @@ async function updateUserProjectRole(parent, args, context) {
     throw new Error('You cannot update your role.');
   }
 
-  const role = await Role.findOne({
+  const targetUserRole = await Role.findOne({
     user: args.userId,
     project: args.projectId,
   })
     .populate('user')
     .exec();
 
-  if (!role) {
+  if (!targetUserRole) {
     throw new Error('The provided user is not part of the project.');
   }
 
-  if ([ROLES.MANAGER, ROLES.OWNER].includes(role.role)) {
+  const currentUserRole = await Role.findOne({
+    user: context.user._id,
+    project: args.projectId,
+  });
+
+
+  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+
+  const inviteUserRoleIndex = ROLES_LIST.indexOf(args.role);
+
+  if(inviteUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not give the same or higher role to a user than your own.'
+    );
+  }
+
+  if(targetUserRoleIndex <= currentUserRoleIndex) {
     throw new Error(
       'You can not update someone with the same or higher role than your own.'
     );
   }
 
   try {
-    await role.update({ role: ROLES[args.role.toUpperCase()] });
-  } catch (err) {}
+    targetUserRole.role = args.role
+    await targetUserRole.save();
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
 
-  return role;
+  return targetUserRole;
 }
 
 async function removeUserFromProject(parent, args, context) {

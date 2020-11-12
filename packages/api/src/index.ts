@@ -5,15 +5,18 @@ import * as middlewares from './middlewares';
 import { env } from './helpers';
 
 const app = express();
-
+// declarando uma nova variável
 app.locals.mongo = mongo;
+
 app.use(middlewares.jwt);
+
 middlewares.apollo(app);
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
-    res.status(401).json({ error: 'JWT Expired.' });
+    return res.status(401).json({ error: 'JWT Expired.' });
   }
+  console.log("Error: ", err.name)
 });
 
 function start() {
