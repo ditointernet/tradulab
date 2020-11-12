@@ -11,11 +11,14 @@ import { ERROR_CODES, REGEXES } from './constants';
 =======
 >>>>>>> changes
 import { ERROR_MESSAGES, REGEXES } from './constants';
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> Back-End Review
 =======
 
+>>>>>>> we abstracted the role validation and finished all role mutations
+=======
 >>>>>>> we abstracted the role validation and finished all role mutations
 import { IUser } from '../user/model';
 
@@ -90,16 +93,27 @@ const schema = new mongoose.Schema(
 );
 
 export interface IProject extends mongoose.Document {
+<<<<<<< HEAD
   name: String;
   private: Boolean;
   slug: String;
   owner: IUser | mongoose.Types.ObjectId;
+=======
+  slug: string;
+  displayName: string;
+  private: boolean;
+  owner: mongoose.Types.ObjectId | IUser;
+>>>>>>> we abstracted the role validation and finished all role mutations
   createdAt: Date;
   updateAt: Date;
 }
 
 schema.pre<IProject>('validate', function preValidate(next) {
+<<<<<<< HEAD
   this.slug = slug(this.name);
+=======
+  this.slug = slug(this.displayName);
+>>>>>>> we abstracted the role validation and finished all role mutations
   next();
 });
 
