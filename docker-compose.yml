@@ -5,6 +5,7 @@ services:
     ports:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -48,3 +49,6 @@ volumes:
     depends_on:
       - api
 >>>>>>> Create API and WEB Images
+=======
+      - "27017:27017"
+>>>>>>> revert docker compose port
