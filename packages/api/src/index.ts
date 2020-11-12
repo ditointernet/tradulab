@@ -172,6 +172,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> remove comments
@@ -211,6 +212,8 @@ import { graphqlUploadExpress } from 'graphql-upload';
 const app = express();
 <<<<<<< HEAD
 =======
+>>>>>>> removing comments
+=======
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -225,6 +228,8 @@ const app = express();
 =======
 // declarando uma nova variável
 >>>>>>> Update Role
+=======
+>>>>>>> removing comments
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -343,6 +348,7 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -378,6 +384,8 @@ app.use(function (err, req, res, next) {
 =======
 =======
 >>>>>>> remove comments
+=======
+>>>>>>> removing comments
   console.error("Error: ", err.name)
 =======
   console.log("Error: ", err.name)
@@ -388,7 +396,13 @@ app.use(function (err, req, res, next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> remove comments
+<<<<<<< HEAD
 >>>>>>> remove comments
+=======
+=======
+  console.log('Error: ', err.name);
+>>>>>>> removing comments
+>>>>>>> removing comments
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
