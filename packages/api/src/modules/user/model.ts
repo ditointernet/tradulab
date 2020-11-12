@@ -1,6 +1,10 @@
 import * as mongoose from 'mongoose';
 
+<<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
+=======
+import { ERROR_MESSAGES, REGEXES } from './constants';
+>>>>>>> we abstracted the role validation and finished all role mutations
 
 const schema = new mongoose.Schema(
   {
@@ -28,8 +32,13 @@ const schema = new mongoose.Schema(
 );
 
 export interface IUser extends mongoose.Document {
+<<<<<<< HEAD
   nickname: String;
   username: String;
+=======
+  username: string;
+  displayName: string;
+>>>>>>> we abstracted the role validation and finished all role mutations
   createdAt: Date;
   updateAt: Date;
 }
