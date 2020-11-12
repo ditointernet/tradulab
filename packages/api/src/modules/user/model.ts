@@ -1,6 +1,10 @@
 import * as mongoose from 'mongoose';
 
+<<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
+=======
+import { ERROR_MESSAGES, REGEXES } from './constants';
+>>>>>>> we abstracted the role validation and finished all role mutations
 
 const schema = new mongoose.Schema(
   {
