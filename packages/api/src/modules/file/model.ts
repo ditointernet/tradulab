@@ -16,31 +16,43 @@ const schema = new mongoose.Schema(
       required: true,
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     translationProgress: {
 =======
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
+=======
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     approvalProgress: {
 =======
     approval_progress: {
 >>>>>>> Criado o module files e a resolver create File
+=======
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
     sourceLanguage: {
       type: String,
       required: true,
 =======
     source_language: {
+=======
+    sourceLanguage: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
       required: true
 >>>>>>> Criado o module files e a resolver create File
@@ -57,6 +69,7 @@ const schema = new mongoose.Schema(
       enum: EXTENSION_LIST,
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     filePath: {
       type: String,
     },
@@ -66,6 +79,12 @@ const schema = new mongoose.Schema(
       required:true,
     }
 >>>>>>> Criado o module files e a resolver create File
+=======
+    filePath: {
+      type: String,
+      required:true,
+    },
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
   {
     timestamps: true,
