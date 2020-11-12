@@ -2,8 +2,6 @@ import * as mongoose from 'mongoose';
 
 import { ERROR_MESSAGES, REGEXES } from './constants';
 
-const { Types } = mongoose.Schema;
-
 const schema = new mongoose.Schema(
   {
     username: {
@@ -28,6 +26,13 @@ const schema = new mongoose.Schema(
   }
 );
 
-const model = mongoose.model('user', schema);
+export interface IUser extends mongoose.Document {
+  username: string;
+  displayName: string;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+const model = mongoose.model<IUser>('user', schema);
 
 export default model;

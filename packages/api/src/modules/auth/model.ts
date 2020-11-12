@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { IUser } from '../user/model';
 
 import { ERROR_MESSAGES, REGEXES } from './constants';
 
@@ -35,6 +36,14 @@ const schema = new mongoose.Schema(
   }
 );
 
-const model = mongoose.model('auth', schema);
+export interface IAuth extends mongoose.Document {
+  user: mongoose.Types.ObjectId | IUser;
+  email: string;
+  password: string;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+const model = mongoose.model<IAuth>('auth', schema);
 
 export default model;
