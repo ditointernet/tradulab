@@ -1,17 +1,18 @@
 import { gql } from 'apollo-server-express';
-
+// Role: GraphQL Object Type
+// id: Fields
+// special kind of scalar that is restricted a particular set of allowed values
+// type modifiers: ! Non-Null
 export default gql`
   enum RoleSlug {
-    # viewer
     contributor
-    proofreader
     developer
     manager
     owner
+    proofreader
   }
 
   enum AvailableRoleSlugs {
-    # viewer
     contributor
     proofreader
     developer
