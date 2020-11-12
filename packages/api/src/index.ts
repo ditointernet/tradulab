@@ -15,10 +15,14 @@ app.use(function (err, req, res, next) {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.error('Error: ', err.name);
 =======
   console.error("Error: ", err.name)
 >>>>>>> remove comments
+=======
+  console.log('Error: ', err.name);
+>>>>>>> removing comments
 });
 
 function start() {
