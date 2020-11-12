@@ -172,6 +172,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -197,11 +198,15 @@ const schema = new mongoose.Schema(
 =======
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
+=======
+    translationProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -253,12 +258,16 @@ const schema = new mongoose.Schema(
 =======
     approvalProgress: {
 >>>>>>> Rebase and resolving conflicts with master
+=======
+    approvalProgress: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
 >>>>>>> Criado o module files e a resolver create File
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -275,6 +284,9 @@ const schema = new mongoose.Schema(
       required: true,
 =======
     source_language: {
+=======
+    sourceLanguage: {
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -397,6 +409,7 @@ const schema = new mongoose.Schema(
       required: true,
       enum: EXTENSION_LIST,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -654,6 +667,12 @@ export default model;
 =======
 >>>>>>> Rebase and resolving conflicts with master
 =======
+=======
+    filePath: {
+      type: String,
+      required:true,
+    },
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
   {
     timestamps: true,
