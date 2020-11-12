@@ -6,6 +6,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
   enum Extentions {
     csv
@@ -47,10 +48,14 @@ export default gql`
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+  scalar FileUpload
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   type File {
     id: ID!
-    key: String!
     filename: String!
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
     translation_progress: Int!
     approval_progress: Int!
@@ -65,11 +70,14 @@ export default gql`
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     translationProgress: Int!
     approvalProgress: Int!
     sourceLanguage: String!
     extension: String!
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -81,6 +89,8 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     project: Project!
     sourceLanguage: String!
     createdAt: Date!
@@ -88,6 +98,7 @@ export default gql`
   }
   extend type Mutation {
     createFile(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -127,6 +138,9 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+      file: FileUpload!
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     ): File!
   }
   extend type Query {
