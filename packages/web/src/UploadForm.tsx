@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 <<<<<<< HEAD
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
@@ -60,6 +63,8 @@ export default function UploadForm() {
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 
@@ -96,6 +101,9 @@ export default function UploadForm() {
     const file = e.target.files![0]
     if (!file) return
     createFile({ variables: { file } })
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   };
 
@@ -103,13 +111,19 @@ export default function UploadForm() {
     <div>
       <h1>Upload File</h1>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <input type="file" onChange={handleFileChange} />
     </div>
   );
 }
 =======
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
       <input type='file' onChange={handleFileChange} />
     </div>
   )
 };
+<<<<<<< HEAD
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
