@@ -99,6 +99,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
@@ -129,6 +130,11 @@ const app = express();
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 
 >>>>>>> remove comments
+=======
+=======
+// declarando uma nova variável
+>>>>>>> Update Role
+>>>>>>> Update Role
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -192,12 +198,16 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update Role
 =======
 >>>>>>> Update Role
   console.error('Error: ', err.name);
 =======
   console.log("Error: ", err.name)
 >>>>>>> Update Role
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   console.error("Error: ", err.name)
@@ -216,6 +226,8 @@ app.use(function (err, _req, res, _next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> remove comments
+=======
+>>>>>>> Update Role
 });
 =======
 app.use(middlewares.error);
