@@ -16,12 +16,18 @@ import cors from 'cors';
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: 'Authorization',
 };
 
+=======
+// A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
+// Create e object types;
+// Custon scalar types
+>>>>>>> Update Role
 const typeDefs = gql`
   scalar Date
 

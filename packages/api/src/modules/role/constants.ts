@@ -2,6 +2,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   CONTRIBUTOR: 'contributor',
 =======
 <<<<<<< HEAD
@@ -38,6 +39,8 @@ export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
 export const ROLES_LIST = [
 =======
   // VIEWER: 'viewer',
+=======
+>>>>>>> Update Role
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',

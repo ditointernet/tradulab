@@ -166,6 +166,7 @@ async function updateUserProjectRole(
   if (userId === ownId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
 
   const targetUserRole = await Role.findOne({
+<<<<<<< HEAD
     user: userId,
     project: projectId,
   }).exec();
@@ -200,6 +201,51 @@ async function updateUserProjectRole(
     console.error(err);
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
+=======
+    user: args.userId,
+    project: args.projectId,
+  })
+    .populate('user')
+    .exec();
+
+  if (!targetUserRole) {
+    throw new Error('The provided user is not part of the project.');
+  }
+
+  const currentUserRole = await Role.findOne({
+    user: context.user._id,
+    project: args.projectId,
+  });
+
+
+  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+
+  const inviteUserRoleIndex = ROLES_LIST.indexOf(args.role);
+
+  if(inviteUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not give the same or higher role to a user than your own.'
+    );
+  }
+
+  if(targetUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not update someone with the same or higher role than your own.'
+    );
+  }
+
+  try {
+    targetUserRole.role = args.role
+    await targetUserRole.save();
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
+
+  return targetUserRole;
+>>>>>>> Update Role
 }
 
 async function removeUserFromProject(
