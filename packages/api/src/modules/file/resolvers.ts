@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 import { ApolloError } from 'apollo-server-express';
@@ -287,12 +288,18 @@ export const mutations = { createFile };
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 =======
+=======
+import path from 'path';
+import fs from 'fs';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
 import { model as Project } from '../project';
 
-async function createFile(parent, args) {
-  const project = await Project.findOne({ project: args.project })
+async function createFile(parent, args, context) {
+  console.log(args.file);
+  const { filename, mimetype, encoding } = await args.file;
 
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
   if (!project) {
     throw new Error('The provided project does not exist.');
@@ -423,14 +430,30 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 >>>>>>> Criado o module files e a resolver create File
     project,
   });
+=======
+  // const project = await Project.findOne({ project: args.project })
 
-  try {
-    await file.save();
-  } catch (err) {
-    throw err;
-  }
+  // if (!project) {
+  //   throw new Error('The provided project does not exist.');
+  // }
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
-  return file;
+  // const file = new File({
+  //   filename,
+  //   translation_progress: 0,
+  //   approval_progress: 0,
+  //   source_language: args.source_language,
+  //   extension: filename.split('.').pop(),
+  //   project,
+  // });
+
+  // try {
+  //   await file.save();
+  // } catch (err) {
+  //   throw err;
+  // }
+
+  // return file;
 }
 
 export const mutations = { createFile };
