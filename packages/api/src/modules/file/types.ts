@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
 
   type File {
@@ -12,15 +13,25 @@ export default gql`
     sourceLanguage: String!
     extension: String!
 =======
+=======
+  scalar FileUpload
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
   type File {
     id: ID!
-    key: String!
     filename: String!
+<<<<<<< HEAD
     translation_progress: Int!
     approval_progress: Int!
     source_language: String!
     extesion: String!
 >>>>>>> Criado o module files e a resolver create File
+=======
+    translationProgress: Int!
+    approvalProgress: Int!
+    sourceLanguage: String!
+    extension: String!
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     project: Project!
     createdAt: Date!
     updatedAt: Date!
@@ -28,6 +39,7 @@ export default gql`
 
   extend type Mutation {
     createFile(
+<<<<<<< HEAD
 <<<<<<< HEAD
       file: FileUpload!
       sourceLanguage: String!
@@ -38,6 +50,9 @@ export default gql`
       extesion: String!, 
       source_language: String!
 >>>>>>> Criado o module files e a resolver create File
+=======
+      file: FileUpload!
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
     ): File!
   }
 `;
