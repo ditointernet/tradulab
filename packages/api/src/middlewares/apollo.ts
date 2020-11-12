@@ -5,7 +5,7 @@ import {
   AuthenticationError,
   ForbiddenError,
   gql,
-  GraphQLUpload
+  GraphQLUpload,
 } from 'apollo-server-express';
 import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
@@ -59,7 +59,6 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       });
 
       if (projectRole && allowedRoles.includes(projectRole.role)) return true;
-
     } catch (err) {
       console.error(err);
       return err;
@@ -97,7 +96,10 @@ const resolvers = buildFederatedSchema([
 const permissions = shield(
   {
     Query: {
-      login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
+      login: not(
+        isAuthenticated,
+        new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')
+      ),
       me: isAuthenticated,
       myProjects: isAuthenticated,
     },
@@ -145,10 +147,7 @@ const permissions = shield(
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-    schema: applyMiddleware(
-      resolvers,
-      permissions,      
-    ),
+    schema: applyMiddleware(resolvers, permissions),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
         contentLength: parseInt(headers['content-length']),
