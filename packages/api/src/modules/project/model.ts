@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import * as slug from 'slug';
 
 import { ERROR_MESSAGES, REGEXES } from './constants';
+import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;
 
@@ -39,11 +40,20 @@ const schema = new mongoose.Schema(
   }
 );
 
-schema.pre('validate', function preValidate(next) {
+export interface IProject extends mongoose.Document {
+  slug: string;
+  displayName: string;
+  private: boolean;
+  owner: mongoose.Types.ObjectId | IUser;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+schema.pre<IProject>('validate', function preValidate(next) {
   this.slug = slug(this.displayName);
   next();
 });
 
-const model = mongoose.model('project', schema);
+const model = mongoose.model<IProject>('project', schema);
 
 export default model;
