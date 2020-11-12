@@ -7,6 +7,9 @@ import { ERROR_CODES, REGEXES } from './constants';
 =======
 >>>>>>> changes
 import { ERROR_MESSAGES, REGEXES } from './constants';
+<<<<<<< HEAD
+>>>>>>> we abstracted the role validation and finished all role mutations
+=======
 >>>>>>> we abstracted the role validation and finished all role mutations
 
 const schema = new mongoose.Schema(
@@ -92,6 +95,7 @@ const schema = new mongoose.Schema(
 export interface IUser extends mongoose.Document {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   nickname: String;
   username: String;
 =======
@@ -100,6 +104,10 @@ export interface IUser extends mongoose.Document {
   nickname: String;
   username: String;
 >>>>>>> Back-End Review
+=======
+  username: string;
+  displayName: string;
+>>>>>>> we abstracted the role validation and finished all role mutations
   createdAt: Date;
   updateAt: Date;
 }
