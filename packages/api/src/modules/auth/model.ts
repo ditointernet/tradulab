@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { IUser } from '../user/model';
 
 import { ERROR_CODES, REGEXES } from './constants';
 import { IUser } from '../user/model';
@@ -37,12 +38,21 @@ const schema = new mongoose.Schema(
 );
 
 export interface IAuth extends mongoose.Document {
+<<<<<<< HEAD
   email: String;
   password: String;
   user: IUser;
   createdAt: Date;
   updateAt: Date;
 };
+=======
+  user: mongoose.Types.ObjectId | IUser;
+  email: string;
+  password: string;
+  createdAt: Date;
+  updateAt: Date;
+}
+>>>>>>> we abstracted the role validation and finished all role mutations
 
 const model = mongoose.model<IAuth>('auth', schema);
 

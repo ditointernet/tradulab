@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import { IProject } from '../project/model';
+import { IUser } from '../user/model';
 
 import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
