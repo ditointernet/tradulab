@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { FileUpload } from 'graphql-upload';
 import { TradulabError } from '../../errors';
 
@@ -71,16 +72,20 @@ async function createFile(parent, args, context) {
   const file = new File({
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+import path from 'path';
+import fs from 'fs';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
 import { model as Project } from '../project';
 
-async function createFile(parent, args) {
-  const project = await Project.findOne({ project: args.project })
+async function createFile(parent, args, context) {
+  console.log(args.file);
+  const { filename, mimetype, encoding } = await args.file;
 
-  if (!project) {
-    throw new Error('The provided project does not exist.');
-  }
+  // const project = await Project.findOne({ project: args.project })
 
+<<<<<<< HEAD
   const file = new File({
 >>>>>>> Criado o module files e a resolver create File
     filename: args.filename,
@@ -148,15 +153,33 @@ async function createFile(parent, args) {
 =======
     project,
   });
+=======
+  // if (!project) {
+  //   throw new Error('The provided project does not exist.');
+  // }
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
-  try {
-    await file.save();
-  } catch (err) {
-    throw err;
-  }
+  // const file = new File({
+  //   filename,
+  //   translation_progress: 0,
+  //   approval_progress: 0,
+  //   source_language: args.source_language,
+  //   extension: filename.split('.').pop(),
+  //   project,
+  // });
 
+<<<<<<< HEAD
   return file;
 >>>>>>> Criado o module files e a resolver create File
+=======
+  // try {
+  //   await file.save();
+  // } catch (err) {
+  //   throw err;
+  // }
+
+  // return file;
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 }
 
 export const mutations = { createFile };
