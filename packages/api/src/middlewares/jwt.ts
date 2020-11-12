@@ -25,6 +25,7 @@ export default async function jwtMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const isAuthorized = bearerRegex.test(authorization);
 
   if (isAuthorized) {
@@ -48,6 +49,9 @@ export default async function jwtMiddleware(
 =======
   // testa de se o Bearer no Header
 >>>>>>> Update Role
+=======
+
+>>>>>>> removing comments
   if (bearerRegex.test(authorization)) {
 >>>>>>> Update Role
 =======
