@@ -7,6 +7,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -21,6 +22,13 @@ const app = express();
 // declarando uma nova variável
 >>>>>>> Update Role
 >>>>>>> Update Role
+=======
+=======
+// declarando uma nova variável
+>>>>>>> Update Role
+=======
+>>>>>>> removing comments
+>>>>>>> removing comments
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -36,6 +44,7 @@ app.use(function (err, req, res, next) {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.error('Error: ', err.name);
 =======
   console.log("Error: ", err.name)
@@ -43,6 +52,9 @@ app.use(function (err, req, res, next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> remove comments
+=======
+  console.log('Error: ', err.name);
+>>>>>>> removing comments
 });
 >>>>>>> Update Role
 
