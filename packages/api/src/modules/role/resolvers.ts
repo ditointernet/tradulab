@@ -130,6 +130,7 @@ async function updateUserProjectRole(parent, args, context) {
     .exec();
 
   if (!targetUserRole) {
+<<<<<<< HEAD
     throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
   }
 
@@ -158,6 +159,41 @@ async function updateUserProjectRole(parent, args, context) {
   } catch (err) {
     console.error(err);
     throw err;
+=======
+    throw new Error('The provided user is not part of the project.');
+  }
+
+  const currentUserRole = await Role.findOne({
+    user: context.user._id,
+    project: args.projectId,
+  });
+
+
+  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+
+  const inviteUserRoleIndex = ROLES_LIST.indexOf(args.role);
+
+  if(inviteUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not give the same or higher role to a user than your own.'
+    );
+  }
+
+  if(targetUserRoleIndex <= currentUserRoleIndex) {
+    throw new Error(
+      'You can not update someone with the same or higher role than your own.'
+    );
+  }
+
+  try {
+    targetUserRole.role = args.role
+    await targetUserRole.save();
+  } catch (err) {
+    console.error(err)
+    throw err
+>>>>>>> Update Role
   }
 
   return targetUserRole;
