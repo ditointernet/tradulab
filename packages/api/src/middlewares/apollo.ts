@@ -5,6 +5,7 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -13,11 +14,14 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import {
   ApolloError,
   ApolloServer,
   AuthenticationError,
   ForbiddenError,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   GraphQLUpload,
@@ -29,11 +33,17 @@ import {
   GraphQLUpload
 } from 'apollo-server-express';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  gql,
+  GraphQLUpload
+} from 'apollo-server-express';
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 <<<<<<< HEAD
 <<<<<<< HEAD
 import { not, and, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import cors from 'cors';
 =======
@@ -88,10 +98,14 @@ import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> file size limit from content length header
+=======
+import cors from "cors";
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -154,6 +168,14 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> remove comments
 =======
 >>>>>>> pull
+=======
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  allowedHeaders: 'Authorization',
+};
+
+>>>>>>> Create file resolver working at front-end and back-end without error treatment
 const typeDefs = gql`
   scalar Date
 
