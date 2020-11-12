@@ -17,9 +17,14 @@ export default async function jwtMiddleware(
 ) {
   const { authorization } = req.headers;
   const bearerRegex = /^Bearer\s/i;
+<<<<<<< HEAD
   const isAuthorized = bearerRegex.test(authorization);
 
   if (isAuthorized) {
+=======
+  // testa de se o Bearer no Header
+  if (bearerRegex.test(authorization)) {
+>>>>>>> Update Role
     const token = authorization.split(bearerRegex)[1];
 
     try {
