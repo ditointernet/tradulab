@@ -15,6 +15,7 @@
     "predev": "npm run build && docker-compose up -d mongo",
     "start": "node $npm_package_main",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "dev": "ts-node-dev --respawn src/index.ts",
 =======
     "start": "node $npm_package_main",
@@ -31,6 +32,9 @@
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+>>>>>>> Corrigido erro de cors pra qualquer request
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
