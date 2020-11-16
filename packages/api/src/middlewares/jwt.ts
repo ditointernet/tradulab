@@ -15,6 +15,7 @@ export default async function jwtMiddleware(
   res: Response,
   next: NextFunction
 ) {
+  // console.log('ERRO JWT ----------- ', req.headers)
   const { authorization } = req.headers;
   const bearerRegex = /^Bearer\s/i;
 <<<<<<< HEAD
@@ -46,9 +47,17 @@ export default async function jwtMiddleware(
       );
     } catch (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 <<<<<<< HEAD
       console.error('jwt', err);
+=======
+      console.error(err);
+>>>>>>> Corrigido erro de cors pra qualquer request
+<<<<<<< HEAD
+=======
 =======
       console.error(err);
 >>>>>>> Corrigido erro de cors pra qualquer request

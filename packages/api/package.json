@@ -41,7 +41,11 @@
     "graphql-middleware": "4.0.2",
     "graphql-shield": "7.3.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "graphql-upload": "11.0.0",
+=======
+    "graphql-upload": "^11.0.0",
+>>>>>>> Corrigido erro de cors pra qualquer request
 =======
     "graphql-upload": "^11.0.0",
 >>>>>>> Corrigido erro de cors pra qualquer request
