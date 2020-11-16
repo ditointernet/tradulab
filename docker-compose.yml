@@ -4,6 +4,7 @@ services:
     image: mongo
     ports:
 <<<<<<< HEAD
+<<<<<<< HEAD
       - "27017:27017"
   api:
     build: packages/api
@@ -26,3 +27,6 @@ volumes:
 =======
       - "27018:27018"
 >>>>>>> Update Role
+=======
+      - "27017:27017"
+>>>>>>> docker
