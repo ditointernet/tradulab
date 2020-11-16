@@ -95,6 +95,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "graphql-upload": "11.0.0",
 =======
     "graphql-upload": "^11.0.0",
@@ -105,6 +106,9 @@
 =======
     "graphql-upload": "11.0.0",
 >>>>>>> list files done
+=======
+    "graphql-upload": "^11.0.0",
+>>>>>>> Corrigido erro de cors pra qualquer request
 =======
     "graphql-upload": "^11.0.0",
 >>>>>>> Corrigido erro de cors pra qualquer request
