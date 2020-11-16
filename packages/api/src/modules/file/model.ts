@@ -383,7 +383,6 @@ export default model;
 =======
     filePath: {
       type: String,
-      required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -422,6 +421,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -447,6 +447,8 @@ const model = mongoose.model<IFile>('file', schema);
 =======
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 // export interface IFile extends mongoose.Document {
 //   filename: string;
 //   translationProgress: number;
@@ -459,6 +461,7 @@ const model = mongoose.model<IFile>('file', schema);
 //   updateAt: Date;
 // }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const model = mongoose.model('file', schema);
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -527,6 +530,8 @@ export default model;
 =======
 >>>>>>> Rebase and resolving conflicts with master
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 
 export default model;
