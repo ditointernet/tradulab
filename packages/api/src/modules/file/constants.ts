@@ -40,6 +40,7 @@ export const EXTENSION_LIST = [
   'json',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -91,3 +92,7 @@ export const EXTENSION_LIST = [
   'json',
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  'txt',
+];
+>>>>>>> Corrigido erro de cors pra qualquer request
