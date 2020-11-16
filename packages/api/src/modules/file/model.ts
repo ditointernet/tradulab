@@ -606,7 +606,6 @@ export default model;
 =======
     filePath: {
       type: String,
-      required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -631,6 +630,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -649,6 +649,8 @@ export default model;
 >>>>>>> Rebase and resolving conflicts with master
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -797,6 +799,20 @@ export default model;
 >>>>>>> Rebase and resolving conflicts with master
 =======
 =======
+=======
+// export interface IFile extends mongoose.Document {
+//   filename: string;
+//   translationProgress: number;
+//   approvalProgress: number;
+//   project: mongoose.Types.ObjectId | IProject;
+//   sourceLanguage: string;
+//   extension: string;
+//   filePath: string;
+//   createdAt: Date;
+//   updateAt: Date;
+// }
+
+>>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 
 export default model;
