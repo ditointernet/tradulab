@@ -52,7 +52,12 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
       file: FileUpload!
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+      sourceLanguage: String!
+      projectId: ID!
+>>>>>>> Corrigido erro de cors pra qualquer request
     ): File!
   }
 `;
