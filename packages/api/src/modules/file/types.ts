@@ -141,7 +141,12 @@ export default gql`
 =======
       file: FileUpload!
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+      sourceLanguage: String!
+      projectId: ID!
+>>>>>>> Corrigido erro de cors pra qualquer request
 =======
       sourceLanguage: String!
       projectId: ID!
