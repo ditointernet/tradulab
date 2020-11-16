@@ -44,6 +44,7 @@ export const EXTENSION_LIST = [
 >>>>>>> Criado o module files e a resolver create File
 =======
   'json',
+<<<<<<< HEAD
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -68,3 +69,7 @@ export const EXTENSION_LIST = [
   'json',
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  'txt',
+];
+>>>>>>> Corrigido erro de cors pra qualquer request

@@ -15,6 +15,7 @@ export default async function jwtMiddleware(
   res: Response,
   next: NextFunction
 ) {
+  // console.log('ERRO JWT ----------- ', req.headers)
   const { authorization } = req.headers;
   const bearerRegex = /^Bearer\s/i;
 <<<<<<< HEAD
@@ -45,6 +46,14 @@ export default async function jwtMiddleware(
         env.getOrThrow('JWT_SECRET')
       );
     } catch (err) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      console.error('jwt', err);
+=======
+      console.error(err);
+>>>>>>> Corrigido erro de cors pra qualquer request
+>>>>>>> Corrigido erro de cors pra qualquer request
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {
