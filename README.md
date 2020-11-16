@@ -181,6 +181,7 @@ Compose file format (version 2 - 1.10.0+) - Docker Engine Release
 docker-compose up -d mongo
 docker-compose down
 docker-compose exec mongo mongo
+<<<<<<< HEAD
 
 docker-compose images
 docker-compose run web npm start
@@ -212,3 +213,4 @@ Create a volume: **docker volume create [my-vol]**
 List volumes: **docker volume ls**
 Inspect a volume: **docker volume inspect [my-vol]**
 Remove a volume: **docker volume rm [my-vol]**
+=======
