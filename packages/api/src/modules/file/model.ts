@@ -302,7 +302,6 @@ const schema = new mongoose.Schema(
 =======
     filePath: {
       type: String,
-      required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
@@ -312,6 +311,7 @@ const schema = new mongoose.Schema(
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -372,6 +372,8 @@ export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 // export interface IFile extends mongoose.Document {
 //   filename: string;
 //   translationProgress: number;
@@ -384,6 +386,7 @@ export default model;
 //   updateAt: Date;
 // }
 
+<<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 =======
@@ -403,6 +406,8 @@ export default model;
 =======
 >>>>>>> file size limit from content length header
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 
 export default model;
