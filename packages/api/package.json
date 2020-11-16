@@ -111,6 +111,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "graphql-upload": "11.0.0",
 =======
     "graphql-upload": "^11.0.0",
@@ -133,6 +134,9 @@
 =======
     "graphql-upload": "11.0.0",
 >>>>>>> list files done
+=======
+    "graphql-upload": "^11.0.0",
+>>>>>>> Corrigido erro de cors pra qualquer request
     "jsonwebtoken": "8.5.1",
     "mongoose": "5.9.16",
     "ramda": "0.27.0",
