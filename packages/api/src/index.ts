@@ -16,6 +16,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import * as middlewares from './middlewares';
 <<<<<<< HEAD
@@ -30,6 +31,8 @@ import cors from 'cors';
 =======
 import cors from 'cors';
 >>>>>>> changes
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 // import { graphqlUploadExpress } from 'graphql-upload';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -79,6 +82,7 @@ const cors = require('cors');
 >>>>>>> changes
 
 const app = express();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -224,6 +228,15 @@ app.use(cors());
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> file size limit from content length header
+=======
+=======
+import { graphqlUploadExpress } from 'graphql-upload';
+
+const app = express();
+
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+>>>>>>> Corrigido erro de cors pra qualquer request
+>>>>>>> Corrigido erro de cors pra qualquer request
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -251,10 +264,14 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
   console.log('ERROOOO', err);
 =======
   console.log('ERROOOO', err)
 >>>>>>> Corrigido erro de cors pra qualquer request
+<<<<<<< HEAD
 =======
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
@@ -305,6 +322,8 @@ app.use(function (err, _req, res, _next) {
 =======
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }

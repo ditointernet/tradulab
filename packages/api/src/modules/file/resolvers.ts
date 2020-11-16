@@ -652,6 +652,7 @@ export const queries = { listFiles };
   //   throw new Error('The provided project does not exist.');
   // }
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 =======
   if (!project) {
     throw new ApolloError(
@@ -661,6 +662,22 @@ export const queries = { listFiles };
   }
 >>>>>>> Corrigido erro de cors pra qualquer request
 
+=======
+import { model as File } from '.'
+import { model as Project } from '../project';
+import { model as Role } from '../role';
+
+async function createFile(parent, args, context) {
+  const { createReadStream, filename } = await args.file;
+  console.log(args.file);
+
+  const stream = createReadStream();
+  stream.on('data', (chunk) => console.log(chunk.toString()));
+  const project = await Project.findOne({ _id: args.projectId })
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> Corrigido erro de cors pra qualquer request
   const file = new File({
     extension: filename.split('.').pop(),
     filename,
@@ -708,19 +725,27 @@ export const mutations = { createFile };
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+<<<<<<< HEAD
   // if (!project) {
   //   throw new Error('The provided project does not exist.');
   // }
+=======
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
+>>>>>>> Corrigido erro de cors pra qualquer request
+>>>>>>> Corrigido erro de cors pra qualquer request
 
-  // const file = new File({
-  //   filename,
-  //   translation_progress: 0,
-  //   approval_progress: 0,
-  //   source_language: args.source_language,
-  //   extension: filename.split('.').pop(),
-  //   project,
-  // });
+  const file = new File({
+    filename,
+    translationProgress: 0,
+    approvalProgress: 0,
+    sourceLanguage: args.sourceLanguage,
+    extension: filename.split('.').pop(),
+    project,
+  });
 
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   // try {
   //   await file.save();
@@ -793,6 +818,15 @@ export const queries = { listFiles };
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  try {
+    await file.save();
+  } catch (err) {
+    throw err;
+  }
+
+  return file;
+>>>>>>> Corrigido erro de cors pra qualquer request
 =======
   try {
     await file.save();
