@@ -149,7 +149,6 @@ const schema = new mongoose.Schema(
 =======
     filePath: {
       type: String,
-      required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -175,6 +174,7 @@ const schema = new mongoose.Schema(
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -204,6 +204,20 @@ const model = mongoose.model('file', schema);
 export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+// export interface IFile extends mongoose.Document {
+//   filename: string;
+//   translationProgress: number;
+//   approvalProgress: number;
+//   project: mongoose.Types.ObjectId | IProject;
+//   sourceLanguage: string;
+//   extension: string;
+//   filePath: string;
+//   createdAt: Date;
+//   updateAt: Date;
+// }
+
+>>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 
 export default model;
