@@ -1,5 +1,4 @@
 import * as express from 'express';
-
 import { mongo } from './config';
 import * as middlewares from './middlewares';
 import { env } from './helpers';
