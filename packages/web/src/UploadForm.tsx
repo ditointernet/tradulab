@@ -6,8 +6,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
 
@@ -307,6 +310,7 @@ export default function UploadForm() {
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 =======
@@ -348,6 +352,8 @@ export default function UploadForm() {
     createFile({ variables: { file } })
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
   };
 
   return (
@@ -361,6 +367,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <input type="file" onChange={handleFileChange} />
     </div>
   );
@@ -441,6 +448,11 @@ export default function UploadForm() {
   )
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+      <input type="file" onChange={handleFileChange} />
+    </div>
+  );
+>>>>>>> Corrigido erro de cors pra qualquer request
 };
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
