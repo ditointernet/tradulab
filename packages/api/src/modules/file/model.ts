@@ -847,7 +847,6 @@ export default model;
 =======
     filePath: {
       type: String,
-      required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   },
@@ -857,6 +856,7 @@ export default model;
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export interface IFile extends mongoose.Document {
@@ -871,6 +871,8 @@ export interface IFile extends mongoose.Document {
 
 const model = mongoose.model<IFile>('file', schema);
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 // export interface IFile extends mongoose.Document {
 //   filename: string;
 //   translationProgress: number;
@@ -883,6 +885,7 @@ const model = mongoose.model<IFile>('file', schema);
 //   updateAt: Date;
 // }
 
+<<<<<<< HEAD
 const model = mongoose.model('file', schema);
 >>>>>>> Corrigido erro de cors pra qualquer request
 
@@ -905,6 +908,8 @@ export default model;
 export default model;
 >>>>>>> file size limit from content length header
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 
 export default model;
