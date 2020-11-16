@@ -15,6 +15,7 @@ export default async function jwtMiddleware(
   res: Response,
   next: NextFunction
 ) {
+  // console.log('ERRO JWT ----------- ', req.headers)
   const { authorization } = req.headers;
   const bearerRegex = /^Bearer\s/i;
 <<<<<<< HEAD

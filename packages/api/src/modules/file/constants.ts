@@ -155,10 +155,13 @@ export const EXTENSION_LIST = [
 =======
   'json',
 <<<<<<< HEAD
+<<<<<<< HEAD
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
   'txt',
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 ];
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
@@ -173,3 +176,7 @@ export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 ];
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  'txt',
+];
+>>>>>>> Corrigido erro de cors pra qualquer request

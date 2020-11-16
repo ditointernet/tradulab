@@ -120,6 +120,7 @@ async function login(parent, args) {
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new AuthenticationError('Invalid credentials.');
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -166,6 +167,9 @@ async function login(parent, args) {
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+    throw new TradulabError(authCodes.CREDENTIALS_INVALID);
+>>>>>>> Corrigido erro de cors pra qualquer request
   }
 }
 <<<<<<< HEAD
