@@ -145,6 +145,9 @@ const permissions = shield(
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+    uploads: {
+      maxFileSize: 200,
+    },
     schema: applyMiddleware(
       resolvers,
       permissions,      
