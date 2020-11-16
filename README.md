@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 docker-compose up -d
 
 docker-compose run web npm start
@@ -159,6 +160,24 @@ docker volume ls
 docker volume inspect tradulab
 
 docker volume rm tradulab
+=======
+{
+"lockfileVersion": 1
+lock file in the versions of the full dependency tree
+}
+
+# Docker
+
+Docker is a platform for developers and sysadmins to build, run, and share applications with containers
+Use of containers to deploy application is called containerization.
+A container is a running process, with some added encapsulation features applied to it in order to keep it isolated from the host and from other containers.
+Each container interacts with its own private filesystem (Docker Image)
+Docker Image - everything needed to run an application - the code or binary, runtimes, dependencies, and any other filesystem ocjects required
+
+The kernel decides who will use these resources and for how long and when
+
+Containers x Virtual Machines
+>>>>>>> docker
 
 ## Commands
 
@@ -181,6 +200,7 @@ Compose file format (version 2 - 1.10.0+) - Docker Engine Release
 docker-compose up -d mongo
 docker-compose down
 docker-compose exec mongo mongo
+<<<<<<< HEAD
 
 docker-compose images
 docker-compose run web npm start
@@ -212,3 +232,5 @@ Create a volume: **docker volume create [my-vol]**
 List volumes: **docker volume ls**
 Inspect a volume: **docker volume inspect [my-vol]**
 Remove a volume: **docker volume rm [my-vol]**
+=======
+>>>>>>> docker

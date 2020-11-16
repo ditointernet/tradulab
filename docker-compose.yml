@@ -18,8 +18,11 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
+=======
+>>>>>>> docker
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -184,6 +187,7 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> docker
+<<<<<<< HEAD
 =======
 volumes:
   db-data:
@@ -251,3 +255,5 @@ volumes:
       - "27018:27018"
 >>>>>>> Update Role
 >>>>>>> Update Role
+=======
+>>>>>>> docker
