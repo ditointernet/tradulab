@@ -40,7 +40,11 @@
     "graphql-iso-date": "3.6.1",
     "graphql-middleware": "4.0.2",
     "graphql-shield": "7.3.0",
+<<<<<<< HEAD
     "graphql-upload": "11.0.0",
+=======
+    "graphql-upload": "^11.0.0",
+>>>>>>> Corrigido erro de cors pra qualquer request
     "jsonwebtoken": "8.5.1",
     "mongoose": "5.9.16",
     "ramda": "0.27.0",
