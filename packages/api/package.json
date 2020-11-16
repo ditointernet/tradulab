@@ -32,6 +32,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "dev": "ts-node-dev --respawn src/index.ts",
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -75,6 +76,9 @@
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+>>>>>>> Corrigido erro de cors pra qualquer request
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
