@@ -2,33 +2,36 @@ import path from 'path';
 import fs from 'fs';
 import { model as File } from '.'
 import { model as Project } from '../project';
+import { model as Role } from '../role';
 
 async function createFile(parent, args, context) {
+  const { createReadStream, filename } = await args.file;
   console.log(args.file);
-  const { filename, mimetype, encoding } = await args.file;
 
-  // const project = await Project.findOne({ project: args.project })
+  const stream = createReadStream();
+  stream.on('data', (chunk) => console.log(chunk.toString()));
+  const project = await Project.findOne({ _id: args.projectId })
 
-  // if (!project) {
-  //   throw new Error('The provided project does not exist.');
-  // }
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
 
-  // const file = new File({
-  //   filename,
-  //   translation_progress: 0,
-  //   approval_progress: 0,
-  //   source_language: args.source_language,
-  //   extension: filename.split('.').pop(),
-  //   project,
-  // });
+  const file = new File({
+    filename,
+    translationProgress: 0,
+    approvalProgress: 0,
+    sourceLanguage: args.sourceLanguage,
+    extension: filename.split('.').pop(),
+    project,
+  });
 
-  // try {
-  //   await file.save();
-  // } catch (err) {
-  //   throw err;
-  // }
+  try {
+    await file.save();
+  } catch (err) {
+    throw err;
+  }
 
-  // return file;
+  return file;
 }
 
 export const mutations = { createFile };

@@ -18,6 +18,8 @@ export default gql`
   extend type Mutation {
     createFile(
       file: FileUpload!
+      sourceLanguage: String!
+      projectId: ID!
     ): File!
   }
 `;
