@@ -335,7 +335,9 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
       file: FileUpload!
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -349,9 +351,12 @@ export default gql`
       projectId: ID!
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
+>>>>>>> Corrigido erro de cors pra qualquer request
+=======
       sourceLanguage: String!
       projectId: ID!
 >>>>>>> Corrigido erro de cors pra qualquer request
+<<<<<<< HEAD
 =======
       file: FileUpload!
       projectId: ID!
@@ -362,6 +367,8 @@ export default gql`
 >>>>>>> Back-End Review
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
     ): File!
   }
 

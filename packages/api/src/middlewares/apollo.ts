@@ -690,7 +690,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
-import { not, and, rule, shield } from 'graphql-shield';
+import { not, and, or, rule, shield } from 'graphql-shield';
 import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -726,10 +726,14 @@ const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
   allowedHeaders: ['Authorization', 'content-type'],
 =======
   allowedHeaders: 'Authorization',  
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  allowedHeaders: ['Authorization', 'content-type'],
+>>>>>>> Corrigido erro de cors pra qualquer request
 };
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
@@ -1015,11 +1019,37 @@ export default function ApolloMiddleware(app) {
   });
 >>>>>>> file size limit from content length header
 
+<<<<<<< HEAD
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+=======
+    return false;
+  }
+);
+const isDeveloper = rule()(
+  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+    if (user) {
+      try {
+        const projectRole = await role.model.findOne({
+          project: projectId,
+          user: currentUserId,
+        });
+        if (projectRole.role === ROLES.DEVELOPER)
+          return true;
+      } catch (err) {
+        console.error(err);
+        return false;
+      }
+    }
+
+    return false;
+  }
+);
+>>>>>>> Corrigido erro de cors pra qualquer request
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+<<<<<<< HEAD
 <<<<<<< HEAD
     uploads: {
       maxFileSize: 200,
@@ -1027,6 +1057,11 @@ export default function ApolloMiddleware(app) {
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> file size limit from content length header
+=======
+    uploads: {
+      maxFileSize: 200,
+    },
+>>>>>>> Corrigido erro de cors pra qualquer request
     schema: applyMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1090,6 +1125,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -1168,11 +1204,22 @@ export default function ApolloMiddleware(app) {
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 >>>>>>> file size limit from content length header
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
             createFile: isAuthenticated,
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+            createFile: and(
+              isAuthenticated,
+              or(isDeveloper, isManagerOrOwner)
+            ),
+>>>>>>> Corrigido erro de cors pra qualquer request
+>>>>>>> Corrigido erro de cors pra qualquer request
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
