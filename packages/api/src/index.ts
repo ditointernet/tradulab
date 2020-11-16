@@ -2,14 +2,17 @@ import * as express from 'express';
 import { mongo } from './config';
 import * as middlewares from './middlewares';
 import { env } from './helpers';
+import { graphqlUploadExpress } from 'graphql-upload';
 
 const app = express();
 
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 app.locals.mongo = mongo;
 app.use(middlewares.jwt);
 middlewares.apollo(app);
 
 app.use(function (err, req, res, next) {
+  console.log('ERROOOO', err)
   if (err.name === 'UnauthorizedError') {
     res.status(401).json({ error: 'JWT Expired.' });
   }

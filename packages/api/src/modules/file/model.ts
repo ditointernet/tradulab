@@ -39,7 +39,6 @@ const schema = new mongoose.Schema(
     },
     filePath: {
       type: String,
-      required:true,
     },
   },
   {
@@ -47,6 +46,18 @@ const schema = new mongoose.Schema(
     minimize: false,
   }
 );
+
+// export interface IFile extends mongoose.Document {
+//   filename: string;
+//   translationProgress: number;
+//   approvalProgress: number;
+//   project: mongoose.Types.ObjectId | IProject;
+//   sourceLanguage: string;
+//   extension: string;
+//   filePath: string;
+//   createdAt: Date;
+//   updateAt: Date;
+// }
 
 const model = mongoose.model('file', schema);
 
