@@ -101,13 +101,17 @@ import fs from 'fs';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
 import { model as Project } from '../project';
+import { model as Role } from '../role';
 
 async function createFile(parent, args, context) {
+  const { createReadStream, filename } = await args.file;
   console.log(args.file);
-  const { filename, mimetype, encoding } = await args.file;
 
-  // const project = await Project.findOne({ project: args.project })
+  const stream = createReadStream();
+  stream.on('data', (chunk) => console.log(chunk.toString()));
+  const project = await Project.findOne({ _id: args.projectId })
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
   const file = new File({
@@ -212,14 +216,28 @@ export const mutations = { createFile };
   }
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  if (!project) {
+    throw new Error('The provided project does not exist.');
+  }
 
-  // try {
-  //   await file.save();
-  // } catch (err) {
-  //   throw err;
-  // }
+  const file = new File({
+    filename,
+    translationProgress: 0,
+    approvalProgress: 0,
+    sourceLanguage: args.sourceLanguage,
+    extension: filename.split('.').pop(),
+    project,
+  });
+>>>>>>> Corrigido erro de cors pra qualquer request
 
-  // return file;
+  try {
+    await file.save();
+  } catch (err) {
+    throw err;
+  }
+
+  return file;
 }
 
 export const mutations = { createFile };
