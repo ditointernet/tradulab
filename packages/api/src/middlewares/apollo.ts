@@ -1,5 +1,4 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-<<<<<<< HEAD
 import {
   ApolloError,
   ApolloServer,
@@ -12,13 +11,6 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
 import cors from 'cors';
-=======
-import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
-import { buildFederatedSchema } from '@apollo/federation';
-import { applyMiddleware } from 'graphql-middleware';
-import { not, and, rule, shield } from 'graphql-shield';
-import cors from "cors";
->>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -26,11 +18,7 @@ import { ROLES } from '../modules/role/constants';
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
-<<<<<<< HEAD
   allowedHeaders: ['Authorization', 'content-type'],
-=======
-  allowedHeaders: 'Authorization',  
->>>>>>> Create file resolver working at front-end and back-end without error treatment
 };
 
 const typeDefs = gql`
@@ -70,21 +58,13 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         user: currentUserId,
       });
 
-<<<<<<< HEAD
-      if (projectRole && [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
-        return true;
-      }
-=======
       if (allowedRoles.includes(projectRole?.role)) return true;
 
->>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return err;
+      return false;
     }
-    return new ForbiddenError(
-      'You must be owner or manager in this project or this project doesnt exit.'
-    );
+    return new ForbiddenError('You must be owner or manager in this project.');
   });
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
@@ -124,11 +104,7 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
-<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
-=======
-            createFile: isAuthenticated,
->>>>>>> Criado o module files e a resolver create File
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
