@@ -25,6 +25,7 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
+<<<<<<< HEAD
 import { not, and, rule, shield } from 'graphql-shield';
 import cors from 'cors';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -42,6 +43,9 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
+=======
+import { not, and, or, rule, shield } from 'graphql-shield';
+>>>>>>> Corrigido erro de cors pra qualquer request
 import cors from "cors";
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -91,7 +95,7 @@ const corsOptions: cors.CorsOptions = {
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
-  allowedHeaders: 'Authorization',  
+  allowedHeaders: ['Authorization', 'content-type'],
 };
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -261,11 +265,39 @@ const isDeveloper = rule()(
   });
 >>>>>>> file size limit from content length header
 
+<<<<<<< HEAD
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+=======
+    return false;
+  }
+);
+const isDeveloper = rule()(
+  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+    if (user) {
+      try {
+        const projectRole = await role.model.findOne({
+          project: projectId,
+          user: currentUserId,
+        });
+        if (projectRole.role === ROLES.DEVELOPER)
+          return true;
+      } catch (err) {
+        console.error(err);
+        return false;
+      }
+    }
+
+    return false;
+  }
+);
+>>>>>>> Corrigido erro de cors pra qualquer request
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+    uploads: {
+      maxFileSize: 200,
+    },
     schema: applyMiddleware(
 <<<<<<< HEAD
       resolvers,
@@ -308,7 +340,14 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+=======
+            createFile: and(
+              isAuthenticated,
+              or(isDeveloper, isManagerOrOwner)
+            ),
+>>>>>>> Corrigido erro de cors pra qualquer request
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
