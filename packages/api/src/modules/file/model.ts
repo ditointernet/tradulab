@@ -181,7 +181,6 @@ export default model;
 =======
     filePath: {
       type: String,
-      required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -198,6 +197,7 @@ export default model;
   }
 );
 
+<<<<<<< HEAD
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -211,6 +211,21 @@ export interface IFile extends mongoose.Document {
 };
 
 const model = mongoose.model<IFile>('file', schema);
+=======
+// export interface IFile extends mongoose.Document {
+//   filename: string;
+//   translationProgress: number;
+//   approvalProgress: number;
+//   project: mongoose.Types.ObjectId | IProject;
+//   sourceLanguage: string;
+//   extension: string;
+//   filePath: string;
+//   createdAt: Date;
+//   updateAt: Date;
+// }
+
+const model = mongoose.model('file', schema);
+>>>>>>> Corrigido erro de cors pra qualquer request
 
 <<<<<<< HEAD
 <<<<<<< HEAD
