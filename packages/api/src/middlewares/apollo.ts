@@ -108,6 +108,7 @@ import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { not, and, or, rule, shield } from 'graphql-shield';
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -155,6 +156,8 @@ import cors from "cors";
 import cors from 'cors';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
@@ -232,7 +235,7 @@ const corsOptions: cors.CorsOptions = {
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
-  allowedHeaders: 'Authorization',
+  allowedHeaders: ['Authorization', 'content-type'],
 };
 
 <<<<<<< HEAD
@@ -568,6 +571,7 @@ const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
   }
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
@@ -766,6 +770,33 @@ export default function ApolloMiddleware(app) {
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> file size limit from content length header
+=======
+const isDeveloper = rule()(
+  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+    if (user) {
+      try {
+        const projectRole = await role.model.findOne({
+          project: projectId,
+          user: currentUserId,
+        });
+        if (projectRole.role === ROLES.DEVELOPER)
+          return true;
+      } catch (err) {
+        console.error(err);
+        return false;
+      }
+    }
+
+    return false;
+  }
+);
+
+export default function ApolloMiddleware(app) {
+  const apolloServer = new ApolloServer({
+    uploads: {
+      maxFileSize: 200,
+    },
+>>>>>>> Corrigido erro de cors pra qualquer request
     schema: applyMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -821,14 +852,18 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
             createFile: and(
               isAuthenticated,
               or(isDeveloper, isManagerOrOwner)
             ),
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
@@ -871,6 +906,8 @@ export default function ApolloMiddleware(app) {
 =======
             createFile: isAuthenticated,
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Corrigido erro de cors pra qualquer request
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner

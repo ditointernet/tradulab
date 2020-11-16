@@ -343,36 +343,51 @@ export default function UploadForm() {
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 
-// const LOGIN = gql`
-//   query login ($email: String!, $password: String!){
-//     login (
-//       email: $email
-//       password: $password
-//     ) {
-//       token
-//     }
-//   }
-// `
+export const LOGIN = gql`
+  query login ($email: String!, $password: String!){
+    login (
+      email: $email
+      password: $password
+    ) {
+      token
+    }
+  }
+`
 
-const UPLOAD_FILE = gql`
-  mutation createFile($file: Upload!){
-    createFile(file: $file){
-      filename
+export const UPLOAD_FILE = gql`
+  mutation createFile($file: Upload!, $sourceLanguage: String!, $projectId: ID!){
+    createFile(
+      file: $file
+      sourceLanguage: $sourceLanguage
+      projectId: $projectId
+      ){
+        id
+        filename
+        translationProgress
+        approvalProgress
+        sourceLanguage
+        extension
+        project {
+          displayName
+        }
+        createdAt
+        updatedAt
     }
   }
 `
 export default function UploadForm() {
-  // const { data, refetch } = useQuery(LOGIN, {
-  //   variables: { email: 'julinho2801@gmail.com', password: '123456' }
-  // });
 
-  // if (data) console.log(data.login.token)
+  const { data: dataLogin } = useQuery(LOGIN, {
+    variables: { email: 'julinho2801@gmail.com', password: '123456' },
+  });
+
+  if (dataLogin) localStorage.setItem('token', dataLogin.login.token);
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
+  console.log(data);
 
-  console.log(data)
-  
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+<<<<<<< HEAD
     const file = e.target.files![0]
     if (!file) return
     createFile({ variables: { file } })
@@ -389,6 +404,13 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    const file = e.target.files![0];
+    const projectId = "5fae85634929506946d18fab";
+    const sourceLanguage = 'PT-BR';
+    if (!file) return;
+    createFile({ variables: { file, projectId, sourceLanguage } });
+>>>>>>> Corrigido erro de cors pra qualquer request
   };
 
   return (
