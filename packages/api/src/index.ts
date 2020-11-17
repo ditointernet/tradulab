@@ -349,6 +349,7 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -386,6 +387,8 @@ app.use(function (err, req, res, next) {
 >>>>>>> remove comments
 =======
 >>>>>>> removing comments
+=======
+>>>>>>> conflict
   console.error("Error: ", err.name)
 =======
   console.log("Error: ", err.name)
@@ -402,7 +405,13 @@ app.use(function (err, req, res, next) {
 =======
   console.log('Error: ', err.name);
 >>>>>>> removing comments
+<<<<<<< HEAD
 >>>>>>> removing comments
+=======
+=======
+  console.error("Error: ", err.name)
+>>>>>>> conflict
+>>>>>>> conflict
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
