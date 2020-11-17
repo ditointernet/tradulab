@@ -289,6 +289,7 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -738,6 +739,8 @@ import cors from "cors";
   });
 >>>>>>> file size limit from content length header
 =======
+=======
+>>>>>>> remove comments
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -999,6 +1002,15 @@ const isDeveloper = rule()(
   });
 >>>>>>> file size limit from content length header
 =======
+<<<<<<< HEAD
+=======
+// A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
+// Create e object types;
+// Custon scalar types
+>>>>>>> Update Role
+=======
+>>>>>>> remove comments
+>>>>>>> remove comments
 const typeDefs = gql`
   scalar Date
 
