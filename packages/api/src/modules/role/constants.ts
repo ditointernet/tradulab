@@ -45,6 +45,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
 
 // Array ordenado Hierarquicamente
@@ -81,11 +82,14 @@ export const ROLES_LIST = [ // mudar nome
 =======
 // Array ordenado Hierarquicamente
 =======
+=======
+>>>>>>> remove comments
 // Array ordenado hierarquicamente
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 export const ROLES_LIST = [
+<<<<<<< HEAD
 >>>>>>> erase comments
 =======
 export const ROLES_LIST = [ // mudar nome
@@ -93,6 +97,11 @@ export const ROLES_LIST = [ // mudar nome
 =======
 export const ROLES_LIST = [
 >>>>>>> erase comments
+=======
+=======
+export const ROLES_LIST = [ // mudar nome
+>>>>>>> remove comments
+>>>>>>> remove comments
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
