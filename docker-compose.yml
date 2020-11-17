@@ -61,6 +61,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix
 =======
@@ -387,3 +388,7 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> docker
+=======
+volumes:
+  db-data:
+>>>>>>> bolivar
