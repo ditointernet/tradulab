@@ -32,6 +32,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -48,6 +49,8 @@ import { ApolloError } from 'apollo-server-express';
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> file size limit from content length header
 import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -646,6 +649,7 @@ export const queries = { listFiles };
     approvalProgress: 0,
     sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
     project,
@@ -754,6 +758,8 @@ export const mutations = { createFile };
     approvalProgress: 0,
     sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+=======
+>>>>>>> file size limit from content length header
     project,
   });
 
