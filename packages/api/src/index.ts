@@ -5,11 +5,6 @@ import { env } from './helpers';
 // import { graphqlUploadExpress } from 'graphql-upload';
 
 const app = express();
-<<<<<<< HEAD
-=======
-
-// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
->>>>>>> Corrigido erro de cors pra qualquer request
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
