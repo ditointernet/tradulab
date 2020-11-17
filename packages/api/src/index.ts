@@ -342,6 +342,7 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -375,11 +376,19 @@ app.use(function (err, req, res, next) {
   console.error("Error: ", err.name)
 >>>>>>> remove comments
 =======
+=======
+>>>>>>> remove comments
   console.error("Error: ", err.name)
 =======
   console.log("Error: ", err.name)
 >>>>>>> Update Role
+<<<<<<< HEAD
 >>>>>>> Update Role
+=======
+=======
+  console.error("Error: ", err.name)
+>>>>>>> remove comments
+>>>>>>> remove comments
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
