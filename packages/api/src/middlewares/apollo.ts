@@ -41,11 +41,15 @@ import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, Gr
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 import cors from "cors";
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+import cors from 'cors';
+>>>>>>> file size limit from content length header
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -133,6 +137,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (projectRole && allowedRoles.includes(projectRole.role)) return true;
 
 =======
@@ -143,10 +148,15 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         return true;
       }
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+      if (allowedRoles.includes(projectRole?.role)) return true;
+
+>>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return err;
+      return false;
     }
+<<<<<<< HEAD
     return new ForbiddenError(
       'You must be owner or manager in this project or this project doesnt exit.'
     );
@@ -240,16 +250,16 @@ const isDeveloper = rule()(
         return false;
       }
     }
+=======
+    return new ForbiddenError('You must be owner or manager in this project.');
+  });
+>>>>>>> file size limit from content length header
 
-    return false;
-  }
-);
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-    uploads: {
-      maxFileSize: 200,
-    },
     schema: applyMiddleware(
 <<<<<<< HEAD
       resolvers,
@@ -292,10 +302,7 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
-            createFile: and(
-              isAuthenticated,
-              or(isDeveloper, isManagerOrOwner)
-            ),
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -345,7 +352,11 @@ export default function ApolloMiddleware(app) {
     ),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
+<<<<<<< HEAD
         contentLength: parseInt(headers['content-length']),
+=======
+        contentLength: headers['content-length'],
+>>>>>>> file size limit from content length header
         user: undefined,
       };
 
