@@ -17,6 +17,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 import { ApolloError } from 'apollo-server-express';
@@ -293,13 +294,23 @@ import path from 'path';
 import fs from 'fs';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
+=======
+import { FileUpload } from 'graphql-upload';
+
+import { model as File } from '.';
+>>>>>>> formatting changes and some typings
 import { model as Project } from '../project';
-import { model as Role } from '../role';
 
-async function createFile(parent, args, context) {
+interface ICreateFileArgs {
+  file: FileUpload;
+  projectId: string;
+  sourceLanguage: string;
+}
+
+async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
-  console.log(args.file);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -443,6 +454,11 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   const stream = createReadStream();
   stream.on('data', (chunk) => console.log(chunk.toString()));
   const project = await Project.findOne({ _id: args.projectId })
+=======
+  // const stream = createReadStream();
+  // stream.on('data', (chunk) => console.log(chunk.toString()));
+  const project = await Project.findOne({ _id: args.projectId });
+>>>>>>> formatting changes and some typings
 
   if (!project) {
     throw new Error('The provided project does not exist.');
