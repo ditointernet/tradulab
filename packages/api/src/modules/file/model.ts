@@ -2,12 +2,15 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> file size limit from content length header
 <<<<<<< HEAD
 import { IProject } from '../project/model';
 =======
@@ -21,6 +24,9 @@ import { IProject } from '../project/model';
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+
+>>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 
@@ -134,8 +140,12 @@ const schema = new mongoose.Schema(
 =======
     source_language: {
       type: String,
+<<<<<<< HEAD
       required: true
 >>>>>>> Criado o module files e a resolver create File
+=======
+      required: true,
+>>>>>>> file size limit from content length header
     },
     project: {
       type: Types.ObjectId,
@@ -241,4 +251,7 @@ export default model;
 const model = mongoose.model('file', schema);
 
 export default model;
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> file size limit from content length header
