@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const ERROR_CODES = {
   MAX_ALLOWED_FILE_SIZE: 'MAX_ALLOWED_FILE_SIZE',
   NOT_A_MEMBER: 'NOT_A_MEMBER',
@@ -22,9 +23,12 @@ export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> file size limit from content length header
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 export const REGEXES = {
@@ -123,3 +127,5 @@ export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 ];
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header

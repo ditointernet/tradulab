@@ -14,6 +14,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 import { ApolloError } from 'apollo-server-express';
@@ -103,6 +104,8 @@ import { ApolloError } from 'apollo-server-express';
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> file size limit from content length header
 import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { FileUpload } from 'graphql-upload';
@@ -323,6 +326,7 @@ export const mutations = { createFile };
     approvalProgress: 0,
     sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+<<<<<<< HEAD
     project,
   });
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -400,6 +404,8 @@ async function createFile(parent, args: ICreateFileArgs, context) {
     approvalProgress: 0,
     sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+=======
+>>>>>>> file size limit from content length header
     project,
   });
 
