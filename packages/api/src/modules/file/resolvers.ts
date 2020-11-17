@@ -114,6 +114,7 @@ import { model as Project } from '../project';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { model as Role } from '../role';
 import TradulabError from '../../errors';
 =======
@@ -358,6 +359,9 @@ import { FileUpload } from 'graphql-upload';
 import { model as File } from '.';
 >>>>>>> formatting changes and some typings
 import { model as Project } from '../project';
+=======
+import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
+>>>>>>> file size limit from content length header
 
 interface ICreateFileArgs {
   file: FileUpload;
@@ -368,8 +372,13 @@ interface ICreateFileArgs {
 async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
+  if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
+    throw new Error('File size exceeded, limit is 5MB.');
+  }
+
   // const stream = createReadStream();
   // stream.on('data', (chunk) => console.log(chunk.toString()));
+
   const project = await Project.findOne({ _id: args.projectId });
 
 <<<<<<< HEAD

@@ -18,6 +18,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { IProject } from '../project/model';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
@@ -91,6 +92,9 @@ import { IProject } from '../project/model';
 =======
 
 >>>>>>> Back-End Review
+=======
+
+>>>>>>> file size limit from content length header
 =======
 
 >>>>>>> file size limit from content length header
@@ -318,6 +322,7 @@ const schema = new mongoose.Schema(
     sourceLanguage: {
       type: String,
       required: true,
+<<<<<<< HEAD
 =======
     source_language: {
 =======
@@ -464,6 +469,8 @@ const schema = new mongoose.Schema(
 >>>>>>> Criado o module files e a resolver create File
 =======
       required: true,
+>>>>>>> file size limit from content length header
+=======
 >>>>>>> file size limit from content length header
     },
     project: {
@@ -805,6 +812,7 @@ const model = mongoose.model('file', schema);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -813,6 +821,9 @@ export default model;
 =======
 export default model;
 >>>>>>> Criado o module files e a resolver create File
+=======
+export default model;
+>>>>>>> file size limit from content length header
 =======
 export default model;
 >>>>>>> file size limit from content length header

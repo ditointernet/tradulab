@@ -110,6 +110,7 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { not, and, or, rule, shield } from 'graphql-shield';
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -165,6 +166,9 @@ import cors from 'cors';
 >>>>>>> Corrigido erro de cors pra qualquer request
 import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+import cors from 'cors';
+>>>>>>> file size limit from content length header
 =======
 import cors from 'cors';
 >>>>>>> file size limit from content length header
@@ -330,6 +334,7 @@ const typeDefs = gql`
 >>>>>>> Criado o module files e a resolver create File
 `;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 const isAuthenticated = rule()((parent, args, { user }) => {
@@ -550,6 +555,11 @@ const isAuthenticated = rule()((parent, args, { user }) => !!user);
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
   rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
 >>>>>>> file size limit from content length header
+=======
+const isAuthenticated = rule()((parent, args, { user }) => !!user);
+const isOneOfTheseRoles = (allowedRoles: string[]) =>
+  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+>>>>>>> file size limit from content length header
     if (user) {
       try {
         const projectRole = await role.model.findOne({
@@ -557,8 +567,13 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
           user: currentUserId,
         });
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (projectRole.role === ROLES.DEVELOPER)
           return true;
+=======
+
+        if (allowedRoles.includes(projectRole?.role)) return true;
+>>>>>>> file size limit from content length header
 =======
 
         if (allowedRoles.includes(projectRole?.role)) return true;
@@ -587,6 +602,7 @@ const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 <<<<<<< HEAD
     return false;
+<<<<<<< HEAD
   }
 );
 <<<<<<< HEAD
@@ -832,17 +848,22 @@ export default function ApolloMiddleware(app) {
 =======
 >>>>>>> file size limit from content length header
 =======
+=======
+  });
+>>>>>>> file size limit from content length header
 
-    return false;
-  }
-);
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+<<<<<<< HEAD
     uploads: {
       maxFileSize: 200,
     },
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header
     schema: applyMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -901,6 +922,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -964,6 +986,9 @@ export default function ApolloMiddleware(app) {
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> file size limit from content length header
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -1029,6 +1054,7 @@ export default function ApolloMiddleware(app) {
     ),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     schema: applyMiddleware(resolvers, permissions),
 >>>>>>> changes
@@ -1041,6 +1067,11 @@ export default function ApolloMiddleware(app) {
         contentLength: headers['content-length'],
 >>>>>>> file size limit from content length header
 =======
+        contentLength: headers['content-length'],
+>>>>>>> file size limit from content length header
+=======
+    context: async ({ req: { auth, headers } }: any) => {
+      const baseContext = {
         contentLength: headers['content-length'],
 >>>>>>> file size limit from content length header
 =======
