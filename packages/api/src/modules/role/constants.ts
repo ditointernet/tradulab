@@ -7,7 +7,7 @@ export const ROLES = {
   // VIEWER: 'viewer',
 };
 
-// Arrey ordenado Hierarquicamente
+// Array ordenado Hierarquicamente
 export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,
