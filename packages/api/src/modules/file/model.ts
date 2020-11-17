@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { IProject } from '../project/model';
@@ -14,6 +15,9 @@ import { IProject } from '../project/model';
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+
+>>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
 
 const { Types } = mongoose.Schema;
@@ -94,8 +98,12 @@ const schema = new mongoose.Schema(
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
+<<<<<<< HEAD
       required: true
 >>>>>>> Criado o module files e a resolver create File
+=======
+      required: true,
+>>>>>>> file size limit from content length header
     },
     project: {
       type: Types.ObjectId,
@@ -201,4 +209,7 @@ export default model;
 const model = mongoose.model('file', schema);
 
 export default model;
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> file size limit from content length header
