@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+
 import { EXTENSION_LIST } from './constants';
 
 const { Types } = mongoose.Schema;
@@ -24,7 +25,7 @@ const schema = new mongoose.Schema(
     },
     sourceLanguage: {
       type: String,
-      required: true
+      required: true,
     },
     project: {
       type: Types.ObjectId,
