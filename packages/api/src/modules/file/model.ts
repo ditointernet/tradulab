@@ -18,6 +18,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -83,6 +84,9 @@ import { EXTENSION_LIST } from './constants';
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+
+>>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 
@@ -322,6 +326,7 @@ const schema = new mongoose.Schema(
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
 <<<<<<< HEAD
+<<<<<<< HEAD
       required: true
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -403,6 +408,9 @@ const schema = new mongoose.Schema(
       required: true
 >>>>>>> Criado o module files e a resolver create File
 =======
+>>>>>>> file size limit from content length header
+=======
+      required: true,
 >>>>>>> file size limit from content length header
     },
     project: {
@@ -571,6 +579,7 @@ const model = mongoose.model('file', schema);
 
 export default model;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 =======
@@ -737,4 +746,6 @@ export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
 export default model;
+>>>>>>> file size limit from content length header
+=======
 >>>>>>> file size limit from content length header
