@@ -38,6 +38,7 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -70,6 +71,8 @@ const corsOptions: cors.CorsOptions = {
 };
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> remove comments
 const typeDefs = gql`
   scalar Date
 
