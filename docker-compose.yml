@@ -4,6 +4,7 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+<<<<<<< HEAD
   api:
     build: packages/api
     command: npm start
@@ -22,3 +23,7 @@ services:
       - api
 volumes:
   tradulab:
+=======
+volumes:
+  db-data:
+>>>>>>> bolivar
