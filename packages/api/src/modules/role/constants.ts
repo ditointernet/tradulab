@@ -31,6 +31,7 @@ export const ROLES_LIST = [
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Arrey ordenado Hierarquicamente
 export const ROLES_LIST = [ // mudar nome
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -40,6 +41,9 @@ export const ROLES_LIST = [ // mudar nome
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 export const ROLES_LIST = [
 >>>>>>> erase comments
+=======
+export const ROLES_LIST = [ // mudar nome
+>>>>>>> remove comments
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
