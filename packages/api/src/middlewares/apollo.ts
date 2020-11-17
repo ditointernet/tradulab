@@ -107,6 +107,7 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -244,6 +245,9 @@ import { auth, user, project, role, file } from '../modules';
 import { auth, user, project, role, file } from '../modules';
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+import cors from 'cors';
+>>>>>>> file size limit from content length header
 
 >>>>>>> crack the code
 =======
@@ -431,6 +435,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
 =======
   rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
@@ -441,12 +446,16 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 =======
   rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
 >>>>>>> changes
+=======
+  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+>>>>>>> file size limit from content length header
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
         user: currentUserId,
       });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -482,10 +491,15 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> changes
+=======
+      if (allowedRoles.includes(projectRole?.role)) return true;
+
+>>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return err;
+      return false;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -965,17 +979,23 @@ export default function ApolloMiddleware(app) {
 =======
 >>>>>>> file size limit from content length header
 =======
+=======
+    return new ForbiddenError('You must be owner or manager in this project.');
+  });
+>>>>>>> file size limit from content length header
 
-    return false;
-  }
-);
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+<<<<<<< HEAD
     uploads: {
       maxFileSize: 200,
     },
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header
     schema: applyMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1037,6 +1057,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -1111,6 +1132,9 @@ export default function ApolloMiddleware(app) {
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> file size limit from content length header
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -1177,6 +1201,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     schema: applyMiddleware(resolvers, permissions),
 >>>>>>> changes
@@ -1208,6 +1233,11 @@ export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
     schema: applyMiddleware(resolvers, permissions),
 >>>>>>> changes
+    context: async ({ req: { auth, headers } }: any) => {
+      const baseContext = {
+        contentLength: headers['content-length'],
+>>>>>>> file size limit from content length header
+=======
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
         contentLength: headers['content-length'],
