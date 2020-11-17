@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 =======
 <<<<<<< HEAD
@@ -29,6 +30,8 @@ import { ApolloError } from 'apollo-server-express';
 <<<<<<< HEAD
 >>>>>>> formatting changes and some typings
 =======
+=======
+>>>>>>> formatting changes and some typings
 <<<<<<< HEAD
 =======
 import { ApolloError } from 'apollo-server-express';
@@ -105,16 +108,25 @@ import path from 'path';
 import fs from 'fs';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
+=======
+import { FileUpload } from 'graphql-upload';
+
+import { model as File } from '.';
+>>>>>>> formatting changes and some typings
 import { model as Project } from '../project';
-import { model as Role } from '../role';
 
-async function createFile(parent, args, context) {
+interface ICreateFileArgs {
+  file: FileUpload;
+  projectId: string;
+  sourceLanguage: string;
+}
+
+async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
-  console.log(args.file);
 
-  const stream = createReadStream();
-  stream.on('data', (chunk) => console.log(chunk.toString()));
-  const project = await Project.findOne({ _id: args.projectId })
+  // const stream = createReadStream();
+  // stream.on('data', (chunk) => console.log(chunk.toString()));
+  const project = await Project.findOne({ _id: args.projectId });
 
 <<<<<<< HEAD
 <<<<<<< HEAD
