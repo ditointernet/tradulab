@@ -106,6 +106,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -229,6 +230,8 @@ const app = express();
 >>>>>>> removing comments
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
