@@ -12,6 +12,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -75,3 +76,7 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> docker
+=======
+volumes:
+  db-data:
+>>>>>>> bolivar
