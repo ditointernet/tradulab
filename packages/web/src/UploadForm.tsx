@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 =======
@@ -8,6 +9,8 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> formatting changes and some typings
 <<<<<<< HEAD
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
@@ -72,49 +75,52 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
+=======
+import React from "react";
+import { useMutation, gql, useQuery } from "@apollo/client";
+>>>>>>> formatting changes and some typings
 
 export const LOGIN = gql`
-  query login ($email: String!, $password: String!){
-    login (
-      email: $email
-      password: $password
-    ) {
+  query login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
     }
   }
-`
+`;
 
 export const UPLOAD_FILE = gql`
-  mutation createFile($file: Upload!, $sourceLanguage: String!, $projectId: ID!){
+  mutation createFile(
+    $file: Upload!
+    $sourceLanguage: String!
+    $projectId: ID!
+  ) {
     createFile(
       file: $file
       sourceLanguage: $sourceLanguage
       projectId: $projectId
-      ){
-        id
-        filename
-        translationProgress
-        approvalProgress
-        sourceLanguage
-        extension
-        project {
-          displayName
-        }
-        createdAt
-        updatedAt
+    ) {
+      id
+      filename
+      translationProgress
+      approvalProgress
+      sourceLanguage
+      extension
+      project {
+        displayName
+      }
+      createdAt
+      updatedAt
     }
   }
-`
+`;
 export default function UploadForm() {
-
-  const { data: dataLogin } = useQuery(LOGIN, {
-    variables: { email: 'julinho2801@gmail.com', password: '123456' },
+  const { data: dataLogin, error } = useQuery(LOGIN, {
+    variables: { email: "uriell.viana@dito.com.br", password: "123456" },
   });
 
-  if (dataLogin) localStorage.setItem('token', dataLogin.login.token);
+  if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
-  console.log(data);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 <<<<<<< HEAD
@@ -130,8 +136,8 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
     const file = e.target.files![0];
-    const projectId = "5fae85634929506946d18fab";
-    const sourceLanguage = 'PT-BR';
+    const projectId = "5fad9b0a7ed68959e2341a59";
+    const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -140,6 +146,7 @@ export default function UploadForm() {
   return (
     <div>
       <h1>Upload File</h1>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -163,3 +170,9 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+      <input type="file" onChange={handleFileChange} />
+    </div>
+  );
+}
+>>>>>>> formatting changes and some typings
