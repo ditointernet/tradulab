@@ -62,9 +62,12 @@ import { model as File } from '.';
 import { model as Project } from '../project';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { model as Role } from '../role';
 import TradulabError from '../../errors';
 =======
+=======
+>>>>>>> file size limit from content length header
 =======
 >>>>>>> file size limit from content length header
 <<<<<<< HEAD
@@ -164,6 +167,9 @@ import { FileUpload } from 'graphql-upload';
 import { model as File } from '.';
 >>>>>>> formatting changes and some typings
 import { model as Project } from '../project';
+=======
+import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
+>>>>>>> file size limit from content length header
 =======
 import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
 >>>>>>> file size limit from content length header
