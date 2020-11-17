@@ -47,6 +47,7 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 =======
 import { not, and, or, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 import { not, and, or, rule, shield } from 'graphql-shield';
@@ -65,6 +66,9 @@ import cors from 'cors';
 =======
 import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+import cors from 'cors';
+>>>>>>> file size limit from content length header
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -147,6 +151,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (
         projectRole &&
         [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
@@ -173,10 +178,15 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       if (allowedRoles.includes(projectRole?.role)) return true;
 
 >>>>>>> file size limit from content length header
+=======
+      if (allowedRoles.includes(projectRole?.role)) return true;
+
+>>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return err;
+      return false;
     }
+<<<<<<< HEAD
     return new ForbiddenError(
       'You must be owner or manager in this project or this project doesnt exit.'
     );
@@ -220,12 +230,16 @@ const isDeveloper = rule()(
   }
 );
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    return new ForbiddenError('You must be owner or manager in this project.');
+  });
+
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+>>>>>>> file size limit from content length header
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-    uploads: {
-      maxFileSize: 200,
-    },
     schema: applyMiddleware(
       buildFederatedSchema([
         {
@@ -268,6 +282,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -286,6 +301,9 @@ export default function ApolloMiddleware(app) {
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> file size limit from content length header
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
