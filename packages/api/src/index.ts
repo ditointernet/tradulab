@@ -2,6 +2,7 @@ import * as express from 'express';
 import { mongo } from './config';
 import { env } from './helpers';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 
 const app = express();
@@ -25,6 +26,9 @@ const app = express();
 >>>>>>> removing comments
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
+=======
+// import { graphqlUploadExpress } from 'graphql-upload';
+>>>>>>> formatting changes and some typings
 
 const app = express();
 <<<<<<< HEAD
@@ -43,7 +47,7 @@ middlewares.apollo(app);
 app.use(middlewares.error);
 =======
 app.use(function (err, req, res, next) {
-  console.log('ERROOOO', err)
+  console.log('ERROOOO', err);
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
