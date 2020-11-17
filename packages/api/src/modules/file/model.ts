@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { IProject } from '../project/model';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
@@ -20,6 +21,9 @@ import { EXTENSION_LIST } from './constants';
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+
+>>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 
@@ -230,6 +234,7 @@ const model = mongoose.model('file', schema);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -238,6 +243,9 @@ export default model;
 =======
 export default model;
 >>>>>>> Criado o module files e a resolver create File
+=======
+export default model;
+>>>>>>> file size limit from content length header
 =======
 export default model;
 >>>>>>> file size limit from content length header
