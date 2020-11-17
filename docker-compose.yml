@@ -6,6 +6,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
       - "27017:27017"
+<<<<<<< HEAD
   api:
     build: packages/api
     command: npm start
@@ -30,3 +31,7 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> docker
+=======
+volumes:
+  db-data:
+>>>>>>> bolivar
