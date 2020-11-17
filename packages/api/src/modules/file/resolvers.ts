@@ -160,6 +160,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
+<<<<<<< HEAD
     throw new ApolloError('File size exceeded, limit is 5MB.');
   }
 
@@ -455,8 +456,14 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   stream.on('data', (chunk) => console.log(chunk.toString()));
   const project = await Project.findOne({ _id: args.projectId })
 =======
+=======
+    throw new Error('File size exceeded, limit is 5MB.');
+  }
+
+>>>>>>> file size limit from content length header
   // const stream = createReadStream();
   // stream.on('data', (chunk) => console.log(chunk.toString()));
+
   const project = await Project.findOne({ _id: args.projectId });
 >>>>>>> formatting changes and some typings
 
