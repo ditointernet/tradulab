@@ -1,27 +1,35 @@
 export const ROLES = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   CONTRIBUTOR: 'contributor',
 =======
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> remove comments
   CONTRIBUTOR: 'contributor',
-  PROOFREADER: 'proofreader',
-  DEVELOPER: 'developer',
-  MANAGER: 'manager',
->>>>>>> Update Role
-  OWNER: 'owner',
-  MANAGER: 'manager',
->>>>>>> Update Role
   DEVELOPER: 'developer',
   MANAGER: 'manager',
   OWNER: 'owner',
+<<<<<<< HEAD
+  MANAGER: 'manager',
+>>>>>>> Update Role
+  DEVELOPER: 'developer',
+  MANAGER: 'manager',
+  OWNER: 'owner',
+=======
+>>>>>>> remove comments
   PROOFREADER: 'proofreader',
   // VIEWER: 'viewer',
 };
 
+<<<<<<< HEAD
 export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
 
 // Array ordenado Hierarquicamente
+=======
+// Arrey ordenado Hierarquicamente
+>>>>>>> remove comments
 export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,
