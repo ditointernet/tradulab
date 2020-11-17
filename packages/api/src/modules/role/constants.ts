@@ -6,8 +6,8 @@ export const ROLES = {
   OWNER: 'owner',
 };
 
-// Arrey ordenado Hierarquicamente
-export const ROLES_LIST = [ // mudar nome
+// Array ordenado Hierarquicamente
+export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
