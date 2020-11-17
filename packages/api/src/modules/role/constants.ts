@@ -7,8 +7,13 @@ export const ROLES = {
   // VIEWER: 'viewer',
 };
 
+<<<<<<< HEAD
 // Array ordenado Hierarquicamente
 export const ROLES_LIST = [
+=======
+// Arrey ordenado Hierarquicamente
+export const ROLES_LIST = [ // mudar nome
+>>>>>>> remove comments
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
