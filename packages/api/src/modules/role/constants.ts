@@ -67,6 +67,7 @@ export const ROLES_LIST = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> remove comments
 // Arrey ordenado Hierarquicamente
@@ -110,6 +111,9 @@ export const ROLES_LIST = [
 =======
 export const ROLES_LIST = [ // mudar nome
 >>>>>>> remove comments
+=======
+export const ROLES_LIST = [
+>>>>>>> erase comments
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
