@@ -48,6 +48,7 @@ export const ROLES_LIST = [
   OWNER: 'owner',
 };
 
+// Arrey ordenado Hierarquicamente
 export const ROLES_LIST = [ // mudar nome
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
   ROLES.OWNER,
