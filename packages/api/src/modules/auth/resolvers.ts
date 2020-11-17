@@ -310,6 +310,7 @@ async function login(_parent, { payload: { email, password } }) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -334,6 +335,9 @@ async function login(_parent, { payload: { email, password } }) {
 =======
 // Não acho legal este nomes e esta maneira de exportar
 >>>>>>> pull
+=======
+
+>>>>>>> erase comments
 export const queries = { login };
 >>>>>>> pull
 =======
