@@ -43,6 +43,7 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { not, and, or, rule, shield } from 'graphql-shield';
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -51,6 +52,9 @@ import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+import cors from 'cors';
+>>>>>>> file size limit from content length header
 =======
 import cors from 'cors';
 >>>>>>> file size limit from content length header
@@ -125,6 +129,7 @@ const typeDefs = gql`
   ${file.types}
 `;
 
+<<<<<<< HEAD
 const isAuthenticated = rule()((parent, args, { user }) => {
   if (!user) {
     return new AuthenticationError('You must be logged in.');
@@ -242,14 +247,24 @@ const permissions = shield(
 );
 const isDeveloper = rule()(
   async (parent, { projectId }, { user: { id: currentUserId } }) => {
+=======
+const isAuthenticated = rule()((parent, args, { user }) => !!user);
+const isOneOfTheseRoles = (allowedRoles: string[]) =>
+  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+>>>>>>> file size limit from content length header
     if (user) {
       try {
         const projectRole = await role.model.findOne({
           project: projectId,
           user: currentUserId,
         });
+<<<<<<< HEAD
         if (projectRole.role === ROLES.DEVELOPER)
           return true;
+=======
+
+        if (allowedRoles.includes(projectRole?.role)) return true;
+>>>>>>> file size limit from content length header
       } catch (err) {
         console.error(err);
         return false;
@@ -270,34 +285,20 @@ const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 =======
     return false;
-  }
-);
-const isDeveloper = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) {
-      try {
-        const projectRole = await role.model.findOne({
-          project: projectId,
-          user: currentUserId,
-        });
-        if (projectRole.role === ROLES.DEVELOPER)
-          return true;
-      } catch (err) {
-        console.error(err);
-        return false;
-      }
-    }
+  });
 
+<<<<<<< HEAD
     return false;
   }
 );
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+>>>>>>> file size limit from content length header
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-    uploads: {
-      maxFileSize: 200,
-    },
     schema: applyMiddleware(
 <<<<<<< HEAD
       resolvers,
@@ -341,6 +342,7 @@ export default function ApolloMiddleware(app) {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
             createFile: and(
@@ -348,6 +350,9 @@ export default function ApolloMiddleware(app) {
               or(isDeveloper, isManagerOrOwner)
             ),
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> file size limit from content length header
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -398,7 +403,11 @@ export default function ApolloMiddleware(app) {
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
 <<<<<<< HEAD
+<<<<<<< HEAD
         contentLength: parseInt(headers['content-length']),
+=======
+        contentLength: headers['content-length'],
+>>>>>>> file size limit from content length header
 =======
         contentLength: headers['content-length'],
 >>>>>>> file size limit from content length header
