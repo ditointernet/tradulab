@@ -6,12 +6,15 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> crack the code
 =======
 =======
+=======
+>>>>>>> file size limit from content length header
 import {
   ApolloError,
   ApolloServer,
@@ -102,6 +105,7 @@ import cors from 'cors';
 >>>>>>> file size limit from content length header
 =======
 import cors from 'cors';
+<<<<<<< HEAD
 >>>>>>> file size limit from content length header
 =======
 =======
@@ -117,6 +121,8 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 >>>>>>> Corrigido erro de cors pra qualquer request
 import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> file size limit from content length header
 
 =======
 import cors from 'cors';
@@ -148,15 +154,7 @@ const corsOptions: cors.CorsOptions = {
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
-<<<<<<< HEAD
-<<<<<<< HEAD
   allowedHeaders: ['Authorization', 'content-type'],
-=======
-  allowedHeaders: 'Authorization',  
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-  allowedHeaders: ['Authorization', 'content-type'],
->>>>>>> Corrigido erro de cors pra qualquer request
 };
 
 const typeDefs = gql`
@@ -493,36 +491,12 @@ const isDeveloper = rule()(
   });
 >>>>>>> file size limit from content length header
 
-<<<<<<< HEAD
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
-=======
-    return false;
-  }
-);
-const isDeveloper = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) {
-      try {
-        const projectRole = await role.model.findOne({
-          project: projectId,
-          user: currentUserId,
-        });
-        if (projectRole.role === ROLES.DEVELOPER)
-          return true;
-      } catch (err) {
-        console.error(err);
-        return false;
-      }
-    }
-
-    return false;
-  }
-);
->>>>>>> Corrigido erro de cors pra qualquer request
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     uploads: {
@@ -536,6 +510,8 @@ export default function ApolloMiddleware(app) {
       maxFileSize: 200,
     },
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header
     schema: applyMiddleware(
 <<<<<<< HEAD
       resolvers,
@@ -585,6 +561,7 @@ export default function ApolloMiddleware(app) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 =======
 =======
@@ -623,6 +600,9 @@ export default function ApolloMiddleware(app) {
             ),
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> file size limit from content length header
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
