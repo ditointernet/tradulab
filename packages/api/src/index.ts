@@ -17,6 +17,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import * as middlewares from './middlewares';
 <<<<<<< HEAD
@@ -130,6 +131,8 @@ import * as middlewares from './middlewares';
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
+=======
+>>>>>>> formatting changes and some typings
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 
@@ -231,6 +234,9 @@ app.use(cors());
 =======
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
+=======
+// import { graphqlUploadExpress } from 'graphql-upload';
+>>>>>>> formatting changes and some typings
 
 const app = express();
 
@@ -249,6 +255,7 @@ middlewares.apollo(app);
 <<<<<<< HEAD
 <<<<<<< HEAD
 app.use(function (err, req, res, next) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -312,6 +319,8 @@ app.use(function (err, _req, res, _next) {
   console.log('ERROOOO', err)
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
+=======
+>>>>>>> formatting changes and some typings
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
 =======
@@ -322,8 +331,11 @@ app.use(function (err, _req, res, _next) {
 =======
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
+<<<<<<< HEAD
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> formatting changes and some typings
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
