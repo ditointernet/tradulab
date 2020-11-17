@@ -233,16 +233,22 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 // Não acho legal este nomes e esta maneira de exportar
 =======
+=======
+>>>>>>> erase comments
 
 <<<<<<< HEAD
 >>>>>>> erase comments
 =======
 // Não acho legal este nomes e esta maneira de exportar
+<<<<<<< HEAD
 >>>>>>> pull
+=======
+>>>>>>> erase comments
 =======
 
 >>>>>>> erase comments
