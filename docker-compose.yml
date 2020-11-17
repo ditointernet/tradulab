@@ -40,6 +40,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -48,6 +49,8 @@ services:
 >>>>>>> volume api
 =======
 >>>>>>> volume api
+=======
+>>>>>>> bolivar
   api:
     build: packages/api
     command: npm start
@@ -213,6 +216,7 @@ volumes:
 volumes:
   db-data:
 >>>>>>> bolivar
+<<<<<<< HEAD
 =======
     depends_on:
       - api
@@ -257,3 +261,5 @@ volumes:
 >>>>>>> Update Role
 =======
 >>>>>>> docker
+=======
+>>>>>>> bolivar
