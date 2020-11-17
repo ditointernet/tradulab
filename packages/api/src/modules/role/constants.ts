@@ -6,7 +6,7 @@ export const ROLES = {
   OWNER: 'owner',
 };
 
-export const ROLES_LIST = [ // mudar nome
+export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,
