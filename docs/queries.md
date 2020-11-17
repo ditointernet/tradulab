@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Auth / User
 
 ## Criar Usuários
@@ -495,10 +496,70 @@ mutation projectJornadas {
     slug
     private
     _id
+=======
+Sample mutations for our project
+
+##### Auth
+
+```gql
+# Write your query or mutation here
+mutation authOwner {
+  createUser(
+    user: {
+      email: "uriell.viana@dito.com.br"
+      password: "123456"
+      username: "uriell"
+    }
+  ) {
+    token
+  }
+}
+
+mutation authContributor {
+  createUser(
+    user: {
+      email: "uriell.viana+contributor@dito.com.br"
+      password: "123456"
+      username: "uriell-contributor"
+    }
+  ) {
+    token
+  }
+}
+
+query meOwner {
+  me {
+    id
+  }
+}
+
+query meContributor {
+  me {
+    id
   }
 }
 ```
 
+##### Project
+
+```gql
+mutation project {
+  createProject(displayName: "Dito") {
+    id
+    slug
+    displayName
+    owner {
+      id
+    }
+    private
+    createdAt
+    updatedAt
+>>>>>>> create docs
+  }
+}
+```
+
+<<<<<<< HEAD
 ## Listar Projetos
 
 ```gql
@@ -556,11 +617,14 @@ query listFiles {
 ##### Project
 
 >>>>>>> Back-End Review
+=======
+>>>>>>> create docs
 ##### Role
 
 ```gql
 mutation invite {
   inviteUserToProject(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -584,10 +648,16 @@ mutation invite {
 >>>>>>> queries
 =======
 >>>>>>> queries
+=======
+    projectId: "5fad9b0a7ed68959e2341a59"
+    userId: "5fad9ae37ed68959e2341a57"
+    role: manager
+>>>>>>> create docs
   ) {
     id
     role
     user {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -599,12 +669,15 @@ mutation invite {
       name
       owner
 =======
+=======
+>>>>>>> create docs
       id
       displayName
     }
     project {
       id
       displayName
+<<<<<<< HEAD
 >>>>>>> create docs
 =======
       nickname
@@ -624,6 +697,8 @@ mutation invite {
       name
       owner
 >>>>>>> queries
+=======
+>>>>>>> create docs
     }
     createdAt
     updatedAt
@@ -664,6 +739,7 @@ mutation remove {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Header
 
@@ -746,3 +822,5 @@ The service that defines the field is also the service that knows how to populat
 
 Schemas: The service that defines the field is also the service that knows how to populate the field
 >>>>>>> Back-End Review
+=======
+>>>>>>> create docs
