@@ -24,12 +24,16 @@ export const ROLES = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
 
 // Array ordenado Hierarquicamente
 =======
 // Arrey ordenado Hierarquicamente
 >>>>>>> remove comments
+=======
+// Array ordenado Hierarquicamente
+>>>>>>> erase comments
 export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,
