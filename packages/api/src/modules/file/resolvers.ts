@@ -1,16 +1,20 @@
-import path from 'path';
-import fs from 'fs';
-import { model as File } from '.'
+import { FileUpload } from 'graphql-upload';
+
+import { model as File } from '.';
 import { model as Project } from '../project';
-import { model as Role } from '../role';
 
-async function createFile(parent, args, context) {
+interface ICreateFileArgs {
+  file: FileUpload;
+  projectId: string;
+  sourceLanguage: string;
+}
+
+async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
-  console.log(args.file);
 
-  const stream = createReadStream();
-  stream.on('data', (chunk) => console.log(chunk.toString()));
-  const project = await Project.findOne({ _id: args.projectId })
+  // const stream = createReadStream();
+  // stream.on('data', (chunk) => console.log(chunk.toString()));
+  const project = await Project.findOne({ _id: args.projectId });
 
   if (!project) {
     throw new Error('The provided project does not exist.');
