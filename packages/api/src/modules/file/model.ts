@@ -21,6 +21,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -35,6 +36,8 @@ import * as mongoose from 'mongoose';
 import { IProject } from '../project/model';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
+=======
+>>>>>>> file size limit from content length header
 =======
 >>>>>>> file size limit from content length header
 =======
@@ -115,6 +118,11 @@ import { EXTENSION_LIST } from './constants';
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
+<<<<<<< HEAD
+=======
+
+>>>>>>> file size limit from content length header
+>>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 
@@ -640,9 +648,16 @@ export default model;
     sourceLanguage: {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
+<<<<<<< HEAD
       required: true
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+      required: true,
+>>>>>>> file size limit from content length header
+>>>>>>> file size limit from content length header
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -963,4 +978,7 @@ export default model;
 const model = mongoose.model('file', schema);
 
 export default model;
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> file size limit from content length header
