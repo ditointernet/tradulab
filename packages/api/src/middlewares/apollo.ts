@@ -31,11 +31,15 @@ import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, Gr
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 import cors from "cors";
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+import cors from 'cors';
+>>>>>>> file size limit from content length header
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -99,53 +103,37 @@ const isAuthenticated = rule()((parent, args, { user }) => {
   return true;
 });
 
-const isManagerOrOwner = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+const isOneOfTheseRoles = (allowedRoles: string[]) =>
+  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
         user: currentUserId,
       });
 
+<<<<<<< HEAD
       if (
         projectRole &&
         [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
       ) {
         return true;
       }
+=======
+      if (allowedRoles.includes(projectRole?.role)) return true;
+
+>>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return err;
+      return false;
     }
-
     return new ForbiddenError('You must be owner or manager in this project.');
-  }
-);
-const isDeveloper = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) {
-      try {
-        const projectRole = await role.model.findOne({
-          project: projectId,
-          user: currentUserId,
-        });
-        if (projectRole.role === ROLES.DEVELOPER)
-          return true;
-      } catch (err) {
-        console.error(err);
-        return false;
-      }
-    }
+  });
 
-    return false;
-  }
-);
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-    uploads: {
-      maxFileSize: 200,
-    },
     schema: applyMiddleware(
       buildFederatedSchema([
         {
@@ -184,10 +172,7 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
-            createFile: and(
-              isAuthenticated,
-              or(isDeveloper, isManagerOrOwner)
-            ),
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -234,12 +219,17 @@ export default function ApolloMiddleware(app) {
         }
       )
     ),
-    context: async ({ req: { auth } }: any) => {
+    context: async ({ req: { auth, headers } }: any) => {
+      const baseContext = {
+        contentLength: headers['content-length'],
+        user: undefined,
+      };
+
       if (typeof auth === 'object' && auth.id) {
-        return { user: await user.model.findById(auth.id) };
+        baseContext.user = await user.model.findById(auth.id);
       }
 
-      return {};
+      return baseContext;
     },
   });
 
