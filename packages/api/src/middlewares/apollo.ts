@@ -98,10 +98,13 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Update Role
+=======
+>>>>>>> remove comments
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -117,6 +120,7 @@ const corsOptions: cors.CorsOptions = {
 // Create e object types;
 // Custon scalar types
 >>>>>>> Update Role
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 const corsOptions: cors.CorsOptions = {
@@ -140,6 +144,10 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Update Role
+=======
+=======
+>>>>>>> remove comments
+>>>>>>> remove comments
 const typeDefs = gql`
   scalar Date
 
