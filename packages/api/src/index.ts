@@ -208,6 +208,7 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -243,6 +244,9 @@ app.use(function (err, _req, res, _next) {
 =======
   console.log("Error: ", err.name)
 >>>>>>> Update Role
+=======
+  console.error("Error: ", err.name)
+>>>>>>> remove comments
 });
 =======
 app.use(middlewares.error);
