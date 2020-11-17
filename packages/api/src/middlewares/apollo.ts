@@ -16,6 +16,7 @@ import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -27,6 +28,8 @@ const corsOptions: cors.CorsOptions = {
 // Create e object types;
 // Custon scalar types
 >>>>>>> Update Role
+=======
+>>>>>>> remove comments
 const typeDefs = gql`
   scalar Date
 
