@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
 
@@ -69,10 +70,15 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
 >>>>>>> formatting changes and some typings
+=======
+import React from "react";
+import { useMutation, gql, useQuery } from "@apollo/client";
+>>>>>>> formatting changes and some typings
 
 export const LOGIN = gql`
   query login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
+<<<<<<< HEAD
       token
     }
   }
@@ -92,19 +98,32 @@ export const LOGIN = gql`
       email: $email
       password: $password
     ) {
+=======
+>>>>>>> formatting changes and some typings
       token
     }
   }
-`
+`;
 
 export const UPLOAD_FILE = gql`
+<<<<<<< HEAD
   mutation createFile($file: Upload!, $sourceLanguage: String!, $projectId: ID!){
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+  mutation createFile(
+    $file: Upload!
+    $sourceLanguage: String!
+    $projectId: ID!
+  ) {
+>>>>>>> formatting changes and some typings
     createFile(
       file: $file
       sourceLanguage: $sourceLanguage
       projectId: $projectId
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> formatting changes and some typings
     ) {
       id
       filename
@@ -117,6 +136,7 @@ export const UPLOAD_FILE = gql`
       }
       createdAt
       updatedAt
+<<<<<<< HEAD
 =======
       ){
         id
@@ -151,9 +171,19 @@ export default function UploadForm() {
 
   if (dataLogin) localStorage.setItem('token', dataLogin.login.token);
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    }
+  }
+`;
+export default function UploadForm() {
+  const { data: dataLogin, error } = useQuery(LOGIN, {
+    variables: { email: "uriell.viana@dito.com.br", password: "123456" },
+  });
+
+  if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
+>>>>>>> formatting changes and some typings
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
-  console.log(data);
 
 <<<<<<< HEAD
   console.log(data);
@@ -180,8 +210,8 @@ export default function UploadForm() {
 =======
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
-    const projectId = "5fae85634929506946d18fab";
-    const sourceLanguage = 'PT-BR';
+    const projectId = "5fad9b0a7ed68959e2341a59";
+    const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -194,6 +224,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <input type="file" onChange={handleFileChange} />
     </div>
   );
@@ -232,4 +263,13 @@ export default function UploadForm() {
 =======
 };
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+<<<<<<< HEAD
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+=======
+      <input type="file" onChange={handleFileChange} />
+    </div>
+  );
+}
+>>>>>>> formatting changes and some typings
+>>>>>>> formatting changes and some typings
