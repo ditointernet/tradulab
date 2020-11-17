@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Auth / User
 
 ## Criar Usuários
@@ -50,10 +51,45 @@ mutation userMiguel {
     email
     nickname
     username
+=======
+Sample mutations for our project
+
+##### Auth
+
+```gql
+# Write your query or mutation here
+mutation authOwner {
+  createUser(
+    user: {
+      email: "uriell.viana@dito.com.br"
+      password: "123456"
+      username: "uriell"
+    }
+  ) {
+    token
+  }
+}
+
+mutation authContributor {
+  createUser(
+    user: {
+      email: "uriell.viana+contributor@dito.com.br"
+      password: "123456"
+      username: "uriell-contributor"
+    }
+  ) {
+    token
+  }
+}
+
+query meOwner {
+  me {
+>>>>>>> create docs
     id
   }
 }
 
+<<<<<<< HEAD
 mutation userUriell {
   createUser(
     payload: {
@@ -67,11 +103,16 @@ mutation userUriell {
     email
     nickname
     username
+=======
+query meContributor {
+  me {
+>>>>>>> create docs
     id
   }
 }
 ```
 
+<<<<<<< HEAD
 ## Login Usuários
 
 ```gql
@@ -188,10 +229,27 @@ query listProjects {
     }
     role
     id
+=======
+##### Project
+
+```gql
+mutation project {
+  createProject(displayName: "Dito") {
+    id
+    slug
+    displayName
+    owner {
+      id
+    }
+    private
+    createdAt
+    updatedAt
+>>>>>>> create docs
   }
 }
 ```
 
+<<<<<<< HEAD
 # File
 
 ## List Files
@@ -217,15 +275,21 @@ query me {
 ````
 
 # Role
+=======
+##### Role
+>>>>>>> create docs
 
 ```gql
 mutation invite {
   inviteUserToProject(
+<<<<<<< HEAD
     payload: {
       projectId: "5fd8236cdea7dc1e623cdfbb"
       userId: "5fd7e99d7ed16045a86cb55b"
       role: contributor
     }
+=======
+>>>>>>> create docs
     projectId: "5fad9b0a7ed68959e2341a59"
     userId: "5fad9ae37ed68959e2341a57"
     role: manager
@@ -233,6 +297,7 @@ mutation invite {
     id
     role
     user {
+<<<<<<< HEAD
       nickname
       username
     }
@@ -240,12 +305,15 @@ mutation invite {
       slug
       name
       owner
+=======
+>>>>>>> create docs
       id
       displayName
     }
     project {
       id
       displayName
+<<<<<<< HEAD
       nickname
       username
     }
@@ -260,6 +328,8 @@ mutation invite {
       slug
       name
       owner
+=======
+>>>>>>> create docs
     }
     createdAt
     updatedAt
@@ -297,6 +367,7 @@ mutation remove {
   }
 }
 ```
+<<<<<<< HEAD
 
 # Header
 
@@ -305,3 +376,5 @@ mutation remove {
 }
 
 Schemas: The service that defines the field is also the service that knows how to populate the field
+=======
+>>>>>>> create docs
