@@ -6,6 +6,7 @@ export const ROLES = {
   OWNER: 'owner',
 };
 
+// Arrey ordenado Hierarquicamente
 export const ROLES_LIST = [ // mudar nome
   ROLES.OWNER,
   ROLES.MANAGER,
