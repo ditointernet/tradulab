@@ -3,7 +3,7 @@ import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
-import cors from "cors";
+import cors from 'cors';
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -37,8 +37,8 @@ const typeDefs = gql`
 `;
 
 const isAuthenticated = rule()((parent, args, { user }) => !!user);
-const isManagerOrOwner = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+const isOneOfTheseRoles = (allowedRoles: string[]) =>
+  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
     if (user) {
       try {
         const projectRole = await role.model.findOne({
@@ -46,8 +46,7 @@ const isManagerOrOwner = rule()(
           user: currentUserId,
         });
 
-        if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role))
-          return true;
+        if (allowedRoles.includes(projectRole?.role)) return true;
       } catch (err) {
         console.error(err);
         return false;
@@ -55,33 +54,13 @@ const isManagerOrOwner = rule()(
     }
 
     return false;
-  }
-);
-const isDeveloper = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) {
-      try {
-        const projectRole = await role.model.findOne({
-          project: projectId,
-          user: currentUserId,
-        });
-        if (projectRole.role === ROLES.DEVELOPER)
-          return true;
-      } catch (err) {
-        console.error(err);
-        return false;
-      }
-    }
+  });
 
-    return false;
-  }
-);
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-    uploads: {
-      maxFileSize: 200,
-    },
     schema: applyMiddleware(
       buildFederatedSchema([
         {
@@ -114,10 +93,7 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
-            createFile: and(
-              isAuthenticated,
-              or(isDeveloper, isManagerOrOwner)
-            ),
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -143,12 +119,17 @@ export default function ApolloMiddleware(app) {
         }
       )
     ),
-    context: async ({ req: { auth } }: any) => {
+    context: async ({ req: { auth, headers } }: any) => {
+      const baseContext = {
+        contentLength: headers['content-length'],
+        user: undefined,
+      };
+
       if (typeof auth === 'object' && auth.id) {
-        return { user: await user.model.findById(auth.id) };
+        baseContext.user = await user.model.findById(auth.id);
       }
 
-      return {};
+      return baseContext;
     },
   });
 
