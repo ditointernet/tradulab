@@ -17,6 +17,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -61,9 +62,12 @@ export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 >>>>>>> update listFiles and error
 =======
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> file size limit from content length header
 export const EXTENSION_LIST = ['json', 'txt', 'csv'];
 
 export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -290,3 +294,5 @@ export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 ];
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header

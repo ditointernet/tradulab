@@ -24,6 +24,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -149,6 +150,8 @@ import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
 import { EXTENSION_LIST } from './constants';
+=======
+>>>>>>> file size limit from content length header
 import { IProject } from '../project/model';
 >>>>>>> changes
 =======
@@ -760,6 +763,7 @@ const model = mongoose.model('file', schema);
 export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
+<<<<<<< HEAD
 =======
 // export interface IFile extends mongoose.Document {
 //   filename: string;
@@ -772,6 +776,11 @@ export default model;
 //   createdAt: Date;
 //   updateAt: Date;
 // }
+=======
+
+>>>>>>> file size limit from content length header
+import { EXTENSION_LIST } from './constants';
+>>>>>>> file size limit from content length header
 
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
@@ -887,6 +896,7 @@ export default model;
 =======
     filePath: {
       type: String,
+<<<<<<< HEAD
       required:true,
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -895,6 +905,14 @@ export default model;
 =======
     filePath: {
       type: String,
+=======
+<<<<<<< HEAD
+      required: true
+>>>>>>> Criado o module files e a resolver create File
+=======
+      required: true,
+>>>>>>> file size limit from content length header
+>>>>>>> file size limit from content length header
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -1042,5 +1060,11 @@ export default model;
 const model = mongoose.model('file', schema);
 
 export default model;
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
+=======
+=======
+>>>>>>> file size limit from content length header
+>>>>>>> file size limit from content length header
