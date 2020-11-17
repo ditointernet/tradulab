@@ -89,6 +89,7 @@ const app = express();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // declarando uma nova variável
 >>>>>>> Update Role
@@ -221,6 +222,8 @@ app.use(cors());
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> file size limit from content length header
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
