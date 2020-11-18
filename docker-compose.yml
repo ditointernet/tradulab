@@ -31,6 +31,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -104,6 +105,13 @@ services:
     volumes:
       - tradulab:/var/lib/files
 >>>>>>> volume api
+=======
+  api:
+    build: packages/api
+    command: npm start
+    ports:
+      - "3001:3001"
+>>>>>>> Create API and WEB Images
   web:
     build: packages/web
     command: npm start
@@ -115,6 +123,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix
 =======
@@ -207,3 +216,7 @@ volumes:
 volumes:
   db-data:
 >>>>>>> bolivar
+=======
+    depends_on:
+      - api
+>>>>>>> Create API and WEB Images
