@@ -214,6 +214,7 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -258,6 +259,9 @@ app.use(function (err, _req, res, _next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> conflict
+=======
+  console.error('Error: ', err.name)
+>>>>>>> change aspas
 });
 =======
 app.use(middlewares.error);
