@@ -21,5 +21,10 @@ export default gql`
       sourceLanguage: String!
       projectId: ID!
     ): File!
+    updateFile(
+      newFilename: String!
+      fileId: ID!
+      projectId: ID!
+    ): File!
   }
 `;

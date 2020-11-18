@@ -45,7 +45,6 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
           project: projectId,
           user: currentUserId,
         });
-
         if (allowedRoles.includes(projectRole?.role)) return true;
       } catch (err) {
         console.error(err);
@@ -94,6 +93,7 @@ export default function ApolloMiddleware(app) {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+            updateFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -124,11 +124,9 @@ export default function ApolloMiddleware(app) {
         contentLength: headers['content-length'],
         user: undefined,
       };
-
       if (typeof auth === 'object' && auth.id) {
         baseContext.user = await user.model.findById(auth.id);
       }
-
       return baseContext;
     },
   });

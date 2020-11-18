@@ -10,6 +10,12 @@ interface ICreateFileArgs {
   sourceLanguage: string;
 }
 
+interface IUpdateFileArgs {
+  newFilename: string;
+  projectId: string;
+  fileId: string;
+}
+
 async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
@@ -42,6 +48,25 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   }
 
   return file;
-}
+};
 
-export const mutations = { createFile };
+async function updateFile(parent, args: IUpdateFileArgs) {
+
+  const file = await File.findOne({ _id: args.fileId });
+
+  if (!file) {
+    throw new Error('The provided file does not exist.');
+  }
+
+  try {
+    file.filename = args.newFilename;
+    await file.save();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+  return file;
+};
+
+export const mutations = { createFile, updateFile };
