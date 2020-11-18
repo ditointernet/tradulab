@@ -4,5 +4,15 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-volumes:
-  db-data:
+  api:
+    build: packages/api
+    command: npm start
+    ports:
+      - "3001:3001"
+  web:
+    build: packages/web
+    command: npm start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
