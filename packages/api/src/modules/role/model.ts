@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import { IProject } from '../project/model';
+import { IUser } from '../user/model';
 
 import { ROLES_LIST } from './constants';
 
@@ -31,6 +33,14 @@ const schema = new mongoose.Schema(
   }
 );
 
-const model = mongoose.model('role', schema);
+export interface IRole extends mongoose.Document {
+  role: string;
+  project: mongoose.Types.ObjectId | IProject;
+  user: mongoose.Types.ObjectId | IUser;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+const model = mongoose.model<IRole>('role', schema);
 
 export default model;

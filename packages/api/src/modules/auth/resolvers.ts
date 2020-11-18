@@ -15,7 +15,7 @@ function verifyPassword(password, currentHash) {
 
 function signToken(payload) {
   const options = {
-    expiresIn: '30m',
+    expiresIn: process.env.NODE_ENV === 'production' ? '30m' : '1d',
   };
 
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
