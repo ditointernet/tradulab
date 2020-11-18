@@ -39,6 +39,7 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.error('Error: ', err.name);
 =======
   console.log("Error: ", err.name)
@@ -52,6 +53,9 @@ app.use(function (err, req, res, next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> conflict
+=======
+  console.error('Error: ', err.name)
+>>>>>>> change aspas
 });
 >>>>>>> Update Role
 
