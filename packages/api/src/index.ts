@@ -14,7 +14,7 @@ app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
-  console.error("Error: ", err.name)
+  console.error('Error: ', err.name)
 });
 
 function start() {
