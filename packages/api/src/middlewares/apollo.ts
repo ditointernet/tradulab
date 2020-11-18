@@ -94,6 +94,7 @@ export default function ApolloMiddleware(app) {
             createProject: isAuthenticated,
             createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             updateFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+            removeFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner

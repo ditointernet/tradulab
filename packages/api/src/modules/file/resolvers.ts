@@ -16,6 +16,11 @@ interface IUpdateFileArgs {
   fileId: string;
 }
 
+interface IRemoveFileArgs {
+  projectId: string;
+  fileId: string;
+}
+
 async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
@@ -69,4 +74,23 @@ async function updateFile(parent, args: IUpdateFileArgs) {
   return file;
 };
 
-export const mutations = { createFile, updateFile };
+async function removeFile(parent, args: IRemoveFileArgs) {
+  const file = await File.findOne({ _id: args.fileId });
+
+  if (!file) {
+    throw new Error('The provided file does not exist.');
+  }
+
+  try {
+    file.remove();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+  const resp = "File removed with success";
+
+  return resp;
+}
+
+export const mutations = { createFile, updateFile, removeFile };

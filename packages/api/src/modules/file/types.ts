@@ -26,5 +26,9 @@ export default gql`
       fileId: ID!
       projectId: ID!
     ): File!
+    removeFile(
+      fileId: ID!
+      projectId: ID!
+    ): String!
   }
 `;
