@@ -22,6 +22,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -51,11 +52,14 @@ services:
       - tradulab:/var/lib/files
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Create API and WEB Images
   api:
     build: packages/api
     command: npm start
     ports:
       - "3001:3001"
+<<<<<<< HEAD
 >>>>>>> Create API and WEB Images
 =======
 >>>>>>> volume api
@@ -71,6 +75,8 @@ services:
     volumes:
       - tradulab:/var/lib/files
 >>>>>>> volume api
+=======
+>>>>>>> Create API and WEB Images
   web:
     build: packages/web
     command: npm start
@@ -80,6 +86,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix
     network_mode: host
@@ -144,3 +151,7 @@ volumes:
 volumes:
   db-data:
 >>>>>>> bolivar
+=======
+    depends_on:
+      - api
+>>>>>>> Create API and WEB Images
