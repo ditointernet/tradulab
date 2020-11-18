@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create API and WEB Images
 =======
@@ -30,6 +31,9 @@ FROM node:latest
 =======
 FROM node:12-stretch
 >>>>>>> fix docker-file
+=======
+FROM node:latest
+>>>>>>> Create API and WEB Images
 WORKDIR /usr/src/tradulab/web
 COPY ./package*.json ./
 RUN npm install
