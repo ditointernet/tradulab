@@ -3,6 +3,7 @@ import { model as User } from '../user';
 import { model as Role } from '../role';
 import { ROLES, ROLES_LIST } from '../role/constants';
 import { IRole } from './model';
+import { ApolloError, ForbiddenError } from 'apollo-server-express';
 
 async function projectUsers(parent, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -14,7 +15,7 @@ async function projectUsers(parent, args) {
 
 async function inviteUserToProject(parent, args, context) {
   if (args.userId === context.user.id) {
-    throw new Error('You cannot invite yourself.');
+    throw new ApolloError('You cannot invite yourself.'); // Code?
   }
 
   const existingRole = await Role.findOne({
@@ -23,19 +24,19 @@ async function inviteUserToProject(parent, args, context) {
   });
 
   if (existingRole) {
-    throw new Error('The provided user is already part of the project.');
+    throw new ApolloError('The provided user is already part of the project.'); // Code?
   }
 
   const targetProject = await Project.findById(args.projectId);
 
   if (!targetProject) {
-    throw new Error('The provided project does not exist.');
+    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
   }
 
   const targetUser = await User.findById(args.userId);
 
   if (!targetUser) {
-    throw new Error('The provided user does not exist.');
+    throw new ApolloError('The provided user does not exist.', 'USER_NOT_FOUND');
   }
 
   const targetUserRole = new Role({
@@ -50,13 +51,14 @@ async function inviteUserToProject(parent, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
-    throw new Error('You cannot invite an user with the same or higher role.');
+    throw new ForbiddenError('You cannot invite an user with the same or higher role.');
   }
 
   try {
     await targetUserRole.save();
   } catch (err) {
-    await targetUserRole.remove();
+    await targetUserRole.remove(); // Isso aqui é realmente necessário?
+    // Um erro precisa ser lançado para que não retorne nenhum role sem ter salvo no banco
   }
 
   return targetUserRole;
@@ -64,7 +66,7 @@ async function inviteUserToProject(parent, args, context) {
 
 async function updateUserProjectRole(parent, args, context) {
   if (args.userId === context.user.id) {
-    throw new Error('You cannot update your own role.');
+    throw new ForbiddenError('You cannot update your own role.');
   }
 
   const targetUserRole = await Role.findOne({
@@ -75,7 +77,7 @@ async function updateUserProjectRole(parent, args, context) {
     .exec();
 
   if (!targetUserRole) {
-    throw new Error('The provided user is not part of the project.');
+    throw new ApolloError('The provided user is not part of the project.'); // Code?
   }
 
   const currentUserRole = await Role.findOne({
@@ -90,13 +92,13 @@ async function updateUserProjectRole(parent, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, inviteUserRole))) {
-    throw new Error(
+    throw new ForbiddenError(
       'You can not give the same or higher role than your own to an user.'
     );
   }
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
-    throw new Error(
+    throw new ForbiddenError(
       'You can not update someone with the same or higher role than your own.'
     );
   }
@@ -105,6 +107,7 @@ async function updateUserProjectRole(parent, args, context) {
     targetUserRole.role = args.role;
     await targetUserRole.save();
   } catch (err) {
+    // Qual a diferença entre fazer só isso no catch e deixar sem try/catch ?
     console.error(err);
     throw err;
   }
@@ -121,11 +124,11 @@ async function removeUserFromProject(parent, args, context) {
     .exec();
 
   if (!targetUserRole) {
-    throw new Error('The provided user is not part of the project.');
+    throw new ApolloError('The provided user is not part of the project.'); // Code?
   }
 
   if (args.userId === context.user.id && targetUserRole.role === ROLES.OWNER) {
-    throw new Error('You cannot remove your ownership from the project.');
+    throw new ApolloError('You cannot remove your ownership from the project.'); // Code?
   }
 
   if (args.userId !== context.user.id) {
@@ -137,7 +140,7 @@ async function removeUserFromProject(parent, args, context) {
     if (
       !(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))
     ) {
-      throw new Error(
+      throw new ForbiddenError(
         'You can not remove someone with the same or higher role than your own.'
       );
     }
@@ -145,7 +148,7 @@ async function removeUserFromProject(parent, args, context) {
 
   try {
     await targetUserRole.remove();
-  } catch (err) {}
+  } catch (err) {} // Precisamos lançar erro, se não vai retornar um usuário que não foi deletado
 
   return targetUserRole.user;
 }

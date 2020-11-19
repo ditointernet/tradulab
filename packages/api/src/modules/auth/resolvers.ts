@@ -4,6 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -27,6 +28,11 @@ async function createUser(parent, args) {
     displayName: args.user.displayName || args.user.username,
   });
 
+  // Para pegar o erro de password com string vazia antes de transformar em hash:
+  if (args.user.password.length < 1) {
+    throw new UserInputError('That password is too short.');
+  }
+
   const auth = new Auth({
     user,
     email: args.user.email.toLowerCase(),
@@ -42,6 +48,18 @@ async function createUser(parent, args) {
 
     await user.remove();
 
+    console.error(err);
+
+    if (err.message.includes(' validation failed: ')) {
+      const invalidField = err.message.split(': ')[2].split(',')[0];
+      throw new UserInputError(invalidField);
+    }
+
+    if (err.message.includes(' duplicate key error collection: ')) {
+      const duplicatedField = err.message.split(': ')[3].slice(2);
+      throw new UserInputError(`That ${duplicatedField} is already in use.`);
+    }
+
     throw err;
   }
 
@@ -52,7 +70,7 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-    throw new Error('Invalid credentials.');
+    throw new AuthenticationError('Invalid credentials.'); // Ou seria UserInputError?
   }
 
   return { token: await signToken({ id: auth.user }) };
