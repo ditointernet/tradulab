@@ -28,8 +28,8 @@ async function createUser(parent, args) {
     displayName: args.user.displayName || args.user.username,
   });
 
-  // Para pegar o erro de password com string vazia antes de transformar em hash:
-  if (args.user.password.length < 1) {
+  // Para pegar o erro de password com string vazia antes de transformar em hash: (trim sugerido pelo julio)
+  if (args.user.password.trim().length < 1) {
     throw new UserInputError('That password is too short.');
   }
 
