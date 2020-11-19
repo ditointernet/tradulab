@@ -1,5 +1,5 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { ApolloError, ApolloServer, AuthenticationError, gql } from 'apollo-server-express';
+import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, rule, shield } from 'graphql-shield';
@@ -28,25 +28,32 @@ const typeDefs = gql`
   ${role.types}
 `;
 
-const isAuthenticated = rule()((parent, args, { user }) => !!user);
+const isAuthenticated = rule()((parent, args, { user }) => {
+  if (!user) {
+    return new AuthenticationError('You must be logged in.'); // Tem que ver
+  }
+  return true;
+});
+
 const isManagerOrOwner = rule()(
   async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) {
+    if (user) { // O que é esse user?
       try {
         const projectRole = await role.model.findOne({
           project: projectId,
           user: currentUserId,
         });
 
-        if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role))
+        if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
           return true;
+        }
       } catch (err) {
         console.error(err);
-        return false;
+        return err;
       }
     }
 
-    return false;
+    return new ForbiddenError('You must be owner or manager in this project.');
   }
 );
 
@@ -107,15 +114,17 @@ export default function ApolloMiddleware(app) {
               return err;
             } else if (err instanceof Error) {
               // unexpected errors
-              console.error(err)
-              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER')
+              console.error(err);
+              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
             } else {
               // what the hell got thrown
-              console.error('The resolver threw something that is not an error.')
-              console.error(err)
-              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER')
+              console.error('The resolver threw something that is not an error.');
+              console.error(err);
+              //return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER')
+              return new ApolloError('Someone is already logged in.'); // Parece gambiarra, não tem como diferenciar erro null
             }
           },
+          allowExternalErrors: true, // depois conferir se isso faz diferença
         }
       )
     ),
