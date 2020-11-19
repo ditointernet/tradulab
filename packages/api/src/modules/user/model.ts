@@ -11,7 +11,7 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_MESSAGES.USERNAME_SHORT],
       maxlength: [32, ERROR_MESSAGES.USERNAME_LONG],
       match: [REGEXES.USERNAME, ERROR_MESSAGES.USERNAME_INVALID],
-      unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
+      unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE], // Não tá pegando essa mensagem de erro
     },
     displayName: {
       type: String,
