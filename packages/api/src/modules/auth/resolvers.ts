@@ -28,7 +28,6 @@ async function createUser(parent, args) {
     displayName: args.user.displayName || args.user.username,
   });
 
-  // Para pegar o erro de password com string vazia antes de transformar em hash: (trim sugerido pelo julio)
   if (args.user.password.trim().length < 1) {
     throw new UserInputError('That password is too short.');
   }
@@ -70,7 +69,7 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-    throw new AuthenticationError('Invalid credentials.'); // Ou seria UserInputError?
+    throw new AuthenticationError('Invalid credentials.');
   }
 
   return { token: await signToken({ id: auth.user }) };

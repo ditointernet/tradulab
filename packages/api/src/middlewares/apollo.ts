@@ -30,27 +30,25 @@ const typeDefs = gql`
 
 const isAuthenticated = rule()((parent, args, { user }) => {
   if (!user) {
-    return new AuthenticationError('You must be logged in.'); // Tem que ver
+    return new AuthenticationError('You must be logged in.');
   }
   return true;
 });
 
 const isManagerOrOwner = rule()(
   async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) { // O que é esse user?
-      try {
-        const projectRole = await role.model.findOne({
-          project: projectId,
-          user: currentUserId,
-        });
+    try {
+      const projectRole = await role.model.findOne({
+        project: projectId,
+        user: currentUserId,
+      });
 
-        if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
-          return true;
-        }
-      } catch (err) {
-        console.error(err);
-        return err;
+      if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
+        return true;
       }
+    } catch (err) {
+      console.error(err);
+      return err;
     }
 
     return new ForbiddenError('You must be owner or manager in this project.');
@@ -82,7 +80,7 @@ export default function ApolloMiddleware(app) {
       shield(
         {
           Query: {
-            login: not(isAuthenticated),
+            login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
             me: isAuthenticated,
             myProjects: isAuthenticated,
           },
@@ -120,11 +118,10 @@ export default function ApolloMiddleware(app) {
               // what the hell got thrown
               console.error('The resolver threw something that is not an error.');
               console.error(err);
-              //return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER')
-              return new ApolloError('Someone is already logged in.'); // Parece gambiarra, não tem como diferenciar erro null
+              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
             }
           },
-          allowExternalErrors: true, // depois conferir se isso faz diferença
+          allowExternalErrors: true,
         }
       )
     ),
