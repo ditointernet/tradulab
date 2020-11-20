@@ -27,7 +27,7 @@ const schema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minlength: [1, ERROR_MESSAGES.PASSWORD_EMPTY], // String vazia não tá dando erro, tem a ver com hash
+      minlength: [1, ERROR_MESSAGES.PASSWORD_EMPTY],
     },
   },
   {

@@ -15,7 +15,7 @@ async function projectUsers(parent, args) {
 
 async function inviteUserToProject(parent, args, context) {
   if (args.userId === context.user.id) {
-    throw new ApolloError('You cannot invite yourself.'); // Code?
+    throw new ApolloError('You cannot invite yourself.');
   }
 
   const existingRole = await Role.findOne({
@@ -24,7 +24,7 @@ async function inviteUserToProject(parent, args, context) {
   });
 
   if (existingRole) {
-    throw new ApolloError('The provided user is already part of the project.'); // Code?
+    throw new ApolloError('The provided user is already part of the project.');
   }
 
   const targetProject = await Project.findById(args.projectId);
@@ -57,8 +57,8 @@ async function inviteUserToProject(parent, args, context) {
   try {
     await targetUserRole.save();
   } catch (err) {
-    await targetUserRole.remove(); // Isso aqui é realmente necessário?
-    // Um erro precisa ser lançado para que não retorne nenhum role sem ter salvo no banco
+    console.error(err);
+    throw err;
   }
 
   return targetUserRole;
@@ -77,7 +77,7 @@ async function updateUserProjectRole(parent, args, context) {
     .exec();
 
   if (!targetUserRole) {
-    throw new ApolloError('The provided user is not part of the project.'); // Code?
+    throw new ApolloError('The provided user is not part of the project.');
   }
 
   const currentUserRole = await Role.findOne({
@@ -107,7 +107,6 @@ async function updateUserProjectRole(parent, args, context) {
     targetUserRole.role = args.role;
     await targetUserRole.save();
   } catch (err) {
-    // Qual a diferença entre fazer só isso no catch e deixar sem try/catch ?
     console.error(err);
     throw err;
   }
@@ -124,11 +123,11 @@ async function removeUserFromProject(parent, args, context) {
     .exec();
 
   if (!targetUserRole) {
-    throw new ApolloError('The provided user is not part of the project.'); // Code?
+    throw new ApolloError('The provided user is not part of the project.');
   }
 
   if (args.userId === context.user.id && targetUserRole.role === ROLES.OWNER) {
-    throw new ApolloError('You cannot remove your ownership from the project.'); // Code?
+    throw new ApolloError('You cannot remove your ownership from the project.');
   }
 
   if (args.userId !== context.user.id) {
@@ -148,7 +147,10 @@ async function removeUserFromProject(parent, args, context) {
 
   try {
     await targetUserRole.remove();
-  } catch (err) {} // Precisamos lançar erro, se não vai retornar um usuário que não foi deletado
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
 
   return targetUserRole.user;
 }
