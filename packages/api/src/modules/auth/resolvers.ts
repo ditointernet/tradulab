@@ -81,6 +81,7 @@ async function createUser(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -101,6 +102,8 @@ async function createUser(
 =======
     //  Duvidas sobre as linhas abaixo
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
     if (!auth.isNew) {
       await auth.remove();
     }
