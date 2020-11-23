@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add commands
 docker-compose up -d
 
 docker-compose run web npm start
@@ -10,6 +13,7 @@ docker-compose down
 
 docker-compose exec mongo mongo
 
+<<<<<<< HEAD
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
@@ -167,6 +171,8 @@ docker volume rm tradulab
 lock file in the versions of the full dependency tree
 }
 =======
+=======
+>>>>>>> add commands
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
