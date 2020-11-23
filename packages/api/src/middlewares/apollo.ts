@@ -1,5 +1,5 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql } from 'apollo-server-express';
+import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, GraphQLUpload } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, rule, shield } from 'graphql-shield';
