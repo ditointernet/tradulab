@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { IProject } from '../project/model';
 
 import { EXTENSION_LIST } from './constants';
 
@@ -48,18 +49,18 @@ const schema = new mongoose.Schema(
   }
 );
 
-// export interface IFile extends mongoose.Document {
-//   filename: string;
-//   translationProgress: number;
-//   approvalProgress: number;
-//   project: mongoose.Types.ObjectId | IProject;
-//   sourceLanguage: string;
-//   extension: string;
-//   filePath: string;
-//   createdAt: Date;
-//   updateAt: Date;
-// }
+export interface IFile extends mongoose.Document {
+  filename: string;
+  translationProgress: number;
+  approvalProgress: number;
+  project: mongoose.Types.ObjectId | IProject;
+  sourceLanguage: string;
+  extension: string;
+  filePath: string;
+  createdAt: Date;
+  updateAt: Date;
+};
 
-const model = mongoose.model('file', schema);
+const model = mongoose.model<IFile>('file', schema);
 
 export default model;

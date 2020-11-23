@@ -68,7 +68,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return false;
+      return err;
     }
     return new ForbiddenError('You must be owner or manager in this project.');
   });
