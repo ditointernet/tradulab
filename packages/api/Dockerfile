@@ -1,14 +1,20 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create API and WEB Images
+=======
+>>>>>>> fix docker-file
 FROM node:12-stretch
 WORKDIR /usr/src/tradulab/api
 COPY ./package*.json ./
 COPY ./lib ./
 =======
 FROM node:latest
+=======
+FROM node:12-stretch
+>>>>>>> fix docker-file
 WORKDIR /usr/src/tradulab/api
 COPY ./package*.json ./
 <<<<<<< HEAD
