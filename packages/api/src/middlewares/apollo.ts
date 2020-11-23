@@ -285,7 +285,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> Corrigido erro de cors pra qualquer request
     } catch (err) {
       console.error(err);
-      return false;
+      return err;
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
