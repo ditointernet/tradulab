@@ -1,3 +1,13 @@
+docker-compose up -d
+
+docker-compose run web npm start
+
+docker-compose run api npm start
+
+docker-compose down
+
+docker-compose exec mongo mongo
+
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
