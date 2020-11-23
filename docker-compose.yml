@@ -24,6 +24,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -55,9 +56,14 @@ services:
 =======
 =======
 >>>>>>> Create API and WEB Images
+=======
+    volumes:
+      - tradulab:/var/lib/db
+>>>>>>> fix
   api:
     build: packages/api
     command: npm start
+    network_mode: host
     ports:
       - "3001:3001"
 <<<<<<< HEAD
@@ -88,6 +94,9 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix
 =======
 >>>>>>> fix
     network_mode: host
@@ -95,6 +104,7 @@ services:
       - api
 volumes:
   tradulab:
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
       - "27018:27018"
@@ -159,3 +169,5 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> revert docker compose port
+=======
+>>>>>>> fix
