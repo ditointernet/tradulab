@@ -172,7 +172,11 @@ export const UPLOAD_FILE = gql`
     }
   }
 `;
+<<<<<<< HEAD
 =======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export default function UploadForm() {
 <<<<<<< HEAD
@@ -199,7 +203,7 @@ export default function UploadForm() {
 export default function UploadForm() {
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
-    variables: { email: "uriell.viana@dito.com.br", password: "123456" },
+    variables: { email: "julinho2801@gmail.com", password: "123456" },
   });
 
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
@@ -207,6 +211,7 @@ export default function UploadForm() {
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   console.log(data);
 
@@ -253,6 +258,13 @@ export default function UploadForm() {
     const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
 
 >>>>>>> comple list
+=======
+  console.log(data);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files![0];
+    const projectId = "5fb52bfe99f0a22dc58d206b";
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
@@ -519,5 +531,9 @@ export default function UploadForm() {
       <input type="file" onChange={handleFileChange} />
     </div>
   );
+<<<<<<< HEAD
 }
 >>>>>>> formatting changes and some typings
+=======
+};
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
