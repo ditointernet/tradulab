@@ -28,6 +28,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 =======
 <<<<<<< HEAD
@@ -92,6 +93,9 @@ import { ApolloError } from 'apollo-server-express';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 import { ApolloError } from 'apollo-server-express';
@@ -390,11 +394,8 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
-    throw new Error('File size exceeded, limit is 5MB.');
+    throw new ApolloError('File size exceeded, limit is 5MB.');
   }
-
-  // const stream = createReadStream();
-  // stream.on('data', (chunk) => console.log(chunk.toString()));
 
   const project = await Project.findOne({ _id: args.projectId });
 
@@ -876,7 +877,7 @@ export const queries = { listFiles };
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
   if (!project) {
-    throw new Error('The provided project does not exist.');
+    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
   }
 
   const file = new File({

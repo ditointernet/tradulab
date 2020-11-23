@@ -22,6 +22,10 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import { IProject } from '../project/model';
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 import { IProject } from '../project/model';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
@@ -863,6 +867,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export interface IFile extends mongoose.Document {
   createdAt: Date;
   extension: string;
@@ -915,6 +920,21 @@ export default model;
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
+=======
+export interface IFile extends mongoose.Document {
+  filename: string;
+  translationProgress: number;
+  approvalProgress: number;
+  project: mongoose.Types.ObjectId | IProject;
+  sourceLanguage: string;
+  extension: string;
+  filePath: string;
+  createdAt: Date;
+  updateAt: Date;
+};
+
+const model = mongoose.model<IFile>('file', schema);
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 
 export default model;
 <<<<<<< HEAD
