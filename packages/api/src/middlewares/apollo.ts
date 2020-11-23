@@ -1,5 +1,6 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {
   ApolloError,
   ApolloServer,
@@ -15,6 +16,9 @@ import { not, and, rule, shield } from 'graphql-shield';
 import cors from 'cors';
 =======
 import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
+=======
+import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, GraphQLUpload } from 'apollo-server-express';
+>>>>>>> fix issues
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, rule, shield } from 'graphql-shield';
