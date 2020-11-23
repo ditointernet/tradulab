@@ -262,7 +262,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> file size limit from content length header
     } catch (err) {
       console.error(err);
-      return false;
+      return err;
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
