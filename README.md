@@ -47,7 +47,6 @@ Create Images
 Build an image from a Dockerfile
 docker build [OPTIONS] PATH | URL |
 docker build --tag tradulab:1.0 .
-docker-compose run web npm start
 
 Run the following command to start a container based on your new image
 [host:container]
@@ -144,6 +143,13 @@ When you use a bind mount, a file or directory on the host machine is mounted in
 
 If you start a container with a volume that does not yet exist, Docker creates the volume for you
 
+you can create and manage volumes outside the scope of any container.
+docker volume create tradulab
+docker volume ls
+docker volume inspect tradulab
+
+docker volume rm tradulab
+
 ## Commands
 
 docker --version
@@ -167,6 +173,7 @@ docker-compose down
 docker-compose exec mongo mongo
 
 docker-compose images
+docker-compose run web npm start
 
 Lists containers.
 $ docker-compose ps
