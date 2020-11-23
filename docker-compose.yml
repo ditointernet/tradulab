@@ -64,6 +64,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix
 =======
@@ -199,6 +200,13 @@ services:
   api:
     build: packages/api
     command: npm start
+=======
+    volumes:
+      - tradulab:/var/lib/db
+  api:
+    build: packages/api
+    command: npm start
+>>>>>>> fix
     network_mode: host
     ports:
       - "3001:3001"
@@ -232,6 +240,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix
 =======
@@ -409,3 +418,10 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> revert docker compose port
+=======
+    network_mode: host
+    depends_on:
+      - api
+volumes:
+  tradulab:
+>>>>>>> fix
