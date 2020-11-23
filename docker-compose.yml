@@ -17,6 +17,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -30,6 +31,14 @@ services:
 =======
     network_mode: host
 >>>>>>> Back-End Review
+=======
+    volumes:
+      - tradulab:/var/lib/db
+  api:
+    build: packages/api
+    command: npm start
+    network_mode: host
+>>>>>>> fix
     ports:
       - "3001:3001"
     volumes:
@@ -56,6 +65,7 @@ services:
     command: npm start
     ports:
       - "3000:3000"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -106,3 +116,10 @@ volumes:
     depends_on:
       - api
 >>>>>>> Create API and WEB Images
+=======
+    network_mode: host
+    depends_on:
+      - api
+volumes:
+  tradulab:
+>>>>>>> fix
