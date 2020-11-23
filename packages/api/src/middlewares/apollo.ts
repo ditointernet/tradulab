@@ -64,7 +64,9 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       console.error(err);
       return err;
     }
-    return new ForbiddenError('You must be owner or manager in this project.');
+    return new ForbiddenError(
+      'You must be owner or manager in this project or this project doesnt exit.'
+    );
   });
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
