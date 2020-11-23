@@ -5,6 +5,7 @@
 FROM node:12-stretch
 WORKDIR /usr/src/tradulab/api
 COPY ./package*.json ./
+<<<<<<< HEAD
 COPY ./lib ./
 =======
 FROM node:latest
@@ -30,6 +31,8 @@ COPY ./package*.json ./
 =======
 COPY ./lib ./
 >>>>>>> Add Volume
+=======
+>>>>>>> fix issues
 RUN npm install
 EXPOSE 3001
 CMD [ "npm", "start" ]

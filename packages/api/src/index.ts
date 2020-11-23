@@ -57,12 +57,17 @@ app.use(function (err, req, res, next) {
   console.error('Error: ', err.name)
 >>>>>>> change aspas
 });
+<<<<<<< HEAD
 >>>>>>> Update Role
 
+=======
+console.log("Bolivar")
+>>>>>>> fix issues
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
   app.listen({ port: EXPRESS_PORT }, () =>
+  
     console.info('🚀: api started on port ' + EXPRESS_PORT)
   );
 }
