@@ -4,9 +4,12 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - tradulab:/var/lib/db
   api:
     build: packages/api
     command: npm start
+    network_mode: host
     ports:
       - "3001:3001"
   web:
@@ -14,5 +17,8 @@ services:
     command: npm start
     ports:
       - "3000:3000"
+    network_mode: host
     depends_on:
       - api
+volumes:
+  tradulab:
