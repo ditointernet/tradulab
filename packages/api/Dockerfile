@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:12-stretch
 WORKDIR /usr/src/tradulab/api
 COPY ./package*.json ./
 COPY ./lib ./
