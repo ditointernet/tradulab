@@ -506,6 +506,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     return new ForbiddenError(
       'You must be owner or manager in this project or this project doesnt exit.'
     );
@@ -694,6 +695,11 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
     }
 =======
     return new ForbiddenError('You must be owner or manager in this project.');
+=======
+    return new ForbiddenError(
+      'You must be owner or manager in this project or this project doesnt exit.'
+    );
+>>>>>>> Changing the function ForbiddenError
 =======
     return new ForbiddenError(
       'You must be owner or manager in this project or this project doesnt exit.'
