@@ -19,6 +19,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -35,6 +36,10 @@ import { IProject } from '../project/model';
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Rebase and resolving conflicts with master
+=======
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { IProject } from '../project/model';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -646,6 +651,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -666,6 +672,10 @@ export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -679,6 +689,7 @@ export interface IFile extends mongoose.Document {
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const model = mongoose.model<IFile>('file', schema);
 =======
@@ -771,6 +782,8 @@ export default model;
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 =======
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 
 const model = mongoose.model<IFile>('file', schema);
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
@@ -829,6 +842,10 @@ export default model;
 
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
+=======
+
+const model = mongoose.model<IFile>('file', schema);
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 
 export default model;
 <<<<<<< HEAD
