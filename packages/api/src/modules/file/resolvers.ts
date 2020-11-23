@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 =======
 <<<<<<< HEAD
@@ -27,6 +28,12 @@ import { ApolloError } from 'apollo-server-express';
 =======
 <<<<<<< HEAD
 >>>>>>> formatting changes and some typings
+=======
+<<<<<<< HEAD
+=======
+import { ApolloError } from 'apollo-server-express';
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { FileUpload } from 'graphql-upload';
 import {
   ERROR_CODES,
@@ -59,7 +66,12 @@ async function createFile(_, args: ICreateFileArgs, context) {
   } = args;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
+<<<<<<< HEAD
     throw new TradulabError('File size exceeded, limit is 5MB.');
+=======
+<<<<<<< HEAD
+    throw new TradulabError(fileCodes.SIZE_EXCEEDED);
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
   }
 
   const project = await Project.findOne({ _id: projectId });
@@ -131,10 +143,10 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
     throw new Error('File size exceeded, limit is 5MB.');
+=======
+    throw new ApolloError('File size exceeded, limit is 5MB.');
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
   }
-
-  // const stream = createReadStream();
-  // stream.on('data', (chunk) => console.log(chunk.toString()));
 
   const project = await Project.findOne({ _id: args.projectId });
 
@@ -226,7 +238,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
   if (!project) {
-    throw new Error('The provided project does not exist.');
+    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
   }
 >>>>>>> Corrigido erro de cors pra qualquer request
 

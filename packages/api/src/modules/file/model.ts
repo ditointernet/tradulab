@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 =======
@@ -11,6 +12,8 @@ import * as mongoose from 'mongoose';
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 <<<<<<< HEAD
 import { IProject } from '../project/model';
 =======
@@ -25,6 +28,9 @@ import { IProject } from '../project/model';
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+import { IProject } from '../project/model';
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 
 >>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
@@ -210,6 +216,9 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export interface IFile extends mongoose.Document {
   extension: string;
   filename: string;
@@ -218,6 +227,7 @@ export interface IFile extends mongoose.Document {
   project: mongoose.Types.ObjectId | IProject;
   createdAt: Date;
   updateAt: Date;
+<<<<<<< HEAD
 }
 
 const model = mongoose.model<IFile>('file', schema);
@@ -249,6 +259,11 @@ export default model;
 
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
+=======
+};
+
+const model = mongoose.model<IFile>('file', schema);
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 
 export default model;
 <<<<<<< HEAD
