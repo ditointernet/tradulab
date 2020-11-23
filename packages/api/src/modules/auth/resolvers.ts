@@ -36,7 +36,6 @@ async function createUser(parent, args) {
   try {
     await Promise.all([user.save(), auth.save()]);
   } catch (err) {
-    //  Duvidas sobre as linhas abaixo
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -53,7 +52,6 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-    // Error sem estar na constant de error
     throw new Error('Invalid credentials.');
   }
 

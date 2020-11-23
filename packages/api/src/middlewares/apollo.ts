@@ -1,5 +1,5 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
+import { ApolloError, ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
@@ -39,7 +39,6 @@ const typeDefs = gql`
 const isAuthenticated = rule()((parent, args, { user }) => !!user);
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
   rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
-    if (user) {
       try {
         const projectRole = await role.model.findOne({
           project: projectId,
@@ -48,11 +47,10 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         if (allowedRoles.includes(projectRole?.role)) return true;
       } catch (err) {
         console.error(err);
-        return false;
+        return err;
       }
-    }
 
-    return false;
+    return new ApolloError('Você não pertence a nenhum desses cargos: ${allowedRoles} ');
   });
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);

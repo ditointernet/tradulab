@@ -14,7 +14,6 @@ app.use(middlewares.jwt);
 middlewares.apollo(app);
 
 app.use(function (err, req, res, next) {
-  console.log('ERROOOO', err)
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
