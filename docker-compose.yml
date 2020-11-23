@@ -9,6 +9,11 @@ services:
       - "27017:27017"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    volumes:
+      - tradulab:/var/lib/db
+>>>>>>> fix
   api:
     build: packages/api
     command: npm start
@@ -30,11 +35,15 @@ services:
     ports:
       - "3000:3000"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix
     network_mode: host
     depends_on:
       - api
 volumes:
   tradulab:
+<<<<<<< HEAD
 =======
       - "27018:27018"
 >>>>>>> Update Role
@@ -52,3 +61,5 @@ volumes:
 =======
       - "27017:27017"
 >>>>>>> revert docker compose port
+=======
+>>>>>>> fix
