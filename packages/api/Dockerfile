@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 FROM node:12-stretch
 WORKDIR /usr/src/tradulab/api
 COPY ./package*.json ./
@@ -36,6 +37,9 @@ COPY ./lib ./
 >>>>>>> Add Volume
 =======
 FROM node:latest
+=======
+FROM node:12-stretch
+>>>>>>> fix docker-file
 WORKDIR /usr/src/tradulab/api
 COPY ./package*.json ./
 <<<<<<< HEAD
