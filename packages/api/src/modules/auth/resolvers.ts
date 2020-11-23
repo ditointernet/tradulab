@@ -41,7 +41,6 @@ async function createUser(parent, args) {
   try {
     await Promise.all([user.save(), auth.save()]);
   } catch (err) {
-    //  Duvidas sobre as linhas abaixo
     if (!auth.isNew) {
       await auth.remove();
     }
