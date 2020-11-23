@@ -263,6 +263,7 @@ app.use(function (err, _req, res, _next) {
   console.error('Error: ', err.name)
 >>>>>>> change aspas
 });
+<<<<<<< HEAD
 =======
 app.use(middlewares.error);
 >>>>>>> changes
@@ -275,10 +276,14 @@ app.use(middlewares.error);
 >>>>>>> update listFiles and error
 =======
 >>>>>>> resolve index conflicts
+=======
+console.log("Bolivar")
+>>>>>>> fix issues
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
   app.listen({ port: EXPRESS_PORT }, () =>
+  
     console.info('🚀: api started on port ' + EXPRESS_PORT)
   );
 }

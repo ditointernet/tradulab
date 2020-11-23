@@ -9,6 +9,7 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -123,6 +124,9 @@ import cors from 'cors';
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
+=======
+import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, GraphQLUpload } from 'apollo-server-express';
+>>>>>>> fix issues
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 <<<<<<< HEAD
