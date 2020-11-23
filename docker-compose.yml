@@ -45,10 +45,14 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix
 =======
     volumes:
       - tradulab:/var/lib/db
 >>>>>>> fix
+<<<<<<< HEAD
 =======
 >>>>>>> volume api
 =======
@@ -91,6 +95,8 @@ services:
 >>>>>>> fix
 =======
 >>>>>>> Create API and WEB Images
+=======
+>>>>>>> fix
   api:
     build: packages/api
     command: npm start
@@ -165,12 +171,17 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix
 =======
 >>>>>>> fix
 =======
 >>>>>>> Create API and WEB Images
+=======
+=======
+>>>>>>> fix
+>>>>>>> fix
     network_mode: host
     depends_on:
       - api
@@ -178,6 +189,9 @@ volumes:
   tradulab:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix
 =======
       - "27018:27018"
 >>>>>>> Update Role
@@ -197,6 +211,7 @@ volumes:
 >>>>>>> revert docker compose port
 =======
 >>>>>>> fix
+<<<<<<< HEAD
 =======
       - "27018:27018"
 >>>>>>> Update Role
@@ -288,3 +303,5 @@ volumes:
 >>>>>>> Create API and WEB Images
 =======
 >>>>>>> revert docker compose port
+=======
+>>>>>>> fix
