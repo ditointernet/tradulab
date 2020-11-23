@@ -51,10 +51,13 @@ async function createUser(_, args) {
     await Promise.all([auth.save(), user.save()]);
   } catch (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
     if (!auth.isNew) {
       await auth.remove();
     }
