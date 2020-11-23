@@ -15,7 +15,6 @@ services:
   api:
     build: packages/api
     command: npm start
-    network_mode: host
     ports:
       - "3001:3001"
     volumes:
