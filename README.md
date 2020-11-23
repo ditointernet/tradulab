@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add commands
 docker-compose up -d
 
 docker-compose run web npm start
@@ -9,8 +12,11 @@ docker-compose down
 
 docker-compose exec mongo mongo
 
+<<<<<<< HEAD
 =======
 >>>>>>> Create API and WEB Images
+=======
+>>>>>>> add commands
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
