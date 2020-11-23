@@ -395,6 +395,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     return new ForbiddenError(
       'You must be owner or manager in this project or this project doesnt exit.'
     );
@@ -802,6 +803,11 @@ const isDeveloper = rule()(
     }
 =======
     return new ForbiddenError('You must be owner or manager in this project.');
+=======
+    return new ForbiddenError(
+      'You must be owner or manager in this project or this project doesnt exit.'
+    );
+>>>>>>> Changing the function ForbiddenError
   });
 >>>>>>> file size limit from content length header
 
