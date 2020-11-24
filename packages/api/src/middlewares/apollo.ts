@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22,9 +23,11 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> crack the code
 import {
-  ApolloError,
   ApolloServer,
+  ApolloError,
   AuthenticationError,
   ForbiddenError,
 <<<<<<< HEAD
@@ -43,6 +46,7 @@ import {
   gql,
   GraphQLUpload
 } from 'apollo-server-express';
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
@@ -106,6 +110,15 @@ import { applyMiddleware } from 'graphql-middleware';
 <<<<<<< HEAD
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+import { applyMiddleware } from 'graphql-middleware';
+import { auth, user, project, role, file } from '../modules';
+
+
+import { GraphQLDateTime } from 'graphql-iso-date';
+import { buildFederatedSchema } from '@apollo/federation';
+
+>>>>>>> crack the code
 import { not, and, or, rule, shield } from 'graphql-shield';
 <<<<<<< HEAD
 import cors from "cors";
@@ -127,7 +140,7 @@ import cors from "cors";
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
 
-import { auth, user, project, role, file } from '../modules';
+
 import { ROLES } from '../modules/role/constants';
 
 <<<<<<< HEAD

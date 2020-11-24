@@ -21,6 +21,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 
 const app = express();
@@ -116,6 +117,10 @@ import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 =======
 >>>>>>> formatting changes and some typings
+=======
+import * as middlewares from './middlewares';
+
+>>>>>>> crack the code
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 
