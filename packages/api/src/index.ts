@@ -246,10 +246,13 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
   console.log('ERROOOO', err);
 =======
   console.log('ERROOOO', err)
@@ -270,6 +273,7 @@ app.use(function (err, req, res, next) {
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
@@ -315,6 +319,10 @@ app.use(function (err, req, res, next) {
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
 >>>>>>> formatting changes and some typings
+=======
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
