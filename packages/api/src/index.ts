@@ -15,6 +15,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
@@ -92,6 +93,10 @@ const cors = require('cors');
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
+=======
+import * as middlewares from './middlewares';
+
+>>>>>>> crack the code
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
