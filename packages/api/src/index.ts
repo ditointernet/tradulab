@@ -1,7 +1,8 @@
 import * as express from 'express';
 import { mongo } from './config';
-import * as middlewares from './middlewares';
 import { env } from './helpers';
+import * as middlewares from './middlewares';
+
 // import { graphqlUploadExpress } from 'graphql-upload';
 
 const app = express();

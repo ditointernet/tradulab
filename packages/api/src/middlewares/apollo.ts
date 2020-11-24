@@ -1,18 +1,22 @@
-import { GraphQLDateTime } from 'graphql-iso-date';
 import {
-  ApolloError,
   ApolloServer,
+  ApolloError,
   AuthenticationError,
   ForbiddenError,
   gql,
   GraphQLUpload
 } from 'apollo-server-express';
-import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
+import { auth, user, project, role, file } from '../modules';
+
+
+import { GraphQLDateTime } from 'graphql-iso-date';
+import { buildFederatedSchema } from '@apollo/federation';
+
 import { not, and, or, rule, shield } from 'graphql-shield';
 import cors from 'cors';
 
-import { auth, user, project, role, file } from '../modules';
+
 import { ROLES } from '../modules/role/constants';
 
 const corsOptions: cors.CorsOptions = {
