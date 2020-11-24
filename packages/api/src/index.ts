@@ -1,9 +1,13 @@
 import * as express from 'express';
 import { mongo } from './config';
-import * as middlewares from './middlewares';
 import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import * as middlewares from './middlewares';
+
+>>>>>>> crack the code
 // import { graphqlUploadExpress } from 'graphql-upload';
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
