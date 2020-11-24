@@ -42,7 +42,7 @@ export interface IAuth extends mongoose.Document {
   user: IUser;
   createdAt: Date;
   updateAt: Date;
-}
+};
 
 const model = mongoose.model<IAuth>('auth', schema);
 
