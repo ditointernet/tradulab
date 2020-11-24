@@ -88,6 +88,7 @@ app.use(middlewares.error);
 app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.log('ERROOOO', err);
 =======
   console.log('ERROOOO', err)
@@ -95,6 +96,8 @@ app.use(function (err, req, res, next) {
 =======
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
