@@ -5,6 +5,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
@@ -15,6 +16,12 @@ import { graphqlUploadExpress } from 'graphql-upload';
 =======
 =======
 >>>>>>> formatting changes and some typings
+=======
+=======
+import * as middlewares from './middlewares';
+
+>>>>>>> crack the code
+>>>>>>> crack the code
 // import { graphqlUploadExpress } from 'graphql-upload';
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
