@@ -9,6 +9,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 
 const app = express();
@@ -33,6 +34,8 @@ const app = express();
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
 =======
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
@@ -50,6 +53,7 @@ import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 
 const app = express();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -86,6 +90,11 @@ const app = express();
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -96,6 +105,7 @@ middlewares.apollo(app);
 app.use(middlewares.error);
 =======
 app.use(function (err, req, res, next) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -128,6 +138,8 @@ app.use(function (err, req, res, next) {
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
