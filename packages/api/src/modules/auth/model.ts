@@ -52,8 +52,12 @@ export interface IAuth extends mongoose.Document {
   createdAt: Date;
   updateAt: Date;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+};
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 =======
 };
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
