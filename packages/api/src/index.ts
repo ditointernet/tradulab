@@ -10,6 +10,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
@@ -29,6 +30,8 @@ import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 =======
 import * as middlewares from './middlewares';
 <<<<<<< HEAD
@@ -80,10 +83,13 @@ const cors = require('cors');
 =======
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 
 const app = express();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -97,6 +103,8 @@ const app = express();
 <<<<<<< HEAD
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 =======
 // declarando uma nova variável
 >>>>>>> Update Role
@@ -169,6 +177,11 @@ const app = express();
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -182,6 +195,7 @@ app.use(middlewares.error);
 =======
 >>>>>>> changes
 app.use(function (err, req, res, next) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -218,6 +232,8 @@ app.use(function (err, req, res, next) {
   console.log('ERROOOO', err);
 >>>>>>> formatting changes and some typings
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Unnecessary comments and logs removed, add ApolloErrors
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
