@@ -1,5 +1,18 @@
+<<<<<<< HEAD
 # Main Commands
 
+=======
+<<<<<<<< HEAD:docs/docker.md
+# Main Commands
+
+========
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add commands
+>>>>>>>> changes:README.md
+>>>>>>> changes
 docker-compose up -d
 
 docker-compose run web npm start
@@ -8,12 +21,18 @@ docker-compose run api npm start
 
 docker-compose down
 
+<<<<<<< HEAD
 # Iniciar o cotainer do mongo
 
 docker-compose up -d mongo
 
 docker-compose exec mongo mongo
 
+=======
+docker-compose exec mongo mongo
+
+<<<<<<< HEAD
+>>>>>>> changes
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
@@ -165,12 +184,27 @@ docker volume ls
 docker volume inspect tradulab
 
 docker volume rm tradulab
+<<<<<<< HEAD
 
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
 
 > > > > > > > Create API and WEB Images
+=======
+=======
+{
+"lockfileVersion": 1
+lock file in the versions of the full dependency tree
+}
+=======
+=======
+>>>>>>> add commands
+# LockFileVersion
+
+Lockfile is the version of the full dependency tree
+>>>>>>> Create API and WEB Images
+>>>>>>> changes
 
 # Docker
 
@@ -190,11 +224,18 @@ Is everything needed to run an application - the code or binary, runtimes, depen
 
 <<<<<<< HEAD
 Containers x Virtual Machines
+<<<<<<< HEAD
 
 > > > > > > > # docker
 > > > > > > >
 > > > > > > > The {kernel} decides who will use these resources and for how long and when;
 > > > > > > > Create API and WEB Images
+=======
+>>>>>>> docker
+=======
+The {kernel} decides who will use these resources and for how long and when;
+>>>>>>> Create API and WEB Images
+>>>>>>> changes
 
 ## Containers x Virtual Machines
 
@@ -211,6 +252,9 @@ Make it possible to use more of a system's available resources and provide great
 ## Build and Run a Image
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> changes
 creating the images that your containers will be based on. Remember, a Docker image captures the private filesystem that your containerized processes will run in; you need to create an image that contains just what your application needs to run.
 
 Create and test individual containers for each component of your application by first creating Docker images.
@@ -327,8 +371,11 @@ docker volume inspect tradulab
 
 docker volume rm tradulab
 
+<<<<<<< HEAD
 If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
 
+=======
+>>>>>>> changes
 ## Commands
 
 docker --version
@@ -350,9 +397,25 @@ Compose file format (version 2 - 1.10.0+) - Docker Engine Release
 docker-compose up -d mongo
 docker-compose down
 docker-compose exec mongo mongo
+<<<<<<< HEAD
 
 docker-compose images
 docker-compose run web npm start
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+docker-compose images
+docker-compose run web npm start
+=======
+
+docker-compose images
+<<<<<<< HEAD
+>>>>>>> Create API and WEB Images
+=======
+docker-compose run web npm start
+>>>>>>> fix
+>>>>>>> changes
 
 Lists containers.
 $ docker-compose ps
@@ -381,3 +444,11 @@ Create a volume: **docker volume create [my-vol]**
 List volumes: **docker volume ls**
 Inspect a volume: **docker volume inspect [my-vol]**
 Remove a volume: **docker volume rm [my-vol]**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> docker
+=======
+>>>>>>> Create API and WEB Images
+>>>>>>> changes
