@@ -16,11 +16,12 @@ app.use(function (err, req, res, next) {
   }
   console.error('Error: ', err.name);
 });
-
+console.log("Bolivar")
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
   app.listen({ port: EXPRESS_PORT }, () =>
+  
     console.info('🚀: api started on port ' + EXPRESS_PORT)
   );
 }

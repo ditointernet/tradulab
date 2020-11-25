@@ -70,14 +70,14 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-<<<<<<< HEAD
-    // Error sem estar na constant de error
-    throw new Error('Invalid credentials.');
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> master
-  }
 
+    // // Error sem estar na constant de error
+    // throw new Error('Invalid credentials.');
+
+    throw new AuthenticationError('Invalid credentials.');
+
+  }
+  
   return { token: await signToken({ id: auth.user }) };
 }
 
