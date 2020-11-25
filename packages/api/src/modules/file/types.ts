@@ -161,10 +161,26 @@ export default gql`
 =======
   scalar FileUpload
 
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+  enum Extentions {
+    json
+    txt
+    csv
+  }
+
+  type Progress {
+    approval: Int!
+    translation: Int!
+  }
+
+>>>>>>> changes
   type File {
     id: ID!
+    extension: Extentions
     filename: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
@@ -273,7 +289,11 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+    progress: Progress!
+>>>>>>> changes
     project: Project!
+    sourceLanguage: String!
     createdAt: Date!
     updatedAt: Date!
   }
@@ -397,6 +417,7 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
     ): File!
   }
+<<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
 =======
@@ -482,4 +503,12 @@ export default gql`
      ): File!
   }
 >>>>>>> Criado o module files e a resolver create File
+=======
+
+  extend type Query {
+    listFile(projectId: ID!): [File]!
+  }
+>>>>>>> changes
 `;
+
+// Acho que o progress pode ser colocado no futuro, pois ele vai ser mais complexo que isso, progress de translation para qual lingua?

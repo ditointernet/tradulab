@@ -70,6 +70,7 @@ export default async function jwtMiddleware(
       );
     } catch (err) {
       console.error(err);
+      // Estes erros devem ficar aqui ou serem movidos para o middle de erro
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {
