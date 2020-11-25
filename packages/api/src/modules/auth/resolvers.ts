@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
@@ -48,6 +49,14 @@ import { model as Auth } from '.';
 import { model as User } from '../user';
 >>>>>>> Back-End Review
 >>>>>>> Back-End Review
+=======
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import { model as Auth } from '.';
+import { model as User } from '../user';
+import { env } from '../../helpers';
+>>>>>>> changes
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -67,6 +76,7 @@ function signToken(payload) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
 async function createUser(
@@ -80,6 +90,9 @@ async function createUser(
 =======
 async function createUser(_, args) {
 <<<<<<< HEAD
+>>>>>>> changes
+=======
+async function createUser(_, args) {
 >>>>>>> changes
   const user = new User({
     nickname,
@@ -142,6 +155,7 @@ async function createUser(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -164,6 +178,8 @@ async function createUser(_, args) {
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+>>>>>>> changes
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -228,6 +244,7 @@ async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -315,6 +332,12 @@ async function login(_parent, { payload: { email, password } }) {
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
 >>>>>>> Back-End Review
   }
+=======
+    throw new AuthenticationError('Invalid credentials.');
+  }
+
+  return { token: await signToken({ id: auth.user }) };
+>>>>>>> changes
 }
 <<<<<<< HEAD
 <<<<<<< HEAD

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
 import { NextFunction, Request, Response } from 'express';
@@ -14,14 +15,19 @@ export default function errorMiddleware(
   _req: Request,
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> changes
 import { Request, Response, NextFunction } from 'express';
 
 export default function errorMiddleware(
   err,
   req: Request,
+<<<<<<< HEAD
 >>>>>>> changes
 =======
 >>>>>>> Back-End Review
+=======
+>>>>>>> changes
   res: Response,
   next: NextFunction
 ) {

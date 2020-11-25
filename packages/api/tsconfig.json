@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // "noImplicitAny": true,
 =======
     "noImplicitAny": true,
@@ -14,6 +15,9 @@
 >>>>>>> changes
 =======
     "noImplicitAny": true,
+>>>>>>> changes
+=======
+    // "noImplicitAny": true,
 >>>>>>> changes
     "outDir": "lib",
     "sourceMap": true,
