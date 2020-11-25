@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   ApolloError,
   AuthenticationError,
@@ -28,6 +29,14 @@ import { env } from '../../helpers';
 import { model as Auth } from '.';
 import { model as User } from '../user';
 >>>>>>> Back-End Review
+=======
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import { model as Auth } from '.';
+import { model as User } from '../user';
+import { env } from '../../helpers';
+>>>>>>> changes
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -45,6 +54,7 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
+<<<<<<< HEAD
 async function createUser(
   _parent,
   { payload: { email, nickname, password, username } }
@@ -52,6 +62,9 @@ async function createUser(
   if (password.trim().length < 1)
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
 
+=======
+async function createUser(_, args) {
+>>>>>>> changes
   const user = new User({
     nickname,
     username,
@@ -82,6 +95,7 @@ async function createUser(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -104,6 +118,8 @@ async function createUser(
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+>>>>>>> changes
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -151,6 +167,7 @@ async function login(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -167,6 +184,8 @@ async function login(_, args) {
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+>>>>>>> changes
     throw new AuthenticationError('Invalid credentials.');
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -217,6 +236,11 @@ async function login(_parent, { payload: { email, password } }) {
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   }
+<<<<<<< HEAD
+=======
+
+  return { token: await signToken({ id: auth.user }) };
+>>>>>>> changes
 }
 <<<<<<< HEAD
 <<<<<<< HEAD

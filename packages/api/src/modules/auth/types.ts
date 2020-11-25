@@ -9,9 +9,12 @@ export default gql`
   input CreateUserPayload {
     email: String!
 <<<<<<< HEAD
+<<<<<<< HEAD
     nickname: String!
 =======
 >>>>>>> fix
+=======
+>>>>>>> changes
     password: String!
     username: String!
   }

@@ -58,6 +58,7 @@ export default async function jwtMiddleware(
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
       console.error(err);
+<<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
       // Estes erros devem ficar aqui ou serem movidos para o middle de erro
@@ -73,6 +74,9 @@ export default async function jwtMiddleware(
 =======
       console.error(err);
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+      // Estes erros devem ficar aqui ou serem movidos para o middle de erro
+>>>>>>> changes
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {
