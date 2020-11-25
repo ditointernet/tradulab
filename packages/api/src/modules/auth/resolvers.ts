@@ -1,10 +1,9 @@
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
-import { AuthenticationError, UserInputError } from 'apollo-server-express';
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -22,7 +21,7 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
-async function createUser(parent, args) {
+async function createUser(_, args) {
   const user = new User({
     username: args.user.username,
     displayName: args.user.displayName || args.user.username,
@@ -41,7 +40,6 @@ async function createUser(parent, args) {
   try {
     await Promise.all([user.save(), auth.save()]);
   } catch (err) {
-    //  Duvidas sobre as linhas abaixo
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -70,19 +68,9 @@ async function login(parent, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-<<<<<<< HEAD
-
-    // // Error sem estar na constant de error
-    // throw new Error('Invalid credentials.');
-
-    throw new AuthenticationError('Invalid credentials.');
-=======
     throw new AuthenticationError('Invalid credentials.');
   }
->>>>>>> feature/module-file-structure
 
-  }
-  
   return { token: await signToken({ id: auth.user }) };
 }
 

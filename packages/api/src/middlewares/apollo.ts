@@ -1,53 +1,37 @@
+import { buildFederatedSchema } from '@apollo/federation';
 import {
-  ApolloServer,
   ApolloError,
+  ApolloServer,
   AuthenticationError,
   ForbiddenError,
   gql,
-  GraphQLUpload
+  GraphQLUpload,
 } from 'apollo-server-express';
-import { applyMiddleware } from 'graphql-middleware';
-import { auth, user, project, role, file } from '../modules';
-
-
-import { GraphQLDateTime } from 'graphql-iso-date';
-import { buildFederatedSchema } from '@apollo/federation';
-
-import { not, and, or, rule, shield } from 'graphql-shield';
 import cors from 'cors';
-
-
+import { GraphQLDateTime } from 'graphql-iso-date';
+import { applyMiddleware } from 'graphql-middleware';
+import { not, and, or, rule, shield } from 'graphql-shield';
+import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
 const corsOptions: cors.CorsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
 };
 
 const typeDefs = gql`
   scalar Date
 
-  type Query {
-    _: Boolean
-  }
-
-  type Mutation {
-    _: Boolean
-  }
-
-  type Subscription {
-    _: Boolean
-  }
-
   ${auth.types}
-  ${user.types}
+  ${file.types}
   ${project.types}
   ${role.types}
-  ${file.types}
+  ${user.types}
 `;
+// não precisava daquelas dlecaraçẽos de tipos
 
-const isAuthenticated = rule()((parent, args, { user }) => {
+const isAuthenticated = rule()((_, __, { user }) => {
   if (!user) {
     return new AuthenticationError('You must be logged in.');
   }
@@ -55,7 +39,7 @@ const isAuthenticated = rule()((parent, args, { user }) => {
 });
 
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
-  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+  rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
@@ -63,7 +47,6 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       });
 
       if (allowedRoles.includes(projectRole?.role)) return true;
-
     } catch (err) {
       console.error(err);
       return err;
@@ -74,6 +57,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
   });
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
@@ -103,7 +87,13 @@ export default function ApolloMiddleware(app) {
       shield(
         {
           Query: {
-            login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
+            login: not(
+              isAuthenticated,
+              new ApolloError(
+                'Someone is already logged in.',
+                'ALREADY_LOGGED_IN'
+              )
+            ),
             me: isAuthenticated,
             myProjects: isAuthenticated,
           },
@@ -137,12 +127,20 @@ export default function ApolloMiddleware(app) {
             } else if (err instanceof Error) {
               // unexpected errors
               console.error(err);
-              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+              return new ApolloError(
+                'Internal server error',
+                'ERR_INTERNAL_SERVER'
+              );
             } else {
               // what the hell got thrown
-              console.error('The resolver threw something that is not an error.');
+              console.error(
+                'The resolver threw something that is not an error.'
+              );
               console.error(err);
-              return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+              return new ApolloError(
+                'Internal server error',
+                'ERR_INTERNAL_SERVER'
+              );
             }
           },
           allowExternalErrors: true,
