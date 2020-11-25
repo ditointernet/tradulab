@@ -1,8 +1,13 @@
+<<<<<<< HEAD:README.md
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> add commands
+=======
+# Main Commands
+
+>>>>>>> changes:docs/docker.md
 docker-compose up -d
 
 docker-compose run web npm start
