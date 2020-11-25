@@ -52,6 +52,9 @@ docker-compose down
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> store
 =======
 >>>>>>> store
 =======
@@ -62,6 +65,7 @@ docker-compose up -d mongo
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> changes
 =======
@@ -72,6 +76,8 @@ docker-compose up -d mongo
 >>>>>>> store
 =======
 >>>>>>> changes
+=======
+>>>>>>> store
 docker-compose exec mongo mongo
 
 <<<<<<< HEAD
@@ -276,6 +282,7 @@ Make it possible to use more of a system's available resources and provide great
 
 ## Build and Run a Image
 
+<<<<<<< HEAD
 creating the images that your containers will be based on. Remember, a Docker image captures the private filesystem that your containerized processes will run in; you need to create an image that contains just what your application needs to run.
 
 Create and test individual containers for each component of your application by first creating Docker images.
@@ -413,6 +420,10 @@ If you remove the container all your data will be lost, and the next time you ru
 >>>>>>> store
 =======
 >>>>>>> changes
+=======
+If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
+
+>>>>>>> store
 ## Commands
 
 docker --version
