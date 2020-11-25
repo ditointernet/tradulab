@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
@@ -8,6 +9,20 @@ import { ERROR_CODES as userCodes } from '../user/constants';
 import { env } from '../../helpers';
 import { model as Auth } from '.';
 import { model as User } from '../user';
+=======
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import { model as Auth } from '.';
+import { model as User } from '../user';
+import { env } from '../../helpers';
+<<<<<<< HEAD
+import { TradulabError } from '../../errors';
+import { ERROR_CODES as authCodes } from './constants';
+import { ERROR_CODES as userCodes } from '../user/constants';
+=======
+>>>>>>> changes
+>>>>>>> changes
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -25,6 +40,7 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
+<<<<<<< HEAD
 async function createUser(
   _parent,
   { payload: { email, nickname, password, username } }
@@ -32,6 +48,9 @@ async function createUser(
   if (password.trim().length < 1)
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
 
+=======
+async function createUser(_, args) {
+>>>>>>> changes
   const user = new User({
     nickname,
     username,
@@ -114,6 +133,7 @@ async function login(parent, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -126,6 +146,8 @@ async function login(parent, args) {
 >>>>>>> Criado o module files e a resolver create File
 =======
 =======
+=======
+>>>>>>> changes
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
