@@ -21,9 +21,12 @@ export default gql`
 >>>>>>> Back-End Review
     email: String!
 <<<<<<< HEAD
+<<<<<<< HEAD
     nickname: String!
 =======
 >>>>>>> fix
+=======
+>>>>>>> changes
     password: String!
     username: String!
   }

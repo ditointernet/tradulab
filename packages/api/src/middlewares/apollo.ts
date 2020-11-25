@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26,16 +27,20 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> crack the code
+=======
+import { buildFederatedSchema } from '@apollo/federation';
+>>>>>>> changes
 import {
-  ApolloServer,
   ApolloError,
+  ApolloServer,
   AuthenticationError,
   ForbiddenError,
 <<<<<<< HEAD
 <<<<<<< HEAD
   gql,
-  GraphQLUpload
+  GraphQLUpload,
 } from 'apollo-server-express';
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
@@ -77,10 +82,13 @@ import { applyMiddleware } from 'graphql-middleware';
 import { auth, user, project, role, file } from '../modules';
 
 
+=======
+import cors from 'cors';
+>>>>>>> changes
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { buildFederatedSchema } from '@apollo/federation';
-
+import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -215,6 +223,9 @@ import { auth, user, project, role, file } from '../modules';
 =======
 
 >>>>>>> crack the code
+=======
+import { auth, user, project, role, file } from '../modules';
+>>>>>>> changes
 import { ROLES } from '../modules/role/constants';
 
 <<<<<<< HEAD
@@ -275,9 +286,9 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> Update Role
 =======
 const corsOptions: cors.CorsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
 };
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -289,6 +300,7 @@ const typeDefs = gql`
   scalar Date
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
+<<<<<<< HEAD
 =======
 // A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
 // Create e object types;
@@ -327,10 +339,13 @@ const corsOptions: cors.CorsOptions = {
 const typeDefs = gql`
   scalar Date
 
+=======
+>>>>>>> changes
   ${auth.types}
   ${file.types}
   ${project.types}
   ${role.types}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -348,12 +363,20 @@ const typeDefs = gql`
 =======
   ${file.types}
 >>>>>>> Criado o module files e a resolver create File
+=======
+  ${user.types}
+>>>>>>> changes
 `;
+// não precisava daquelas dlecaraçẽos de tipos
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const isAuthenticated = rule()((parent, args, { user }) => {
+=======
+const isAuthenticated = rule()((_, __, { user }) => {
+>>>>>>> changes
 =======
 const isAuthenticated = rule()((_, __, { user }) => {
 >>>>>>> changes
@@ -366,6 +389,7 @@ const isAuthenticated = rule()((_, __, { user }) => {
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
 =======
   rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
@@ -373,6 +397,9 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 =======
   rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
 >>>>>>> file size limit from content length header
+=======
+  rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
+>>>>>>> changes
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
@@ -399,6 +426,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 =======
       if (allowedRoles.includes(projectRole?.role)) return true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 >>>>>>> file size limit from content length header
 =======
@@ -411,6 +439,8 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       if (allowedRoles.includes(projectRole?.role)) return true;
 
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> changes
     } catch (err) {
       console.error(err);
       return err;
@@ -852,6 +882,7 @@ const isDeveloper = rule()(
 >>>>>>> file size limit from content length header
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {

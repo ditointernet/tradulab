@@ -91,6 +91,7 @@ const cors = require('cors');
 =======
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 // import { graphqlUploadExpress } from 'graphql-upload';
+<<<<<<< HEAD
 >>>>>>> formatting changes and some typings
 =======
 =======
@@ -102,6 +103,9 @@ import * as middlewares from './middlewares';
 =======
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
+=======
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+>>>>>>> changes
 
 const app = express();
 <<<<<<< HEAD
@@ -155,6 +159,7 @@ const app = express();
 =======
 =======
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
@@ -248,12 +253,15 @@ const app = express();
 =======
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> changes
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
 
 middlewares.apollo(app);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -436,6 +444,10 @@ console.log("Bolivar")
 =======
 
 >>>>>>> fix
+=======
+app.use(middlewares.error);
+
+>>>>>>> changes
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
