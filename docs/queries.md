@@ -368,6 +368,7 @@ mutation remove {
 }
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Header
 
@@ -378,3 +379,7 @@ mutation remove {
 Schemas: The service that defines the field is also the service that knows how to populate the field
 =======
 >>>>>>> create docs
+=======
+
+The service that defines the field is also the service that knows how to populate the field
+>>>>>>> store

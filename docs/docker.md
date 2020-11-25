@@ -22,6 +22,9 @@ docker-compose run api npm start
 docker-compose down
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> store
 # Iniciar o cotainer do mongo
 
 docker-compose up -d mongo
@@ -372,10 +375,15 @@ docker volume inspect tradulab
 docker volume rm tradulab
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
 
 =======
 >>>>>>> changes
+=======
+If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
+
+>>>>>>> store
 ## Commands
 
 docker --version
