@@ -8,22 +8,39 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
   scalar FileUpload
+<<<<<<< HEAD
   enum Extentions {
     csv
     json
     txt
   }
+=======
+
+  enum Extentions {
+    json
+    txt
+    csv
+  }
+
+>>>>>>> changes
   type Progress {
     approval: Int!
     translation: Int!
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> changes
   type File {
     id: ID!
     extension: Extentions
     filename: String!
 <<<<<<< HEAD
+<<<<<<< HEAD
     progress: Progress!
 =======
+=======
+>>>>>>> changes
     translationProgress: Int!
     approvalProgress: Int!
     sourceLanguage: String!
@@ -91,6 +108,9 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    progress: Progress!
+>>>>>>> changes
     project: Project!
     sourceLanguage: String!
     createdAt: Date!
@@ -153,7 +173,15 @@ export default gql`
 >>>>>>> Corrigido erro de cors pra qualquer request
     ): File!
   }
+<<<<<<< HEAD
   extend type Query {
     listFiles(projectId: ID!): [File]
+=======
+
+  extend type Query {
+    listFile(projectId: ID!): [File]!
+>>>>>>> changes
   }
 `;
+
+// Acho que o progress pode ser colocado no futuro, pois ele vai ser mais complexo que isso, progress de translation para qual lingua?

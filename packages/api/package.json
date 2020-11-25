@@ -9,8 +9,13 @@
     "lint": "eslint",
     "build": "tsc",
     "prestart": "npm run build",
+<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
+=======
+    "predev": "npm run build",
+>>>>>>> changes
     "start": "node $npm_package_main",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21,6 +26,9 @@
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> pull
+=======
+    "dev": "ts-node-dev --respawn --transpile-only src/index",
+>>>>>>> changes
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {

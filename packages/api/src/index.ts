@@ -23,6 +23,7 @@ import * as middlewares from './middlewares';
 >>>>>>> crack the code
 >>>>>>> crack the code
 // import { graphqlUploadExpress } from 'graphql-upload';
+<<<<<<< HEAD
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -32,7 +33,13 @@ import { graphqlUploadExpress } from 'graphql-upload';
 =======
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
+<<<<<<< HEAD
 >>>>>>> formatting changes and some typings
+=======
+=======
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+>>>>>>> changes
+>>>>>>> changes
 
 const app = express();
 <<<<<<< HEAD
@@ -71,6 +78,7 @@ const app = express();
 =======
 =======
 
+<<<<<<< HEAD
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -83,6 +91,8 @@ const app = express();
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> changes
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -90,8 +100,11 @@ app.use(middlewares.jwt);
 middlewares.apollo(app);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(middlewares.error);
 =======
+=======
+>>>>>>> changes
 app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -132,12 +145,18 @@ app.use(function (err, req, res, next) {
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Update Role
 
 =======
 console.log("Bolivar")
 >>>>>>> fix issues
 =======
+=======
+=======
+app.use(middlewares.error);
+>>>>>>> changes
+>>>>>>> changes
 
 >>>>>>> fix
 function start() {
