@@ -2,7 +2,11 @@
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitReturns": true,
+<<<<<<< HEAD
     // "noImplicitAny": true,
+=======
+    "noImplicitAny": true,
+>>>>>>> changes
     "outDir": "lib",
     "sourceMap": true,
     "target": "ES2019",
