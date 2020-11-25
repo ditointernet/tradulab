@@ -3,9 +3,13 @@
     "module": "commonjs",
     "noImplicitReturns": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
     // "noImplicitAny": true,
 =======
     "noImplicitAny": true,
+>>>>>>> changes
+=======
+    // "noImplicitAny": true,
 >>>>>>> changes
     "outDir": "lib",
     "sourceMap": true,
