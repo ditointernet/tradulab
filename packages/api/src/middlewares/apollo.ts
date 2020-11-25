@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -25,9 +26,12 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> crack the code
+=======
+import { buildFederatedSchema } from '@apollo/federation';
+>>>>>>> changes
 import {
-  ApolloServer,
   ApolloError,
+  ApolloServer,
   AuthenticationError,
   ForbiddenError,
 <<<<<<< HEAD
@@ -64,8 +68,9 @@ import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, Gr
 >>>>>>> fix issues
 =======
   gql,
-  GraphQLUpload
+  GraphQLUpload,
 } from 'apollo-server-express';
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
@@ -141,6 +146,13 @@ import cors from "cors";
 >>>>>>> Corrigido erro de cors pra qualquer request
 
 
+=======
+import cors from 'cors';
+import { GraphQLDateTime } from 'graphql-iso-date';
+import { applyMiddleware } from 'graphql-middleware';
+import { not, and, or, rule, shield } from 'graphql-shield';
+import { auth, user, project, role, file } from '../modules';
+>>>>>>> changes
 import { ROLES } from '../modules/role/constants';
 
 <<<<<<< HEAD
@@ -161,9 +173,9 @@ import { ROLES } from '../modules/role/constants';
 =======
 >>>>>>> pull
 const corsOptions: cors.CorsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
 };
 
 <<<<<<< HEAD
@@ -217,27 +229,20 @@ const corsOptions: cors.CorsOptions = {
 const typeDefs = gql`
   scalar Date
 
-  type Query {
-    _: Boolean
-  }
-
-  type Mutation {
-    _: Boolean
-  }
-
-  type Subscription {
-    _: Boolean
-  }
-
   ${auth.types}
-  ${user.types}
+  ${file.types}
   ${project.types}
   ${role.types}
-  ${file.types}
+  ${user.types}
 `;
+// não precisava daquelas dlecaraçẽos de tipos
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const isAuthenticated = rule()((parent, args, { user }) => {
+=======
+const isAuthenticated = rule()((_, __, { user }) => {
+>>>>>>> changes
   if (!user) {
     return new AuthenticationError('You must be logged in.');
   }
@@ -245,7 +250,7 @@ const isAuthenticated = rule()((parent, args, { user }) => {
 });
 
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
-  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+  rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
@@ -302,8 +307,11 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> file size limit from content length header
 =======
       if (allowedRoles.includes(projectRole?.role)) return true;
+<<<<<<< HEAD
 
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> changes
     } catch (err) {
       console.error(err);
       return err;
@@ -323,6 +331,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
   });
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 <<<<<<< HEAD
 =======

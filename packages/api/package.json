@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
     "start": "node $npm_package_main",
 <<<<<<< HEAD
@@ -87,6 +88,11 @@
 =======
     "dev": "ts-node-dev --respawn src/index.ts",
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+    "predev": "npm run build",
+    "start": "node $npm_package_main",
+    "dev": "ts-node-dev --respawn --transpile-only src/index",
+>>>>>>> changes
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
