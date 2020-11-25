@@ -1,9 +1,16 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, GraphQLUpload } from 'apollo-server-express';
+import {
+  ApolloError,
+  ApolloServer,
+  AuthenticationError,
+  ForbiddenError,
+  gql,
+  GraphQLUpload
+} from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
-import { not, and, rule, shield } from 'graphql-shield';
-import cors from "cors";
+import { not, and, or, rule, shield } from 'graphql-shield';
+import cors from 'cors';
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
@@ -11,7 +18,7 @@ import { ROLES } from '../modules/role/constants';
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
-  allowedHeaders: 'Authorization',
+  allowedHeaders: ['Authorization', 'content-type'],
 };
 
 const typeDefs = gql`
@@ -43,25 +50,27 @@ const isAuthenticated = rule()((parent, args, { user }) => {
   return true;
 });
 
-const isManagerOrOwner = rule()(
-  async (parent, { projectId }, { user: { id: currentUserId } }) => {
+const isOneOfTheseRoles = (allowedRoles: string[]) =>
+  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
         user: currentUserId,
       });
 
-      if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
-        return true;
-      }
+      if (allowedRoles.includes(projectRole?.role)) return true;
+
     } catch (err) {
       console.error(err);
       return err;
     }
+    return new ForbiddenError(
+      'You must be owner or manager in this project or this project doesnt exit.'
+    );
+  });
 
-    return new ForbiddenError('You must be owner or manager in this project.');
-  }
-);
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
@@ -97,7 +106,7 @@ export default function ApolloMiddleware(app) {
           Mutation: {
             createUser: not(isAuthenticated),
             createProject: isAuthenticated,
-            createFile: isAuthenticated,
+            createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
             inviteUserToProject: and(
               isAuthenticated,
               isManagerOrOwner
@@ -136,12 +145,17 @@ export default function ApolloMiddleware(app) {
         }
       )
     ),
-    context: async ({ req: { auth } }: any) => {
+    context: async ({ req: { auth, headers } }: any) => {
+      const baseContext = {
+        contentLength: headers['content-length'],
+        user: undefined,
+      };
+
       if (typeof auth === 'object' && auth.id) {
-        return { user: await user.model.findById(auth.id) };
+        baseContext.user = await user.model.findById(auth.id);
       }
 
-      return {};
+      return baseContext;
     },
   });
 
