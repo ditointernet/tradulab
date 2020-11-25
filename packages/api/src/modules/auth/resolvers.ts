@@ -1,12 +1,15 @@
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
+=======
+>>>>>>> changes
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -24,7 +27,7 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
-async function createUser(parent, args) {
+async function createUser(_, args) {
   const user = new User({
     username: args.user.username,
     displayName: args.user.displayName || args.user.username,
@@ -82,6 +85,7 @@ async function login(parent, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 =======
     throw new AuthenticationError('Invalid credentials.');
@@ -91,6 +95,8 @@ async function login(parent, args) {
     throw new Error('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+>>>>>>> changes
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   }

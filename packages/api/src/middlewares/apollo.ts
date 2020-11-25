@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { GraphQLDateTime } from 'graphql-iso-date';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7,16 +8,20 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> crack the code
+=======
+import { buildFederatedSchema } from '@apollo/federation';
+>>>>>>> changes
 import {
-  ApolloServer,
   ApolloError,
+  ApolloServer,
   AuthenticationError,
   ForbiddenError,
 <<<<<<< HEAD
 <<<<<<< HEAD
   gql,
-  GraphQLUpload
+  GraphQLUpload,
 } from 'apollo-server-express';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
@@ -26,10 +31,13 @@ import { applyMiddleware } from 'graphql-middleware';
 import { auth, user, project, role, file } from '../modules';
 
 
+=======
+import cors from 'cors';
+>>>>>>> changes
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { buildFederatedSchema } from '@apollo/federation';
-
+import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
+<<<<<<< HEAD
 =======
   GraphQLUpload,
   gql,
@@ -72,6 +80,9 @@ import cors from 'cors';
 >>>>>>> file size limit from content length header
 
 
+=======
+import { auth, user, project, role, file } from '../modules';
+>>>>>>> changes
 import { ROLES } from '../modules/role/constants';
 
 <<<<<<< HEAD
@@ -95,9 +106,9 @@ const corsOptions: cors.CorsOptions = {
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 const corsOptions: cors.CorsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
 };
 
 <<<<<<< HEAD
@@ -122,27 +133,20 @@ const corsOptions: cors.CorsOptions = {
 const typeDefs = gql`
   scalar Date
 
-  type Query {
-    _: Boolean
-  }
-
-  type Mutation {
-    _: Boolean
-  }
-
-  type Subscription {
-    _: Boolean
-  }
-
   ${auth.types}
-  ${user.types}
+  ${file.types}
   ${project.types}
   ${role.types}
-  ${file.types}
+  ${user.types}
 `;
+// não precisava daquelas dlecaraçẽos de tipos
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const isAuthenticated = rule()((parent, args, { user }) => {
+=======
+const isAuthenticated = rule()((_, __, { user }) => {
+>>>>>>> changes
   if (!user) {
     return new AuthenticationError('You must be logged in.');
   }
@@ -150,7 +154,7 @@ const isAuthenticated = rule()((parent, args, { user }) => {
 });
 
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
-  rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+  rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
@@ -171,8 +175,11 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
       if (allowedRoles.includes(projectRole?.role)) return true;
+<<<<<<< HEAD
 
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> changes
     } catch (err) {
       console.error(err);
       return err;
@@ -185,6 +192,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
   });
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 const resolvers = buildFederatedSchema([
