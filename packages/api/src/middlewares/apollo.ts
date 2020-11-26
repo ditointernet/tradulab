@@ -23,6 +23,7 @@ import {
 } from 'apollo-server-express';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
 =======
@@ -33,6 +34,9 @@ import { auth, user, project, role, file } from '../modules';
 
 =======
 import cors from 'cors';
+>>>>>>> changes
+=======
+
 >>>>>>> changes
 import { GraphQLDateTime } from 'graphql-iso-date';
 import { applyMiddleware } from 'graphql-middleware';
@@ -91,6 +95,7 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -130,6 +135,8 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> remove comments
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> changes
 const typeDefs = gql`
   scalar Date
 
@@ -139,7 +146,6 @@ const typeDefs = gql`
   ${role.types}
   ${user.types}
 `;
-// não precisava daquelas dlecaraçẽos de tipos
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -191,9 +197,72 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
     );
   });
 
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 
-const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+const permissions = shield(
+  {
+    Query: {
+      login: not(
+        isAuthenticated,
+        new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')
+      ),
+      me: isAuthenticated,
+      myProjects: isAuthenticated,
+      listFiles: isAuthenticated,
+    },
+    Mutation: {
+      createUser: not(isAuthenticated),
+      createProject: isAuthenticated,
+      createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+      inviteUserToProject: and(isAuthenticated, isManagerOrOwner),
+      removeUserFromProject: and(isAuthenticated, isManagerOrOwner),
+      updateUserProjectRole: and(isAuthenticated, isManagerOrOwner),
+    },
+  },
+  {
+    // https://github.com/maticzav/graphql-shield
+    fallbackError: (err, parent, args, context, info) => {
+      if (err instanceof ApolloError) {
+        // expected errors
+        return err;
+      } else if (err instanceof Error) {
+        // unexpected errors
+        console.error(err);
+        return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+      } else {
+        // what the hell got thrown
+        console.error('The resolver threw something that is not an error.');
+        console.error(err);
+        return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+      }
+    },
+    allowExternalErrors: true,
+  }
+);
+
+const resolvers = buildFederatedSchema([
+  {
+    typeDefs,
+    resolvers: {
+      FileUpload: GraphQLUpload,
+      Date: GraphQLDateTime,
+      Query: {
+        ...auth.resolvers.queries,
+        ...user.resolvers.queries,
+        ...project.resolvers.queries,
+        ...role.resolvers.queries,
+      },
+      Mutation: {
+        ...auth.resolvers.mutations,
+        ...project.resolvers.mutations,
+        ...role.resolvers.mutations,
+        ...file.resolvers.mutations,
+      },
+    },
+  },
+]);
 
 const resolvers = buildFederatedSchema([
   {
@@ -319,6 +388,7 @@ const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
+<<<<<<< HEAD
     schema: applyMiddleware(
 <<<<<<< HEAD
       resolvers,
@@ -420,6 +490,9 @@ export default function ApolloMiddleware(app) {
       )
 >>>>>>> Criado o module files e a resolver create File
     ),
+=======
+    schema: applyMiddleware(resolvers, permissions),
+>>>>>>> changes
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
 <<<<<<< HEAD
@@ -442,5 +515,5 @@ export default function ApolloMiddleware(app) {
     },
   });
 
-  apolloServer.applyMiddleware({ app, cors: corsOptions });
+  apolloServer.applyMiddleware({ app });
 }
