@@ -30,13 +30,19 @@ async function inviteUserToProject(parent, args, context) {
   const targetProject = await Project.findById(args.projectId);
 
   if (!targetProject) {
-    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
+    throw new ApolloError(
+      'The provided project does not exist.',
+      'PROJECT_NOT_FOUND'
+    );
   }
 
   const targetUser = await User.findById(args.userId);
 
   if (!targetUser) {
-    throw new ApolloError('The provided user does not exist.', 'USER_NOT_FOUND');
+    throw new ApolloError(
+      'The provided user does not exist.',
+      'USER_NOT_FOUND'
+    );
   }
 
   const targetUserRole = new Role({
@@ -51,7 +57,9 @@ async function inviteUserToProject(parent, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
-    throw new ForbiddenError('You cannot invite an user with the same or higher role.');
+    throw new ForbiddenError(
+      'You cannot invite an user with the same or higher role.'
+    );
   }
 
   try {

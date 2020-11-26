@@ -1,23 +1,22 @@
 import * as mongoose from 'mongoose';
-
 import { ERROR_MESSAGES, REGEXES } from './constants';
 
 const schema = new mongoose.Schema(
   {
+    displayName: {
+      type: String,
+      maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
+      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
+      required: true,
+    },
     username: {
       type: String,
       index: true,
-      required: true,
-      minlength: [3, ERROR_MESSAGES.USERNAME_SHORT],
-      maxlength: [32, ERROR_MESSAGES.USERNAME_LONG],
       match: [REGEXES.USERNAME, ERROR_MESSAGES.USERNAME_INVALID],
-      unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
-    },
-    displayName: {
-      type: String,
+      maxlength: [32, ERROR_MESSAGES.USERNAME_LONG],
+      minlength: [3, ERROR_MESSAGES.USERNAME_SHORT],
       required: true,
-      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
-      maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
+      unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
     },
   },
   {
@@ -27,10 +26,10 @@ const schema = new mongoose.Schema(
 );
 
 export interface IUser extends mongoose.Document {
-  username: string;
-  displayName: string;
   createdAt: Date;
+  displayName: string;
   updateAt: Date;
+  username: string;
 }
 
 const model = mongoose.model<IUser>('user', schema);

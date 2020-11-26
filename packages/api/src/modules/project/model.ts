@@ -1,6 +1,5 @@
 import * as mongoose from 'mongoose';
 import * as slug from 'slug';
-
 import { ERROR_MESSAGES, REGEXES } from './constants';
 import { IUser } from '../user/model';
 
@@ -8,30 +7,30 @@ const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
-    slug: {
-      type: String,
-      index: true,
-      required: true,
-      minlength: [3, ERROR_MESSAGES.SLUG_SHORT],
-      maxlength: [64, ERROR_MESSAGES.SLUG_LONG],
-      match: [REGEXES.SLUG, ERROR_MESSAGES.SLUG_INVALID],
-      unique: [true, ERROR_MESSAGES.SLUG_ALREADY_IN_USE],
-    },
     displayName: {
       type: String,
-      required: true,
-      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
       maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
+      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
+      required: true,
     },
     owner: {
       type: Types.ObjectId,
+      index: true,
       ref: 'user',
       required: true,
-      index: true,
     },
     private: {
       type: Boolean,
       default: false,
+    },
+    slug: {
+      type: String,
+      index: true,
+      match: [REGEXES.SLUG, ERROR_MESSAGES.SLUG_INVALID],
+      maxlength: [64, ERROR_MESSAGES.SLUG_LONG],
+      minlength: [3, ERROR_MESSAGES.SLUG_SHORT],
+      required: true,
+      unique: [true, ERROR_MESSAGES.SLUG_ALREADY_IN_USE],
     },
   },
   {
@@ -41,15 +40,16 @@ const schema = new mongoose.Schema(
 );
 
 export interface IProject extends mongoose.Document {
-  slug: string;
-  displayName: string;
-  private: boolean;
-  owner: mongoose.Types.ObjectId | IUser;
   createdAt: Date;
+  displayName: string;
+  owner: mongoose.Types.ObjectId | IUser;
+  private: boolean;
+  slug: string;
   updateAt: Date;
 }
 
 schema.pre<IProject>('validate', function preValidate(next) {
+  // this.set({ slug: this.displayName });
   this.slug = slug(this.displayName);
   next();
 });
