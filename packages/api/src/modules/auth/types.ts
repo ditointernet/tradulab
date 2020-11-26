@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express';
 export default gql`
   input UserCreationPayload {
     email: String!
-    password: String! 0
+    password: String!
     username: String!
     displayName: String
   }
