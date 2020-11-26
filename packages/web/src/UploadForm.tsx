@@ -237,6 +237,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
+<<<<<<< HEAD
     variables: { email: "uriell.viana@dito.com.br", password: "123456" },
   });
 
@@ -257,8 +258,11 @@ export default function UploadForm() {
 export default function UploadForm() {
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "uriell.viana@dito.com.br", password: "123456" },
+=======
+    variables: { email: "bolivar@dito.com", password: "123456" },
+>>>>>>> bolivar
   });
-
+  console.log("dataLogin", dataLogin)
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 >>>>>>> formatting changes and some typings
 
@@ -282,6 +286,7 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
     const file = e.target.files![0];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -474,6 +479,8 @@ export default function UploadForm() {
 =======
     const file = e.target.files![0];
     console.log("FILE", file)
+=======
+>>>>>>> bolivar
     const projectId = "5fbf0c80212ed4a6a57c607b";
     const sourceLanguage = "PT-BR";
     if (!file) return;
