@@ -121,7 +121,7 @@ import { createUploadLink } from "apollo-upload-client";
 import UploadForm from "./UploadForm";
 
 const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "http://localhost:3001",
   credentials: "include",
 });
 

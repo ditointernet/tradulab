@@ -9,9 +9,14 @@ export const ERROR_CODES = {
 };
 
 export const ERROR_MESSAGES = {
+<<<<<<< HEAD
   NAME_LONG: 'That name is too long.',
   NAME_SHORT: 'That name is too short.',
   PROJECT_NOT_FOUND: 'The provided project does not exist.',
+=======
+  DISPLAY_NAME_LONG: 'That display name is too long.',
+  DISPLAY_NAME_SHORT: 'That display name is too short.',
+>>>>>>> changes
   SLUG_ALREADY_IN_USE: 'That slug is already in use.',
   SLUG_INVALID: 'That slug is invalid.',
   SLUG_LONG: 'That slug is too long.',

@@ -144,6 +144,7 @@ async function inviteUserToProject(_, args, context) {
   if (!targetProject) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new Error('The provided project does not exist.');
 =======
 <<<<<<< HEAD
@@ -216,12 +217,25 @@ async function inviteUserToProject(_, args, context) {
   // TODO: i shouldnt be able to invite an user with the same or higher role
 =======
     throw new Error('The provided project does not exist.');
+=======
+    throw new ApolloError(
+      'The provided project does not exist.',
+      'PROJECT_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 
   const targetUser = await User.findById(args.userId);
 
   if (!targetUser) {
+<<<<<<< HEAD
     throw new Error('The provided user does not exist.');
+=======
+    throw new ApolloError(
+      'The provided user does not exist.',
+      'USER_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 >>>>>>> we tested everything and it seems ok, including a project fix
 =======
@@ -239,6 +253,7 @@ async function inviteUserToProject(_, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     throw new Error('You cannot invite an user with the same or higher role.');
   }
@@ -306,6 +321,11 @@ async function inviteUserToProject(_, args, context) {
   } catch (err) {
     console.error(err);
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
+=======
+    throw new ForbiddenError(
+      'You cannot invite an user with the same or higher role.'
+    );
+>>>>>>> changes
   }
 }
 

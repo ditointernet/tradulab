@@ -23,6 +23,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 import * as middlewares from './middlewares';
+<<<<<<< HEAD
 
 const app = express();
 <<<<<<< HEAD
@@ -176,6 +177,9 @@ const app = express();
 =======
 import { graphqlUploadExpress } from 'graphql-upload';
 =======
+=======
+import cors from 'cors';
+>>>>>>> changes
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
@@ -247,6 +251,12 @@ const app = express();
 >>>>>>> removing comments
 =======
 
+const corsOptions: cors.CorsOptions = {
+  allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
+};
+
 const app = express();
 
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
@@ -255,6 +265,8 @@ const app = express();
 =======
 >>>>>>> changes
 app.locals.mongo = mongo;
+
+app.use(cors(corsOptions));
 
 app.use(middlewares.jwt);
 
