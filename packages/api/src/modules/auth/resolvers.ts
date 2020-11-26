@@ -46,7 +46,6 @@ async function createUser(parent, args) {
     if (!auth.isNew) {
       await auth.remove();
     }
-
     await user.remove();
 
     console.error(JSON.stringify(err, null, 2));

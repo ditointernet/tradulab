@@ -1,7 +1,8 @@
-import { UserInputError } from 'apollo-server-express';
 import { model as Project } from '.';
+import { TradulabError } from '../../errors';
 import { model as Role } from '../role';
 import { ROLES } from '../role/constants';
+import { ERROR_CODES as projectCodes } from './constants';
 
 async function createProject(parent, args, context) {
   const project = new Project({
@@ -22,16 +23,23 @@ async function createProject(parent, args, context) {
     await project.remove();
     await role.remove();
 
-    console.error(err);
+    console.error(JSON.stringify(err, null, 2));
 
-    if (err.message.includes(' validation failed: ')) {
-      const invalidField = err.message.split(': ')[2].split(',')[0];
-      throw new UserInputError(invalidField);
+    if (err.name === 'MongoError' && err.code === 11000) {
+      const duplicatedField = Object.keys(err.keyPattern)[0];
+
+      switch (duplicatedField) {
+        case 'slug':
+          throw new TradulabError(projectCodes.SLUG_ALREADY_IN_USE);
+        default:
+          throw err;
+      }
     }
 
-    if (err.message.includes(' duplicate key error collection: ')) {
-      const duplicatedField = err.message.split(': ')[3].slice(2);
-      throw new UserInputError(`That ${duplicatedField} is already in use.`);
+    if (err.errors) {
+      const invalidField = Object.keys(err.errors)[0];
+      const errorCode = err.errors[invalidField].properties.message;
+      throw new TradulabError(errorCode);
     }
 
     throw err;

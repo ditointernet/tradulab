@@ -11,7 +11,7 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_CODES.USERNAME_SHORT],
       maxlength: [32, ERROR_CODES.USERNAME_LONG],
       match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
-      unique: [true, ERROR_CODES.USERNAME_ALREADY_IN_USE],
+      unique: true,
     },
     displayName: {
       type: String,
