@@ -222,9 +222,13 @@ export const UPLOAD_FILE = gql`
 export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // Trocar email e password para o que estiver no banco de dados local
 >>>>>>> comple list
+=======
+  // Trocar email e password para o que estiver no banco de dados local
+>>>>>>> removido transpile only ts-node-dev, engine node 12
 =======
   // Trocar email e password para o que estiver no banco de dados local
 >>>>>>> removido transpile only ts-node-dev, engine node 12
@@ -310,6 +314,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
 =======
@@ -317,6 +322,9 @@ export default function UploadForm() {
 >>>>>>> list files done
     const projectId = "5fbf0c80212ed4a6a57c607b";
 >>>>>>> changes
+=======
+    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
+>>>>>>> removido transpile only ts-node-dev, engine node 12
 =======
     const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
 >>>>>>> removido transpile only ts-node-dev, engine node 12
