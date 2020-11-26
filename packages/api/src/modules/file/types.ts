@@ -180,11 +180,15 @@ export default gql`
 
   extend type Query {
 <<<<<<< HEAD
+<<<<<<< HEAD
     listFile(projectId: ID!): [File]!
 >>>>>>> changes
 =======
     listFiles(projectId: ID!): [File]!
 >>>>>>> changes
+=======
+    listFiles(projectId: ID!): [File]
+>>>>>>> list files done
   }
 `;
 
