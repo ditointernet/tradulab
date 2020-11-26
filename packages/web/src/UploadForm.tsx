@@ -206,6 +206,7 @@ export default function UploadForm() {
 >>>>>>> comple list
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "bolivar@dito.com", password: "123456" },
+<<<<<<< HEAD
   });
   console.log("dataLogin", dataLogin)
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
@@ -232,6 +233,10 @@ export default function UploadForm() {
 >>>>>>> list files done
   });
   console.log("dataLogin", dataLogin, loading)
+=======
+  });
+  console.log("dataLogin", dataLogin)
+>>>>>>> bolivar
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 >>>>>>> formatting changes and some typings
 
@@ -264,6 +269,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
 =======
@@ -274,6 +280,9 @@ export default function UploadForm() {
 >>>>>>> list files done
     const projectId = "5fbf0c80212ed4a6a57c607b";
 >>>>>>> changes
+=======
+    const projectId = "5fbf0c80212ed4a6a57c607b";
+>>>>>>> bolivar
     const sourceLanguage = "PT-BR";
     if (!file) return;
 <<<<<<< HEAD
