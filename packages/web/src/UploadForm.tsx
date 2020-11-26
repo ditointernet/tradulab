@@ -77,6 +77,7 @@ export const UPLOAD_FILE = gql`
 <<<<<<< HEAD
 export default function UploadForm() {
   // Trocar email e password para o que estiver no banco de dados local
+<<<<<<< HEAD
   const { data: dataLogin, error } = useQuery(LOGIN, {
 <<<<<<< HEAD
     variables: { email: 'julinho2801@gmail.com', password: '123456' },
@@ -205,6 +206,8 @@ export const UPLOAD_FILE = gql`
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export default function UploadForm() {
 <<<<<<< HEAD
+=======
+>>>>>>> removido transpile only ts-node-dev, engine node 12
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
   });
@@ -249,6 +252,7 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
     const file = e.target.files![0];
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
     const projectId = "5fbf0c80212ed4a6a57c607b";
@@ -261,6 +265,9 @@ export default function UploadForm() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     const projectId = "5fad9b0a7ed68959e2341a59";
+=======
+    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
+>>>>>>> removido transpile only ts-node-dev, engine node 12
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
