@@ -161,6 +161,7 @@ async function createFile(_, args: ICreateFileArgs, context) {
   const {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     file: { filename },
     sourceLanguage,
     projectId,
@@ -173,8 +174,12 @@ async function createFile(_, args: ICreateFileArgs, context) {
     sourceLanguage,
     projectId,
 >>>>>>> list files done
+=======
+    file: { filename },
+    sourceLanguage,
+    projectId,
+>>>>>>> list files done
   } = args;
-
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -314,6 +319,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   }
 
   const project = await Project.findOne({ _id: projectId });
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -417,6 +423,8 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   // const stream = createReadStream();
   // stream.on('data', (chunk) => console.log(chunk.toString()));
   const project = await Project.findOne({ _id: args.projectId });
+=======
+>>>>>>> list files done
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -786,7 +794,7 @@ interface IListFileArgs {
 
 async function listFiles(_, args: IListFileArgs, context) {
   const { projectId } = args;
-
+  console.log('projectId', projectId);
   const role = Role.findOne({ user: context.user.id, project: projectId });
 
   if (!role) {
@@ -795,7 +803,7 @@ async function listFiles(_, args: IListFileArgs, context) {
 
   const files = File.find({ project: projectId }).populate('project').exec();
 
-  return files;
+  return files || [];
 }
 
 export const mutations = { createFile };

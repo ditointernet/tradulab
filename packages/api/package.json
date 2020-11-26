@@ -84,6 +84,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "cors": "2.8.5",
 =======
     "cors": "^2.8.5",
@@ -94,6 +95,9 @@
 =======
     "cors": "^2.8.5",
 >>>>>>> changes
+=======
+    "cors": "2.8.5",
+>>>>>>> list files done
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "graphql": "15.0.0",
@@ -106,6 +110,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "graphql-upload": "11.0.0",
 =======
     "graphql-upload": "^11.0.0",
@@ -125,6 +130,9 @@
 =======
     "graphql-upload": "^11.0.0",
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    "graphql-upload": "11.0.0",
+>>>>>>> list files done
     "jsonwebtoken": "8.5.1",
     "mongoose": "5.9.16",
     "ramda": "0.27.0",
