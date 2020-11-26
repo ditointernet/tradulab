@@ -23,6 +23,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -129,11 +130,16 @@ import { IProject } from '../project/model';
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { EXTENSION_LIST } from './constants';
+import { IProject } from '../project/model';
+>>>>>>> changes
 
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -457,6 +463,20 @@ export default model;
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
+=======
+    extension: {
+      type: String,
+      enum: EXTENSION_LIST,
+      required: true,
+    },
+    filename: {
+      type: String,
+      index: true,
+      required: true,
+    },
+    filePath: {
+      type: String,
+>>>>>>> changes
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -509,13 +529,14 @@ export default model;
     },
     project: {
       type: Types.ObjectId,
+      index: true,
       ref: 'project',
       required: true,
-      index: true,
     },
-    extension: {
+    sourceLanguage: {
       type: String,
       required: true,
+<<<<<<< HEAD
       enum: EXTENSION_LIST,
     },
 <<<<<<< HEAD
@@ -566,6 +587,8 @@ export default model;
 =======
     filePath: {
       type: String,
+=======
+>>>>>>> changes
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -801,15 +824,14 @@ export default model;
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 export interface IFile extends mongoose.Document {
+  createdAt: Date;
+  extension: string;
   filename: string;
-  translationProgress: number;
-  approvalProgress: number;
+  filePath: string;
   project: mongoose.Types.ObjectId | IProject;
   sourceLanguage: string;
-  extension: string;
-  filePath: string;
-  createdAt: Date;
   updateAt: Date;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -923,6 +945,9 @@ const model = mongoose.model('file', schema);
 =======
 }
 >>>>>>> Code Review
+=======
+}
+>>>>>>> changes
 
 const model = mongoose.model<IFile>('file', schema);
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments

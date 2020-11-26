@@ -71,6 +71,7 @@ import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, Gr
   GraphQLUpload,
 } from 'apollo-server-express';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
@@ -148,6 +149,9 @@ import cors from "cors";
 
 =======
 import cors from 'cors';
+=======
+
+>>>>>>> changes
 import { GraphQLDateTime } from 'graphql-iso-date';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
@@ -155,6 +159,7 @@ import { auth, user, project, role, file } from '../modules';
 >>>>>>> changes
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -226,6 +231,8 @@ const corsOptions: cors.CorsOptions = {
 };
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> changes
 const typeDefs = gql`
   scalar Date
 
@@ -235,7 +242,6 @@ const typeDefs = gql`
   ${role.types}
   ${user.types}
 `;
-// não precisava daquelas dlecaraçẽos de tipos
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -330,8 +336,11 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 >>>>>>> Corrigido erro de cors pra qualquer request
   });
 
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 
+<<<<<<< HEAD
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 <<<<<<< HEAD
 =======
@@ -512,11 +521,24 @@ const permissions = shield(
       login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
       me: isAuthenticated,
       myProjects: isAuthenticated,
+=======
+const permissions = shield(
+  {
+    Query: {
+      login: not(
+        isAuthenticated,
+        new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')
+      ),
+      me: isAuthenticated,
+      myProjects: isAuthenticated,
+      listFiles: isAuthenticated,
+>>>>>>> changes
     },
     Mutation: {
       createUser: not(isAuthenticated),
       createProject: isAuthenticated,
       createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+<<<<<<< HEAD
       inviteUserToProject: and(
         isAuthenticated,
         isManagerOrOwner
@@ -532,6 +554,11 @@ const permissions = shield(
         isManagerOrOwner
         // isNotTargetingHigherRoles
       ),
+=======
+      inviteUserToProject: and(isAuthenticated, isManagerOrOwner),
+      removeUserFromProject: and(isAuthenticated, isManagerOrOwner),
+      updateUserProjectRole: and(isAuthenticated, isManagerOrOwner),
+>>>>>>> changes
     },
   },
   {
@@ -553,6 +580,7 @@ const permissions = shield(
     },
     allowExternalErrors: true,
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 )
 =======
@@ -593,6 +621,9 @@ const isDeveloper = rule()(
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 >>>>>>> file size limit from content length header
+=======
+);
+>>>>>>> changes
 
 const resolvers = buildFederatedSchema([
   {
@@ -615,6 +646,7 @@ const resolvers = buildFederatedSchema([
     },
   },
 ]);
+<<<<<<< HEAD
 
 const permissions = shield(
   {
@@ -853,6 +885,12 @@ export default function ApolloMiddleware(app) {
       permissions,      
 >>>>>>> permission para permissions
     ),
+=======
+
+export default function ApolloMiddleware(app) {
+  const apolloServer = new ApolloServer({
+    schema: applyMiddleware(resolvers, permissions),
+>>>>>>> changes
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
         contentLength: parseInt(headers['content-length']),
@@ -867,5 +905,5 @@ export default function ApolloMiddleware(app) {
     },
   });
 
-  apolloServer.applyMiddleware({ app, cors: corsOptions });
+  apolloServer.applyMiddleware({ app });
 }

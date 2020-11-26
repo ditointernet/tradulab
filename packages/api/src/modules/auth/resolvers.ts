@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
@@ -11,6 +12,13 @@ import { model as Auth } from '.';
 import { model as User } from '../user';
 =======
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
+=======
+import {
+  ApolloError,
+  AuthenticationError,
+  UserInputError,
+} from 'apollo-server-express';
+>>>>>>> changes
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
@@ -44,6 +52,7 @@ async function createUser(
 
 =======
 async function createUser(_, args) {
+<<<<<<< HEAD
 >>>>>>> changes
   const user = new User({
     nickname,
@@ -54,10 +63,26 @@ async function createUser(_, args) {
     email: email.toLowerCase(),
     password: await encryptPassword(password),
     user: user.id,
+=======
+  if (args.user.password.trim().length < 1) {
+    throw new UserInputError('That password is too short.');
+  }
+
+  const user = new User({
+    displayName: args.user.displayName || args.user.username,
+    username: args.user.username,
+  });
+
+  const auth = new Auth({
+    email: args.user.email.toLowerCase(),
+    password: await encryptPassword(args.user.password),
+    user,
+>>>>>>> changes
   });
 
   try {
     await Promise.all([auth.save(), user.save()]);
+<<<<<<< HEAD
 
     return {
       email: auth.email,
@@ -66,7 +91,10 @@ async function createUser(_, args) {
       username: user.username,
       id: user.id,
     };
+=======
+>>>>>>> changes
   } catch (err) {
+    // Não entendi a condição
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -95,15 +123,20 @@ async function createUser(_, args) {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
 =======
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
     // Error sem estar na constant de error
     throw new Error('Invalid credentials.');
 >>>>>>> Criado o module files e a resolver create File
+=======
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+>>>>>>> changes
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 async function login(_parent, { payload: { email, password } }) {
   try {
@@ -127,6 +160,9 @@ async function login(_parent, { payload: { email, password } }) {
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
 =======
 async function login(parent, args) {
+=======
+async function login(_, args) {
+>>>>>>> changes
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
@@ -202,6 +238,7 @@ async function login(parent, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -234,5 +271,8 @@ async function login(parent, args) {
 >>>>>>> erase comments
 export const queries = { login };
 >>>>>>> pull
+=======
+
+>>>>>>> changes
 export const mutations = { createUser };
 export const queries = { login };
