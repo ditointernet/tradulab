@@ -27,8 +27,6 @@ export const UPLOAD_FILE = gql`
     ) {
       id
       filename
-      translationProgress
-      approvalProgress
       sourceLanguage
       extension
       project {
@@ -42,19 +40,25 @@ export const UPLOAD_FILE = gql`
 
 <<<<<<< HEAD
 export default function UploadForm() {
+<<<<<<< HEAD
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
+=======
+  const { data: dataLogin, error, loading } = useQuery(LOGIN, {
+    variables: { email: "bolivar@dito.com.br", password: "123456" },
+>>>>>>> list files done
   });
-
+  console.log("dataLogin", dataLogin, loading)
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
 
-  console.log(data);
+  console.log("file data", data);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
+<<<<<<< HEAD
 <<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
     const sourceLanguage = "PT-BR";
@@ -205,10 +209,14 @@ export default function UploadForm() {
     const file = e.target.files![0];
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
+=======
+    console.log("FILE", file)
+>>>>>>> list files done
     const projectId = "5fbf0c80212ed4a6a57c607b";
 >>>>>>> changes
     const sourceLanguage = "PT-BR";
     if (!file) return;
+<<<<<<< HEAD
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
@@ -219,6 +227,11 @@ export default function UploadForm() {
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    createFile({ variables: { file: {
+      filename: file.name
+    }, projectId, sourceLanguage } });
+>>>>>>> list files done
   };
 
   return (
