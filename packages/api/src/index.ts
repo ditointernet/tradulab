@@ -96,8 +96,12 @@ const cors = require('cors');
 =======
 =======
 import * as middlewares from './middlewares';
+<<<<<<< HEAD
 
 >>>>>>> crack the code
+=======
+import cors from 'cors';
+>>>>>>> changes
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
@@ -199,6 +203,12 @@ const app = express();
 >>>>>>> Corrigido erro de cors pra qualquer request
 import { graphqlUploadExpress } from 'graphql-upload';
 
+const corsOptions: cors.CorsOptions = {
+  allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
+};
+
 const app = express();
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -256,6 +266,8 @@ const app = express();
 =======
 >>>>>>> changes
 app.locals.mongo = mongo;
+
+app.use(cors(corsOptions));
 
 app.use(middlewares.jwt);
 

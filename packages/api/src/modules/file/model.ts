@@ -19,6 +19,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { IProject } from '../project/model';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
@@ -129,6 +130,10 @@ import { EXTENSION_LIST } from './constants';
 =======
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { EXTENSION_LIST } from './constants';
+import { IProject } from '../project/model';
+>>>>>>> changes
 
 const { Types } = mongoose.Schema;
 
@@ -138,6 +143,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     extension: {
 <<<<<<< HEAD
       type: String,
@@ -370,6 +376,20 @@ const schema = new mongoose.Schema(
       type: String,
       index: true,
       required: true,
+=======
+    extension: {
+      type: String,
+      enum: EXTENSION_LIST,
+      required: true,
+    },
+    filename: {
+      type: String,
+      index: true,
+      required: true,
+    },
+    filePath: {
+      type: String,
+>>>>>>> changes
     },
     filePath: {
       type: String,
@@ -475,13 +495,14 @@ const schema = new mongoose.Schema(
     },
     project: {
       type: Types.ObjectId,
+      index: true,
       ref: 'project',
       required: true,
-      index: true,
     },
-    extension: {
+    sourceLanguage: {
       type: String,
       required: true,
+<<<<<<< HEAD
       enum: EXTENSION_LIST,
     },
 <<<<<<< HEAD
@@ -529,6 +550,8 @@ const schema = new mongoose.Schema(
     filePath: {
       type: String,
       required:true,
+=======
+>>>>>>> changes
 =======
 >>>>>>> changes
     },
@@ -781,16 +804,14 @@ export default model;
 
 <<<<<<< HEAD
 export interface IFile extends mongoose.Document {
+  createdAt: Date;
+  extension: string;
   filename: string;
-  translationProgress: number;
-  approvalProgress: number;
+  filePath: string;
   project: mongoose.Types.ObjectId | IProject;
   sourceLanguage: string;
-  extension: string;
-  filePath: string;
-  createdAt: Date;
   updateAt: Date;
-};
+}
 
 const model = mongoose.model<IFile>('file', schema);
 =======

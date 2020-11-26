@@ -828,4 +828,11 @@ Schemas: The service that defines the field is also the service that knows how t
 =======
 
 The service that defines the field is also the service that knows how to populate the field
+<<<<<<< HEAD
 >>>>>>> store
+=======
+
+{
+"Authorization": "Bearer token"
+}
+>>>>>>> changes
