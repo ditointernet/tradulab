@@ -43,7 +43,7 @@ const isManagerOrOwner = rule()(
         user: currentUserId,
       });
 
-      if ([ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
+      if (projectRole && [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)) {
         return true;
       }
     } catch (err) {
