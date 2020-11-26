@@ -1072,6 +1072,77 @@ export default function ApolloMiddleware(app) {
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 
+const resolvers = buildFederatedSchema([
+  {
+    typeDefs,
+    resolvers: {
+      FileUpload: GraphQLUpload,
+      Date: GraphQLDateTime,
+      Query: {
+        ...auth.resolvers.queries,
+        ...user.resolvers.queries,
+        ...project.resolvers.queries,
+        ...role.resolvers.queries,
+      },
+      Mutation: {
+        ...auth.resolvers.mutations,
+        ...project.resolvers.mutations,
+        ...role.resolvers.mutations,
+        ...file.resolvers.mutations,
+      },
+    },
+  },
+]);
+
+const permission = shield(
+  {
+    Query: {
+      login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
+      me: isAuthenticated,
+      myProjects: isAuthenticated,
+    },
+    Mutation: {
+      createUser: not(isAuthenticated),
+      createProject: isAuthenticated,
+      createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+      inviteUserToProject: and(
+        isAuthenticated,
+        isManagerOrOwner
+        // isNotTargetingHigherRoles
+      ),
+      removeUserFromProject: and(
+        isAuthenticated,
+        isManagerOrOwner
+        // isNotTargetingHigherRoles
+      ),
+      updateUserProjectRole: and(
+        isAuthenticated,
+        isManagerOrOwner
+        // isNotTargetingHigherRoles
+      ),
+    },
+  },
+  {
+    // https://github.com/maticzav/graphql-shield
+    fallbackError: (err, parent, args, context, info) => {
+      if (err instanceof ApolloError) {
+        // expected errors
+        return err;
+      } else if (err instanceof Error) {
+        // unexpected errors
+        console.error(err);
+        return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+      } else {
+        // what the hell got thrown
+        console.error('The resolver threw something that is not an error.');
+        console.error(err);
+        return new ApolloError('Internal server error', 'ERR_INTERNAL_SERVER');
+      }
+    },
+    allowExternalErrors: true,
+  }
+)
+
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
 <<<<<<< HEAD
@@ -1091,6 +1162,7 @@ export default function ApolloMiddleware(app) {
 =======
 >>>>>>> file size limit from content length header
     schema: applyMiddleware(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1314,6 +1386,10 @@ export default function ApolloMiddleware(app) {
 =======
       permissions,      
 >>>>>>> permission para permissions
+=======
+      resolvers,
+      permission,      
+>>>>>>> Organizando o apollo middleware
     ),
 <<<<<<< HEAD
 <<<<<<< HEAD
