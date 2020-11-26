@@ -20,7 +20,10 @@ export default gql`
   input CreateUserPayload {
 >>>>>>> Back-End Review
     email: String!
+<<<<<<< HEAD
     nickname: String!
+=======
+>>>>>>> fix
     password: String!
     username: String!
   }

@@ -348,6 +348,7 @@ app.use(function (err, _req, res, _next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Update Role
 
 =======
@@ -380,11 +381,13 @@ app.use(middlewares.error);
 =======
 console.log("Bolivar")
 >>>>>>> fix issues
+=======
+
+>>>>>>> fix
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
   app.listen({ port: EXPRESS_PORT }, () =>
-  
     console.info('🚀: api started on port ' + EXPRESS_PORT)
   );
 }
