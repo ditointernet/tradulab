@@ -92,12 +92,16 @@ import MyProjectsContainer from './MyProjectsContainer';
 
 const uploadLink = createUploadLink({
 <<<<<<< HEAD
+<<<<<<< HEAD
   uri: 'http://localhost:3001/graphql',
   credentials: 'include',
 =======
   uri: "http://localhost:3001",
   credentials: "include",
 >>>>>>> changes
+=======
+  uri: "http://localhost:3001/graphql",
+>>>>>>> list files done
 });
 
 const authLink = new ApolloLink((operation, forward) => {
