@@ -105,6 +105,7 @@ const resolvers = buildFederatedSchema([
         ...user.resolvers.queries,
         ...project.resolvers.queries,
         ...role.resolvers.queries,
+        ...file.resolvers.queries,
       },
       Mutation: {
         ...auth.resolvers.mutations,
