@@ -22,6 +22,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -148,6 +149,8 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Rebase and resolving conflicts with master
   scalar FileUpload
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -187,6 +190,7 @@ export default gql`
     approvalProgress: Int!
     sourceLanguage: String!
     extension: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -416,6 +420,8 @@ export default gql`
     project: Project!
     sourceLanguage: String!
 =======
+=======
+>>>>>>> Rebase and resolving conflicts with master
     project: Project!
 >>>>>>> Criado o module files e a resolver create File
     createdAt: Date!
@@ -424,6 +430,7 @@ export default gql`
 
   extend type Mutation {
     createFile(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -549,6 +556,11 @@ export default gql`
       projectId: ID!
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+      file: FileUpload!
+      sourceLanguage: String!
+      projectId: ID!
+>>>>>>> Rebase and resolving conflicts with master
     ): File!
   }
 `;
