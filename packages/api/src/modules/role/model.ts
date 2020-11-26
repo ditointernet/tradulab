@@ -2,13 +2,18 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
 =======
+=======
+import { ROLES_LIST } from './constants';
+>>>>>>> changes
 import { IProject } from '../project/model';
 import { IUser } from '../user/model';
 >>>>>>> we abstracted the role validation and finished all role mutations
 
+<<<<<<< HEAD
 import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
 import { IUser } from '../user/model';
@@ -18,6 +23,8 @@ import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
 import { IUser } from '../user/model';
 
+>>>>>>> changes
+=======
 >>>>>>> changes
 const { Types } = mongoose.Schema;
 
@@ -25,6 +32,7 @@ const schema = new mongoose.Schema(
   {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     role: {
       type: String,
       enum: ROLES_LIST,
@@ -33,11 +41,14 @@ const schema = new mongoose.Schema(
     },
 =======
 >>>>>>> changes
+=======
+>>>>>>> changes
     project: {
       type: Types.ObjectId,
       index: true,
       ref: 'project',
       required: true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     },
@@ -54,6 +65,13 @@ const schema = new mongoose.Schema(
       type: Types.ObjectId,
       index: true,
       ref: 'project',
+=======
+    },
+    role: {
+      type: String,
+      enum: ROLES_LIST,
+      index: true,
+>>>>>>> changes
       required: true,
     },
     user: {
@@ -70,10 +88,10 @@ const schema = new mongoose.Schema(
 );
 
 export interface IRole extends mongoose.Document {
-  role: string;
   project: mongoose.Types.ObjectId | IProject;
-  user: mongoose.Types.ObjectId | IUser;
   createdAt: Date;
+  role: string;
+  user: mongoose.Types.ObjectId | IUser;
   updateAt: Date;
 }
 

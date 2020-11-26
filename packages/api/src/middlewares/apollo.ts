@@ -60,6 +60,7 @@ import {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
 =======
@@ -84,6 +85,9 @@ import { auth, user, project, role, file } from '../modules';
 
 =======
 import cors from 'cors';
+>>>>>>> changes
+=======
+
 >>>>>>> changes
 import { GraphQLDateTime } from 'graphql-iso-date';
 import { applyMiddleware } from 'graphql-middleware';
@@ -245,6 +249,7 @@ import { ROLES } from '../modules/role/constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
@@ -336,6 +341,8 @@ const corsOptions: cors.CorsOptions = {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> changes
+=======
+>>>>>>> changes
 const typeDefs = gql`
   scalar Date
 
@@ -367,7 +374,6 @@ const typeDefs = gql`
   ${user.types}
 >>>>>>> changes
 `;
-// não precisava daquelas dlecaraçẽos de tipos
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -512,7 +518,10 @@ const resolvers = buildFederatedSchema([
         ...user.resolvers.queries,
         ...project.resolvers.queries,
         ...role.resolvers.queries,
+<<<<<<< HEAD
         ...file.resolvers.queries,
+=======
+>>>>>>> changes
       },
       Mutation: {
         ...auth.resolvers.mutations,
@@ -523,6 +532,7 @@ const resolvers = buildFederatedSchema([
     },
   },
 ]);
+<<<<<<< HEAD
 
 const resolvers = buildFederatedSchema([
   {
@@ -1127,6 +1137,12 @@ export default function ApolloMiddleware(app) {
         contentLength: headers['content-length'],
 >>>>>>> file size limit from content length header
 =======
+=======
+
+export default function ApolloMiddleware(app) {
+  const apolloServer = new ApolloServer({
+    schema: applyMiddleware(resolvers, permissions),
+>>>>>>> changes
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
         contentLength: headers['content-length'],
@@ -1142,5 +1158,5 @@ export default function ApolloMiddleware(app) {
     },
   });
 
-  apolloServer.applyMiddleware({ app, cors: corsOptions });
+  apolloServer.applyMiddleware({ app });
 }

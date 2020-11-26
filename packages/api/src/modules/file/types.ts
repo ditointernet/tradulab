@@ -444,7 +444,7 @@ export default gql`
   }
 
   extend type Query {
-    listFile(projectId: ID!): [File]!
+    listFiles(projectId: ID!): [File]!
   }
 `;
 <<<<<<< HEAD

@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
@@ -14,11 +15,14 @@ import { model as User } from '../user';
 =======
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
 =======
+=======
+>>>>>>> changes
 import {
   ApolloError,
   AuthenticationError,
   UserInputError,
 } from 'apollo-server-express';
+<<<<<<< HEAD
 >>>>>>> changes
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
@@ -51,6 +55,8 @@ import { model as User } from '../user';
 >>>>>>> Back-End Review
 =======
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
+=======
+>>>>>>> changes
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
@@ -90,6 +96,7 @@ async function createUser(
 =======
 async function createUser(_, args) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> changes
 =======
 async function createUser(_, args) {
@@ -104,6 +111,8 @@ async function createUser(_, args) {
     password: await encryptPassword(password),
     user: user.id,
 =======
+=======
+>>>>>>> changes
   if (args.user.password.trim().length < 1) {
 =======
 >>>>>>> Back-End Review
@@ -114,7 +123,13 @@ async function createUser(_, args) {
     username,
   });
 
+  const user = new User({
+    displayName: args.user.displayName || args.user.username,
+    username: args.user.username,
+  });
+
   const auth = new Auth({
+<<<<<<< HEAD
 <<<<<<< HEAD
     email: args.user.email.toLowerCase(),
     password: await encryptPassword(args.user.password),
@@ -125,10 +140,16 @@ async function createUser(_, args) {
     password: await encryptPassword(password),
     user: user.id,
 >>>>>>> Back-End Review
+=======
+    email: args.user.email.toLowerCase(),
+    password: await encryptPassword(args.user.password),
+    user,
+>>>>>>> changes
   });
 
   try {
     await Promise.all([auth.save(), user.save()]);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -180,6 +201,10 @@ async function createUser(_, args) {
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 >>>>>>> changes
+=======
+  } catch (err) {
+    // Não entendi a condição
+>>>>>>> changes
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -214,6 +239,7 @@ async function createUser(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 async function login(_parent, { payload: { email, password } }) {
   try {
     const auth = await Auth.findOne({
@@ -239,6 +265,9 @@ async function login(parent, args) {
 =======
 =======
 >>>>>>> Back-End Review
+async function login(_, args) {
+>>>>>>> changes
+=======
 async function login(_, args) {
 >>>>>>> changes
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
@@ -357,6 +386,7 @@ async function login(_parent, { payload: { email, password } }) {
 >>>>>>> erase comments
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> erase comments
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -389,5 +419,7 @@ export const queries = { login };
 export const queries = { login };
 >>>>>>> pull
 >>>>>>> pull
+=======
+>>>>>>> changes
 export const mutations = { createUser };
 export const queries = { login };

@@ -14,11 +14,14 @@ export default gql`
 =======
   input UserCreationPayload {
     displayName: String
+<<<<<<< HEAD
 >>>>>>> changes
 =======
 
   input CreateUserPayload {
 >>>>>>> Back-End Review
+=======
+>>>>>>> changes
     email: String!
 <<<<<<< HEAD
 <<<<<<< HEAD

@@ -179,6 +179,7 @@ async function inviteUserToProject(_, args, context) {
   const targetProject = await Project.findById(args.projectId);
 
   if (!targetProject) {
+<<<<<<< HEAD
     throw new Error('The provided project does not exist.');
 >>>>>>> we tested everything and it seems ok, including a project fix
   }
@@ -260,6 +261,12 @@ async function inviteUserToProject(_, args, context) {
 <<<<<<< HEAD
   if (!targetUser) {
     throw new Error('The provided user does not exist.');
+=======
+    throw new ApolloError(
+      'The provided project does not exist.',
+      'PROJECT_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -278,7 +285,14 @@ async function inviteUserToProject(_, args, context) {
   const targetUser = await User.findById(args.userId);
 
   if (!targetUser) {
+<<<<<<< HEAD
     throw new Error('The provided user does not exist.');
+=======
+    throw new ApolloError(
+      'The provided user does not exist.',
+      'USER_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 
   const targetUserRole = new Role({
@@ -335,6 +349,7 @@ async function inviteUserToProject(_, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
     throw new Error('You cannot invite an user with the same or higher role.');
   }
@@ -392,6 +407,11 @@ async function inviteUserToProject(_, args, context) {
     throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
 <<<<<<< HEAD
 >>>>>>> Back-End Review
+=======
+    throw new ForbiddenError(
+      'You cannot invite an user with the same or higher role.'
+    );
+>>>>>>> changes
 =======
     throw new ForbiddenError(
       'You cannot invite an user with the same or higher role.'
