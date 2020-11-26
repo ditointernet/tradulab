@@ -163,14 +163,28 @@ async function inviteUserToProject(_, args, context) {
   const targetProject = await Project.findById(args.projectId);
 
   if (!targetProject) {
+<<<<<<< HEAD
     throw new Error('The provided project does not exist.');
+=======
+    throw new ApolloError(
+      'The provided project does not exist.',
+      'PROJECT_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 
   const targetUser = await User.findById(args.userId);
 >>>>>>> we tested everything and it seems ok, including a project fix
 
   if (!targetUser) {
+<<<<<<< HEAD
     throw new Error('The provided user does not exist.');
+=======
+    throw new ApolloError(
+      'The provided user does not exist.',
+      'USER_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -230,7 +244,13 @@ async function inviteUserToProject(_, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+<<<<<<< HEAD
     throw new Error('You cannot invite an user with the same or higher role.');
+=======
+    throw new ForbiddenError(
+      'You cannot invite an user with the same or higher role.'
+    );
+>>>>>>> changes
   }
 <<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role

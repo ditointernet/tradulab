@@ -1,9 +1,12 @@
 import * as mongoose from 'mongoose';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
 =======
+=======
+>>>>>>> changes
 =======
 >>>>>>> changes
 import { ERROR_MESSAGES, REGEXES } from './constants';
@@ -14,6 +17,7 @@ import { ERROR_MESSAGES, REGEXES } from './constants';
 
 const schema = new mongoose.Schema(
   {
+<<<<<<< HEAD
     nickname: {
       type: String,
 <<<<<<< HEAD
@@ -38,11 +42,22 @@ const schema = new mongoose.Schema(
     username: {
       type: String,
 <<<<<<< HEAD
+=======
+    displayName: {
+      type: String,
+      maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
+      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
+      required: true,
+    },
+    username: {
+      type: String,
+>>>>>>> changes
       index: true,
       match: [REGEXES.USERNAME, ERROR_MESSAGES.USERNAME_INVALID],
       maxlength: [32, ERROR_MESSAGES.USERNAME_LONG],
       minlength: [3, ERROR_MESSAGES.USERNAME_SHORT],
       required: true,
+<<<<<<< HEAD
 <<<<<<< HEAD
       minlength: [3, ERROR_CODES.DISPLAY_NAME_SHORT],
       maxlength: [64, ERROR_CODES.DISPLAY_NAME_LONG],
@@ -55,6 +70,9 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_CODES.USERNAME_SHORT],
       required: true,
 >>>>>>> Back-End Review
+=======
+      unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
+>>>>>>> changes
     },
   },
   {
@@ -65,14 +83,19 @@ const schema = new mongoose.Schema(
 
 export interface IUser extends mongoose.Document {
 <<<<<<< HEAD
+<<<<<<< HEAD
   nickname: String;
   username: String;
 =======
   username: string;
   displayName: string;
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+>>>>>>> changes
   createdAt: Date;
+  displayName: string;
   updateAt: Date;
+  username: string;
 }
 
 const model = mongoose.model<IUser>('user', schema);

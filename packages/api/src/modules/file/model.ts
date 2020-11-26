@@ -19,6 +19,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -89,6 +90,10 @@ import { EXTENSION_LIST } from './constants';
 >>>>>>> file size limit from content length header
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
+=======
+import { EXTENSION_LIST } from './constants';
+import { IProject } from '../project/model';
+>>>>>>> changes
 
 const { Types } = mongoose.Schema;
 
@@ -98,6 +103,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     extension: {
       type: String,
 <<<<<<< HEAD
@@ -412,16 +418,31 @@ const schema = new mongoose.Schema(
 =======
       required: true,
 >>>>>>> file size limit from content length header
+=======
+    extension: {
+      type: String,
+      enum: EXTENSION_LIST,
+      required: true,
+    },
+    filename: {
+      type: String,
+      index: true,
+      required: true,
+    },
+    filePath: {
+      type: String,
+>>>>>>> changes
     },
     project: {
       type: Types.ObjectId,
+      index: true,
       ref: 'project',
       required: true,
-      index: true,
     },
-    extension: {
+    sourceLanguage: {
       type: String,
       required: true,
+<<<<<<< HEAD
       enum: EXTENSION_LIST,
     },
 <<<<<<< HEAD
@@ -489,6 +510,8 @@ const schema = new mongoose.Schema(
     filePath: {
       type: String,
 <<<<<<< HEAD
+=======
+>>>>>>> changes
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -720,16 +743,14 @@ export default model;
 );
 
 export interface IFile extends mongoose.Document {
+  createdAt: Date;
+  extension: string;
   filename: string;
-  translationProgress: number;
-  approvalProgress: number;
+  filePath: string;
   project: mongoose.Types.ObjectId | IProject;
   sourceLanguage: string;
-  extension: string;
-  filePath: string;
-  createdAt: Date;
   updateAt: Date;
-};
+}
 
 const model = mongoose.model<IFile>('file', schema);
 
