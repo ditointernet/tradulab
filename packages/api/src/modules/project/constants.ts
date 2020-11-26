@@ -9,13 +9,18 @@ export const ERROR_CODES = {
 };
 
 export const ERROR_MESSAGES = {
+  DISPLAY_NAME_LONG: 'That display name is too long.',
+  DISPLAY_NAME_SHORT: 'That display name is too short.',
   SLUG_ALREADY_IN_USE: 'That slug is already in use.',
   SLUG_INVALID: 'That slug is invalid.',
-  SLUG_SHORT: 'That slug is too short.',
   SLUG_LONG: 'That slug is too long.',
+<<<<<<< HEAD
   DISPLAY_NAME_SHORT: 'That display name is too short.',
   DISPLAY_NAME_LONG: 'That display name is too long.',
   PROJECT_NOT_FOUND: 'The provided project does not exist.',
+=======
+  SLUG_SHORT: 'That slug is too short.',
+>>>>>>> changes
 };
 
 export const REGEXES = {

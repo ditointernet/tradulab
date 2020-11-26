@@ -6,8 +6,12 @@ import { env } from './helpers';
 <<<<<<< HEAD
 =======
 import * as middlewares from './middlewares';
+<<<<<<< HEAD
 
 >>>>>>> crack the code
+=======
+import cors from 'cors';
+>>>>>>> changes
 // import { graphqlUploadExpress } from 'graphql-upload';
 <<<<<<< HEAD
 =======
@@ -19,6 +23,12 @@ import { graphqlUploadExpress } from 'graphql-upload';
 =======
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> changes
+
+const corsOptions: cors.CorsOptions = {
+  allowedHeaders: ['Authorization', 'content-type'],
+  credentials: true,
+  origin: 'http://localhost:3000',
+};
 
 const app = express();
 <<<<<<< HEAD
@@ -45,6 +55,8 @@ const app = express();
 =======
 >>>>>>> changes
 app.locals.mongo = mongo;
+
+app.use(cors(corsOptions));
 
 app.use(middlewares.jwt);
 

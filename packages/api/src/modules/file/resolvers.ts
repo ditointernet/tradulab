@@ -11,6 +11,7 @@
 import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { FileUpload } from 'graphql-upload';
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
 
 import { model as File } from '.';
@@ -20,6 +21,12 @@ import { model as Project } from '../project';
 import { ERROR_CODES as fileCodes } from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
+=======
+import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
+import { model as File } from '.';
+import { model as Project } from '../project';
+import { model as Role } from '../role';
+>>>>>>> changes
 
 interface ICreateFileArgs {
   file: FileUpload;
@@ -27,8 +34,11 @@ interface ICreateFileArgs {
   sourceLanguage: string;
 }
 
-async function createFile(parent, args: ICreateFileArgs, context) {
-  const { createReadStream, filename } = await args.file;
+async function createFile(_, args: ICreateFileArgs, context) {
+  const {
+    file: { createReadStream, filename },
+    sourceLanguage,
+  } = args;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
 <<<<<<< HEAD
@@ -217,17 +227,18 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
   if (!project) {
-    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
+    throw new ApolloError(
+      'The provided project does not exist.',
+      'PROJECT_NOT_FOUND'
+    );
   }
 >>>>>>> Corrigido erro de cors pra qualquer request
 
   const file = new File({
-    filename,
-    translationProgress: 0,
-    approvalProgress: 0,
-    sourceLanguage: args.sourceLanguage,
     extension: filename.split('.').pop(),
+    filename,
     project,
+    sourceLanguage,
   });
 
 <<<<<<< HEAD
@@ -256,11 +267,32 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   try {
     await file.save();
   } catch (err) {
-    throw err;
+    console.error(err);
+
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
 
   return file;
 >>>>>>> Corrigido erro de cors pra qualquer request
 }
 
+interface IListFileArgs {
+  projectId: string;
+}
+
+async function listFiles(_, args: IListFileArgs, context) {
+  const { projectId } = args;
+
+  const role = Role.findOne({ user: context.user.id, project: projectId });
+
+  if (!role) {
+    throw new ApolloError("You don't have a role in this project");
+  }
+
+  const files = File.find({ project: projectId }).populate('project').exec();
+
+  return files;
+}
+
 export const mutations = { createFile };
+export const queries = { listFiles };

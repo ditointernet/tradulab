@@ -116,3 +116,7 @@ mutation remove {
 ```
 
 The service that defines the field is also the service that knows how to populate the field
+
+{
+"Authorization": "Bearer token"
+}
