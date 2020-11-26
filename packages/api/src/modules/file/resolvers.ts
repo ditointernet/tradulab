@@ -284,15 +284,15 @@ interface ICreateFileArgs {
 
 async function createFile(_, args: ICreateFileArgs, context) {
   const {
-    file: { createReadStream, filename },
+    file: { filename },
     sourceLanguage,
+    projectId,
   } = args;
-
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
     throw new ApolloError('File size exceeded, limit is 5MB.');
   }
 
-  const project = await Project.findOne({ _id: args.projectId });
+  const project = await Project.findOne({ _id: projectId });
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -658,7 +658,7 @@ interface IListFileArgs {
 
 async function listFiles(_, args: IListFileArgs, context) {
   const { projectId } = args;
-
+  console.log('projectId', projectId);
   const role = Role.findOne({ user: context.user.id, project: projectId });
 
   if (!role) {
@@ -667,7 +667,7 @@ async function listFiles(_, args: IListFileArgs, context) {
 
   const files = File.find({ project: projectId }).populate('project').exec();
 
-  return files;
+  return files || [];
 }
 
 export const mutations = { createFile };

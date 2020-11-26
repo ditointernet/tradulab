@@ -23,6 +23,7 @@ import UploadForm from "./UploadForm";
 
 const uploadLink = createUploadLink({
 <<<<<<< HEAD
+<<<<<<< HEAD
   uri: "http://localhost:3001/graphql",
 });
 
@@ -421,6 +422,9 @@ const uploadLink = createUploadLink({
   uri: "http://localhost:3001",
 >>>>>>> changes
   credentials: "include",
+=======
+  uri: "http://localhost:3001/graphql",
+>>>>>>> list files done
 });
 
 const authLink = new ApolloLink((operation, forward) => {
