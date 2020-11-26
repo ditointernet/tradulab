@@ -607,6 +607,7 @@ const resolvers = buildFederatedSchema([
 ]);
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 const resolvers = buildFederatedSchema([
   {
     typeDefs,
@@ -632,6 +633,8 @@ const resolvers = buildFederatedSchema([
   },
 ]);
 
+=======
+>>>>>>> permission para permissions
 const permissions = shield(
   {
     Query: {
@@ -713,6 +716,7 @@ import cors from "cors";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
+<<<<<<< HEAD
         if (allowedRoles.includes(projectRole?.role)) return true;
 >>>>>>> file size limit from content length header
 =======
@@ -1511,6 +1515,14 @@ export default function ApolloMiddleware(app) {
         contentLength: headers['content-length'],
 >>>>>>> file size limit from content length header
 =======
+=======
+export default function ApolloMiddleware(app) {
+  const apolloServer = new ApolloServer({
+    schema: applyMiddleware(
+      resolvers,
+      permissions,      
+    ),
+>>>>>>> permission para permissions
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
         contentLength: headers['content-length'],
