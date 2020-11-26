@@ -92,7 +92,7 @@ const resolvers = buildFederatedSchema([
   },
 ]);
 
-const permission = shield(
+const permissions = shield(
   {
     Query: {
       login: not(isAuthenticated, new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')),
@@ -145,7 +145,7 @@ export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
     schema: applyMiddleware(
       resolvers,
-      permission,      
+      permissions,      
     ),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
