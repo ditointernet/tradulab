@@ -37,9 +37,9 @@ export const UPLOAD_FILE = gql`
 
 export default function UploadForm() {
   const { data: dataLogin, error } = useQuery(LOGIN, {
-    variables: { email: "julinho2801@gmail.com", password: "123456" },
+    variables: { email: "bolivar@dito.com", password: "123456" },
   });
-
+  console.log("dataLogin", dataLogin)
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
@@ -48,7 +48,7 @@ export default function UploadForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
-    const projectId = "5fb52bfe99f0a22dc58d206b";
+    const projectId = "5fbf0c80212ed4a6a57c607b";
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
