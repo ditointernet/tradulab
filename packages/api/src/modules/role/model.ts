@@ -1,24 +1,43 @@
 import * as mongoose from 'mongoose';
+<<<<<<< HEAD
 
 import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
 import { IUser } from '../user/model';
 
+=======
+import { ROLES_LIST } from './constants';
+import { IProject } from '../project/model';
+import { IUser } from '../user/model';
+
+>>>>>>> changes
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+<<<<<<< HEAD
     role: {
       type: String,
       enum: ROLES_LIST,
       index: true,
       required: true,
     },
+=======
+>>>>>>> changes
     project: {
       type: Types.ObjectId,
       index: true,
       ref: 'project',
       required: true,
+<<<<<<< HEAD
+=======
+    },
+    role: {
+      type: String,
+      enum: ROLES_LIST,
+      index: true,
+      required: true,
+>>>>>>> changes
     },
     user: {
       type: Types.ObjectId,
@@ -34,10 +53,10 @@ const schema = new mongoose.Schema(
 );
 
 export interface IRole extends mongoose.Document {
-  role: string;
   project: mongoose.Types.ObjectId | IProject;
-  user: mongoose.Types.ObjectId | IUser;
   createdAt: Date;
+  role: string;
+  user: mongoose.Types.ObjectId | IUser;
   updateAt: Date;
 }
 

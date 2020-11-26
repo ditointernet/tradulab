@@ -5,6 +5,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 =======
@@ -17,6 +18,8 @@ import * as mongoose from 'mongoose';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> changes
 <<<<<<< HEAD
 import { IProject } from '../project/model';
 =======
@@ -39,6 +42,8 @@ import { IProject } from '../project/model';
 =======
 
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> changes
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 
@@ -47,13 +52,17 @@ const { Types } = mongoose.Schema;
 const schema = new mongoose.Schema(
   {
     extension: {
+<<<<<<< HEAD
       type: String,
       enum: EXTENSION_LIST,
       required: true,
     },
 <<<<<<< HEAD
     filename: {
+=======
+>>>>>>> changes
       type: String,
+<<<<<<< HEAD
       index: true,
       required: true,
     },
@@ -162,14 +171,35 @@ const schema = new mongoose.Schema(
 =======
       required: true,
 >>>>>>> file size limit from content length header
+=======
+      enum: EXTENSION_LIST,
+      required: true,
+    },
+    filename: {
+      type: String,
+      index: true,
+      required: true,
+    },
+    filePath: {
+      type: String,
+>>>>>>> changes
     },
     project: {
       type: Types.ObjectId,
       index: true,
       ref: 'project',
+<<<<<<< HEAD
       required: true,
 <<<<<<< HEAD
 =======
+=======
+      required: true,
+    },
+    sourceLanguage: {
+      type: String,
+      required: true,
+<<<<<<< HEAD
+>>>>>>> changes
       enum: EXTENSION_LIST,
     },
 <<<<<<< HEAD
@@ -205,6 +235,8 @@ const schema = new mongoose.Schema(
     filePath: {
       type: String,
       required:true,
+=======
+>>>>>>> changes
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -230,13 +262,23 @@ const schema = new mongoose.Schema(
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export interface IFile extends mongoose.Document {
+<<<<<<< HEAD
   extension: string;
   filename: string;
   filePath: string;
   sourceLanguage: string;
   project: mongoose.Types.ObjectId | IProject;
   createdAt: Date;
+=======
+  createdAt: Date;
+  extension: string;
+  filename: string;
+  filePath: string;
+  project: mongoose.Types.ObjectId | IProject;
+  sourceLanguage: string;
+>>>>>>> changes
   updateAt: Date;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
@@ -286,6 +328,9 @@ export default model;
 const model = mongoose.model('file', schema);
 =======
 };
+=======
+}
+>>>>>>> changes
 
 const model = mongoose.model<IFile>('file', schema);
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
