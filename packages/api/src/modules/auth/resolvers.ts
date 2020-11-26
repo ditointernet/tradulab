@@ -1,9 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> changes
 import {
   ApolloError,
   AuthenticationError,
   UserInputError,
 } from 'apollo-server-express';
+<<<<<<< HEAD
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 <<<<<<< HEAD
@@ -31,6 +35,8 @@ import { model as User } from '../user';
 >>>>>>> Back-End Review
 =======
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
+=======
+>>>>>>> changes
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
@@ -64,6 +70,7 @@ async function createUser(
 
 =======
 async function createUser(_, args) {
+<<<<<<< HEAD
 >>>>>>> changes
   const user = new User({
     nickname,
@@ -74,10 +81,26 @@ async function createUser(_, args) {
     email: email.toLowerCase(),
     password: await encryptPassword(password),
     user: user.id,
+=======
+  if (args.user.password.trim().length < 1) {
+    throw new UserInputError('That password is too short.');
+  }
+
+  const user = new User({
+    displayName: args.user.displayName || args.user.username,
+    username: args.user.username,
+  });
+
+  const auth = new Auth({
+    email: args.user.email.toLowerCase(),
+    password: await encryptPassword(args.user.password),
+    user,
+>>>>>>> changes
   });
 
   try {
     await Promise.all([auth.save(), user.save()]);
+<<<<<<< HEAD
 
     return {
       email: auth.email,
@@ -120,6 +143,10 @@ async function createUser(_, args) {
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 >>>>>>> changes
+=======
+  } catch (err) {
+    // Não entendi a condição
+>>>>>>> changes
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -152,6 +179,9 @@ async function createUser(_, args) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> changes
 async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
@@ -253,6 +283,7 @@ async function login(_parent, { payload: { email, password } }) {
 // Não acho legal este nomes e esta maneira de exportar
 =======
 
+<<<<<<< HEAD
 >>>>>>> erase comments
 =======
 // Não acho legal este nomes e esta maneira de exportar
@@ -268,5 +299,7 @@ async function login(_parent, { payload: { email, password } }) {
 >>>>>>> erase comments
 export const queries = { login };
 >>>>>>> pull
+=======
+>>>>>>> changes
 export const mutations = { createUser };
 export const queries = { login };

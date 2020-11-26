@@ -250,6 +250,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
 =======
@@ -492,6 +493,9 @@ export default function UploadForm() {
 =======
     const file = e.target.files![0];
     const projectId = "5fad9b0a7ed68959e2341a59";
+=======
+    const projectId = "5fbf0c80212ed4a6a57c607b";
+>>>>>>> changes
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });

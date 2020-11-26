@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import * as slug from 'slug';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
@@ -8,6 +9,8 @@ import { ERROR_CODES, REGEXES } from './constants';
 <<<<<<< HEAD
 
 =======
+=======
+>>>>>>> changes
 =======
 >>>>>>> changes
 import { ERROR_MESSAGES, REGEXES } from './constants';
@@ -26,6 +29,7 @@ const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     slug: {
@@ -62,6 +66,13 @@ const schema = new mongoose.Schema(
 =======
       unique: true,
 >>>>>>> Back-End Review
+=======
+    displayName: {
+      type: String,
+      maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
+      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
+      required: true,
+>>>>>>> changes
     },
     owner: {
       type: Types.ObjectId,
@@ -83,8 +94,11 @@ const schema = new mongoose.Schema(
       required: true,
       unique: [true, ERROR_MESSAGES.SLUG_ALREADY_IN_USE],
     },
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
+=======
+>>>>>>> changes
   },
   {
     timestamps: true,
@@ -94,24 +108,36 @@ const schema = new mongoose.Schema(
 
 export interface IProject extends mongoose.Document {
 <<<<<<< HEAD
+<<<<<<< HEAD
   name: String;
   private: Boolean;
   slug: String;
   owner: IUser | mongoose.Types.ObjectId;
 =======
   slug: string;
+=======
+  createdAt: Date;
+>>>>>>> changes
   displayName: string;
-  private: boolean;
   owner: mongoose.Types.ObjectId | IUser;
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
   createdAt: Date;
+=======
+  private: boolean;
+  slug: string;
+>>>>>>> changes
   updateAt: Date;
 }
 
 schema.pre<IProject>('validate', function preValidate(next) {
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.slug = slug(this.name);
 =======
+=======
+  // this.set({ slug: this.displayName });
+>>>>>>> changes
   this.slug = slug(this.displayName);
 >>>>>>> we abstracted the role validation and finished all role mutations
   next();
