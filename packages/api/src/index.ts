@@ -8,7 +8,7 @@ import cors from 'cors';
 
 const corsOptions: cors.CorsOptions = {
   allowedHeaders: ['Authorization', 'content-type'],
-  credentials: true,
+  credentials: false,
   origin: 'http://localhost:3000',
 };
 
@@ -16,11 +16,11 @@ const app = express();
 
 app.locals.mongo = mongo;
 
-app.use(cors(corsOptions));
-
 app.use(middlewares.jwt);
 
 middlewares.apollo(app);
+console.log(cors);
+app.use(cors(corsOptions));
 
 app.use(middlewares.error);
 
