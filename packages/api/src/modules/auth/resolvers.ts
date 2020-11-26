@@ -1,4 +1,8 @@
-import { AuthenticationError, UserInputError } from 'apollo-server-express';
+import {
+  ApolloError,
+  AuthenticationError,
+  UserInputError,
+} from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
@@ -28,24 +32,25 @@ function signToken(payload) {
 }
 
 async function createUser(_, args) {
-  const user = new User({
-    username: args.user.username,
-    displayName: args.user.displayName || args.user.username,
-  });
-
   if (args.user.password.trim().length < 1) {
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
   }
 
+  const user = new User({
+    displayName: args.user.displayName || args.user.username,
+    username: args.user.username,
+  });
+
   const auth = new Auth({
-    user,
     email: args.user.email.toLowerCase(),
     password: await encryptPassword(args.user.password),
+    user,
   });
 
   try {
-    await Promise.all([user.save(), auth.save()]);
+    await Promise.all([auth.save(), user.save()]);
   } catch (err) {
+    // Não entendi a condição
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -72,13 +77,13 @@ async function createUser(_, args) {
       throw new TradulabError(errorCode);
     }
 
-    throw err;
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
 
   return { token: await signToken({ id: user._id }) };
 }
 
-async function login(parent, args) {
+async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
@@ -104,5 +109,5 @@ async function login(parent, args) {
   return { token: await signToken({ id: auth.user }) };
 }
 
-export const queries = { login };
 export const mutations = { createUser };
+export const queries = { login };

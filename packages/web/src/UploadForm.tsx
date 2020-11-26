@@ -55,6 +55,7 @@ export default function UploadForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
     const sourceLanguage = "PT-BR";
     if (!file) return;
@@ -203,6 +204,9 @@ export default function UploadForm() {
 =======
     const file = e.target.files![0];
     const projectId = "5fb52bfe99f0a22dc58d206b";
+=======
+    const projectId = "5fbf0c80212ed4a6a57c607b";
+>>>>>>> changes
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });

@@ -42,7 +42,14 @@ async function inviteUserToProject(_, args, context) {
 
   if (!targetProject) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
+=======
+    throw new ApolloError(
+      'The provided project does not exist.',
+      'PROJECT_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 
 <<<<<<< HEAD
@@ -53,6 +60,7 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
   if (!targetUser) {
+<<<<<<< HEAD
     throw new TradulabError(userCodes.USER_NOT_FOUND);
   }
 <<<<<<< HEAD
@@ -67,6 +75,12 @@ async function inviteUserToProject(_, args, context) {
 
   if (!availableRoles.includes(args.role)) {
     throw new Error('You cannot invite an user with the same or higher role.');
+=======
+    throw new ApolloError(
+      'The provided user does not exist.',
+      'USER_NOT_FOUND'
+    );
+>>>>>>> changes
   }
 =======
   console.log("chegou aqui sem erro do user")
@@ -95,6 +109,7 @@ async function inviteUserToProject(_, args, context) {
   });
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+<<<<<<< HEAD
     throw new Error('You cannot invite an user with the same or higher role.');
   }
 
@@ -112,6 +127,11 @@ async function inviteUserToProject(_, args, context) {
 
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
     throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
+=======
+    throw new ForbiddenError(
+      'You cannot invite an user with the same or higher role.'
+    );
+>>>>>>> changes
   }
 
   try {
