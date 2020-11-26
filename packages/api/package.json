@@ -20,6 +20,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "dev": "ts-node-dev --respawn src/index.ts",
 =======
     "start": "node $npm_package_main",
@@ -53,6 +54,9 @@
 =======
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    "dev": "ts-node-dev --respawn src/index.ts",
+>>>>>>> removido transpile only ts-node-dev, engine node 12
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {

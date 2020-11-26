@@ -252,6 +252,7 @@ export default function UploadForm() {
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export default function UploadForm() {
+  // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
   });
@@ -281,10 +282,14 @@ export default function UploadForm() {
     const file = e.target.files![0];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
     const projectId = "5fbf0c80212ed4a6a57c607b";
 >>>>>>> bolivar
+=======
+    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
+>>>>>>> removido transpile only ts-node-dev, engine node 12
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
