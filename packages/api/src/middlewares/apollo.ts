@@ -519,6 +519,7 @@ const resolvers = buildFederatedSchema([
         ...project.resolvers.queries,
         ...role.resolvers.queries,
 <<<<<<< HEAD
+<<<<<<< HEAD
         ...file.resolvers.queries,
 =======
 >>>>>>> changes
@@ -545,6 +546,9 @@ const resolvers = buildFederatedSchema([
         ...user.resolvers.queries,
         ...project.resolvers.queries,
         ...role.resolvers.queries,
+=======
+        ...file.resolvers.queries,
+>>>>>>> list files done
       },
       Mutation: {
         ...auth.resolvers.mutations,

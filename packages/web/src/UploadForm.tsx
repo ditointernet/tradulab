@@ -40,6 +40,7 @@ export const UPLOAD_FILE = gql`
     ) {
       id
       filename
+<<<<<<< HEAD
       sourceLanguage
       extension
       project {
@@ -164,6 +165,8 @@ export const UPLOAD_FILE = gql`
       filename
       translationProgress
       approvalProgress
+=======
+>>>>>>> list files done
       sourceLanguage
       extension
       project {
@@ -219,11 +222,16 @@ export default function UploadForm() {
   }
 `;
 export default function UploadForm() {
+<<<<<<< HEAD
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
+=======
+  const { data: dataLogin, error, loading } = useQuery(LOGIN, {
+    variables: { email: "bolivar@dito.com.br", password: "123456" },
+>>>>>>> list files done
   });
-
+  console.log("dataLogin", dataLogin, loading)
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 >>>>>>> formatting changes and some typings
 
@@ -231,7 +239,11 @@ export default function UploadForm() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.log(data);
+=======
+  console.log("file data", data);
+>>>>>>> list files done
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 <<<<<<< HEAD
@@ -251,8 +263,12 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const projectId = "5fb52bfe99f0a22dc58d206b";
 =======
+=======
+    console.log("FILE", file)
+>>>>>>> list files done
 =======
     console.log("FILE", file)
 >>>>>>> list files done
@@ -260,6 +276,7 @@ export default function UploadForm() {
 >>>>>>> changes
     const sourceLanguage = "PT-BR";
     if (!file) return;
+<<<<<<< HEAD
 <<<<<<< HEAD
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -507,6 +524,11 @@ export default function UploadForm() {
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    createFile({ variables: { file: {
+      filename: file.name
+    }, projectId, sourceLanguage } });
+>>>>>>> list files done
   };
 
   return (

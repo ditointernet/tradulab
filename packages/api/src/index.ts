@@ -19,6 +19,7 @@ import * as middlewares from './middlewares';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 >>>>>>> crack the code
 =======
@@ -64,6 +65,11 @@ const cors = require('cors');
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
+=======
+const cors = require('cors');
+// import cors from 'cors';
+
+>>>>>>> list files done
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 =======
@@ -120,11 +126,15 @@ import * as middlewares from './middlewares';
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
 
-const corsOptions: cors.CorsOptions = {
-  allowedHeaders: ['Authorization', 'content-type'],
-  credentials: false,
-  origin: 'http://localhost:3000',
-};
+// const corsOptions = {
+//   allowedHeaders: [
+//     'Authorization',
+//     'content-type',
+//     'Access-Control-Allow-Credentials',
+//   ],
+//   credentials: true,
+//   origin: 'http://localhost:3000',
+// };
 
 const app = express();
 <<<<<<< HEAD
@@ -142,6 +152,7 @@ const app = express();
 >>>>>>> file size limit from content length header
 =======
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -195,13 +206,15 @@ const app = express();
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> changes
+=======
+app.use(cors());
+
+>>>>>>> list files done
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
 
 middlewares.apollo(app);
-console.log(cors);
-app.use(cors(corsOptions));
 
 <<<<<<< HEAD
 <<<<<<< HEAD
