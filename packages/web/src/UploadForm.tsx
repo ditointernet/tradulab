@@ -55,6 +55,7 @@ export default function UploadForm() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
+<<<<<<< HEAD
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
@@ -121,6 +122,8 @@ export default function UploadForm() {
 =======
     const file = e.target.files![0];
     const projectId = "5fb52bfe99f0a22dc58d206b";
+=======
+>>>>>>> removido transpile only ts-node-dev, engine node 12
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
