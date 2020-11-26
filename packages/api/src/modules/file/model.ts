@@ -25,6 +25,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -72,6 +73,8 @@ import { IProject } from '../project/model';
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
 import { EXTENSION_LIST } from './constants';
+=======
+>>>>>>> Rebase and resolving conflicts with master
 import { IProject } from '../project/model';
 =======
 =======
@@ -708,6 +711,7 @@ export interface IFile extends mongoose.Document {
 
 const model = mongoose.model<IFile>('file', schema);
 
+<<<<<<< HEAD
 export default model;
 =======
 const model = mongoose.model('file', schema);
@@ -731,12 +735,15 @@ export default model;
 =======
 
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Rebase and resolving conflicts with master
 import { EXTENSION_LIST } from './constants';
 >>>>>>> file size limit from content length header
 
 >>>>>>> Corrigido erro de cors pra qualquer request
 const model = mongoose.model('file', schema);
 
+<<<<<<< HEAD
 export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -867,6 +874,30 @@ export default model;
       required: true,
 >>>>>>> file size limit from content length header
 >>>>>>> file size limit from content length header
+=======
+const schema = new mongoose.Schema(
+  {
+    filename: {
+      type: String,
+      index: true,
+      required: true,
+    },
+    translationProgress: {
+      type: Number,
+      min: [0, 'Out of range'],
+      max: [1, 'Out of range'],
+      required: true,
+    },
+    approvalProgress: {
+      type: Number,
+      min: [0, 'Out of range'],
+      max: [1, 'Out of range'],
+      required: true,
+    },
+    sourceLanguage: {
+      type: String,
+      required: true,
+>>>>>>> Rebase and resolving conflicts with master
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -882,6 +913,7 @@ export default model;
     filePath: {
       type: String,
     },
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -890,10 +922,13 @@ export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Rebase and resolving conflicts with master
     filePath: {
       type: String,
       required:true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -912,6 +947,8 @@ export default model;
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Rebase and resolving conflicts with master
   },
   {
     timestamps: true,
@@ -919,6 +956,7 @@ export default model;
   }
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -973,6 +1011,8 @@ const model = mongoose.model('file', schema);
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> Rebase and resolving conflicts with master
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -989,6 +1029,7 @@ const model = mongoose.model<IFile>('file', schema);
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 
 export default model;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -1021,3 +1062,5 @@ export default model;
 =======
 >>>>>>> file size limit from content length header
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Rebase and resolving conflicts with master
