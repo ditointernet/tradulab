@@ -11,11 +11,11 @@
     "prestart": "npm run build",
     "predev": "npm run build",
     "start": "node $npm_package_main",
-    "dev": "ts-node-dev --respawn --transpile-only src/index",
+    "dev": "ts-node-dev --respawn src/index.ts",
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
-    "node": "14"
+    "node": "12"
   },
   "eslintConfig": {
     "extends": "airbnb-base"

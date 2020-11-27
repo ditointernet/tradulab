@@ -6,7 +6,6 @@ export const ROLES = {
   OWNER: 'owner',
 };
 
-// Array ordenado Hierarquicamente
 export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,
