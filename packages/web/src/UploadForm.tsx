@@ -478,10 +478,18 @@ export const UPLOAD_FILE = gql`
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export default function UploadForm() {
+<<<<<<< HEAD
   const { data: dataLogin, error, loading } = useQuery(LOGIN, {
     variables: { email: "bolivar@dito.com.br", password: "123456" },
   });
   console.log("dataLogin", dataLogin, loading)
+=======
+  // Trocar email e password para o que estiver no banco de dados local
+  const { data: dataLogin, error } = useQuery(LOGIN, {
+    variables: { email: "bolivar@dito.com", password: "123456" },
+  });
+  console.log("dataLogin", dataLogin)
+>>>>>>> comple list
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
@@ -489,6 +497,7 @@ export default function UploadForm() {
   console.log("file data", data);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     const file = e.target.files![0]
     if (!file) return
@@ -655,6 +664,14 @@ export default function UploadForm() {
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
+=======
+    const file = e.target.files![0];
+
+    console.log("FILE", file)
+
+    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
+
+>>>>>>> comple list
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
