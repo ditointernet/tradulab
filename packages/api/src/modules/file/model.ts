@@ -168,8 +168,12 @@ export interface IFile extends mongoose.Document {
   filePath: string;
   createdAt: Date;
   updateAt: Date;
+<<<<<<< HEAD
 };
 <<<<<<< HEAD
+=======
+}
+>>>>>>> Code Review
 
 const model = mongoose.model<IFile>('file', schema);
 
