@@ -812,6 +812,7 @@ export interface IFile extends mongoose.Document {
   updateAt: Date;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -919,6 +920,9 @@ const model = mongoose.model('file', schema);
 =======
 }
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+}
+>>>>>>> Code Review
 
 const model = mongoose.model<IFile>('file', schema);
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments

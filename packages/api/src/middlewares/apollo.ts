@@ -244,6 +244,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (
         projectRole &&
         [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
@@ -271,6 +272,9 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       }
 =======
       if (allowedRoles.includes(projectRole?.role)) return true;
+=======
+      if (projectRole && allowedRoles.includes(projectRole.role)) return true;
+>>>>>>> Code Review
 =======
       if (projectRole && allowedRoles.includes(projectRole.role)) return true;
 >>>>>>> Code Review
@@ -527,6 +531,7 @@ const permissions = shield(
     },
     allowExternalErrors: true,
   }
+<<<<<<< HEAD
 )
 =======
 const isDeveloper = rule()(
@@ -636,6 +641,8 @@ const permissions = shield(
     },
     allowExternalErrors: true,
   }
+=======
+>>>>>>> Code Review
 );
 
 export default function ApolloMiddleware(app) {
