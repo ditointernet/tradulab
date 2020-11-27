@@ -350,6 +350,7 @@ app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update Role
 =======
@@ -389,6 +390,8 @@ app.use(function (err, req, res, next) {
 >>>>>>> removing comments
 =======
 >>>>>>> conflict
+=======
+>>>>>>> Code Review
   console.error("Error: ", err.name)
 =======
   console.log("Error: ", err.name)
@@ -411,7 +414,13 @@ app.use(function (err, req, res, next) {
 =======
   console.error("Error: ", err.name)
 >>>>>>> conflict
+<<<<<<< HEAD
 >>>>>>> conflict
+=======
+=======
+  console.error('Error: ', err.name);
+>>>>>>> Code Review
+>>>>>>> Code Review
 });
 <<<<<<< HEAD
 <<<<<<< HEAD

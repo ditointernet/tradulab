@@ -59,6 +59,7 @@ export interface IAuth extends mongoose.Document {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
@@ -89,11 +90,19 @@ export interface IAuth extends mongoose.Document {
 };
 >>>>>>> Rebase and resolving conflicts with master
 =======
+=======
+>>>>>>> Code Review
 };
 =======
 }
 >>>>>>> we abstracted the role validation and finished all role mutations
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+=======
+}
+>>>>>>> Code Review
+>>>>>>> Code Review
 
 const model = mongoose.model<IAuth>('auth', schema);
 

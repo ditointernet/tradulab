@@ -243,6 +243,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (
         projectRole &&
         [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
@@ -270,6 +271,9 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       }
 =======
       if (allowedRoles.includes(projectRole?.role)) return true;
+=======
+      if (projectRole && allowedRoles.includes(projectRole.role)) return true;
+>>>>>>> Code Review
 
 >>>>>>> file size limit from content length header
 <<<<<<< HEAD
@@ -632,7 +636,7 @@ const permissions = shield(
     },
     allowExternalErrors: true,
   }
-)
+);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
