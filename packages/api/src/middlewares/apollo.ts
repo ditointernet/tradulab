@@ -58,7 +58,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         user: currentUserId,
       });
 
-      if (allowedRoles.includes(projectRole?.role)) return true;
+      if (projectRole && allowedRoles.includes(projectRole.role)) return true;
 
     } catch (err) {
       console.error(err);
@@ -141,7 +141,7 @@ const permissions = shield(
     },
     allowExternalErrors: true,
   }
-)
+);
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({

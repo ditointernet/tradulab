@@ -59,7 +59,7 @@ export interface IFile extends mongoose.Document {
   filePath: string;
   createdAt: Date;
   updateAt: Date;
-};
+}
 
 const model = mongoose.model<IFile>('file', schema);
 
