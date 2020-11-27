@@ -62,6 +62,7 @@ export const UPLOAD_FILE = gql`
 export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
@@ -208,6 +209,8 @@ export const UPLOAD_FILE = gql`
 export default function UploadForm() {
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> comple list
   // Trocar email e password para o que estiver no banco de dados local
 >>>>>>> comple list
   const { data: dataLogin, error } = useQuery(LOGIN, {
@@ -244,7 +247,10 @@ export default function UploadForm() {
 =======
   });
   console.log("dataLogin", dataLogin)
+<<<<<<< HEAD
 >>>>>>> bolivar
+=======
+>>>>>>> comple list
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 >>>>>>> formatting changes and some typings
 
@@ -272,6 +278,7 @@ export default function UploadForm() {
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
     const file = e.target.files![0];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -318,6 +325,13 @@ export default function UploadForm() {
     const file = e.target.files![0];
     const projectId = "5fb52bfe99f0a22dc58d206b";
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+
+    console.log("FILE", file)
+
+    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
+
+>>>>>>> comple list
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
