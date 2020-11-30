@@ -175,6 +175,7 @@ schema.pre<IProject>('validate', function preValidate(next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.slug = slug(this.name);
 =======
   // this.set({ slug: this.displayName });
@@ -184,6 +185,8 @@ schema.pre<IProject>('validate', function preValidate(next) {
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
   // this.set({ slug: this.displayName });
+>>>>>>> changes
+=======
 >>>>>>> changes
   this.slug = slug(this.displayName);
 >>>>>>> changes
