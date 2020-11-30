@@ -431,7 +431,7 @@ interface IListFileArgs {
 
 async function listFiles(_, args: IListFileArgs, context) {
   const { projectId } = args;
-  console.log('projectId', projectId);
+
   const role = Role.findOne({ user: context.user.id, project: projectId });
 
 <<<<<<< HEAD
