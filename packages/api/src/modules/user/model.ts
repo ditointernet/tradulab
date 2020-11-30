@@ -1,22 +1,24 @@
 import * as mongoose from 'mongoose';
-import { ERROR_MESSAGES, REGEXES } from './constants';
+
+import { ERROR_CODES, REGEXES } from './constants';
 
 const schema = new mongoose.Schema(
   {
     displayName: {
       type: String,
-      maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
-      minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
       required: true,
+      minlength: [3, ERROR_CODES.USERNAME_SHORT],
+      maxlength: [32, ERROR_CODES.USERNAME_LONG],
+      match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
+      unique: true,
     },
     username: {
       type: String,
       index: true,
-      match: [REGEXES.USERNAME, ERROR_MESSAGES.USERNAME_INVALID],
-      maxlength: [32, ERROR_MESSAGES.USERNAME_LONG],
-      minlength: [3, ERROR_MESSAGES.USERNAME_SHORT],
+      match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
       required: true,
-      unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
+      minlength: [3, ERROR_CODES.DISPLAY_NAME_SHORT],
+      maxlength: [64, ERROR_CODES.DISPLAY_NAME_LONG],
     },
   },
   {

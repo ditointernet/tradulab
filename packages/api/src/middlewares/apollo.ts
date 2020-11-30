@@ -39,7 +39,12 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         user: currentUserId,
       });
 
-      if (allowedRoles.includes(projectRole?.role)) return true;
+      if (
+        projectRole &&
+        [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
+      ) {
+        return true;
+      }
     } catch (err) {
       console.error(err);
       return err;

@@ -1,13 +1,12 @@
-import {
-  ApolloError,
-  AuthenticationError,
-  UserInputError,
-} from 'apollo-server-express';
+import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
+import { TradulabError } from '../../errors';
+import { ERROR_CODES as authCodes } from './constants';
+import { ERROR_CODES as userCodes } from '../user/constants';
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -27,7 +26,7 @@ function signToken(payload) {
 
 async function createUser(_, args) {
   if (args.user.password.trim().length < 1) {
-    throw new UserInputError('That password is too short.');
+    throw new TradulabError(authCodes.PASSWORD_EMPTY);
   }
 
   const user = new User({
@@ -48,19 +47,27 @@ async function createUser(_, args) {
     if (!auth.isNew) {
       await auth.remove();
     }
-
     await user.remove();
 
-    console.error(err);
+    console.error(JSON.stringify(err, null, 2));
 
-    if (err.message.includes(' validation failed: ')) {
-      const invalidField = err.message.split(': ')[2].split(',')[0];
-      throw new UserInputError(invalidField);
+    if (err.name === 'MongoError' && err.code === 11000) {
+      const duplicatedField = Object.keys(err.keyPattern)[0];
+
+      switch (duplicatedField) {
+        case 'email':
+          throw new TradulabError(authCodes.EMAIL_ALREADY_IN_USE);
+        case 'username':
+          throw new TradulabError(userCodes.USERNAME_ALREADY_IN_USE);
+        default:
+          throw err;
+      }
     }
 
-    if (err.message.includes(' duplicate key error collection: ')) {
-      const duplicatedField = err.message.split(': ')[3].slice(2);
-      throw new UserInputError(`That ${duplicatedField} is already in use.`);
+    if (err.errors) {
+      const invalidField = Object.keys(err.errors)[0];
+      const errorCode = err.errors[invalidField].properties.message;
+      throw new TradulabError(errorCode);
     }
 
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
@@ -73,7 +80,7 @@ async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
   if (!auth || !(await verifyPassword(args.password, auth.password))) {
-    throw new AuthenticationError('Invalid credentials.');
+    throw new TradulabError(authCodes.CREDENTIALS_INVALID);
   }
 
   return { token: await signToken({ id: auth.user }) };
