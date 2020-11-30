@@ -101,9 +101,12 @@ export interface IProject extends mongoose.Document {
 
 schema.pre<IProject>('validate', function preValidate(next) {
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.slug = slug(this.name);
 =======
   // this.set({ slug: this.displayName });
+=======
+>>>>>>> changes
   this.slug = slug(this.displayName);
 >>>>>>> changes
   next();
