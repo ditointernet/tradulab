@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { IUser } from '../user/model';
 
-import { ERROR_MESSAGES, REGEXES } from './constants';
+import { ERROR_CODES, REGEXES } from './constants';
 
 const { Types } = mongoose.Schema;
 
@@ -18,16 +18,16 @@ const schema = new mongoose.Schema(
       trim: true,
       required: true,
       lowercase: true,
-      minlength: [6, ERROR_MESSAGES.EMAIL_SHORT],
-      maxlength: [254, ERROR_MESSAGES.EMAIL_LONG],
-      match: [REGEXES.EMAIL, ERROR_MESSAGES.EMAIL_INVALID],
-      unique: [true, ERROR_MESSAGES.EMAIL_ALREADY_IN_USE],
+      minlength: [6, ERROR_CODES.EMAIL_SHORT],
+      maxlength: [254, ERROR_CODES.EMAIL_LONG],
+      match: [REGEXES.EMAIL, ERROR_CODES.EMAIL_INVALID],
+      unique: true,
       index: true,
     },
     password: {
       type: String,
       required: true,
-      minlength: [1, ERROR_MESSAGES.PASSWORD_EMPTY],
+      minlength: [1, ERROR_CODES.PASSWORD_EMPTY],
     },
   },
   {

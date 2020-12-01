@@ -1,3 +1,13 @@
+export const ERROR_CODES = {
+  USERNAME_ALREADY_IN_USE: 'USERNAME_ALREADY_IN_USE',
+  USERNAME_INVALID: 'USERNAME_INVALID',
+  USERNAME_SHORT: 'USERNAME_SHORT',
+  USERNAME_LONG: 'USERNAME_LONG',
+  DISPLAY_NAME_SHORT: 'DISPLAY_NAME_SHORT',
+  DISPLAY_NAME_LONG: 'DISPLAY_NAME_LONG',
+  USER_NOT_FOUND: 'USER_NOT_FOUND',
+};
+
 export const ERROR_MESSAGES = {
   USERNAME_ALREADY_IN_USE: 'That username is already in use.',
   USERNAME_INVALID: 'That username is invalid.',
@@ -5,6 +15,7 @@ export const ERROR_MESSAGES = {
   USERNAME_LONG: 'That username is too long.',
   DISPLAY_NAME_SHORT: 'That display name is too short.',
   DISPLAY_NAME_LONG: 'That display name is too long.',
+  USER_NOT_FOUND: 'The provided user does not exist.',
 };
 
 export const REGEXES = {
