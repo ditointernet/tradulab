@@ -826,7 +826,7 @@ export default function ApolloMiddleware(app) {
     ),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
-        contentLength: headers['content-length'],
+        contentLength: parseInt(headers['content-length']),
         user: undefined,
       };
 
