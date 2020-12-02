@@ -19,6 +19,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 
 const app = express();
@@ -230,6 +231,11 @@ const app = express();
 >>>>>>> Update Role
 =======
 >>>>>>> removing comments
+=======
+
+const app = express();
+
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
@@ -240,6 +246,7 @@ middlewares.apollo(app);
 app.use(middlewares.error);
 =======
 app.use(function (err, req, res, next) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -421,6 +428,12 @@ app.use(function (err, req, res, next) {
   console.error('Error: ', err.name);
 >>>>>>> Code Review
 >>>>>>> Code Review
+=======
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({ error: 'JWT Expired.' });
+  }
+  console.error("Error: ", err.name)
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 });
 <<<<<<< HEAD
 <<<<<<< HEAD

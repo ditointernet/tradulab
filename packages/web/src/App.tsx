@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 <<<<<<< HEAD
@@ -42,6 +43,8 @@ import './App.css';
 =======
 >>>>>>> formatting changes and some typings
 =======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -68,6 +71,8 @@ import './App.css';
 >>>>>>> formatting changes and some typings
 =======
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 import React from "react";
 <<<<<<< HEAD
 import "./App.css";
@@ -99,92 +104,6 @@ const authLink = new ApolloLink((operation, forward) => {
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : '',
-      },
-    });
-  }
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-=======
-import React from 'react';
-import './App.css';
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-import React from "react";
-import "./App.css";
->>>>>>> formatting changes and some typings
-
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-
-import UploadForm from "./UploadForm";
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  }
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-=======
-import React from "react";
-import "./App.css";
->>>>>>> formatting changes and some typings
-
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-
-import UploadForm from "./UploadForm";
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
       },
     });
   }

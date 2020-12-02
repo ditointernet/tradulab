@@ -22,6 +22,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -77,10 +78,16 @@ import { model as File } from '.'
 import { ApolloError } from 'apollo-server-express';
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 import { FileUpload } from 'graphql-upload';
+=======
+import { FileUpload } from 'graphql-upload';
+import { TradulabError } from '../../errors';
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 
 import { model as File } from '.';
 >>>>>>> formatting changes and some typings
 import { model as Project } from '../project';
+import { ERROR_CODES as fileCodes } from './constants';
+import { ERROR_CODES as projectCodes } from '../project/constants';
 import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
 
 interface ICreateFileArgs {
@@ -93,7 +100,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
-    throw new ApolloError('File size exceeded, limit is 5MB.');
+    throw new TradulabError(fileCodes.SIZE_EXCEEDED);
   }
 
   const project = await Project.findOne({ _id: args.projectId });
@@ -478,7 +485,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 >>>>>>> formatting changes and some typings
 
   if (!project) {
-    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
+    throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
   }
 >>>>>>> Corrigido erro de cors pra qualquer request
 
