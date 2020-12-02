@@ -16,6 +16,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     volumes:
       - tradulab:/var/lib/db
@@ -35,11 +36,14 @@ services:
       - tradulab:/var/lib/files
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> volume api
   api:
     build: packages/api
     command: npm start
     ports:
       - "3001:3001"
+<<<<<<< HEAD
 >>>>>>> Create API and WEB Images
 =======
 >>>>>>> volume api
@@ -50,6 +54,10 @@ services:
     ports:
       - "3001:3001"
 >>>>>>> Create API and WEB Images
+=======
+    volumes:
+      - tradulab:/var/lib/files
+>>>>>>> volume api
   web:
     build: packages/web
     command: npm start
