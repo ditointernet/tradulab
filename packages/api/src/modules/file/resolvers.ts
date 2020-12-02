@@ -1,8 +1,10 @@
-import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
+import { TradulabError } from '../../errors';
 
 import { model as File } from '.';
 import { model as Project } from '../project';
+import { ERROR_CODES as fileCodes } from './constants';
+import { ERROR_CODES as projectCodes } from '../project/constants';
 import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
 
 interface ICreateFileArgs {
@@ -15,13 +17,13 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   const { createReadStream, filename } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
-    throw new ApolloError('File size exceeded, limit is 5MB.');
+    throw new TradulabError(fileCodes.SIZE_EXCEEDED);
   }
 
   const project = await Project.findOne({ _id: args.projectId });
 
   if (!project) {
-    throw new ApolloError('The provided project does not exist.', 'PROJECT_NOT_FOUND');
+    throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
   }
 
   const file = new File({

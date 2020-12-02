@@ -42,15 +42,7 @@ export interface IAuth extends mongoose.Document {
   password: string;
   createdAt: Date;
   updateAt: Date;
-<<<<<<< HEAD
-<<<<<<< HEAD
-};
-=======
 }
->>>>>>> we abstracted the role validation and finished all role mutations
-=======
-}
->>>>>>> Code Review
 
 const model = mongoose.model<IAuth>('auth', schema);
 
