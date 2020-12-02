@@ -22,6 +22,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -123,6 +124,9 @@ import { EXTENSION_LIST } from './constants';
 
 >>>>>>> file size limit from content length header
 >>>>>>> file size limit from content length header
+=======
+import { IProject } from '../project/model';
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 
@@ -155,6 +159,7 @@ const schema = new mongoose.Schema(
       index: true,
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -571,19 +576,15 @@ export default model;
     translation_progress: {
 >>>>>>> Criado o module files e a resolver create File
 =======
-    translationProgress: {
->>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
-    translation_progress: {
->>>>>>> Criado o module files e a resolver create File
-=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
     translationProgress: {
->>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -602,20 +603,18 @@ export default model;
     approval_progress: {
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
     approvalProgress: {
->>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: Number,
       min: [0, 'Out of range'],
       max: [1, 'Out of range'],
       required: true,
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     sourceLanguage: {
 >>>>>>> Criado o module files e a resolver create File
       type: String,
+<<<<<<< HEAD
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -658,6 +657,9 @@ export default model;
       required: true,
 >>>>>>> file size limit from content length header
 >>>>>>> file size limit from content length header
+=======
+      required: true,
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -676,6 +678,7 @@ export default model;
       type: String,
       required:true,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -736,6 +739,11 @@ export default model;
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+    filePath: {
+      type: String,
+    },
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
   },
   {
     timestamps: true,
@@ -761,6 +769,7 @@ export default model;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
@@ -789,6 +798,8 @@ export default model;
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 export interface IFile extends mongoose.Document {
   filename: string;
   translationProgress: number;
@@ -799,6 +810,7 @@ export interface IFile extends mongoose.Document {
   filePath: string;
   createdAt: Date;
   updateAt: Date;
+<<<<<<< HEAD
 <<<<<<< HEAD
 };
 <<<<<<< HEAD
@@ -904,6 +916,9 @@ const model = mongoose.model('file', schema);
 }
 >>>>>>> Code Review
 >>>>>>> Code Review
+=======
+}
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 
 const model = mongoose.model<IFile>('file', schema);
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
@@ -934,6 +949,7 @@ export default model;
 const model = mongoose.model('file', schema);
 
 export default model;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -989,3 +1005,5 @@ export default model;
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver

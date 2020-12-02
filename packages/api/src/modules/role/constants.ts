@@ -9,6 +9,7 @@ export const ROLES = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   CONTRIBUTOR: 'contributor',
 =======
 <<<<<<< HEAD
@@ -26,18 +27,14 @@ export const ROLES = {
 =======
 >>>>>>> Update Role
 =======
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
   // VIEWER: 'viewer',
-=======
->>>>>>> Update Role
-=======
-  // VIEWER: 'viewer',
->>>>>>> Feita lógica de restrição de convites de cargos no módulo role
-=======
->>>>>>> Update Role
   CONTRIBUTOR: 'contributor',
   PROOFREADER: 'proofreader',
   DEVELOPER: 'developer',
   MANAGER: 'manager',
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -144,6 +141,13 @@ export const ROLES_LIST = [ // mudar nome
 export const ROLES_LIST = [
 >>>>>>> erase comments
 >>>>>>> erase comments
+=======
+  OWNER: 'owner',
+};
+
+// Array ordenado Hierarquicamente
+export const ROLES_LIST = [
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
   ROLES.OWNER,
   ROLES.MANAGER,
   ROLES.DEVELOPER,

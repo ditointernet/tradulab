@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 =======
@@ -52,6 +53,9 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 <<<<<<< HEAD
 >>>>>>> formatting changes and some typings
 =======
+<<<<<<< HEAD
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -78,6 +82,8 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -116,6 +122,7 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -281,6 +288,8 @@ export default function UploadForm() {
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 export default function UploadForm() {
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
@@ -335,6 +344,7 @@ export default function UploadForm() {
 =======
     const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> removido transpile only ts-node-dev, engine node 12
 =======
   console.log(data);
@@ -644,6 +654,11 @@ export default function UploadForm() {
     createFile({ variables: { file, projectId, sourceLanguage } });
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+    const sourceLanguage = "PT-BR";
+    if (!file) return;
+    createFile({ variables: { file, projectId, sourceLanguage } });
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
   };
 
   return (
@@ -666,6 +681,7 @@ export default function UploadForm() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> formatting changes and some typings
 =======
@@ -806,3 +822,10 @@ export default function UploadForm() {
 }
 >>>>>>> formatting changes and some typings
 >>>>>>> formatting changes and some typings
+=======
+      <input type="file" onChange={handleFileChange} />
+    </div>
+  );
+};
+
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver

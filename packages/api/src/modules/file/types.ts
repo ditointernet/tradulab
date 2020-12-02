@@ -21,6 +21,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   scalar FileUpload
   enum Extentions {
     csv
@@ -69,6 +70,8 @@ export default gql`
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
   scalar FileUpload
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -79,6 +82,7 @@ export default gql`
     approvalProgress: Int!
     sourceLanguage: String!
     extension: String!
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -267,6 +271,8 @@ export default gql`
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
     project: Project!
     createdAt: Date!
     updatedAt: Date!
@@ -292,6 +298,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       file: FileUpload!
@@ -467,10 +474,12 @@ export default gql`
 >>>>>>> Corrigido erro de cors pra qualquer request
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
+=======
+      file: FileUpload!
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
       sourceLanguage: String!
       projectId: ID!
->>>>>>> Corrigido erro de cors pra qualquer request
-    ): File!
+     ): File!
   }
 >>>>>>> Criado o module files e a resolver create File
 `;

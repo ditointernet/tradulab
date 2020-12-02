@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 <<<<<<< HEAD
@@ -19,6 +20,8 @@ import './App.css';
 =======
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -54,6 +57,7 @@ import './App.css';
 >>>>>>> formatting changes and some typings
 =======
 >>>>>>> formatting changes and some typings
+<<<<<<< HEAD
 import React from "react";
 <<<<<<< HEAD
 import "./App.css";
@@ -143,9 +147,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 =======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 import React from "react";
+<<<<<<< HEAD
 import "./App.css";
->>>>>>> formatting changes and some typings
 
 import {
   ApolloProvider,

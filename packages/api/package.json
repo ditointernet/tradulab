@@ -24,6 +24,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> pull
     "dev": "ts-node-dev --respawn src/index.ts",
@@ -83,6 +84,9 @@
 =======
     "dev": "ts-node-dev --respawn src/index.ts",
 >>>>>>> removido transpile only ts-node-dev, engine node 12
+=======
+    "dev": "ts-node-dev --respawn src/index.ts",
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {

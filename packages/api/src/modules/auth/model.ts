@@ -60,6 +60,7 @@ export interface IAuth extends mongoose.Document {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
@@ -103,6 +104,9 @@ export interface IAuth extends mongoose.Document {
 }
 >>>>>>> Code Review
 >>>>>>> Code Review
+=======
+}
+>>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 
 const model = mongoose.model<IAuth>('auth', schema);
 
