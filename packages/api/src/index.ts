@@ -6,10 +6,6 @@ import { env } from './helpers';
 
 const app = express();
 
-<<<<<<< HEAD
-=======
-// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
->>>>>>> e727b3175a85ea4d8d1ed46e28cb553f1825ede3
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
