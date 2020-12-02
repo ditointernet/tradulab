@@ -20,6 +20,7 @@ import { env } from './helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as middlewares from './middlewares';
 
 const app = express();
@@ -167,6 +168,8 @@ import { graphqlUploadExpress } from 'graphql-upload';
 =======
 // import { graphqlUploadExpress } from 'graphql-upload';
 >>>>>>> formatting changes and some typings
+=======
+>>>>>>> removindo unnecessary comments
 
 const app = express();
 <<<<<<< HEAD
