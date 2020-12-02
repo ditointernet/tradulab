@@ -198,6 +198,7 @@ const app = express();
 <<<<<<< HEAD
 // app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
 
+<<<<<<< HEAD
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
 =======
 =======
@@ -236,6 +237,8 @@ const app = express();
 const app = express();
 
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+>>>>>>> fix
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
