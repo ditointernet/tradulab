@@ -20,6 +20,6 @@ export default gql`
       file: FileUpload!
       sourceLanguage: String!
       projectId: ID!
-     ): File!
+    ): File!
   }
 `;

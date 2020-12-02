@@ -2,9 +2,14 @@ import * as express from 'express';
 import { mongo } from './config';
 import * as middlewares from './middlewares';
 import { env } from './helpers';
+// import { graphqlUploadExpress } from 'graphql-upload';
 
 const app = express();
 
+<<<<<<< HEAD
+=======
+// app.use(graphqlUploadExpress({ maxFileSize: 100, maxFiles: 1 }));
+>>>>>>> e727b3175a85ea4d8d1ed46e28cb553f1825ede3
 app.locals.mongo = mongo;
 
 app.use(middlewares.jwt);
