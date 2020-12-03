@@ -136,6 +136,7 @@ app.use(middlewares.jwt);
 middlewares.apollo(app);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -215,6 +216,8 @@ app.use(function (err, req, res, next) {
 app.use(middlewares.error);
 >>>>>>> changes
 
+=======
+>>>>>>> update listFiles and error
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 

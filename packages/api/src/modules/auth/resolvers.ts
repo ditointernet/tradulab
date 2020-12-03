@@ -9,7 +9,11 @@ import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
+=======
+import TradulabError from '../../errors';
+>>>>>>> update listFiles and error
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 =======
@@ -53,6 +57,7 @@ async function createUser(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Não entendi a condição
 =======
     //  Duvidas sobre as linhas abaixo
@@ -62,6 +67,8 @@ async function createUser(_, args) {
 =======
     //  Duvidas sobre as linhas abaixo
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> update listFiles and error
     if (!auth.isNew) {
       await auth.remove();
     }

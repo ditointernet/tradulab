@@ -1,10 +1,11 @@
+import { ApolloError } from 'apollo-server-express';
 import { model as Project } from '.';
-import { TradulabError } from '../../errors';
+import TradulabError from '../../errors';
 import { model as Role } from '../role';
 import { ROLES } from '../role/constants';
 import { ERROR_CODES as projectCodes } from './constants';
 
-async function createProject(parent, args, context) {
+async function createProject(_, args, context) {
   const project = new Project({
     owner: context.user,
     displayName: args.displayName,
@@ -32,7 +33,7 @@ async function createProject(parent, args, context) {
         case 'slug':
           throw new TradulabError(projectCodes.SLUG_ALREADY_IN_USE);
         default:
-          throw err;
+          throw new ApolloError(err.message);
       }
     }
 
@@ -48,7 +49,8 @@ async function createProject(parent, args, context) {
   return project;
 }
 
-async function myProjects(parent, args, context) {
+// Não estamos tratando o Erro do roles.exect(), conflito com tipagem
+async function myProjects(_, __, context) {
   const roles = await Role.find({ user: context.user })
     .populate('project')
     .exec();
