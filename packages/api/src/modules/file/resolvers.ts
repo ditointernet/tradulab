@@ -30,11 +30,15 @@
 import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> update listFiles and error
 import {
   ERROR_CODES,
   INTERNAL_ERROR,
   MAX_ALLOWED_FILE_SIZE_IN_BYTES,
 } from './constants';
+<<<<<<< HEAD
 import { model as File } from '.';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
@@ -166,10 +170,13 @@ import { FileUpload } from 'graphql-upload';
 =======
 import { MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
 >>>>>>> changes
+=======
+>>>>>>> update listFiles and error
 import { model as File } from '.';
 >>>>>>> formatting changes and some typings
 import { model as Project } from '../project';
 import { model as Role } from '../role';
+import TradulabError from '../../errors';
 
 interface ICreateFileArgs {
   file: FileUpload;
@@ -183,13 +190,19 @@ async function createFile(_, args: ICreateFileArgs, context) {
     sourceLanguage,
     projectId,
   } = args;
+
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new ApolloError('File size exceeded, limit is 5MB.');
+=======
+    throw new TradulabError('File size exceeded, limit is 5MB.');
+>>>>>>> update listFiles and error
   }
 
   const project = await Project.findOne({ _id: projectId });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -498,6 +511,9 @@ async function createFile(parent, args: ICreateFileArgs, context) {
     throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
   }
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+  if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
+>>>>>>> update listFiles and error
 
   const file = new File({
     extension: filename.split('.').pop(),
@@ -511,7 +527,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   } catch (err) {
     console.error(err);
 
-    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+    throw new ApolloError(err.message);
   }
 
   return file;
@@ -526,11 +542,17 @@ async function listFiles(_, args: IListFileArgs, context) {
 
   const role = Role.findOne({ user: context.user.id, project: projectId });
 
-  if (!role) {
-    throw new ApolloError("You don't have a role in this project");
-  }
+  if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
-  const files = File.find({ project: projectId }).populate('project').exec();
+  const files = File.find({ project: projectId }).populate('project');
+
+  try {
+    files.exec();
+  } catch (err) {
+    console.error(err);
+
+    throw new ApolloError(err.message);
+  }
 
   return files || [];
 }

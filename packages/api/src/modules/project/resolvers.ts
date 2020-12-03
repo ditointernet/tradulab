@@ -1,11 +1,17 @@
 import { ApolloError } from 'apollo-server-express';
+<<<<<<< HEAD
 
 import TradulabError from '../../errors';
 import { ERROR_CODES as projectCodes } from './constants';
 import { ROLES } from '../role/constants';
 import { model as Project } from '.';
+=======
+import { model as Project } from '.';
+import TradulabError from '../../errors';
+>>>>>>> update listFiles and error
 import { model as Role } from '../role';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -84,6 +90,9 @@ async function createProject(
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 async function createProject(parent, args, context) {
 >>>>>>> Criado o module files e a resolver create File
+=======
+async function createProject(_, args, context) {
+>>>>>>> update listFiles and error
   const project = new Project({
     name,
     owner: user,
@@ -126,6 +135,7 @@ async function createProject(parent, args, context) {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -203,6 +213,10 @@ async function listProjects(_parent, _args, { user }) {
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 async function myProjects(parent, args, context) {
+=======
+// Não estamos tratando o Erro do roles.exect(), conflito com tipagem
+async function myProjects(_, __, context) {
+>>>>>>> update listFiles and error
   const roles = await Role.find({ user: context.user })
     .populate('project')
     .exec();

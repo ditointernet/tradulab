@@ -287,6 +287,7 @@ middlewares.apollo(app);
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(middlewares.error);
 =======
 app.use(function (err, req, res, next) {
@@ -497,6 +498,8 @@ console.log("Bolivar")
 app.use(middlewares.error);
 
 >>>>>>> changes
+=======
+>>>>>>> update listFiles and error
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 

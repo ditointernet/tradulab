@@ -16,6 +16,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> update listFiles and error
 export const ERROR_CODES = {
   MAX_ALLOWED_FILE_SIZE: 'MAX_ALLOWED_FILE_SIZE',
   NOT_A_MEMBER: 'NOT_A_MEMBER',
@@ -30,6 +33,7 @@ export const ERROR_MESSAGES = {
 
 export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -57,10 +61,16 @@ export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+export const EXTENSION_LIST = ['json', 'txt', 'csv'];
+
+export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+>>>>>>> update listFiles and error
 
 export const REGEXES = {
   SLUG: /^[a-z0-9-]{3,}$/,
 };
+<<<<<<< HEAD
 =======
 export const EXTENSION_LIST = [
 <<<<<<< HEAD
@@ -264,3 +274,5 @@ export const ERROR_MESSAGES = {
   SIZE_EXCEEDED: 'File size exceeded, limit is 5MB.',
 };
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+>>>>>>> update listFiles and error
