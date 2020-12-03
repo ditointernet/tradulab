@@ -47,6 +47,7 @@ import { ROLES, ROLES_LIST } from '../role/constants';
 =======
 =======
 import { IRole } from './model';
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
 <<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
@@ -69,6 +70,8 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 =======
 =======
 import { ApolloError } from 'apollo-server-express';
+=======
+>>>>>>> update listFiles and error
 import TradulabError from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
