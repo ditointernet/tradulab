@@ -10,10 +10,14 @@
     "build": "tsc",
     "prestart": "npm run build",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
 =======
     "predev": "npm run build",
 >>>>>>> changes
+=======
+    "predev": "npm run build && docker-compose up -d mongo",
+>>>>>>> update listFiles and error
     "start": "node $npm_package_main",
 <<<<<<< HEAD
 <<<<<<< HEAD
