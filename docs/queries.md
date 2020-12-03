@@ -95,6 +95,7 @@ mutation userJulio {
   }
 }
 
+<<<<<<< HEAD
 mutation userMiguel {
   createUser(
     payload: {
@@ -139,10 +140,16 @@ mutation userUriell {
     username
     id
 >>>>>>> Back-End Review
+=======
+query Login {
+  login(email: "bolivar@dito.com.br", password: "123456") {
+    token
+>>>>>>> queries
   }
 }
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -165,12 +172,15 @@ query meContributor {
 >>>>>>> create docs
     id
 =======
+=======
+>>>>>>> queries
 ##### File
 
 ```gql
 query listFiles {
   listFiles(projectId: "5fbf0c80212ed4a6a57c607b") {
     filename
+<<<<<<< HEAD
 >>>>>>> queries
 =======
 ## Login Usuários
@@ -183,6 +193,8 @@ query userBolivar {
     username
     email
     id
+=======
+>>>>>>> queries
   }
 }
 
@@ -591,6 +603,22 @@ The service that defines the field is also the service that knows how to populat
 Schemas: The service that defines the field is also the service that knows how to populate the field
 >>>>>>> Back-End Review
 =======
+
+#### User
+
+```gql
+query meOwner {
+  me {
+    id
+  }
+}
+
+query meContributor {
+  me {
+    id
+  }
+}
+```
 
 The service that defines the field is also the service that knows how to populate the field
 <<<<<<< HEAD
