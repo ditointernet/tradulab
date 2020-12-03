@@ -1,6 +1,11 @@
 export const ERROR_CODES = {
+<<<<<<< HEAD
   NAME_LONG: 'NAME_LONG',
   NAME_SHORT: 'NAME_SHORT',
+=======
+  DISPLAY_NAME_LONG: 'DISPLAY_NAME_LONG',
+  DISPLAY_NAME_SHORT: 'DISPLAY_NAME_SHORT',
+>>>>>>> update listFiles and error
   PROJECT_NOT_FOUND: 'PROJECT_NOT_FOUND',
   SLUG_ALREADY_IN_USE: 'SLUG_ALREADY_IN_USE',
   SLUG_INVALID: 'SLUG_INVALID',
@@ -30,11 +35,15 @@ export const ERROR_MESSAGES = {
 =======
   DISPLAY_NAME_LONG: 'That display name is too long.',
   DISPLAY_NAME_SHORT: 'That display name is too short.',
+  PROJECT_NOT_FOUND: 'The provided project does not exist.',
   SLUG_ALREADY_IN_USE: 'That slug is already in use.',
   SLUG_INVALID: 'That slug is invalid.',
   SLUG_LONG: 'That slug is too long.',
   SLUG_SHORT: 'That slug is too short.',
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+>>>>>>> update listFiles and error
 };
 
 export const REGEXES = {
