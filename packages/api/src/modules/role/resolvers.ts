@@ -7,9 +7,12 @@ import { model as Role } from '../role';
 import { model as User } from '../user';
 import { IRole } from './model';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
 =======
+=======
+>>>>>>> update listFiles and error
 import TradulabError from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
 >>>>>>> update listFiles and error
