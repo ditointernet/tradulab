@@ -24,7 +24,13 @@ import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+import TradulabError from '../../errors';
+import { ERROR_CODES as authCodes } from './constants';
+import { ERROR_CODES as userCodes } from '../user/constants';
+>>>>>>> update listFiles and error
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -94,7 +100,6 @@ async function createUser(_, args) {
 =======
 >>>>>>> changes
   } catch (err) {
-    // Não entendi a condição
     if (!auth.isNew) {
       await auth.remove();
     }

@@ -13,6 +13,7 @@ import { IRole } from './model';
 import { ROLES, ROLES_LIST } from '../role/constants';
 import { IRole } from './model';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError, ForbiddenError } from 'apollo-server-express';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -25,6 +26,10 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
 >>>>>>> merge
+=======
+import TradulabError from '../../errors';
+import { ERROR_CODES as roleCodes } from './constants';
+>>>>>>> update listFiles and error
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 <<<<<<< HEAD
