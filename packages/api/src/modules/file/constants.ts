@@ -18,6 +18,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -44,6 +45,8 @@
 =======
 >>>>>>> Back-End Review
 >>>>>>> Back-End Review
+=======
+>>>>>>> update listFiles and error
 export const ERROR_CODES = {
   MAX_ALLOWED_FILE_SIZE: 'MAX_ALLOWED_FILE_SIZE',
   NOT_A_MEMBER: 'NOT_A_MEMBER',
@@ -58,6 +61,7 @@ export const ERROR_MESSAGES = {
 
 export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 
+<<<<<<< HEAD
 >>>>>>> update listFiles and error
 >>>>>>> update listFiles and error
 =======
@@ -296,3 +300,12 @@ export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
 >>>>>>> file size limit from content length header
+=======
+export const EXTENSION_LIST = ['json', 'txt', 'csv'];
+
+export const MAX_ALLOWED_FILE_SIZE_IN_BYTES = 1e3 * 1e3 * 5; // currently 5MB
+
+export const REGEXES = {
+  SLUG: /^[a-z0-9-]{3,}$/,
+};
+>>>>>>> update listFiles and error

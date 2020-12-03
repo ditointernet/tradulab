@@ -113,6 +113,7 @@ import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {
   ERROR_CODES,
   INTERNAL_ERROR,
@@ -157,6 +158,8 @@ import { model as Role } from '../role';
 >>>>>>> changes
 =======
 =======
+=======
+>>>>>>> update listFiles and error
 import {
   ERROR_CODES,
   INTERNAL_ERROR,
@@ -166,7 +169,10 @@ import { model as File } from '.';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
 import TradulabError from '../../errors';
+<<<<<<< HEAD
 >>>>>>> update listFiles and error
+>>>>>>> update listFiles and error
+=======
 >>>>>>> update listFiles and error
 
 interface ICreateFileArgs {
@@ -198,7 +204,9 @@ async function createFile(_, args: ICreateFileArgs, context) {
     projectId,
 >>>>>>> list files done
   } = args;
+
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     throw new TradulabError('File size exceeded, limit is 5MB.');
@@ -290,6 +298,9 @@ async function createFile(parent, args: ICreateFileArgs, context) {
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
     throw new ApolloError('File size exceeded, limit is 5MB.');
+=======
+    throw new TradulabError('File size exceeded, limit is 5MB.');
+>>>>>>> update listFiles and error
   }
 
   const project = await Project.findOne({ _id: args.projectId });
@@ -508,6 +519,7 @@ async function createFile(parent, args: ICreateFileArgs, context) {
   // }
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   try {
     await file.save();
@@ -840,6 +852,9 @@ export const mutations = { createFile };
   if (!project) {
     throw new Error('The provided project does not exist.');
   }
+=======
+  if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
+>>>>>>> update listFiles and error
 
   const file = new File({
     extension: filename.split('.').pop(),
@@ -853,7 +868,7 @@ export const mutations = { createFile };
   } catch (err) {
     console.error(err);
 
-    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+    throw new ApolloError(err.message);
   }
 
   return file;
@@ -869,11 +884,17 @@ async function listFiles(_, args: IListFileArgs, context) {
 
   const role = Role.findOne({ user: context.user.id, project: projectId });
 
-  if (!role) {
-    throw new ApolloError("You don't have a role in this project");
-  }
+  if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
-  const files = File.find({ project: projectId }).populate('project').exec();
+  const files = File.find({ project: projectId }).populate('project');
+
+  try {
+    files.exec();
+  } catch (err) {
+    console.error(err);
+
+    throw new ApolloError(err.message);
+  }
 
   return files || [];
 }

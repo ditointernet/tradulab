@@ -15,10 +15,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
 =======
     "predev": "npm run build",
 >>>>>>> changes
+=======
+    "predev": "npm run build && docker-compose up -d mongo",
+>>>>>>> update listFiles and error
 =======
     "predev": "npm run build && docker-compose up -d mongo",
 >>>>>>> update listFiles and error
