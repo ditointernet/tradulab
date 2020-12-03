@@ -9,9 +9,17 @@ import { model as Role } from '../role';
 <<<<<<< HEAD
 import { model as User } from '../user';
 import { IRole } from './model';
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
+<<<<<<< HEAD
 >>>>>>> merge
+=======
+=======
+import TradulabError from '../../errors';
+import { ERROR_CODES as roleCodes } from './constants';
+>>>>>>> update listFiles and error
+>>>>>>> update listFiles and error
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 <<<<<<< HEAD

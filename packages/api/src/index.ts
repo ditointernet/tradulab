@@ -207,10 +207,13 @@ middlewares.apollo(app);
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(middlewares.error);
 =======
 =======
 >>>>>>> changes
+=======
+>>>>>>> update listFiles and error
 app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -301,7 +304,12 @@ app.use(middlewares.error);
 >>>>>>> changes
 >>>>>>> changes
 
+<<<<<<< HEAD
 >>>>>>> fix
+=======
+=======
+>>>>>>> update listFiles and error
+>>>>>>> update listFiles and error
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
