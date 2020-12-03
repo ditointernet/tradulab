@@ -11,8 +11,6 @@ app.use(middlewares.jwt);
 
 middlewares.apollo(app);
 
-app.use(middlewares.error);
-
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 

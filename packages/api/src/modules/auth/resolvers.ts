@@ -4,7 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
-import { TradulabError } from '../../errors';
+import TradulabError from '../../errors';
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 
@@ -43,7 +43,6 @@ async function createUser(_, args) {
   try {
     await Promise.all([auth.save(), user.save()]);
   } catch (err) {
-    // Não entendi a condição
     if (!auth.isNew) {
       await auth.remove();
     }

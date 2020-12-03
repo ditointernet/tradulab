@@ -3,7 +3,7 @@ import { model as User } from '../user';
 import { model as Role } from '../role';
 import { ROLES, ROLES_LIST } from '../role/constants';
 import { IRole } from './model';
-import { TradulabError } from '../../errors';
+import TradulabError from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
