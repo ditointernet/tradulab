@@ -82,13 +82,21 @@ mutation authContributor {
   }
 }
 
+<<<<<<< HEAD
 query meOwner {
   me {
 >>>>>>> create docs
     id
+=======
+query Login {
+  login(email: "bolivar@dito.com.br", password: "123456") {
+    token
+>>>>>>> queries
   }
 }
+```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 mutation userUriell {
   createUser(
@@ -153,6 +161,14 @@ query userUriell {
     username
     email
     id
+=======
+##### File
+
+```gql
+query listFiles {
+  listFiles(projectId: "5fbf0c80212ed4a6a57c607b") {
+    filename
+>>>>>>> queries
   }
 }
 ```
@@ -380,6 +396,22 @@ Schemas: The service that defines the field is also the service that knows how t
 =======
 >>>>>>> create docs
 =======
+
+#### User
+
+```gql
+query meOwner {
+  me {
+    id
+  }
+}
+
+query meContributor {
+  me {
+    id
+  }
+}
+```
 
 The service that defines the field is also the service that knows how to populate the field
 <<<<<<< HEAD
