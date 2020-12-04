@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import TradulabError from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
+=======
+import { ApolloError, ForbiddenError } from 'apollo-server-express';
+import { model as Project } from '../project';
+import { model as Role } from '../role';
+import { model as User } from '../user';
+import { IRole } from './model';
+import { TradulabError } from '../../errors';
+import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
+>>>>>>> merge
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 import { IRole } from './model';
@@ -17,12 +27,28 @@ async function projectUsers(_, args) {
   return roles;
 }
 
+<<<<<<< HEAD
 async function inviteUserToProject(
   _parent,
   { payload: { userId, projectId, role } },
   { user: { _id: ownId } }
 ) {
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
+=======
+async function inviteUserToProject(_, args, context) {
+  if (args.userId === context.user.id) {
+    throw new TradulabError(roleCodes.INVITED_YOURSELF);
+  }
+
+  const existingRole = await Role.findOne({
+    user: args.userId,
+    project: args.projectId,
+  });
+
+  if (existingRole) {
+    throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
+  }
+>>>>>>> merge
 
   const project = await Project.findById(projectId);
 
@@ -32,9 +58,27 @@ async function inviteUserToProject(
 
   if (!targetUser) throw new TradulabError(userCodes.USER_NOT_FOUND);
 
+<<<<<<< HEAD
   const existingRole = await Role.findOne({
     project: projectId,
     user: userId,
+=======
+  const targetUserRole = await Role.findOne({
+    user: context.user.id,
+    project: args.projectId,
+  });
+
+  const indexRole = ROLES_LIST.indexOf(targetUserRole.role);
+  const availableRoles = ROLES_LIST.slice(indexRole + 1);
+
+  if (!availableRoles.includes(args.role)) {
+    throw new Error('You cannot invite an user with the same or higher role.');
+  }
+  const role = new Role({
+    role: ROLES[args.role.toUpperCase()],
+    project: targetProject,
+    user: targetUser,
+>>>>>>> merge
   });
 
   if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
