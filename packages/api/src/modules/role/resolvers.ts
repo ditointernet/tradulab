@@ -3,7 +3,6 @@ import { model as User } from '../user';
 import { model as Role } from '../role';
 import { ROLES, ROLES_LIST } from '../role/constants';
 import { IRole } from './model';
-import { ApolloError, ForbiddenError } from 'apollo-server-express';
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
