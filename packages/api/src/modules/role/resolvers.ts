@@ -1,14 +1,14 @@
+import { ApolloError, ForbiddenError } from 'apollo-server-express';
 import { model as Project } from '../project';
-import { model as User } from '../user';
 import { model as Role } from '../role';
-import { ROLES, ROLES_LIST } from '../role/constants';
+import { model as User } from '../user';
 import { IRole } from './model';
 import { TradulabError } from '../../errors';
-import { ERROR_CODES as roleCodes } from './constants';
+import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 
-async function projectUsers(parent, args) {
+async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
     .populate('user')
     .exec();
@@ -16,7 +16,7 @@ async function projectUsers(parent, args) {
   return roles;
 }
 
-async function inviteUserToProject(parent, args, context) {
+async function inviteUserToProject(_, args, context) {
   if (args.userId === context.user.id) {
     throw new TradulabError(roleCodes.INVITED_YOURSELF);
   }
@@ -42,7 +42,18 @@ async function inviteUserToProject(parent, args, context) {
     throw new TradulabError(userCodes.USER_NOT_FOUND);
   }
 
-  const targetUserRole = new Role({
+  const targetUserRole = await Role.findOne({
+    user: context.user.id,
+    project: args.projectId,
+  });
+
+  const indexRole = ROLES_LIST.indexOf(targetUserRole.role);
+  const availableRoles = ROLES_LIST.slice(indexRole + 1);
+
+  if (!availableRoles.includes(args.role)) {
+    throw new Error('You cannot invite an user with the same or higher role.');
+  }
+  const role = new Role({
     role: ROLES[args.role.toUpperCase()],
     project: targetProject,
     user: targetUser,
