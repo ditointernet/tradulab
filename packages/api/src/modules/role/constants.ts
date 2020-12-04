@@ -33,12 +33,17 @@ export const ERROR_CODES = {
 export const ERROR_MESSAGES = {
   INVITED_YOURSELF: 'You cannot invite yourself.',
   INVITED_EXISTING_ROLE: 'The provided user is already part of the project.',
-  INVITED_SAME_OR_HIGHER_ROLE: 'You cannot invite an user with the same or higher role.',
+  INVITED_SAME_OR_HIGHER_ROLE:
+    'You cannot invite an user with the same or higher role.',
   UPDATED_YOURSELF: 'You cannot update your own role.',
   UPDATED_NOT_EXISTING_ROLE: 'The provided user is not part of the project.',
-  UPDATED_TO_SAME_OR_HIGHER_ROLE: 'You can not give the same or higher role than your own to an user.',
-  UPDATED_FROM_SAME_OR_HIGHER_ROLE: 'You can not update someone with the same or higher role than your own.',
+  UPDATED_TO_SAME_OR_HIGHER_ROLE:
+    'You can not give the same or higher role than your own to an user.',
+  UPDATED_FROM_SAME_OR_HIGHER_ROLE:
+    'You can not update someone with the same or higher role than your own.',
   REMOVED_NOT_EXISTING_ROLE: 'The provided user is not part of the project.',
-  REMOVED_YOURSELF_AS_OWNER: 'You cannot remove your ownership from the project.',
-  REMOVED_SAME_OR_HIGHER_ROLE: 'You can not remove someone with the same or higher role than your own.',
+  REMOVED_YOURSELF_AS_OWNER:
+    'You cannot remove your ownership from the project.',
+  REMOVED_SAME_OR_HIGHER_ROLE:
+    'You can not remove someone with the same or higher role than your own.',
 };
