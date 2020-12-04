@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
+<<<<<<< HEAD
+=======
+=======
+import React from "react";
+<<<<<<< HEAD
+import "./App.css";
+>>>>>>> routes
+
+>>>>>>> routes
 import {
   ApolloProvider,
   ApolloClient,
@@ -48,6 +58,16 @@ function App() {
         </div>
       </TradulabLayout>
     </ApolloProvider>
+=======
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+
+function App() {
+  return (
+    <Router>
+      <Switch></Switch>
+    </Router>
+>>>>>>> routes
   );
 }
 
