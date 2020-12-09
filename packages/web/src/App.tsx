@@ -110,6 +110,7 @@ import React from "react";
 import "./App.css";
 >>>>>>> formatting changes and some typings
 
+<<<<<<< HEAD
 import {
   ApolloProvider,
   ApolloClient,
@@ -150,6 +151,7 @@ const client = new ApolloClient({
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
 import React from "react";
+<<<<<<< HEAD
 <<<<<<< HEAD
 import "./App.css";
 
@@ -202,6 +204,11 @@ function App() {
     </ApolloProvider>
 =======
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+=======
+import { gql, useQuery } from "@apollo/client";
+import Pages from "./pages";
+import Login from "./pages/Login";
+>>>>>>> routes scope
 import "./App.css";
 =======
 import React from 'react';
@@ -447,29 +454,28 @@ const uploadLink = createUploadLink({
   uri: "http://localhost:3001/graphql",
   credentials: "include",
 });
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
+=======
+const IS_LOGGED_IN = gql`
+  query isLoggedIn {
+    me {
+      id
+    }
   }
+`;
+>>>>>>> routes scope
 
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
+function App() {
+  const { data, error, loading } = useQuery(IS_LOGGED_IN);
 
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
+  const NOT_LOGGED_USER = "You must be logged in.";
 
+  const TOKEN = localStorage.getItem("token");
+  console.log(error);
+  if (loading) return <p>Loading...</p>;
+
+  if (error && error.message === NOT_LOGGED_USER && !TOKEN) return <Login />;
+
+<<<<<<< HEAD
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -480,6 +486,9 @@ function App() {
 =======
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
   );
+=======
+  return <Pages />;
+>>>>>>> routes scope
 }
 
 export default App;

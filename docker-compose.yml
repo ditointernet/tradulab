@@ -36,6 +36,7 @@ services:
   api:
     build: packages/api
     command: npm start
+<<<<<<< HEAD
     ports:
       - "3001:3001"
     volumes:
@@ -57,6 +58,9 @@ services:
   api:
     build: packages/api
     command: npm start
+=======
+    network_mode: host
+>>>>>>> routes scope
     ports:
       - "3001:3001"
 >>>>>>> Create API and WEB Images
