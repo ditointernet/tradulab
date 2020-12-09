@@ -337,6 +337,7 @@ const uploadLink = createUploadLink({
 import { gql, useQuery } from "@apollo/client";
 import Pages from "./pages";
 import Login from "./pages/Login";
+import Erros from "./erros";
 import "./App.css";
 
 const IS_LOGGED_IN = gql`
@@ -351,13 +352,13 @@ const IS_LOGGED_IN = gql`
 function App() {
   const { data, error, loading } = useQuery(IS_LOGGED_IN);
 
-  const NOT_LOGGED_USER = "You must be logged in.";
-
-  const TOKEN = localStorage.getItem("token");
-  console.log(error);
   if (loading) return <p>Loading...</p>;
 
-  if (error && error.message === NOT_LOGGED_USER && !TOKEN) return <Login />;
+  if (error) return <Erros message={error.message} />;
+
+  const TOKEN = localStorage.getItem("token");
+
+  if (!TOKEN) return <Login />;
 
 <<<<<<< HEAD
 function App() {
