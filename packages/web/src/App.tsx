@@ -43,6 +43,7 @@ import React from 'react';
 import './App.css';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 
+<<<<<<< HEAD
 import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, createHttpLink } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
@@ -137,6 +138,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+=======
+>>>>>>> fix app
 function App() {
   return (
     <ApolloProvider client={client}>
