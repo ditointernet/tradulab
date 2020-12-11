@@ -4,6 +4,7 @@ import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, createHttpLink } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
+<<<<<<< HEAD
 import UploadForm from './UploadForm';
 
 const httpLink = createHttpLink({
@@ -38,6 +39,27 @@ const authLink = new ApolloLink((operation, forward) => {
       authorization: token ? `Bearer ${token}` : '',
     }
   });
+=======
+import UploadForm from "./UploadForm";
+
+const uploadLink = createUploadLink({
+  uri: "http://localhost:3001/graphql",
+  credentials: "include",
+});
+
+const authLink = new ApolloLink((operation, forward) => {
+  // Retrieve the authorization token from local storage.
+  const token = localStorage.getItem("token");
+
+  if (!["login", "createUser"].includes(operation.operationName)) {
+    // Use the setContext method to set the HTTP headers.
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  }
+>>>>>>> fix app
 
   // Call the next link in the middleware chain.
   return forward(operation);
