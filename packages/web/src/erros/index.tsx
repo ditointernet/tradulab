@@ -12,3 +12,4 @@ export default function Erros({ message }) {
       return <h1>{message}</h1>;
   }
 }
+''
