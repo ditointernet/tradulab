@@ -354,6 +354,7 @@ middlewares.apollo(app);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(middlewares.error);
 =======
 =======
@@ -452,6 +453,9 @@ app.use(function (err, _req, res, _next) {
 >>>>>>> formatting changes and some typings
 =======
 >>>>>>> Unnecessary comments and logs removed, add ApolloErrors
+=======
+app.use(function (err, _req, res, _next) {
+>>>>>>> resolve index conflicts
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
@@ -571,9 +575,12 @@ console.log("Bolivar")
 =======
 app.use(middlewares.error);
 
+<<<<<<< HEAD
 >>>>>>> changes
 =======
 >>>>>>> update listFiles and error
+=======
+>>>>>>> resolve index conflicts
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');
 
