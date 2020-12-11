@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { GraphQLDateTime } from 'graphql-iso-date';
 import {
   ApolloError,
@@ -11,39 +12,44 @@ import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
+=======
+import { buildFederatedSchema } from '@apollo/federation';
+import {
+  ApolloError,
+  ApolloServer,
+  AuthenticationError,
+  ForbiddenError,
+  gql,
+  GraphQLUpload,
+} from 'apollo-server-express';
+>>>>>>> feature/resolver-list-file
 
+import { GraphQLDateTime } from 'graphql-iso-date';
+import { applyMiddleware } from 'graphql-middleware';
+import { not, and, or, rule, shield } from 'graphql-shield';
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
+<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
 };
 
+=======
+>>>>>>> feature/resolver-list-file
 const typeDefs = gql`
   scalar Date
 
-  type Query {
-    _: Boolean
-  }
-
-  type Mutation {
-    _: Boolean
-  }
-
-  type Subscription {
-    _: Boolean
-  }
-
   ${auth.types}
-  ${user.types}
+  ${file.types}
   ${project.types}
   ${role.types}
-  ${file.types}
+  ${user.types}
 `;
 
-const isAuthenticated = rule()((parent, args, { user }) => {
+const isAuthenticated = rule()((_, __, { user }) => {
   if (!user) {
     return new AuthenticationError('You must be logged in.');
   }
@@ -51,14 +57,27 @@ const isAuthenticated = rule()((parent, args, { user }) => {
 });
 
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
+<<<<<<< HEAD
   rule()(async (parent, { projectId }, { user: { id: currentUserId } }) => {
+=======
+  rule()(async (_, { projectId }, { user: { id: currentUserId } }) => {
+>>>>>>> feature/resolver-list-file
     try {
       const projectRole = await role.model.findOne({
         project: projectId,
         user: currentUserId,
       });
 
+<<<<<<< HEAD
       if (projectRole && allowedRoles.includes(projectRole.role)) return true;
+=======
+      if (
+        projectRole &&
+        [ROLES.MANAGER, ROLES.OWNER].includes(projectRole.role)
+      ) {
+        return true;
+      }
+>>>>>>> feature/resolver-list-file
     } catch (err) {
       console.error(err);
       return err;
@@ -67,6 +86,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
       'You must be owner or manager in this project or this project doesnt exit.'
     );
   });
+<<<<<<< HEAD
 
 const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
@@ -93,6 +113,13 @@ const resolvers = buildFederatedSchema([
   },
 ]);
 
+=======
+
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+
+>>>>>>> feature/resolver-list-file
 const permissions = shield(
   {
     Query: {
@@ -102,11 +129,16 @@ const permissions = shield(
       ),
       me: isAuthenticated,
       myProjects: isAuthenticated,
+<<<<<<< HEAD
+=======
+      listFiles: isAuthenticated,
+>>>>>>> feature/resolver-list-file
     },
     Mutation: {
       createUser: not(isAuthenticated),
       createProject: isAuthenticated,
       createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+<<<<<<< HEAD
       inviteUserToProject: and(
         isAuthenticated,
         isManagerOrOwner
@@ -122,6 +154,11 @@ const permissions = shield(
         isManagerOrOwner
         // isNotTargetingHigherRoles
       ),
+=======
+      inviteUserToProject: and(isAuthenticated, isManagerOrOwner),
+      removeUserFromProject: and(isAuthenticated, isManagerOrOwner),
+      updateUserProjectRole: and(isAuthenticated, isManagerOrOwner),
+>>>>>>> feature/resolver-list-file
     },
   },
   {
@@ -145,12 +182,39 @@ const permissions = shield(
   }
 );
 
+const resolvers = buildFederatedSchema([
+  {
+    typeDefs,
+    resolvers: {
+      FileUpload: GraphQLUpload,
+      Date: GraphQLDateTime,
+      Query: {
+        ...auth.resolvers.queries,
+        ...user.resolvers.queries,
+        ...project.resolvers.queries,
+        ...role.resolvers.queries,
+        ...file.resolvers.queries,
+      },
+      Mutation: {
+        ...auth.resolvers.mutations,
+        ...project.resolvers.mutations,
+        ...role.resolvers.mutations,
+        ...file.resolvers.mutations,
+      },
+    },
+  },
+]);
+
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
     schema: applyMiddleware(resolvers, permissions),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
+<<<<<<< HEAD
         contentLength: parseInt(headers['content-length']),
+=======
+        contentLength: headers['content-length'],
+>>>>>>> feature/resolver-list-file
         user: undefined,
       };
 
@@ -162,5 +226,5 @@ export default function ApolloMiddleware(app) {
     },
   });
 
-  apolloServer.applyMiddleware({ app, cors: corsOptions });
+  apolloServer.applyMiddleware({ app });
 }

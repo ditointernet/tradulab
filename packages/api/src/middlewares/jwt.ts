@@ -25,7 +25,12 @@ export default async function jwtMiddleware(
     try {
       decodedToken = await jwt.verify(token, env.getOrThrow('JWT_SECRET'));
     } catch (err) {
+<<<<<<< HEAD
       console.error('jwt', err);
+=======
+      console.error(err);
+      // Estes erros devem ficar aqui ou serem movidos para o middle de erro
+>>>>>>> feature/resolver-list-file
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {

@@ -1,46 +1,46 @@
 import * as mongoose from 'mongoose';
 import { IProject } from '../project/model';
 import { EXTENSION_LIST } from './constants';
+import { IProject } from '../project/model';
 
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+    extension: {
+      type: String,
+      enum: EXTENSION_LIST,
+      required: true,
+    },
     filename: {
       type: String,
       index: true,
       required: true,
     },
-    translationProgress: {
-      type: Number,
-      min: [0, 'Out of range'],
-      max: [1, 'Out of range'],
+    filePath: {
+      type: String,
+<<<<<<< HEAD
       required: true,
+=======
+>>>>>>> feature/resolver-list-file
     },
-    approvalProgress: {
-      type: Number,
-      min: [0, 'Out of range'],
-      max: [1, 'Out of range'],
+    project: {
+      type: Types.ObjectId,
+      index: true,
+      ref: 'project',
       required: true,
     },
     sourceLanguage: {
       type: String,
       required: true,
-    },
-    project: {
-      type: Types.ObjectId,
-      ref: 'project',
-      required: true,
-      index: true,
-    },
-    extension: {
-      type: String,
-      required: true,
+<<<<<<< HEAD
       enum: EXTENSION_LIST,
     },
     filePath: {
       type: String,
       required: true,
+=======
+>>>>>>> feature/resolver-list-file
     },
   },
   {
@@ -50,6 +50,7 @@ const schema = new mongoose.Schema(
 );
 
 export interface IFile extends mongoose.Document {
+<<<<<<< HEAD
   filename: string;
   translationProgress: number;
   approvalProgress: number;
@@ -58,6 +59,14 @@ export interface IFile extends mongoose.Document {
   extension: string;
   filePath: string;
   createdAt: Date;
+=======
+  createdAt: Date;
+  extension: string;
+  filename: string;
+  filePath: string;
+  project: mongoose.Types.ObjectId | IProject;
+  sourceLanguage: string;
+>>>>>>> feature/resolver-list-file
   updateAt: Date;
 }
 

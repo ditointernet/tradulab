@@ -26,9 +26,9 @@ const schema = new mongoose.Schema(
     },
     owner: {
       type: Types.ObjectId,
+      index: true,
       ref: 'user',
       required: true,
-      index: true,
     },
     private: {
       type: Boolean,
@@ -42,11 +42,11 @@ const schema = new mongoose.Schema(
 );
 
 export interface IProject extends mongoose.Document {
-  slug: string;
-  displayName: string;
-  private: boolean;
-  owner: mongoose.Types.ObjectId | IUser;
   createdAt: Date;
+  displayName: string;
+  owner: mongoose.Types.ObjectId | IUser;
+  private: boolean;
+  slug: string;
   updateAt: Date;
 }
 

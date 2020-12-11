@@ -3,8 +3,13 @@ import { model as Project } from '../project';
 import { model as Role } from '../role';
 import { model as User } from '../user';
 import { IRole } from './model';
+<<<<<<< HEAD
 import { TradulabError } from '../../errors';
 import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
+=======
+import TradulabError from '../../errors';
+import { ERROR_CODES as roleCodes } from './constants';
+>>>>>>> feature/resolver-list-file
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
 
