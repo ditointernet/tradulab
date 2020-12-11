@@ -143,6 +143,7 @@ const client = new ApolloClient({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix app
 =======
@@ -393,6 +394,8 @@ const client = new ApolloClient({
 });
 
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> fix app
 function App() {
   return (
     <ApolloProvider client={client}>
