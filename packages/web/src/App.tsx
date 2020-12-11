@@ -192,6 +192,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+<<<<<<< HEAD
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -480,6 +481,8 @@ function App() {
   if (!TOKEN) return <Login />;
 
 <<<<<<< HEAD
+=======
+>>>>>>> fix app
 function App() {
   return (
     <ApolloProvider client={client}>
