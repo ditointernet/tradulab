@@ -209,19 +209,22 @@ query listFiles {
 ```gql
 mutation invite {
   inviteUserToProject(
-    projectId: "5fad9b0a7ed68959e2341a59"
-    userId: "5fad9ae37ed68959e2341a57"
-    role: manager
+    payload: {
+      projectId: "5fd8236cdea7dc1e623cdfbb"
+      userId: "5fd7e99d7ed16045a86cb55b"
+      role: contributor
+    }
   ) {
     id
     role
     user {
-      id
-      displayName
+      nickname
+      username
     }
     project {
-      id
-      displayName
+      slug
+      name
+      owner
     }
     createdAt
     updatedAt
