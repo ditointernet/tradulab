@@ -2,9 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   type User {
-    id: ID!
-    username: String!
-    displayName: String!
+    _id: ID!
     createdAt: Date!
     updatedAt: Date!
   }

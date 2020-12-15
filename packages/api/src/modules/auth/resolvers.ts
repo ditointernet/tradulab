@@ -5,6 +5,7 @@ import {
 } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
+<<<<<<< HEAD
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
@@ -12,12 +13,21 @@ import { env } from '../../helpers';
 <<<<<<< HEAD
 import { TradulabError } from '../../errors';
 =======
+=======
+
+>>>>>>> Back-End Review
 import TradulabError from '../../errors';
 >>>>>>> update listFiles and error
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
+<<<<<<< HEAD
 =======
 >>>>>>> changes
+=======
+import { env } from '../../helpers';
+import { model as Auth } from '.';
+import { model as User } from '../user';
+>>>>>>> Back-End Review
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -35,24 +45,34 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
-async function createUser(_, args) {
-  if (args.user.password.trim().length < 1) {
+async function createUser(
+  _parent,
+  { payload: { email, nickname, password, username } }
+) {
+  if (password.trim().length < 1)
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
-  }
 
   const user = new User({
-    displayName: args.user.displayName || args.user.username,
-    username: args.user.username,
+    nickname,
+    username,
   });
 
   const auth = new Auth({
-    email: args.user.email.toLowerCase(),
-    password: await encryptPassword(args.user.password),
-    user,
+    email: email.toLowerCase(),
+    password: await encryptPassword(password),
+    user: user.id,
   });
 
   try {
     await Promise.all([auth.save(), user.save()]);
+
+    return {
+      email: auth.email,
+      nickname: user.nickname,
+      token: await signToken({ id: user.id }),
+      username: user.username,
+      id: user.id,
+    };
   } catch (err) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -72,6 +92,7 @@ async function createUser(_, args) {
     if (!auth.isNew) {
       await auth.remove();
     }
+
     await user.remove();
 
     console.error(JSON.stringify(err, null, 2));
@@ -82,8 +103,8 @@ async function createUser(_, args) {
       switch (duplicatedField) {
         case 'email':
           throw new TradulabError(authCodes.EMAIL_ALREADY_IN_USE);
-        case 'username':
-          throw new TradulabError(userCodes.USERNAME_ALREADY_IN_USE);
+        case 'nickname':
+          throw new TradulabError(userCodes.NICKNAME_ALREADY_IN_USE);
         default:
           throw err;
       }
@@ -97,10 +118,9 @@ async function createUser(_, args) {
 
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
-
-  return { token: await signToken({ id: user._id }) };
 }
 
+<<<<<<< HEAD
 async function login(_, args) {
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
 
@@ -145,9 +165,29 @@ async function login(_, args) {
 =======
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Corrigido erro de cors pra qualquer request
-  }
+=======
+async function login(_parent, { payload: { email, password } }) {
+  try {
+    const auth = await Auth.findOne({
+      email: email.toLowerCase(),
+    })
+      .populate('user')
+      .exec();
 
-  return { token: await signToken({ id: auth.user }) };
+    if (!auth || !(await verifyPassword(password, auth.password)))
+      throw new TradulabError(authCodes.CREDENTIALS_INVALID);
+
+    return {
+      token: await signToken({ id: auth.user }),
+      email: auth.email,
+      nickname: auth.user.nickname,
+      username: auth.user.username,
+      id: auth.user.id,
+    };
+  } catch (err) {
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+>>>>>>> Back-End Review
+  }
 }
 <<<<<<< HEAD
 <<<<<<< HEAD

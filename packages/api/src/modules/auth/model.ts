@@ -1,45 +1,45 @@
 import * as mongoose from 'mongoose';
-import { IUser } from '../user/model';
 
 import { ERROR_CODES, REGEXES } from './constants';
+import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
-    user: {
-      type: Types.ObjectId,
-      ref: 'user',
-      required: true,
-      index: true,
-    },
     email: {
       type: String,
-      trim: true,
-      required: true,
-      lowercase: true,
-      minlength: [6, ERROR_CODES.EMAIL_SHORT],
-      maxlength: [254, ERROR_CODES.EMAIL_LONG],
-      match: [REGEXES.EMAIL, ERROR_CODES.EMAIL_INVALID],
-      unique: true,
       index: true,
+      lowercase: true,
+      match: [REGEXES.EMAIL, ERROR_CODES.EMAIL_INVALID],
+      maxlength: [254, ERROR_CODES.EMAIL_LONG],
+      minlength: [6, ERROR_CODES.EMAIL_SHORT],
+      required: true,
+      trim: true,
+      unique: true,
     },
     password: {
       type: String,
-      required: true,
       minlength: [1, ERROR_CODES.PASSWORD_EMPTY],
+      required: true,
+    },
+    user: {
+      type: Types.ObjectId,
+      index: true,
+      ref: 'user',
+      required: true,
     },
   },
   {
-    timestamps: true,
     minimize: false,
+    timestamps: true,
   }
 );
 
 export interface IAuth extends mongoose.Document {
-  user: mongoose.Types.ObjectId | IUser;
-  email: string;
-  password: string;
+  email: String;
+  password: String;
+  user: IUser;
   createdAt: Date;
   updateAt: Date;
 };

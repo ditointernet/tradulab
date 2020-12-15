@@ -138,6 +138,7 @@ middlewares.apollo(app);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -219,6 +220,9 @@ app.use(function (err, _req, res, _next) {
 =======
 app.use(middlewares.error);
 >>>>>>> changes
+=======
+app.use(middlewares.error);
+>>>>>>> Back-End Review
 
 <<<<<<< HEAD
 =======

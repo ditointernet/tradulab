@@ -2,30 +2,25 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   type Project {
-    id: ID!
+    _id: ID!
     slug: String!
-    displayName: String!
-    owner: String!
+    name: String!
+    owner: ID!
     private: Boolean!
     createdAt: Date!
     updatedAt: Date!
   }
 
-  type ProjectWithUser {
-    id: ID!
-    slug: String!
-    displayName: String!
-    owner: User!
-    private: Boolean!
-    createdAt: Date!
-    updatedAt: Date!
-  }
-
-  extend type Query {
-    myProjects: [RoleWithProject!]!
+  input createProjectPayload {
+    name: String!
+    private: Boolean
   }
 
   extend type Mutation {
-    createProject(displayName: String!, private: Boolean): ProjectWithUser!
+    createProject(payload: createProjectPayload): Project!
+  }
+
+  extend type Query {
+    listProjects: [RoleWithProject!]!
   }
 `;
