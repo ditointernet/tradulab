@@ -86,6 +86,7 @@ import { model as Role } from '../role';
 import { model as User } from '../user';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ROLES, ROLES_LIST } from './constants';
 >>>>>>> Back-End Review
 <<<<<<< HEAD
@@ -126,6 +127,9 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 =======
 import { ROLES, ROLES_LIST } from './constants';
 >>>>>>> Back-End Review
+=======
+import { ROLES, ROLES_LIST, ROLES_AVAILABLE_INVITE_USER } from './constants';
+>>>>>>> Roles
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -433,6 +437,7 @@ async function inviteUserToProject(_, args, context) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (!ROLES_AVAILABLE_INVITE_USER.includes(currentUserRole.role))
     throw new TradulabError(roleCodes.INVITED_NOT_AVAILABLE);
 
@@ -477,10 +482,15 @@ async function inviteUserToProject(_, args, context) {
   if (!currentUserRole)
     throw new TradulabError(roleCodes.INVITED_NOT_EXISTING_ROLE);
 
+=======
+  if (!ROLES_AVAILABLE_INVITE_USER.includes(currentUserRole.role))
+    throw new TradulabError(roleCodes.INVITED_NOT_AVAILABLE);
+
+>>>>>>> Roles
   const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
   const targetUserRoleIndex = ROLES_LIST.indexOf(role);
 
-  if (currentUserRoleIndex < targetUserRoleIndex)
+  if (currentUserRoleIndex >= targetUserRoleIndex)
     throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
 >>>>>>> Back-End Review
 
@@ -545,6 +555,7 @@ async function inviteUserToProject(_, args, context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 async function updateUserProjectRole(
   _parent,
   { payload: { userId, projectId, role } },
@@ -556,6 +567,9 @@ async function updateUserProjectRole(parent, args, context) {
 =======
 =======
 >>>>>>> Roles
+async function updateUserProjectRole(_parent, args, context) {
+>>>>>>> Roles
+=======
 async function updateUserProjectRole(_parent, args, context) {
 >>>>>>> Roles
   if (args.userId === context.user.id) {

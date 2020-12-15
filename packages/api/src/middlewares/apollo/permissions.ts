@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError, AuthenticationError } from 'apollo-server-express';
 import { not, rule, shield } from 'graphql-shield';
 =======
@@ -24,6 +25,10 @@ import { not, rule, shield } from 'graphql-shield';
 >>>>>>> Roles
 =======
 >>>>>>> Back-End Review
+=======
+import { ApolloError, AuthenticationError } from 'apollo-server-express';
+import { not, rule, shield } from 'graphql-shield';
+>>>>>>> Roles
 
 const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   if (!user) return new AuthenticationError('You must be logged in.');
@@ -31,6 +36,7 @@ const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   return true;
 });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -78,6 +84,12 @@ const permissions = shield(
 >>>>>>> Roles
 =======
 >>>>>>> Back-End Review
+=======
+const permissions = shield(
+  {
+    Query: {
+      listFiles: isAuthenticated,
+>>>>>>> Roles
       listProjects: isAuthenticated,
       login: not(
         isAuthenticated,
@@ -88,6 +100,7 @@ const permissions = shield(
     Mutation: {
       createProject: isAuthenticated,
       createUser: not(isAuthenticated),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -105,6 +118,10 @@ const permissions = shield(
       // inviteUserToProject: isAuthenticated,
       //   createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
 >>>>>>> Back-End Review
+=======
+      inviteUserToProject: isAuthenticated,
+      createFile: isAuthenticated,
+>>>>>>> Roles
     },
   },
   {
