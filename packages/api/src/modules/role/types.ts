@@ -120,6 +120,9 @@ export default gql`
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Roles
   type RoleWithUserAndProject {
     id: ID!
     role: String!
@@ -129,8 +132,11 @@ export default gql`
     updatedAt: Date!
   }
 
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
+=======
+>>>>>>> Roles
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
@@ -159,7 +165,9 @@ export default gql`
   }
 
   extend type Mutation {
-    inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+    inviteUserToProject(
+      payload: inviteUserToProjectPayload
+    ): RoleWithUserAndProject!
 
     updateUserProjectRole(
       projectId: ID!
