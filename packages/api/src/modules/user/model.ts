@@ -11,8 +11,9 @@ import { ERROR_MESSAGES, REGEXES } from './constants';
 
 const schema = new mongoose.Schema(
   {
-    displayName: {
+    nickname: {
       type: String,
+<<<<<<< HEAD
       maxlength: [64, ERROR_MESSAGES.DISPLAY_NAME_LONG],
       minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
       required: true,
@@ -20,12 +21,20 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_CODES.USERNAME_SHORT],
       maxlength: [32, ERROR_CODES.USERNAME_LONG],
       match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
+=======
+      index: true,
+      match: [REGEXES.NICKNAME, ERROR_CODES.NICKNAME_INVALID],
+      maxlength: [32, ERROR_CODES.NICKNAME_LONG],
+      minlength: [3, ERROR_CODES.NICKNAME_SHORT],
+      required: true,
+>>>>>>> Back-End Review
       unique: true,
 =======
 >>>>>>> changes
     },
     username: {
       type: String,
+<<<<<<< HEAD
       index: true,
       match: [REGEXES.USERNAME, ERROR_MESSAGES.USERNAME_INVALID],
       maxlength: [32, ERROR_MESSAGES.USERNAME_LONG],
@@ -37,19 +46,25 @@ const schema = new mongoose.Schema(
 =======
       unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
 >>>>>>> changes
+=======
+      match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
+      maxlength: [64, ERROR_CODES.USERNAME_LONG],
+      minlength: [3, ERROR_CODES.USERNAME_SHORT],
+      required: true,
+>>>>>>> Back-End Review
     },
   },
   {
-    timestamps: true,
     minimize: false,
+    timestamps: true,
   }
 );
 
 export interface IUser extends mongoose.Document {
+  nickname: String;
+  username: String;
   createdAt: Date;
-  displayName: string;
   updateAt: Date;
-  username: string;
 }
 
 const model = mongoose.model<IUser>('user', schema);

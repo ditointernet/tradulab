@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 export default gql`
+<<<<<<< HEAD
   enum RoleSlug {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -42,6 +43,9 @@ export default gql`
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
+=======
+  enum InvitedRole {
+>>>>>>> Back-End Review
     # viewer
 >>>>>>> Update Role
     contributor
@@ -58,7 +62,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
-# Por que esses diferentes tipos de Role... ?
+
   type RoleWithProject {
     id: ID!
     role: String!
@@ -77,30 +81,24 @@ export default gql`
     updatedAt: Date!
   }
 
-  type RoleWithUserAndProject {
-    id: ID!
-    role: String!
-    user: User!
-    project: Project!
-    createdAt: Date!
-    updatedAt: Date!
+  input inviteUserToProjectPayload {
+    projectId: ID!
+    userId: ID!
+    role: InvitedRole!
+  }
+
+  extend type Mutation {
+    inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+
+    updateUserProjectRole(
+      projectId: ID!
+      userId: ID!
+      role: InvitedRole!
+    ): Role!
+    removeUserFromProject(projectId: ID!, userId: ID!): User!
   }
 
   extend type Query {
     projectUsers(projectId: ID!): [RoleWithUser!]!
-  }
-
-  extend type Mutation {
-    inviteUserToProject(
-      projectId: ID!
-      userId: ID!
-      role: AvailableRoleSlugs!
-    ): RoleWithUserAndProject!
-    updateUserProjectRole(
-      projectId: ID!
-      userId: ID!
-      role: AvailableRoleSlugs!
-    ): RoleWithUser!
-    removeUserFromProject(projectId: ID!, userId: ID!): User!
   }
 `;

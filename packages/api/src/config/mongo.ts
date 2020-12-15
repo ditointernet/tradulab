@@ -11,7 +11,7 @@ mongoose
   .connect(env.getOrThrow('MONGO_CONNECTION_URI'), DEFAULT_MONGO_OPTIONS)
   .catch((err) => {
     console.info('[!] Mongo connection error');
-    return console.error(err);
+    return console.error(err.message);
   });
 
 export default mongoose;
