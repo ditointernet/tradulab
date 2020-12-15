@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
+=======
+<<<<<<< HEAD
+>>>>>>> Back-End Review
 =======
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
@@ -252,6 +256,9 @@ import fs from 'fs';
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 import { model as File } from '.'
 =======
+=======
+import { ApolloError } from 'apollo-server-express';
+>>>>>>> Back-End Review
 import { FileUpload } from 'graphql-upload';
 
 import { model as File } from '.';

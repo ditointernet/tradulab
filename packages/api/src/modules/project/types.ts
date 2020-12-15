@@ -10,13 +10,25 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Back-End Review
   input createProjectPayload {
     name: String!
     private: Boolean
   }
+<<<<<<< HEAD
   extend type Mutation {
     createProject(payload: createProjectPayload): Project!
   }
+=======
+
+  extend type Mutation {
+    createProject(payload: createProjectPayload): Project!
+  }
+
+>>>>>>> Back-End Review
   extend type Query {
     listProjects: [RoleWithProject!]!
   }

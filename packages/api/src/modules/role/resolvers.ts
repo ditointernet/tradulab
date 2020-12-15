@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import TradulabError from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
 =======
+=======
+>>>>>>> Back-End Review
 import { ApolloError, ForbiddenError } from 'apollo-server-express';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
@@ -57,7 +60,22 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 import { IRole } from './model';
 import { ApolloError, ForbiddenError } from 'apollo-server-express';
 >>>>>>> we tested everything and it seems ok, including a project fix
+<<<<<<< HEAD
 >>>>>>> we tested everything and it seems ok, including a project fix
+=======
+=======
+import { ApolloError } from 'apollo-server-express';
+import TradulabError from '../../errors';
+import { ERROR_CODES as roleCodes } from './constants';
+import { ERROR_CODES as projectCodes } from '../project/constants';
+import { ERROR_CODES as userCodes } from '../user/constants';
+import { IRole } from './model';
+import { model as Project } from '../project';
+import { model as Role } from '../role';
+import { model as User } from '../user';
+import { ROLES, ROLES_LIST } from './constants';
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -68,11 +86,15 @@ async function projectUsers(_, args) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 async function inviteUserToProject(
   _parent,
   { payload: { userId, projectId, role } },
   { user: { _id: ownId } }
 ) {
+<<<<<<< HEAD
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 =======
 async function inviteUserToProject(_, args, context) {
@@ -89,12 +111,26 @@ async function inviteUserToProject(_, args, context) {
     throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
   }
 >>>>>>> merge
+=======
+  console.log(
+    'userId, projectId, role',
+    userId,
+    projectId,
+    role,
+    'ownId',
+    ownId
+  );
+  if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
+>>>>>>> Back-End Review
 
   const project = await Project.findById(projectId);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (!project) throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
 =======
+=======
+>>>>>>> Back-End Review
   if (!targetProject) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -125,6 +161,7 @@ async function inviteUserToProject(_, args, context) {
     throw new TradulabError(userCodes.USER_NOT_FOUND);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 
 <<<<<<< HEAD
@@ -135,8 +172,22 @@ async function inviteUserToProject(_, args, context) {
   const targetUserRole = await Role.findOne({
     user: context.user.id,
     project: args.projectId,
+=======
+=======
+  if (!project) throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
+
+  const targetUser = await User.findById(userId);
+
+  if (!targetUser) throw new TradulabError(userCodes.USER_NOT_FOUND);
+>>>>>>> Back-End Review
+
+  const existingRole = await Role.findOne({
+    project: projectId,
+    user: userId,
+>>>>>>> Back-End Review
   });
 
+<<<<<<< HEAD
   const indexRole = ROLES_LIST.indexOf(targetUserRole.role);
   const availableRoles = ROLES_LIST.slice(indexRole + 1);
 
@@ -194,6 +245,9 @@ async function inviteUserToProject(_, args, context) {
     user: targetUser,
 >>>>>>> merge
   });
+=======
+  if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
+>>>>>>> Back-End Review
 
   if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
 
@@ -205,6 +259,7 @@ async function inviteUserToProject(_, args, context) {
   if (!currentUserRole)
     throw new TradulabError(roleCodes.INVITED_NOT_EXISTING_ROLE);
 
+<<<<<<< HEAD
   if (!ROLES_AVAILABLE_INVITE_USER.includes(currentUserRole.role))
     throw new TradulabError(roleCodes.INVITED_NOT_AVAILABLE);
 
@@ -216,12 +271,25 @@ async function inviteUserToProject(_, args, context) {
 <<<<<<< HEAD
 =======
 =======
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const targetUserRoleIndex = ROLES_LIST.indexOf(role);
+
+  if (currentUserRoleIndex < targetUserRoleIndex)
+    throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
+<<<<<<< HEAD
+>>>>>>> Back-End Review
+=======
     throw new ForbiddenError(
       'You cannot invite an user with the same or higher role.'
     );
 >>>>>>> changes
   }
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+=======
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
 
   try {
     const targetUserRole = await new Role({
@@ -229,13 +297,20 @@ async function inviteUserToProject(_, args, context) {
       project,
       user: targetUser,
     }).save();
+<<<<<<< HEAD
 
+=======
+    console.log('targetUserRole', targetUserRole);
+>>>>>>> Back-End Review
     return targetUserRole;
   } catch (err) {
     console.error(err);
 <<<<<<< HEAD
+<<<<<<< HEAD
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
 =======
+=======
+>>>>>>> Back-End Review
     throw err;
 =======
   try {
@@ -243,7 +318,13 @@ async function inviteUserToProject(_, args, context) {
   } catch (err) {
     await targetUserRole.remove();
 >>>>>>> we abstracted the role validation and finished all role mutations
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+=======
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
   }
 }
 
@@ -460,8 +541,11 @@ async function isCurrentRoleHigherThanTarget(
   return currentUserRoleIndex < targetUserRoleIndex;
 }
 
+<<<<<<< HEAD
 export const queries = { projectUsers };
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+>>>>>>> Back-End Review
 export const mutations = {
   inviteUserToProject,
   removeUserFromProject,

@@ -209,6 +209,7 @@ middlewares.apollo(app);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(middlewares.error);
 =======
 =======
@@ -217,6 +218,8 @@ app.use(middlewares.error);
 >>>>>>> update listFiles and error
 =======
 >>>>>>> resolve index conflicts
+=======
+>>>>>>> Back-End Review
 app.use(function (err, req, res, next) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -308,7 +311,13 @@ console.log("Bolivar")
 =======
 app.use(middlewares.error);
 >>>>>>> changes
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+=======
+app.use(middlewares.error);
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
 
 <<<<<<< HEAD
 <<<<<<< HEAD
