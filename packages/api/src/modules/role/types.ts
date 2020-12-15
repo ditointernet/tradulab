@@ -164,11 +164,17 @@ export default gql`
 =======
   }
 
+  input removeUserFromProjectPayload {
+    projectId: ID!
+    userId: ID!
+  }
+
   extend type Mutation {
     inviteUserToProject(
       payload: inviteUserToProjectPayload
     ): RoleWithUserAndProject!
 
+<<<<<<< HEAD
     updateUserProjectRole(
       projectId: ID!
       userId: ID!
@@ -176,6 +182,11 @@ export default gql`
     ): Role!
     removeUserFromProject(projectId: ID!, userId: ID!): User!
 >>>>>>> Back-End Review
+=======
+    updateUserProjectRole(payload: inviteUserToProjectPayload): Role!
+
+    removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
+>>>>>>> Roles
   }
 
   extend type Query {
