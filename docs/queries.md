@@ -470,21 +470,28 @@ query me {
 mutation invite {
   inviteUserToProject(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> queries
     payload: {
       projectId: "5fd8236cdea7dc1e623cdfbb"
       userId: "5fd7e99d7ed16045a86cb55b"
       role: contributor
     }
+<<<<<<< HEAD
 =======
 >>>>>>> create docs
     projectId: "5fad9b0a7ed68959e2341a59"
     userId: "5fad9ae37ed68959e2341a57"
     role: manager
+=======
+>>>>>>> queries
   ) {
     id
     role
     user {
 <<<<<<< HEAD
+<<<<<<< HEAD
       nickname
       username
     }
@@ -517,6 +524,15 @@ mutation invite {
       owner
 =======
 >>>>>>> create docs
+=======
+      nickname
+      username
+    }
+    project {
+      slug
+      name
+      owner
+>>>>>>> queries
     }
     createdAt
     updatedAt
