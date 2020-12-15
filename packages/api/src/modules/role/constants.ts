@@ -124,7 +124,10 @@ export const ROLES_LIST = [
 
 export const ERROR_CODES = {
   INVITED_EXISTING_ROLE: 'INVITED_EXISTING_ROLE',
+<<<<<<< HEAD
   INVITED_NOT_AVAILABLE: 'INVITED_NOT_AVAILABLE',
+=======
+>>>>>>> Back-End Review
   INVITED_NOT_EXISTING_ROLE: 'INVITED_NOT_EXISTING_ROLE',
   INVITED_SAME_OR_HIGHER_ROLE: 'INVITED_SAME_OR_HIGHER_ROLE',
   INVITED_YOURSELF: 'INVITED_YOURSELF',
@@ -139,6 +142,7 @@ export const ERROR_CODES = {
 
 export const ERROR_MESSAGES = {
   INVITED_EXISTING_ROLE: 'The provided user is already part of the project.',
+<<<<<<< HEAD
 <<<<<<< HEAD
   INVITED_NOT_AVAILABLE: 'Only manager and owner can invite users to a project',
   INVITED_NOT_EXISTING_ROLE: "You don't have a role in this project",
@@ -157,18 +161,25 @@ export const ERROR_MESSAGES = {
     'You can not give the same or higher role than your own to an user.',
   UPDATED_YOURSELF: 'You cannot update your own role.',
 =======
+=======
+  INVITED_NOT_EXISTING_ROLE: "You don't have a role in this project",
+>>>>>>> Back-End Review
   INVITED_SAME_OR_HIGHER_ROLE:
     'You cannot invite an user with the same or higher role.',
-  UPDATED_YOURSELF: 'You cannot update your own role.',
+  INVITED_YOURSELF: 'You cannot invite yourself.',
+  REMOVED_NOT_EXISTING_ROLE: 'The provided user is not part of the project.',
+  REMOVED_SAME_OR_HIGHER_ROLE:
+    'You can not remove someone with the same or higher role than your own.',
+<<<<<<< HEAD
+>>>>>>> merge
+=======
+  REMOVED_YOURSELF_AS_OWNER:
+    'You cannot remove your ownership from the project.',
+  UPDATED_FROM_SAME_OR_HIGHER_ROLE:
+    'You can not update someone with the same or higher role than your own.',
   UPDATED_NOT_EXISTING_ROLE: 'The provided user is not part of the project.',
   UPDATED_TO_SAME_OR_HIGHER_ROLE:
     'You can not give the same or higher role than your own to an user.',
-  UPDATED_FROM_SAME_OR_HIGHER_ROLE:
-    'You can not update someone with the same or higher role than your own.',
-  REMOVED_NOT_EXISTING_ROLE: 'The provided user is not part of the project.',
-  REMOVED_YOURSELF_AS_OWNER:
-    'You cannot remove your ownership from the project.',
-  REMOVED_SAME_OR_HIGHER_ROLE:
-    'You can not remove someone with the same or higher role than your own.',
->>>>>>> merge
+  UPDATED_YOURSELF: 'You cannot update your own role.',
+>>>>>>> Back-End Review
 };

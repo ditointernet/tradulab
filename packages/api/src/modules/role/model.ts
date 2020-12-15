@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+
 import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
 import { IUser } from '../user/model';
@@ -14,6 +15,7 @@ const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     role: {
       type: String,
@@ -31,12 +33,20 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 =======
     },
+=======
+>>>>>>> Back-End Review
     role: {
       type: String,
       enum: ROLES_LIST,
       index: true,
       required: true,
 >>>>>>> changes
+    },
+    project: {
+      type: Types.ObjectId,
+      index: true,
+      ref: 'project',
+      required: true,
     },
     user: {
       type: Types.ObjectId,
@@ -52,10 +62,10 @@ const schema = new mongoose.Schema(
 );
 
 export interface IRole extends mongoose.Document {
-  project: mongoose.Types.ObjectId | IProject;
-  createdAt: Date;
   role: string;
+  project: mongoose.Types.ObjectId | IProject;
   user: mongoose.Types.ObjectId | IUser;
+  createdAt: Date;
   updateAt: Date;
 }
 

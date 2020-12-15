@@ -37,6 +37,7 @@ export default gql`
 
   enum Extentions {
 <<<<<<< HEAD
+<<<<<<< HEAD
     csv
     json
     txt
@@ -45,6 +46,11 @@ export default gql`
     txt
     csv
 >>>>>>> changes
+=======
+    csv
+    json
+    txt
+>>>>>>> Back-End Review
   }
 
   type Progress {
@@ -425,6 +431,7 @@ export default gql`
 =======
       file: FileUpload!
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 <<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -475,6 +482,10 @@ export default gql`
       sourceLanguage: String!
       projectId: ID!
 >>>>>>> Rebase and resolving conflicts with master
+=======
+      projectId: ID!
+      sourceLanguage: String!
+>>>>>>> Back-End Review
     ): File!
   }
 
@@ -482,6 +493,7 @@ export default gql`
     listFiles(projectId: ID!): [File]
   }
 `;
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -512,3 +524,5 @@ export default gql`
   }
 `;
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Back-End Review

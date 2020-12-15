@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
   enum RoleSlug {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -80,6 +81,9 @@ export default gql`
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
+=======
+  enum InvitedRole {
+>>>>>>> Back-End Review
     # viewer
 >>>>>>> Update Role
     contributor
@@ -96,7 +100,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
-# Por que esses diferentes tipos de Role... ?
+
   type RoleWithProject {
     id: ID!
     role: String!
@@ -115,6 +119,7 @@ export default gql`
     updatedAt: Date!
   }
 
+<<<<<<< HEAD
   type RoleWithUserAndProject {
     id: ID!
     role: String!
@@ -124,10 +129,13 @@ export default gql`
     updatedAt: Date!
   }
 
+=======
+>>>>>>> Back-End Review
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
     role: InvitedRole!
+<<<<<<< HEAD
   }
 
   input removeUserFromProjectPayload {
@@ -143,6 +151,23 @@ export default gql`
     updateUserProjectRole(payload: inviteUserToProjectPayload): Role!
 
     removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
+  }
+
+  extend type Query {
+    projectUsers(projectId: ID!): [RoleWithUser!]!
+=======
+  }
+
+  extend type Mutation {
+    inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+
+    updateUserProjectRole(
+      projectId: ID!
+      userId: ID!
+      role: InvitedRole!
+    ): Role!
+    removeUserFromProject(projectId: ID!, userId: ID!): User!
+>>>>>>> Back-End Review
   }
 
   extend type Query {

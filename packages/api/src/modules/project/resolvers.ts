@@ -1,5 +1,6 @@
 import { ApolloError } from 'apollo-server-express';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import TradulabError from '../../errors';
 import { ERROR_CODES as projectCodes } from './constants';
@@ -22,11 +23,21 @@ import { model as Role } from '../role';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+
+import TradulabError from '../../errors';
+import { ERROR_CODES as projectCodes } from './constants';
+import { ROLES } from '../role/constants';
+import { model as Project } from '.';
+import { model as Role } from '../role';
+
+>>>>>>> Back-End Review
 async function createProject(
   _parent,
   { payload: { name, private: isPrivate } },
   { user }
 ) {
+<<<<<<< HEAD
 =======
 //Significado de context
 
@@ -61,6 +72,8 @@ async function createProject(parent, args, context) {
 =======
 async function createProject(_, args, context) {
 >>>>>>> update listFiles and error
+=======
+>>>>>>> Back-End Review
   const project = new Project({
     name,
     owner: user,
@@ -114,11 +127,15 @@ async function createProject(_, args, context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 async function listProjects(_parent, _args, { user }) {
   try {
     const roles = await Role.find({ user: user._id })
       .populate('project')
       .exec();
+<<<<<<< HEAD
 =======
 //Duvidas populate
 
@@ -157,6 +174,8 @@ async function myProjects(_, __, context) {
     .populate('project')
     .exec();
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Back-End Review
 
     return roles;
   } catch (err) {

@@ -2,12 +2,16 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
   extend type User {
     nickname: String!
     username: String!
   }
 
   input CreateUserPayload {
+<<<<<<< HEAD
 =======
   input UserCreationPayload {
     displayName: String
@@ -20,6 +24,10 @@ export default gql`
 >>>>>>> fix
 =======
 >>>>>>> changes
+=======
+    email: String!
+    nickname: String!
+>>>>>>> Back-End Review
     password: String!
     username: String!
   }

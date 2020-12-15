@@ -12,10 +12,14 @@ mongoose
   .catch((err) => {
     console.info('[!] Mongo connection error');
 <<<<<<< HEAD
+<<<<<<< HEAD
     return console.error(err.message);
 =======
     return console.error(err);
 >>>>>>> changes
+=======
+    return console.error(err.message);
+>>>>>>> Back-End Review
   });
 
 export default mongoose;
