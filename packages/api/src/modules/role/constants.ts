@@ -32,6 +32,7 @@ export const ROLES = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
 
 // Array ordenado Hierarquicamente
@@ -105,6 +106,10 @@ export const ROLES_LIST = [
 export const ROLES_LIST = [ // mudar nome
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
+=======
+export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
+
+>>>>>>> Roles
 // Array ordenado Hierarquicamente
 export const ROLES_LIST = [
 >>>>>>> erase comments
@@ -125,9 +130,13 @@ export const ROLES_LIST = [
 export const ERROR_CODES = {
   INVITED_EXISTING_ROLE: 'INVITED_EXISTING_ROLE',
 <<<<<<< HEAD
+<<<<<<< HEAD
   INVITED_NOT_AVAILABLE: 'INVITED_NOT_AVAILABLE',
 =======
 >>>>>>> Back-End Review
+=======
+  INVITED_NOT_AVAILABLE: 'INVITED_NOT_AVAILABLE',
+>>>>>>> Roles
   INVITED_NOT_EXISTING_ROLE: 'INVITED_NOT_EXISTING_ROLE',
   INVITED_SAME_OR_HIGHER_ROLE: 'INVITED_SAME_OR_HIGHER_ROLE',
   INVITED_YOURSELF: 'INVITED_YOURSELF',
@@ -142,6 +151,7 @@ export const ERROR_CODES = {
 
 export const ERROR_MESSAGES = {
   INVITED_EXISTING_ROLE: 'The provided user is already part of the project.',
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   INVITED_NOT_AVAILABLE: 'Only manager and owner can invite users to a project',
@@ -162,6 +172,9 @@ export const ERROR_MESSAGES = {
   UPDATED_YOURSELF: 'You cannot update your own role.',
 =======
 =======
+=======
+  INVITED_NOT_AVAILABLE: 'Only manager and owner can invite users to a project',
+>>>>>>> Roles
   INVITED_NOT_EXISTING_ROLE: "You don't have a role in this project",
 >>>>>>> Back-End Review
   INVITED_SAME_OR_HIGHER_ROLE:
