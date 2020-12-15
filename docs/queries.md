@@ -563,6 +563,9 @@ mutation invite {
   inviteUserToProject(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> queries
 =======
 >>>>>>> queries
     payload: {
@@ -571,6 +574,7 @@ mutation invite {
       role: contributor
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     projectId: "5fad9b0a7ed68959e2341a59"
     userId: "5fad9ae37ed68959e2341a57"
@@ -578,10 +582,13 @@ mutation invite {
 >>>>>>> create docs
 =======
 >>>>>>> queries
+=======
+>>>>>>> queries
   ) {
     id
     role
     user {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       nickname
@@ -599,6 +606,15 @@ mutation invite {
       id
       displayName
 >>>>>>> create docs
+=======
+      nickname
+      username
+    }
+    project {
+      slug
+      name
+      owner
+>>>>>>> queries
 =======
       nickname
       username
