@@ -118,6 +118,7 @@ async function inviteUserToProject(
   { user: { _id: ownId } }
 ) {
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 =======
 async function inviteUserToProject(_, args, context) {
@@ -259,6 +260,8 @@ async function inviteUserToProject(_, args, context) {
     'ownId',
     ownId
   );
+=======
+>>>>>>> Roles
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 
   const project = await Project.findById(projectId);
@@ -411,7 +414,7 @@ async function updateUserProjectRole(
       project,
       user: targetUser,
     }).save();
-    console.log('targetUserRole', targetUserRole);
+
     return targetUserRole;
   } catch (err) {
 <<<<<<< HEAD
@@ -436,6 +439,7 @@ async function updateUserProjectRole(
   }
 }
 
+<<<<<<< HEAD
 async function updateUserProjectRole(_parent, args, context) {
   if (args.userId === context.user.id) {
 <<<<<<< HEAD
@@ -508,18 +512,33 @@ async function updateUserProjectRole(_parent, args, context) {
     throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
 >>>>>>> Update Role
   }
+=======
+async function updateUserProjectRole(
+  _parent,
+  { payload: { userId, projectId, role } },
+  { user: { _id: ownId } }
+) {
+  if (userId === ownId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
+
+  const targetUserRole = await Role.findOne({
+    user: userId,
+    project: projectId,
+  }).exec();
+
+  if (!targetUserRole)
+    throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
+>>>>>>> Roles
 
   const currentUserRole = await Role.findOne({
-    user: context.user._id,
-    project: args.projectId,
+    user: ownId,
+    project: projectId,
   });
 
-  const inviteUserRole = new Role({
-    user: args.userId,
-    project: args.projectId,
-    role: args.role,
-  });
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+  const roleIndex = ROLES_LIST.indexOf(role);
 
+<<<<<<< HEAD
   if (!(await isCurrentRoleHigherThanTarget(currentUserRole, inviteUserRole))) {
     throw new Error(
       'You can not give the same or higher role than your own to an user.'
@@ -531,25 +550,43 @@ async function updateUserProjectRole(_parent, args, context) {
       'You can not update someone with the same or higher role than your own.'
     );
   }
+=======
+  if (currentUserRoleIndex >= roleIndex)
+    throw new TradulabError(roleCodes.UPDATED_TO_SAME_OR_HIGHER_ROLE);
+
+  if (currentUserRoleIndex >= targetUserRoleIndex)
+    throw new TradulabError(roleCodes.UPDATED_FROM_SAME_OR_HIGHER_ROLE);
+>>>>>>> Roles
 
   try {
-    targetUserRole.role = args.role;
-    await targetUserRole.save();
+    const inviteUserRole = await new Role({
+      user: userId,
+      project: projectId,
+      role,
+    }).save();
+
+    return inviteUserRole;
   } catch (err) {
     console.error(err);
-    throw err;
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
+<<<<<<< HEAD
 
   return targetUserRole;
 >>>>>>> Update Role
 }
 
 <<<<<<< HEAD
+=======
+}
+
+>>>>>>> Roles
 async function removeUserFromProject(
   _parent,
   { payload: { userId, projectId } },
   { user: { _id: ownId } }
 ) {
+<<<<<<< HEAD
   const targetUserRole = await Role.findOne({
     user: userId,
     project: projectId,
@@ -582,13 +619,14 @@ async function removeUserFromProject(
   }
 =======
 async function removeUserFromProject(parent, args, context) {
+=======
+>>>>>>> Roles
   const targetUserRole = await Role.findOne({
-    user: args.userId,
-    project: args.projectId,
-  })
-    .populate('user')
-    .exec();
+    user: userId,
+    project: projectId,
+  });
 
+<<<<<<< HEAD
   if (!targetUserRole) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -604,13 +642,21 @@ async function removeUserFromProject(parent, args, context) {
   if (args.userId === context.user.id && targetUserRole.role === ROLES.OWNER) {
     throw new Error('You cannot remove your ownership from the project.');
   }
+=======
+  if (!targetUserRole)
+    throw new TradulabError(roleCodes.REMOVED_NOT_EXISTING_ROLE);
 
-  if (args.userId !== context.user.id) {
+  if (userId === ownId && targetUserRole.role === ROLES.OWNER)
+    throw new TradulabError(roleCodes.REMOVED_YOURSELF_AS_OWNER);
+>>>>>>> Roles
+
+  if (userId !== ownId) {
     const currentUserRole = await Role.findOne({
-      user: context.user.id,
-      project: args.projectId,
+      user: ownId,
+      project: projectId,
     });
 
+<<<<<<< HEAD
     if (
       !(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))
     ) {
@@ -632,6 +678,13 @@ async function removeUserFromProject(parent, args, context) {
       throw new TradulabError(roleCodes.REMOVED_SAME_OR_HIGHER_ROLE);
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
     }
+=======
+    const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+    const targetUserRoleIndex = ROLES_LIST.indexOf(targetUserRole.role);
+
+    if (currentUserRoleIndex >= targetUserRoleIndex)
+      throw new TradulabError(roleCodes.REMOVED_SAME_OR_HIGHER_ROLE);
+>>>>>>> Roles
   }
 
   try {
@@ -647,6 +700,7 @@ async function removeUserFromProject(parent, args, context) {
     console.error(err);
     throw err;
   }
+<<<<<<< HEAD
 >>>>>>> we abstracted the role validation and finished all role mutations
 
   return targetUserRole.user;
@@ -661,6 +715,8 @@ async function isCurrentRoleHigherThanTarget(
 
   return currentUserRoleIndex < targetUserRoleIndex;
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+>>>>>>> Roles
 }
 
 export const mutations = {
