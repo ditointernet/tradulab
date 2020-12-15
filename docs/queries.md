@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Auth / User
 
 ## Criar Usuários
@@ -53,35 +54,65 @@ mutation userMiguel {
     username
 =======
 Sample mutations for our project
+=======
+# Auth / User
+>>>>>>> Back-End Review
 
-##### Auth
+## Criar Usuários
 
 ```gql
-# Write your query or mutation here
-mutation authOwner {
+mutation userBolivar {
   createUser(
-    user: {
-      email: "uriell.viana@dito.com.br"
+    payload: {
+      email: "bolivar@dito.com.br"
       password: "123456"
-      username: "uriell"
+      username: "Anderson Bolivar"
+      nickname: "bolivar"
     }
   ) {
     token
+    email
+    nickname
+    username
+    id
   }
 }
 
-mutation authContributor {
+mutation userJulio {
   createUser(
-    user: {
-      email: "uriell.viana+contributor@dito.com.br"
+    payload: {
+      email: "julio@dito.com.br"
       password: "123456"
-      username: "uriell-contributor"
+      username: "Julio"
+      nickname: "wxbjulio"
     }
   ) {
     token
+    email
+    nickname
+    username
+    id
   }
 }
 
+mutation userMiguel {
+  createUser(
+    payload: {
+      email: "miguel@dito.com.br"
+      password: "123456"
+      username: "Miguel"
+      nickname: "miguelito"
+    }
+  ) {
+    token
+    email
+    nickname
+    username
+    id
+  }
+}
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 query meOwner {
   me {
@@ -115,11 +146,27 @@ mutation userUriell {
 query meContributor {
   me {
 >>>>>>> create docs
+=======
+mutation userUriell {
+  createUser(
+    payload: {
+      email: "uriell@dito.com.br"
+      password: "123456"
+      username: "Uriell"
+      nickname: "uriell"
+    }
+  ) {
+    token
+    email
+    nickname
+    username
+>>>>>>> Back-End Review
     id
   }
 }
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ## Login Usuários
 
@@ -227,6 +274,130 @@ mutation projectJornadas {
     slug
     private
     _id
+=======
+## Login Usuários
+
+```gql
+query userBolivar {
+  login(payload: { email: "bolivar@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+
+query userJulio {
+  login(payload: { email: "julio@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+
+query userMiguel {
+  login(payload: { email: "miguel@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+
+query userUriell {
+  login(payload: { email: "uriell@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+>>>>>>> Back-End Review
+  }
+}
+```
+
+<<<<<<< HEAD
+## Listar Projetos
+
+```gql
+query listProjects {
+  listProjects {
+    user
+    project {
+      name
+      slug
+      owner
+      private
+    }
+    role
+    id
+=======
+##### Project
+=======
+## Me
+>>>>>>> Back-End Review
+
+```gql
+query me {
+  me {
+    _id
+    nickname
+    username
+  }
+}
+```
+
+# Project
+
+## Create Project
+
+```gql
+mutation projectAgenda {
+  createProject(payload: { name: "Dito Agenda", private: true }) {
+    owner
+    name
+    slug
+    private
+<<<<<<< HEAD
+    createdAt
+    updatedAt
+>>>>>>> create docs
+=======
+    _id
+  }
+}
+
+mutation projectCampanhas {
+  createProject(payload: { name: "Dito Campanhas", private: true }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+
+mutation projectTradulab {
+  createProject(payload: { name: "Tradulab" }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+
+mutation projectJornadas {
+  createProject(payload: { name: "Dito Jornadas" }) {
+    owner
+    name
+    slug
+    private
+    _id
   }
 }
 ```
@@ -245,26 +416,22 @@ query listProjects {
     }
     role
     id
-=======
-##### Project
-
-```gql
-mutation project {
-  createProject(displayName: "Dito") {
-    id
-    slug
-    displayName
-    owner {
-      id
-    }
-    private
-    createdAt
-    updatedAt
->>>>>>> create docs
   }
 }
 ```
 
+##### File
+
+```gql
+query listFiles {
+  listFiles(projectId: "5fbf0c80212ed4a6a57c607b") {
+    filename
+>>>>>>> Back-End Review
+  }
+}
+```
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 # File
 
@@ -292,6 +459,10 @@ query me {
 
 # Role
 =======
+=======
+##### Project
+
+>>>>>>> Back-End Review
 ##### Role
 >>>>>>> create docs
 
@@ -397,6 +568,7 @@ Schemas: The service that defines the field is also the service that knows how t
 >>>>>>> create docs
 =======
 
+<<<<<<< HEAD
 #### User
 
 ```gql
@@ -417,8 +589,16 @@ The service that defines the field is also the service that knows how to populat
 <<<<<<< HEAD
 >>>>>>> store
 =======
+=======
+# Header
+>>>>>>> Back-End Review
 
 {
 "Authorization": "Bearer token"
 }
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+
+Schemas: The service that defines the field is also the service that knows how to populate the field
+>>>>>>> Back-End Review

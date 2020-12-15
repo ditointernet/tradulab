@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { IUser } from '../user/model';
 
 import { ERROR_CODES, REGEXES } from './constants';
 import { IUser } from '../user/model';
@@ -39,6 +38,7 @@ const schema = new mongoose.Schema(
 
 export interface IAuth extends mongoose.Document {
 <<<<<<< HEAD
+<<<<<<< HEAD
   email: String;
   password: String;
   user: IUser;
@@ -49,6 +49,11 @@ export interface IAuth extends mongoose.Document {
   user: mongoose.Types.ObjectId | IUser;
   email: string;
   password: string;
+=======
+  email: String;
+  password: String;
+  user: IUser;
+>>>>>>> Back-End Review
   createdAt: Date;
   updateAt: Date;
 <<<<<<< HEAD

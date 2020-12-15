@@ -1,5 +1,18 @@
+<<<<<<< HEAD
 import { ApolloError, AuthenticationError } from 'apollo-server-express';
 import { not, rule, shield } from 'graphql-shield';
+=======
+import {
+  ApolloError,
+  AuthenticationError,
+  ForbiddenError,
+} from 'apollo-server-express';
+import { not, and, or, rule, shield } from 'graphql-shield';
+
+import { role } from '../../modules';
+import { model as userModel } from '../../modules/user';
+import { ROLES } from '../../modules/role/constants';
+>>>>>>> Back-End Review
 
 const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   if (!user) return new AuthenticationError('You must be logged in.');
@@ -7,10 +20,40 @@ const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   return true;
 });
 
+<<<<<<< HEAD
 const permissions = shield(
   {
     Query: {
       listFiles: isAuthenticated,
+=======
+const isOneOfTheseRoles = (allowedRoles: string[]) =>
+  rule()(async (_parent, { projectId }, { user: { id: currentUserId } }) => {
+    try {
+      const projectRole = await role.model.findOne({
+        project: projectId,
+        user: currentUserId,
+      });
+
+      if (projectRole && allowedRoles.includes(projectRole.role)) return true;
+
+      return new ForbiddenError(
+        'You must be owner or manager in this project or this project doesnt exit.'
+      );
+    } catch (err) {
+      console.error(err);
+      return err;
+    }
+  });
+
+const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+
+const isManagerOrOwner = isOneOfTheseRoles([ROLES.OWNER, ROLES.MANAGER]);
+
+const permissions = shield(
+  {
+    Query: {
+      //   listFiles: isAuthenticated,
+>>>>>>> Back-End Review
       listProjects: isAuthenticated,
       login: not(
         isAuthenticated,
@@ -21,8 +64,13 @@ const permissions = shield(
     Mutation: {
       createProject: isAuthenticated,
       createUser: not(isAuthenticated),
+<<<<<<< HEAD
       inviteUserToProject: isAuthenticated,
       createFile: isAuthenticated,
+=======
+      // inviteUserToProject: isAuthenticated,
+      //   createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> Back-End Review
     },
   },
   {

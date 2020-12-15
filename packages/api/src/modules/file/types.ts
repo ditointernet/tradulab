@@ -165,9 +165,9 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
   enum Extentions {
+    csv
     json
     txt
-    csv
   }
 
   type Progress {
@@ -347,6 +347,7 @@ export default gql`
       file: FileUpload!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
       sourceLanguage: String!
@@ -356,6 +357,10 @@ export default gql`
       sourceLanguage: String!
       projectId: ID!
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+      projectId: ID!
+      sourceLanguage: String!
+>>>>>>> Back-End Review
     ): File!
   }
 >>>>>>> Criado o module files e a resolver create File
@@ -510,5 +515,3 @@ export default gql`
   }
 >>>>>>> changes
 `;
-
-// Acho que o progress pode ser colocado no futuro, pois ele vai ser mais complexo que isso, progress de translation para qual lingua?
