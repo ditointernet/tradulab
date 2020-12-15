@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Auth / User
 
 ## Criar Usuários
@@ -57,11 +58,15 @@ Sample mutations for our project
 =======
 # Auth / User
 >>>>>>> Back-End Review
+=======
+# Auth / User
+>>>>>>> Back-End Review
 
 ## Criar Usuários
 
 ```gql
 mutation userBolivar {
+<<<<<<< HEAD
   createUser(
     payload: {
       email: "bolivar@dito.com.br"
@@ -85,6 +90,37 @@ mutation userJulio {
       password: "123456"
       username: "Julio"
       nickname: "wxbjulio"
+=======
+  createUser(
+    payload: {
+      email: "bolivar@dito.com.br"
+      password: "123456"
+      username: "Anderson Bolivar"
+      nickname: "bolivar"
+>>>>>>> Back-End Review
+    }
+  ) {
+    token
+    email
+    nickname
+    username
+    id
+<<<<<<< HEAD
+  }
+}
+
+<<<<<<< HEAD
+=======
+  }
+}
+
+mutation userJulio {
+  createUser(
+    payload: {
+      email: "julio@dito.com.br"
+      password: "123456"
+      username: "Julio"
+      nickname: "wxbjulio"
     }
   ) {
     token
@@ -95,7 +131,7 @@ mutation userJulio {
   }
 }
 
-<<<<<<< HEAD
+>>>>>>> Back-End Review
 mutation userMiguel {
   createUser(
     payload: {
@@ -113,6 +149,7 @@ mutation userMiguel {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 query meOwner {
@@ -135,20 +172,36 @@ mutation userUriell {
     }
   ) {
     token
+=======
+mutation userUriell {
+  createUser(
+    payload: {
+      email: "uriell@dito.com.br"
+      password: "123456"
+      username: "Uriell"
+      nickname: "uriell"
+    }
+  ) {
+    token
+>>>>>>> Back-End Review
     email
     nickname
     username
     id
+<<<<<<< HEAD
 >>>>>>> Back-End Review
 =======
 query Login {
   login(email: "bolivar@dito.com.br", password: "123456") {
     token
 >>>>>>> queries
+=======
+>>>>>>> Back-End Review
   }
 }
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -186,6 +239,11 @@ query listFiles {
 ## Login Usuários
 
 ```gql
+=======
+## Login Usuários
+
+```gql
+>>>>>>> Back-End Review
 query userBolivar {
   login(payload: { email: "bolivar@dito.com.br", password: "123456" }) {
     token
@@ -193,8 +251,11 @@ query userBolivar {
     username
     email
     id
+<<<<<<< HEAD
 =======
 >>>>>>> queries
+=======
+>>>>>>> Back-End Review
   }
 }
 
@@ -225,11 +286,15 @@ query userUriell {
     username
     email
     id
+<<<<<<< HEAD
+>>>>>>> Back-End Review
+=======
 >>>>>>> Back-End Review
   }
 }
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 ## Login Usuários
@@ -279,6 +344,11 @@ query userUriell {
 ## Me
 
 ```gql
+=======
+## Me
+
+```gql
+>>>>>>> Back-End Review
 query me {
   me {
     _id
@@ -298,6 +368,7 @@ mutation projectAgenda {
     owner
     name
     slug
+<<<<<<< HEAD
     private
     _id
   }
@@ -390,6 +461,9 @@ mutation projectAgenda {
     updatedAt
 >>>>>>> create docs
 =======
+=======
+    private
+>>>>>>> Back-End Review
     _id
   }
 }
@@ -439,10 +513,24 @@ query listProjects {
     }
     role
     id
+<<<<<<< HEAD
+=======
   }
 }
 ```
 
+##### File
+
+```gql
+query listFiles {
+  listFiles(projectId: "5fbf0c80212ed4a6a57c607b") {
+    filename
+>>>>>>> Back-End Review
+  }
+}
+```
+
+<<<<<<< HEAD
 ##### File
 
 ```gql
@@ -460,6 +548,10 @@ query listFiles {
 
 =======
 >>>>>>> create docs
+=======
+##### Project
+
+>>>>>>> Back-End Review
 =======
 ##### Project
 
@@ -604,6 +696,7 @@ Schemas: The service that defines the field is also the service that knows how t
 >>>>>>> Back-End Review
 =======
 
+<<<<<<< HEAD
 #### User
 
 ```gql
@@ -624,8 +717,16 @@ The service that defines the field is also the service that knows how to populat
 <<<<<<< HEAD
 >>>>>>> store
 =======
+=======
+# Header
+>>>>>>> Back-End Review
 
 {
 "Authorization": "Bearer token"
 }
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+
+Schemas: The service that defines the field is also the service that knows how to populate the field
+>>>>>>> Back-End Review

@@ -26,9 +26,9 @@ export default gql`
 =======
 
   enum Extentions {
+    csv
     json
     txt
-    csv
   }
 
 >>>>>>> changes
@@ -240,9 +240,12 @@ export default gql`
 >>>>>>> Corrigido erro de cors pra qualquer request
 =======
       file: FileUpload!
-      sourceLanguage: String!
       projectId: ID!
+<<<<<<< HEAD
 >>>>>>> Rebase and resolving conflicts with master
+=======
+      sourceLanguage: String!
+>>>>>>> Back-End Review
     ): File!
   }
 <<<<<<< HEAD
@@ -263,6 +266,7 @@ export default gql`
 >>>>>>> list files done
   }
 `;
+<<<<<<< HEAD
 
 // Acho que o progress pode ser colocado no futuro, pois ele vai ser mais complexo que isso, progress de translation para qual lingua?
 =======
@@ -305,3 +309,5 @@ export default gql`
   }
 `;
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Back-End Review

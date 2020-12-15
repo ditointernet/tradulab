@@ -4,12 +4,15 @@ import * as slug from 'slug';
 
 <<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
+<<<<<<< HEAD
 
 =======
 =======
 >>>>>>> changes
 import { ERROR_MESSAGES, REGEXES } from './constants';
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+>>>>>>> Back-End Review
 import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;
@@ -17,11 +20,19 @@ const { Types } = mongoose.Schema;
 const schema = new mongoose.Schema(
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     name: {
 =======
 <<<<<<< HEAD
     slug: {
 >>>>>>> changes
+=======
+<<<<<<< HEAD
+    slug: {
+=======
+    name: {
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
       type: String,
       maxlength: [64, ERROR_CODES.NAME_LONG],
       minlength: [3, ERROR_CODES.NAME_SHORT],
@@ -40,8 +51,11 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_CODES.SLUG_SHORT],
       required: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
       unique: true,
 =======
+=======
+>>>>>>> Back-End Review
       minlength: [3, ERROR_CODES.DISPLAY_NAME_SHORT],
       maxlength: [64, ERROR_CODES.DISPLAY_NAME_LONG],
 =======
@@ -51,7 +65,13 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
       required: true,
 >>>>>>> changes
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+=======
+      unique: true,
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
     },
     owner: {
       type: Types.ObjectId,
@@ -61,6 +81,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 =======
     },
+<<<<<<< HEAD
     private: {
       type: Boolean,
       default: false,
@@ -75,6 +96,8 @@ const schema = new mongoose.Schema(
       required: true,
       unique: [true, ERROR_MESSAGES.SLUG_ALREADY_IN_USE],
     },
+=======
+>>>>>>> Back-End Review
   },
   {
     timestamps: true,
@@ -84,10 +107,14 @@ const schema = new mongoose.Schema(
 
 export interface IProject extends mongoose.Document {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
   name: String;
   private: Boolean;
   slug: String;
   owner: IUser | mongoose.Types.ObjectId;
+<<<<<<< HEAD
   createdAt: Date;
 =======
   createdAt: Date;
@@ -96,10 +123,14 @@ export interface IProject extends mongoose.Document {
   private: boolean;
   slug: string;
 >>>>>>> changes
+=======
+  createdAt: Date;
+>>>>>>> Back-End Review
   updateAt: Date;
 }
 
 schema.pre<IProject>('validate', function preValidate(next) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   this.slug = slug(this.name);
@@ -109,6 +140,9 @@ schema.pre<IProject>('validate', function preValidate(next) {
 >>>>>>> changes
   this.slug = slug(this.displayName);
 >>>>>>> changes
+=======
+  this.slug = slug(this.name);
+>>>>>>> Back-End Review
   next();
 });
 

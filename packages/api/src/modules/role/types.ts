@@ -2,9 +2,12 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
   enum InvitedRole {
     # viewer
 =======
+=======
+>>>>>>> Back-End Review
   enum RoleSlug {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -55,6 +58,9 @@ export default gql`
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 =======
 =======
+=======
+  enum InvitedRole {
+>>>>>>> Back-End Review
     # viewer
 >>>>>>> Update Role
 >>>>>>> Update Role
@@ -76,6 +82,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 # Por que esses diferentes tipos de Role... ?
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -91,6 +98,9 @@ export default gql`
 =======
 # Por que esses diferentes tipos de Role... ?
 >>>>>>> Update Role
+=======
+
+>>>>>>> Back-End Review
   type RoleWithProject {
     id: ID!
     role: String!
@@ -107,6 +117,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+<<<<<<< HEAD
   type RoleWithUserAndProject {
     id: ID!
     role: String!
@@ -115,22 +126,43 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+=======
+
+>>>>>>> Back-End Review
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
     role: InvitedRole!
+<<<<<<< HEAD
   }
   input removeUserFromProjectPayload {
     projectId: ID!
     userId: ID!
+=======
+>>>>>>> Back-End Review
   }
   extend type Mutation {
+<<<<<<< HEAD
     inviteUserToProject(
       payload: inviteUserToProjectPayload
     ): RoleWithUserAndProject!
     updateUserProjectRole(payload: inviteUserToProjectPayload): Role!
     removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
   }
+  extend type Query {
+    projectUsers(projectId: ID!): [RoleWithUser!]!
+=======
+    inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+
+    updateUserProjectRole(
+      projectId: ID!
+      userId: ID!
+      role: InvitedRole!
+    ): Role!
+    removeUserFromProject(projectId: ID!, userId: ID!): User!
+>>>>>>> Back-End Review
+  }
+
   extend type Query {
     projectUsers(projectId: ID!): [RoleWithUser!]!
   }

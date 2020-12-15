@@ -12,6 +12,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 =======
@@ -30,6 +31,9 @@ import * as mongoose from 'mongoose';
 =======
 >>>>>>> changes
 =======
+<<<<<<< HEAD
+>>>>>>> Back-End Review
+=======
 >>>>>>> Criado o module files e a resolver create File
 =======
 >>>>>>> file size limit from content length header
@@ -76,6 +80,9 @@ import { IProject } from '../project/model';
 >>>>>>> file size limit from content length header
 =======
 >>>>>>> changes
+=======
+
+>>>>>>> Back-End Review
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 =======
@@ -267,6 +274,7 @@ const schema = new mongoose.Schema(
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
       type: String,
 <<<<<<< HEAD
+<<<<<<< HEAD
       required: true
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -304,19 +312,28 @@ const schema = new mongoose.Schema(
       index: true,
       ref: 'project',
 <<<<<<< HEAD
+<<<<<<< HEAD
       required: true,
 <<<<<<< HEAD
 =======
 =======
+=======
+=======
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
       required: true,
     },
     sourceLanguage: {
       type: String,
       required: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> changes
       enum: EXTENSION_LIST,
+=======
+>>>>>>> Back-End Review
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -373,6 +390,13 @@ const schema = new mongoose.Schema(
 =======
     filePath: {
       type: String,
+=======
+    project: {
+      type: Types.ObjectId,
+      index: true,
+      ref: 'project',
+      required: true,
+>>>>>>> Back-End Review
     },
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
@@ -448,6 +472,7 @@ const schema = new mongoose.Schema(
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export interface IFile extends mongoose.Document {
 <<<<<<< HEAD
+<<<<<<< HEAD
   extension: string;
   filename: string;
   filePath: string;
@@ -455,6 +480,8 @@ export interface IFile extends mongoose.Document {
   project: mongoose.Types.ObjectId | IProject;
   createdAt: Date;
 =======
+=======
+>>>>>>> Back-End Review
   createdAt: Date;
   extension: string;
   filename: string;
@@ -549,6 +576,13 @@ export interface IFile extends mongoose.Document {
   sourceLanguage: string;
   extension: string;
   filePath: string;
+=======
+  extension: string;
+  filename: string;
+  filePath: string;
+  sourceLanguage: string;
+  project: mongoose.Types.ObjectId | IProject;
+>>>>>>> Back-End Review
   createdAt: Date;
   updateAt: Date;
 };

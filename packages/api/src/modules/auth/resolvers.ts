@@ -21,6 +21,7 @@ import {
 >>>>>>> changes
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
+<<<<<<< HEAD
 import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
@@ -28,13 +29,25 @@ import { env } from '../../helpers';
 <<<<<<< HEAD
 import { TradulabError } from '../../errors';
 =======
+=======
+
+>>>>>>> Back-End Review
 import TradulabError from '../../errors';
 >>>>>>> update listFiles and error
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
+<<<<<<< HEAD
 =======
 >>>>>>> changes
+<<<<<<< HEAD
 >>>>>>> changes
+=======
+=======
+import { env } from '../../helpers';
+import { model as Auth } from '.';
+import { model as User } from '../user';
+>>>>>>> Back-End Review
+>>>>>>> Back-End Review
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -53,11 +66,15 @@ function signToken(payload) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 async function createUser(
   _parent,
   { payload: { email, nickname, password, username } }
 ) {
   if (password.trim().length < 1)
+<<<<<<< HEAD
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
 
 =======
@@ -75,24 +92,34 @@ async function createUser(_, args) {
     user: user.id,
 =======
   if (args.user.password.trim().length < 1) {
+=======
+>>>>>>> Back-End Review
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
-  }
 
   const user = new User({
-    displayName: args.user.displayName || args.user.username,
-    username: args.user.username,
+    nickname,
+    username,
   });
 
   const auth = new Auth({
+<<<<<<< HEAD
     email: args.user.email.toLowerCase(),
     password: await encryptPassword(args.user.password),
     user,
 >>>>>>> changes
+=======
+    email: email.toLowerCase(),
+    password: await encryptPassword(password),
+    user: user.id,
+>>>>>>> Back-End Review
   });
 
   try {
     await Promise.all([auth.save(), user.save()]);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 
     return {
       email: auth.email,
@@ -101,8 +128,11 @@ async function createUser(_, args) {
       username: user.username,
       id: user.id,
     };
+<<<<<<< HEAD
 =======
 >>>>>>> changes
+=======
+>>>>>>> Back-End Review
   } catch (err) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -152,6 +182,7 @@ async function createUser(_, args) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 async function login(_parent, { payload: { email, password } }) {
   try {
     const auth = await Auth.findOne({
@@ -175,6 +206,8 @@ async function login(_parent, { payload: { email, password } }) {
 =======
 async function login(parent, args) {
 =======
+=======
+>>>>>>> Back-End Review
 async function login(_, args) {
 >>>>>>> changes
   const auth = await Auth.findOne({ email: args.email.toLowerCase() });
@@ -233,6 +266,28 @@ async function login(_, args) {
 =======
     throw new AuthenticationError('Invalid credentials.');
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+async function login(_parent, { payload: { email, password } }) {
+  try {
+    const auth = await Auth.findOne({
+      email: email.toLowerCase(),
+    })
+      .populate('user')
+      .exec();
+
+    if (!auth || !(await verifyPassword(password, auth.password)))
+      throw new TradulabError(authCodes.CREDENTIALS_INVALID);
+
+    return {
+      token: await signToken({ id: auth.user }),
+      email: auth.email,
+      nickname: auth.user.nickname,
+      username: auth.user.username,
+      id: auth.user.id,
+    };
+  } catch (err) {
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+>>>>>>> Back-End Review
   }
 }
 <<<<<<< HEAD
