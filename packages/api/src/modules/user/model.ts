@@ -18,6 +18,7 @@ import { ERROR_MESSAGES, REGEXES } from './constants';
 const schema = new mongoose.Schema(
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     nickname: {
       type: String,
 <<<<<<< HEAD
@@ -29,6 +30,15 @@ const schema = new mongoose.Schema(
       maxlength: [32, ERROR_CODES.USERNAME_LONG],
       match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
 =======
+      index: true,
+      match: [REGEXES.NICKNAME, ERROR_CODES.NICKNAME_INVALID],
+      maxlength: [32, ERROR_CODES.NICKNAME_LONG],
+      minlength: [3, ERROR_CODES.NICKNAME_SHORT],
+      required: true,
+>>>>>>> Back-End Review
+=======
+    nickname: {
+      type: String,
       index: true,
       match: [REGEXES.NICKNAME, ERROR_CODES.NICKNAME_INVALID],
       maxlength: [32, ERROR_CODES.NICKNAME_LONG],
@@ -51,6 +61,7 @@ const schema = new mongoose.Schema(
     },
     username: {
       type: String,
+<<<<<<< HEAD
 >>>>>>> changes
       index: true,
       match: [REGEXES.USERNAME, ERROR_MESSAGES.USERNAME_INVALID],
@@ -73,6 +84,12 @@ const schema = new mongoose.Schema(
 =======
       unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
 >>>>>>> changes
+=======
+      match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
+      maxlength: [64, ERROR_CODES.USERNAME_LONG],
+      minlength: [3, ERROR_CODES.USERNAME_SHORT],
+      required: true,
+>>>>>>> Back-End Review
     },
   },
   {
@@ -84,6 +101,7 @@ const schema = new mongoose.Schema(
 export interface IUser extends mongoose.Document {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   nickname: String;
   username: String;
 =======
@@ -92,10 +110,12 @@ export interface IUser extends mongoose.Document {
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> changes
+=======
+  nickname: String;
+  username: String;
+>>>>>>> Back-End Review
   createdAt: Date;
-  displayName: string;
   updateAt: Date;
-  username: string;
 }
 
 const model = mongoose.model<IUser>('user', schema);

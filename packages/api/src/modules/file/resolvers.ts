@@ -33,6 +33,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -688,6 +689,9 @@ export const queries = { listFiles };
 =======
 import { model as File } from '.'
 =======
+=======
+import { ApolloError } from 'apollo-server-express';
+>>>>>>> Back-End Review
 import { FileUpload } from 'graphql-upload';
 =======
   if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
@@ -846,10 +850,13 @@ async function listFiles(_, args: IListFileArgs, context) {
   }
 
   return files || [];
+<<<<<<< HEAD
 =======
 
   // return file;
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
+=======
+>>>>>>> Back-End Review
 }
 
 export const mutations = { createFile };

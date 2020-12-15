@@ -41,6 +41,7 @@ services:
     command: npm start
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     network_mode: host
 >>>>>>> Back-End Review
@@ -54,6 +55,9 @@ services:
 >>>>>>> fix
 =======
 >>>>>>> fix issues
+=======
+    network_mode: host
+>>>>>>> Back-End Review
     ports:
       - "3001:3001"
     volumes:

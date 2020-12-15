@@ -12,6 +12,7 @@ export default gql`
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   input createProjectPayload {
     name: String!
     private: Boolean
@@ -32,14 +33,24 @@ export default gql`
     private: Boolean!
     createdAt: Date!
     updatedAt: Date!
-  }
-
-  extend type Query {
-    myProjects: [RoleWithProject!]!
+=======
+  input createProjectPayload {
+    name: String!
+    private: Boolean
+>>>>>>> Back-End Review
   }
 
   extend type Mutation {
+    createProject(payload: createProjectPayload): Project!
+  }
+
+<<<<<<< HEAD
+  extend type Mutation {
     createProject(displayName: String!, private: Boolean): ProjectWithUser!
 >>>>>>> we tested everything and it seems ok, including a project fix
+=======
+  extend type Query {
+    listProjects: [RoleWithProject!]!
+>>>>>>> Back-End Review
   }
 `;
