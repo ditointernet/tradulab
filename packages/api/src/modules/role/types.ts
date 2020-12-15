@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express';
 export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   enum InvitedRole {
     # viewer
 =======
@@ -72,6 +73,9 @@ export default gql`
 =======
 =======
 =======
+=======
+  enum InvitedRole {
+>>>>>>> Back-End Review
     # viewer
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -122,6 +126,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 # Por que esses diferentes tipos de Role... ?
 >>>>>>> Feita lógica de restrição de convites de cargos no módulo role
@@ -155,6 +160,9 @@ export default gql`
 =======
 # Por que esses diferentes tipos de Role... ?
 >>>>>>> Update Role
+=======
+
+>>>>>>> Back-End Review
   type RoleWithProject {
     id: ID!
     role: String!
@@ -183,6 +191,7 @@ export default gql`
 =======
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Back-End Review
 =======
   type RoleWithUserAndProject {
@@ -195,15 +204,20 @@ export default gql`
   }
 
 >>>>>>> Roles
+=======
+>>>>>>> Back-End Review
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
     role: InvitedRole!
 <<<<<<< HEAD
+<<<<<<< HEAD
   }
   input removeUserFromProjectPayload {
     projectId: ID!
     userId: ID!
+=======
+>>>>>>> Back-End Review
 =======
 >>>>>>> Back-End Review
   }
@@ -217,6 +231,7 @@ export default gql`
 
 >>>>>>> Roles
   extend type Mutation {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     inviteUserToProject(
@@ -236,6 +251,10 @@ export default gql`
 >>>>>>> Roles
 
 <<<<<<< HEAD
+=======
+    inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+
+>>>>>>> Back-End Review
     updateUserProjectRole(
       projectId: ID!
       userId: ID!
@@ -248,6 +267,10 @@ export default gql`
 
     removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
 >>>>>>> Roles
+  }
+
+  extend type Query {
+    projectUsers(projectId: ID!): [RoleWithUser!]!
   }
 
   extend type Query {

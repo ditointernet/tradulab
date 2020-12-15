@@ -3,10 +3,14 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Back-End Review
 =======
 =======
+=======
+
+>>>>>>> Back-End Review
 import { ROLES_LIST } from './constants';
 >>>>>>> changes
 import { IProject } from '../project/model';
@@ -33,6 +37,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     role: {
       type: String,
       enum: ROLES_LIST,
@@ -52,6 +57,8 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 =======
     },
+=======
+>>>>>>> Back-End Review
 =======
 >>>>>>> Back-End Review
     role: {
@@ -74,6 +81,12 @@ const schema = new mongoose.Schema(
 >>>>>>> changes
       required: true,
     },
+    project: {
+      type: Types.ObjectId,
+      index: true,
+      ref: 'project',
+      required: true,
+    },
     user: {
       type: Types.ObjectId,
       index: true,
@@ -88,10 +101,10 @@ const schema = new mongoose.Schema(
 );
 
 export interface IRole extends mongoose.Document {
-  project: mongoose.Types.ObjectId | IProject;
-  createdAt: Date;
   role: string;
+  project: mongoose.Types.ObjectId | IProject;
   user: mongoose.Types.ObjectId | IUser;
+  createdAt: Date;
   updateAt: Date;
 }
 

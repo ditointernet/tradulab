@@ -88,6 +88,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     network_mode: host
 >>>>>>> Back-End Review
@@ -228,6 +229,9 @@ services:
     command: npm start
 =======
 >>>>>>> fix issues
+=======
+    network_mode: host
+>>>>>>> Back-End Review
     ports:
       - "3001:3001"
 >>>>>>> Create API and WEB Images

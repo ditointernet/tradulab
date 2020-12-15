@@ -30,6 +30,7 @@ export default async function jwtMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const isAuthorized = bearerRegex.test(authorization);
 
   if (isAuthorized) {
@@ -75,6 +76,11 @@ export default async function jwtMiddleware(
 
   if (isAuthorized) {
 >>>>>>> Back-End Review
+=======
+  const isAuthorized = bearerRegex.test(authorization);
+
+  if (isAuthorized) {
+>>>>>>> Back-End Review
     const token = authorization.split(bearerRegex)[1];
 
     try {
@@ -83,6 +89,7 @@ export default async function jwtMiddleware(
         env.getOrThrow('JWT_SECRET')
       );
     } catch (err) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -139,6 +146,8 @@ export default async function jwtMiddleware(
 =======
       console.error(err);
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+>>>>>>> Back-End Review
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {

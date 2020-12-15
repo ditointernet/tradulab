@@ -33,6 +33,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -114,11 +115,16 @@ import { FileUpload } from 'graphql-upload';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+import { ApolloError } from 'apollo-server-express';
+import { FileUpload } from 'graphql-upload';
+>>>>>>> Back-End Review
 import {
   ERROR_CODES,
   INTERNAL_ERROR,
   MAX_ALLOWED_FILE_SIZE_IN_BYTES,
 } from './constants';
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> update listFiles and error
@@ -682,6 +688,12 @@ async function createFile(parent, args: ICreateFileArgs, context) {
     await file.save();
   } catch (err) {
     console.error(err);
+=======
+import { model as File } from '.';
+import { model as Project } from '../project';
+import { model as Role } from '../role';
+import TradulabError from '../../errors';
+>>>>>>> Back-End Review
 
     throw new ApolloError(err.message);
   }

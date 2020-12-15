@@ -7,6 +7,7 @@ import * as slug from 'slug';
 import { ERROR_CODES, REGEXES } from './constants';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 =======
@@ -23,12 +24,15 @@ import { ERROR_MESSAGES, REGEXES } from './constants';
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> we abstracted the role validation and finished all role mutations
+=======
+>>>>>>> Back-End Review
 import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -43,6 +47,9 @@ const schema = new mongoose.Schema(
 =======
     name: {
 >>>>>>> Back-End Review
+>>>>>>> Back-End Review
+=======
+    name: {
 >>>>>>> Back-End Review
       type: String,
       maxlength: [64, ERROR_CODES.NAME_LONG],
@@ -61,6 +68,7 @@ const schema = new mongoose.Schema(
       maxlength: [64, ERROR_CODES.SLUG_LONG],
       minlength: [3, ERROR_CODES.SLUG_SHORT],
       required: true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       unique: true,
@@ -90,6 +98,9 @@ const schema = new mongoose.Schema(
       minlength: [3, ERROR_MESSAGES.DISPLAY_NAME_SHORT],
       required: true,
 >>>>>>> changes
+=======
+      unique: true,
+>>>>>>> Back-End Review
     },
     owner: {
       type: Types.ObjectId,
@@ -102,6 +113,7 @@ const schema = new mongoose.Schema(
 =======
 >>>>>>> changes
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
     private: {
       type: Boolean,
@@ -122,6 +134,8 @@ const schema = new mongoose.Schema(
 >>>>>>> Back-End Review
 =======
 >>>>>>> changes
+=======
+>>>>>>> Back-End Review
   },
   {
     timestamps: true,
@@ -134,12 +148,16 @@ export interface IProject extends mongoose.Document {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 =======
 >>>>>>> Back-End Review
   name: String;
   private: Boolean;
   slug: String;
   owner: IUser | mongoose.Types.ObjectId;
+<<<<<<< HEAD
 <<<<<<< HEAD
   createdAt: Date;
 =======
@@ -166,10 +184,14 @@ export interface IProject extends mongoose.Document {
   private: boolean;
   slug: string;
 >>>>>>> changes
+=======
+  createdAt: Date;
+>>>>>>> Back-End Review
   updateAt: Date;
 }
 
 schema.pre<IProject>('validate', function preValidate(next) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -190,6 +212,9 @@ schema.pre<IProject>('validate', function preValidate(next) {
 >>>>>>> changes
   this.slug = slug(this.displayName);
 >>>>>>> changes
+=======
+  this.slug = slug(this.name);
+>>>>>>> Back-End Review
 =======
   this.slug = slug(this.name);
 >>>>>>> Back-End Review
