@@ -43,8 +43,12 @@ import { IRole } from './model';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
 import { model as User } from '../user';
+<<<<<<< HEAD
 import { ROLES, ROLES_LIST } from './constants';
 >>>>>>> Back-End Review
+=======
+import { ROLES, ROLES_LIST, ROLES_AVAILABLE_INVITE_USER } from './constants';
+>>>>>>> Roles
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -178,10 +182,13 @@ async function inviteUserToProject(
   if (!currentUserRole)
     throw new TradulabError(roleCodes.INVITED_NOT_EXISTING_ROLE);
 
+  if (!ROLES_AVAILABLE_INVITE_USER.includes(currentUserRole.role))
+    throw new TradulabError(roleCodes.INVITED_NOT_AVAILABLE);
+
   const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
   const targetUserRoleIndex = ROLES_LIST.indexOf(role);
 
-  if (currentUserRoleIndex < targetUserRoleIndex)
+  if (currentUserRoleIndex >= targetUserRoleIndex)
     throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
 <<<<<<< HEAD
 =======
@@ -217,7 +224,7 @@ async function inviteUserToProject(
   }
 }
 
-async function updateUserProjectRole(parent, args, context) {
+async function updateUserProjectRole(_parent, args, context) {
   if (args.userId === context.user.id) {
 <<<<<<< HEAD
     throw new TradulabError(roleCodes.UPDATED_YOURSELF);
