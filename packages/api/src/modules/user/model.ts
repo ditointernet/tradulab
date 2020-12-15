@@ -4,34 +4,34 @@ import { ERROR_CODES, REGEXES } from './constants';
 
 const schema = new mongoose.Schema(
   {
-    displayName: {
+    nickname: {
       type: String,
+      index: true,
+      match: [REGEXES.NICKNAME, ERROR_CODES.NICKNAME_INVALID],
+      maxlength: [32, ERROR_CODES.NICKNAME_LONG],
+      minlength: [3, ERROR_CODES.NICKNAME_SHORT],
       required: true,
-      minlength: [3, ERROR_CODES.USERNAME_SHORT],
-      maxlength: [32, ERROR_CODES.USERNAME_LONG],
-      match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
       unique: true,
     },
     username: {
       type: String,
-      index: true,
       match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
+      maxlength: [64, ERROR_CODES.USERNAME_LONG],
+      minlength: [3, ERROR_CODES.USERNAME_SHORT],
       required: true,
-      minlength: [3, ERROR_CODES.DISPLAY_NAME_SHORT],
-      maxlength: [64, ERROR_CODES.DISPLAY_NAME_LONG],
     },
   },
   {
-    timestamps: true,
     minimize: false,
+    timestamps: true,
   }
 );
 
 export interface IUser extends mongoose.Document {
+  nickname: String;
+  username: String;
   createdAt: Date;
-  displayName: string;
   updateAt: Date;
-  username: string;
 }
 
 const model = mongoose.model<IUser>('user', schema);

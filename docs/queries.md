@@ -1,36 +1,193 @@
-Sample mutations for our project
+# Auth / User
 
-##### Auth
+## Criar Usuários
 
 ```gql
-# Write your query or mutation here
-mutation authOwner {
+mutation userBolivar {
   createUser(
-    user: {
-      email: "uriell.viana@dito.com.br"
+    payload: {
+      email: "bolivar@dito.com.br"
       password: "123456"
-      username: "uriell"
+      username: "Anderson Bolivar"
+      nickname: "bolivar"
     }
   ) {
     token
+    email
+    nickname
+    username
+    id
   }
 }
 
-mutation authContributor {
+mutation userJulio {
   createUser(
-    user: {
-      email: "uriell.viana+contributor@dito.com.br"
+    payload: {
+      email: "julio@dito.com.br"
       password: "123456"
-      username: "uriell-contributor"
+      username: "Julio"
+      nickname: "wxbjulio"
     }
   ) {
     token
+    email
+    nickname
+    username
+    id
   }
 }
 
-query Login {
-  login(email: "bolivar@dito.com.br", password: "123456") {
+mutation userMiguel {
+  createUser(
+    payload: {
+      email: "miguel@dito.com.br"
+      password: "123456"
+      username: "Miguel"
+      nickname: "miguelito"
+    }
+  ) {
     token
+    email
+    nickname
+    username
+    id
+  }
+}
+
+mutation userUriell {
+  createUser(
+    payload: {
+      email: "uriell@dito.com.br"
+      password: "123456"
+      username: "Uriell"
+      nickname: "uriell"
+    }
+  ) {
+    token
+    email
+    nickname
+    username
+    id
+  }
+}
+```
+
+## Login Usuários
+
+```gql
+query userBolivar {
+  login(payload: { email: "bolivar@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+
+query userJulio {
+  login(payload: { email: "julio@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+
+query userMiguel {
+  login(payload: { email: "miguel@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+
+query userUriell {
+  login(payload: { email: "uriell@dito.com.br", password: "123456" }) {
+    token
+    nickname
+    username
+    email
+    id
+  }
+}
+```
+
+## Me
+
+```gql
+query me {
+  me {
+    _id
+    nickname
+    username
+  }
+}
+```
+
+# Project
+
+## Create Project
+
+```gql
+mutation projectAgenda {
+  createProject(payload: { name: "Dito Agenda", private: true }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+
+mutation projectCampanhas {
+  createProject(payload: { name: "Dito Campanhas", private: true }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+
+mutation projectTradulab {
+  createProject(payload: { name: "Tradulab" }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+
+mutation projectJornadas {
+  createProject(payload: { name: "Dito Jornadas" }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+```
+
+## Listar Projetos
+
+```gql
+query listProjects {
+  listProjects {
+    user
+    project {
+      name
+      slug
+      owner
+      private
+    }
+    role
+    id
   }
 }
 ```
@@ -46,22 +203,6 @@ query listFiles {
 ```
 
 ##### Project
-
-```gql
-mutation project {
-  createProject(displayName: "Dito") {
-    id
-    slug
-    displayName
-    owner {
-      id
-    }
-    private
-    createdAt
-    updatedAt
-  }
-}
-```
 
 ##### Role
 
@@ -119,24 +260,10 @@ mutation remove {
 }
 ```
 
-#### User
-
-```gql
-query meOwner {
-  me {
-    id
-  }
-}
-
-query meContributor {
-  me {
-    id
-  }
-}
-```
-
-The service that defines the field is also the service that knows how to populate the field
+# Header
 
 {
 "Authorization": "Bearer token"
 }
+
+Schemas: The service that defines the field is also the service that knows how to populate the field

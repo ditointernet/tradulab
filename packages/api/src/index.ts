@@ -11,12 +11,7 @@ app.use(middlewares.jwt);
 
 middlewares.apollo(app);
 
-app.use(function (err, _req, res, _next) {
-  if (err.name === 'UnauthorizedError') {
-    return res.status(401).json({ error: 'JWT Expired.' });
-  }
-  console.error('Error: ', err.name);
-});
+app.use(middlewares.error);
 
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');

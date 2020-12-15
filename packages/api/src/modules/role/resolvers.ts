@@ -1,17 +1,13 @@
-import { ApolloError, ForbiddenError } from 'apollo-server-express';
+import { ApolloError } from 'apollo-server-express';
+import TradulabError from '../../errors';
+import { ERROR_CODES as roleCodes } from './constants';
+import { ERROR_CODES as projectCodes } from '../project/constants';
+import { ERROR_CODES as userCodes } from '../user/constants';
+import { IRole } from './model';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
 import { model as User } from '../user';
-import { IRole } from './model';
-<<<<<<< HEAD
-import { TradulabError } from '../../errors';
-import { ERROR_CODES as roleCodes, ROLES, ROLES_LIST } from './constants';
-=======
-import TradulabError from '../../errors';
-import { ERROR_CODES as roleCodes } from './constants';
->>>>>>> feature/resolver-list-file
-import { ERROR_CODES as projectCodes } from '../project/constants';
-import { ERROR_CODES as userCodes } from '../user/constants';
+import { ROLES, ROLES_LIST } from './constants';
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -21,67 +17,62 @@ async function projectUsers(_, args) {
   return roles;
 }
 
-async function inviteUserToProject(_, args, context) {
-  if (args.userId === context.user.id) {
-    throw new TradulabError(roleCodes.INVITED_YOURSELF);
-  }
+async function inviteUserToProject(
+  _parent,
+  { payload: { userId, projectId, role } },
+  { user: { _id: ownId } }
+) {
+  console.log(
+    'userId, projectId, role',
+    userId,
+    projectId,
+    role,
+    'ownId',
+    ownId
+  );
+  if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
+
+  const project = await Project.findById(projectId);
+
+  if (!project) throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
+
+  const targetUser = await User.findById(userId);
+
+  if (!targetUser) throw new TradulabError(userCodes.USER_NOT_FOUND);
 
   const existingRole = await Role.findOne({
-    user: args.userId,
-    project: args.projectId,
+    project: projectId,
+    user: userId,
   });
 
-  if (existingRole) {
-    throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
-  }
-
-  const targetProject = await Project.findById(args.projectId);
-
-  if (!targetProject) {
-    throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
-  }
-
-  const targetUser = await User.findById(args.userId);
-
-  if (!targetUser) {
-    throw new TradulabError(userCodes.USER_NOT_FOUND);
-  }
-
-  const targetUserRole = await Role.findOne({
-    user: context.user.id,
-    project: args.projectId,
-  });
-
-  const indexRole = ROLES_LIST.indexOf(targetUserRole.role);
-  const availableRoles = ROLES_LIST.slice(indexRole + 1);
-
-  if (!availableRoles.includes(args.role)) {
-    throw new Error('You cannot invite an user with the same or higher role.');
-  }
-
-  const role = new Role({
-    role: ROLES[args.role.toUpperCase()],
-    project: targetProject,
-    user: targetUser,
-  });
+  if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
 
   const currentUserRole = await Role.findOne({
-    user: context.user._id,
-    project: args.projectId,
+    project: projectId,
+    user: ownId,
   });
 
-  if (!(await isCurrentRoleHigherThanTarget(currentUserRole, targetUserRole))) {
+  if (!currentUserRole)
+    throw new TradulabError(roleCodes.INVITED_NOT_EXISTING_ROLE);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const targetUserRoleIndex = ROLES_LIST.indexOf(role);
+
+  if (currentUserRoleIndex < targetUserRoleIndex)
     throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
-  }
 
   try {
-    await targetUserRole.save();
+    const targetUserRole = await new Role({
+      role: ROLES[role.toUpperCase()],
+      project,
+      user: targetUser,
+    }).save();
+    console.log('targetUserRole', targetUserRole);
+    return targetUserRole;
   } catch (err) {
     console.error(err);
-    throw err;
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
-
-  return targetUserRole;
 }
 
 async function updateUserProjectRole(parent, args, context) {
@@ -179,9 +170,9 @@ async function isCurrentRoleHigherThanTarget(
   return currentUserRoleIndex < targetUserRoleIndex;
 }
 
-export const queries = { projectUsers };
 export const mutations = {
   inviteUserToProject,
   removeUserFromProject,
   updateUserProjectRole,
 };
+export const queries = { projectUsers };

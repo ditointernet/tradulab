@@ -7,10 +7,7 @@ services:
   api:
     build: packages/api
     command: npm start
-<<<<<<< HEAD
     network_mode: host
-=======
->>>>>>> 418d06821d80122b185dd9ddfeffe20d0159bf82
     ports:
       - "3001:3001"
     volumes:

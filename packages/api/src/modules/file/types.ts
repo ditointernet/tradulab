@@ -4,9 +4,9 @@ export default gql`
   scalar FileUpload
 
   enum Extentions {
+    csv
     json
     txt
-    csv
   }
 
   type Progress {
@@ -28,8 +28,8 @@ export default gql`
   extend type Mutation {
     createFile(
       file: FileUpload!
-      sourceLanguage: String!
       projectId: ID!
+      sourceLanguage: String!
     ): File!
   }
 
@@ -37,5 +37,3 @@ export default gql`
     listFiles(projectId: ID!): [File]
   }
 `;
-
-// Acho que o progress pode ser colocado no futuro, pois ele vai ser mais complexo que isso, progress de translation para qual lingua?

@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { IProject } from '../project/model';
+
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 
@@ -19,10 +19,11 @@ const schema = new mongoose.Schema(
     },
     filePath: {
       type: String,
-<<<<<<< HEAD
       required: true,
-=======
->>>>>>> feature/resolver-list-file
+    },
+    sourceLanguage: {
+      type: String,
+      required: true,
     },
     project: {
       type: Types.ObjectId,
@@ -30,43 +31,20 @@ const schema = new mongoose.Schema(
       ref: 'project',
       required: true,
     },
-    sourceLanguage: {
-      type: String,
-      required: true,
-<<<<<<< HEAD
-      enum: EXTENSION_LIST,
-    },
-    filePath: {
-      type: String,
-      required: true,
-=======
->>>>>>> feature/resolver-list-file
-    },
   },
   {
-    timestamps: true,
     minimize: false,
+    timestamps: true,
   }
 );
 
 export interface IFile extends mongoose.Document {
-<<<<<<< HEAD
-  filename: string;
-  translationProgress: number;
-  approvalProgress: number;
-  project: mongoose.Types.ObjectId | IProject;
-  sourceLanguage: string;
-  extension: string;
-  filePath: string;
-  createdAt: Date;
-=======
-  createdAt: Date;
   extension: string;
   filename: string;
   filePath: string;
-  project: mongoose.Types.ObjectId | IProject;
   sourceLanguage: string;
->>>>>>> feature/resolver-list-file
+  project: mongoose.Types.ObjectId | IProject;
+  createdAt: Date;
   updateAt: Date;
 }
 
