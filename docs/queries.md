@@ -773,6 +773,9 @@ mutation invite {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> queries
 =======
 >>>>>>> queries
 =======
@@ -784,6 +787,7 @@ mutation invite {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     projectId: "5fad9b0a7ed68959e2341a59"
     userId: "5fad9ae37ed68959e2341a57"
@@ -798,6 +802,8 @@ mutation invite {
     userId: "5fad9ae37ed68959e2341a57"
     role: manager
 >>>>>>> create docs
+=======
+>>>>>>> queries
   ) {
     id
     role
@@ -806,6 +812,7 @@ mutation invite {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       nickname
       username
     }
@@ -844,6 +851,15 @@ mutation invite {
 >>>>>>> queries
 =======
 >>>>>>> create docs
+=======
+      nickname
+      username
+    }
+    project {
+      slug
+      name
+      owner
+>>>>>>> queries
     }
     createdAt
     updatedAt
