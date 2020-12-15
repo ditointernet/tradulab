@@ -11,6 +11,8 @@ export const ROLES = {
   // VIEWER: 'viewer',
 };
 
+export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
+
 // Array ordenado Hierarquicamente
 export const ROLES_LIST = [
 =======
@@ -58,6 +60,7 @@ export const ROLES_LIST = [
 
 export const ERROR_CODES = {
   INVITED_EXISTING_ROLE: 'INVITED_EXISTING_ROLE',
+  INVITED_NOT_AVAILABLE: 'INVITED_NOT_AVAILABLE',
   INVITED_NOT_EXISTING_ROLE: 'INVITED_NOT_EXISTING_ROLE',
   INVITED_SAME_OR_HIGHER_ROLE: 'INVITED_SAME_OR_HIGHER_ROLE',
   INVITED_YOURSELF: 'INVITED_YOURSELF',
@@ -72,6 +75,7 @@ export const ERROR_CODES = {
 
 export const ERROR_MESSAGES = {
   INVITED_EXISTING_ROLE: 'The provided user is already part of the project.',
+  INVITED_NOT_AVAILABLE: 'Only manager and owner can invite users to a project',
   INVITED_NOT_EXISTING_ROLE: "You don't have a role in this project",
   INVITED_SAME_OR_HIGHER_ROLE:
     'You cannot invite an user with the same or higher role.',
