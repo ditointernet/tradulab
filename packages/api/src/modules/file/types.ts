@@ -38,6 +38,7 @@ export default gql`
 
   enum Extentions {
     csv
+<<<<<<< HEAD
     json
     txt
   }
@@ -105,9 +106,10 @@ export default gql`
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
   enum Extentions {
+=======
+>>>>>>> Back-End Review
     json
     txt
-    csv
   }
 
   type Progress {
@@ -500,6 +502,7 @@ export default gql`
       file: FileUpload!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
 =======
       sourceLanguage: String!
@@ -509,6 +512,10 @@ export default gql`
       sourceLanguage: String!
       projectId: ID!
 >>>>>>> Corrigido erro de cors pra qualquer request
+=======
+      projectId: ID!
+      sourceLanguage: String!
+>>>>>>> Back-End Review
     ): File!
   }
 
@@ -516,6 +523,7 @@ export default gql`
     listFiles(projectId: ID!): [File]
   }
 `;
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Criado o module files e a resolver create File
 =======
@@ -565,3 +573,5 @@ export default gql`
   }
 `;
 >>>>>>> Criado o module files e a resolver create File
+=======
+>>>>>>> Back-End Review

@@ -26,6 +26,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -115,6 +116,9 @@ import { IProject } from '../project/model';
 =======
 >>>>>>> Criado o module files e a resolver create File
 >>>>>>> Criado o module files e a resolver create File
+=======
+
+>>>>>>> Back-End Review
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 =======
@@ -430,6 +434,7 @@ const schema = new mongoose.Schema(
     },
     filePath: {
       type: String,
+<<<<<<< HEAD
 >>>>>>> changes
     },
     filePath: {
@@ -679,12 +684,15 @@ const schema = new mongoose.Schema(
     project: {
       type: Types.ObjectId,
       ref: 'project',
+=======
+>>>>>>> Back-End Review
       required: true,
       index: true,
     },
     extension: {
       type: String,
       required: true,
+<<<<<<< HEAD
       enum: EXTENSION_LIST,
     },
 <<<<<<< HEAD
@@ -710,6 +718,14 @@ const schema = new mongoose.Schema(
 =======
     filePath: {
       type: String,
+=======
+    },
+    project: {
+      type: Types.ObjectId,
+      index: true,
+      ref: 'project',
+      required: true,
+>>>>>>> Back-End Review
     },
 >>>>>>> Rebase and resolving conflicts with master
   },
@@ -734,6 +750,7 @@ const schema = new mongoose.Schema(
 =======
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 export interface IFile extends mongoose.Document {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   extension: string;
@@ -1003,11 +1020,17 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 export interface IFile extends mongoose.Document {
   createdAt: Date;
+=======
+>>>>>>> Back-End Review
   extension: string;
   filename: string;
   filePath: string;
-  project: mongoose.Types.ObjectId | IProject;
   sourceLanguage: string;
+<<<<<<< HEAD
+=======
+  project: mongoose.Types.ObjectId | IProject;
+  createdAt: Date;
+>>>>>>> Back-End Review
   updateAt: Date;
 }
 

@@ -6,6 +6,7 @@ import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
+<<<<<<< HEAD
 import TradulabError from '../../errors';
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
@@ -38,6 +39,8 @@ import { TradulabError } from '../../errors';
 =======
 
 >>>>>>> Back-End Review
+=======
+>>>>>>> Back-End Review
 import TradulabError from '../../errors';
 >>>>>>> update listFiles and error
 =======
@@ -45,6 +48,7 @@ import TradulabError from '../../errors';
 >>>>>>> update listFiles and error
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> changes
@@ -67,6 +71,11 @@ import { model as Auth } from '.';
 import { model as User } from '../user';
 import { env } from '../../helpers';
 >>>>>>> changes
+=======
+import { env } from '../../helpers';
+import { model as Auth } from '.';
+import { model as User } from '../user';
+>>>>>>> Back-End Review
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -87,6 +96,9 @@ function signToken(payload) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 =======
 >>>>>>> Back-End Review
 async function createUser(
@@ -94,6 +106,7 @@ async function createUser(
   { payload: { email, nickname, password, username } }
 ) {
   if (password.trim().length < 1)
+<<<<<<< HEAD
 <<<<<<< HEAD
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
 
@@ -126,13 +139,17 @@ async function createUser(_, args) {
     nickname,
     username,
   });
+=======
+    throw new TradulabError(authCodes.PASSWORD_EMPTY);
+>>>>>>> Back-End Review
 
   const user = new User({
-    displayName: args.user.displayName || args.user.username,
-    username: args.user.username,
+    nickname,
+    username,
   });
 
   const auth = new Auth({
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     email: args.user.email.toLowerCase(),
@@ -149,6 +166,11 @@ async function createUser(_, args) {
     password: await encryptPassword(args.user.password),
     user,
 >>>>>>> changes
+=======
+    email: email.toLowerCase(),
+    password: await encryptPassword(password),
+    user: user.id,
+>>>>>>> Back-End Review
   });
 
   try {
@@ -156,6 +178,9 @@ async function createUser(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 =======
 >>>>>>> Back-End Review
 
@@ -166,6 +191,7 @@ async function createUser(_, args) {
       username: user.username,
       id: user.id,
     };
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> changes
@@ -210,6 +236,8 @@ async function createUser(_, args) {
 =======
 >>>>>>> changes
 =======
+=======
+>>>>>>> Back-End Review
   } catch (err) {
     // Não entendi a condição
 >>>>>>> changes
@@ -258,6 +286,9 @@ async function createUser(_, args) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 async function login(_parent, { payload: { email, password } }) {
   try {
     const auth = await Auth.findOne({
@@ -278,6 +309,7 @@ async function login(_parent, { payload: { email, password } }) {
     };
   } catch (err) {
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
+<<<<<<< HEAD
 =======
 async function login(parent, args) {
 =======
@@ -397,6 +429,9 @@ async function login(_parent, { payload: { email, password } }) {
 
   return { token: await signToken({ id: auth.user }) };
 >>>>>>> changes
+=======
+  }
+>>>>>>> Back-End Review
 }
 <<<<<<< HEAD
 <<<<<<< HEAD

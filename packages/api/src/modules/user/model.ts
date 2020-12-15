@@ -20,6 +20,7 @@ const schema = new mongoose.Schema(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     nickname: {
       type: String,
       index: true,
@@ -52,12 +53,22 @@ const schema = new mongoose.Schema(
       required: true,
 >>>>>>> Back-End Review
 >>>>>>> Back-End Review
+=======
+    nickname: {
+      type: String,
+      index: true,
+      match: [REGEXES.NICKNAME, ERROR_CODES.NICKNAME_INVALID],
+      maxlength: [32, ERROR_CODES.NICKNAME_LONG],
+      minlength: [3, ERROR_CODES.NICKNAME_SHORT],
+      required: true,
+>>>>>>> Back-End Review
       unique: true,
 =======
 >>>>>>> changes
     },
     username: {
       type: String,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
@@ -102,6 +113,12 @@ const schema = new mongoose.Schema(
 =======
       unique: [true, ERROR_MESSAGES.USERNAME_ALREADY_IN_USE],
 >>>>>>> changes
+=======
+      match: [REGEXES.USERNAME, ERROR_CODES.USERNAME_INVALID],
+      maxlength: [64, ERROR_CODES.USERNAME_LONG],
+      minlength: [3, ERROR_CODES.USERNAME_SHORT],
+      required: true,
+>>>>>>> Back-End Review
     },
   },
   {
@@ -111,6 +128,7 @@ const schema = new mongoose.Schema(
 );
 
 export interface IUser extends mongoose.Document {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -129,10 +147,12 @@ export interface IUser extends mongoose.Document {
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> changes
+=======
+  nickname: String;
+  username: String;
+>>>>>>> Back-End Review
   createdAt: Date;
-  displayName: string;
   updateAt: Date;
-  username: string;
 }
 
 const model = mongoose.model<IUser>('user', schema);

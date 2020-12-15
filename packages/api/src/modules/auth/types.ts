@@ -3,12 +3,16 @@ import { gql } from 'apollo-server-express';
 export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 =======
 >>>>>>> Back-End Review
   extend type User {
     nickname: String!
     username: String!
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
   input CreateUserPayload {
 =======
@@ -30,12 +34,21 @@ export default gql`
 >>>>>>> fix
 =======
 >>>>>>> changes
+=======
+
+  input CreateUserPayload {
+    email: String!
+    nickname: String!
+>>>>>>> Back-End Review
     password: String!
     username: String!
   }
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> Back-End Review
+=======
 >>>>>>> Back-End Review
   input LoginPayload {
     email: String!
@@ -44,6 +57,9 @@ export default gql`
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> Back-End Review
+=======
 >>>>>>> Back-End Review
   type UserWithToken {
     email: String!
@@ -56,6 +72,10 @@ export default gql`
     createUser(payload: CreateUserPayload): UserWithToken!
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> Back-End Review
 =======
 
 >>>>>>> Back-End Review

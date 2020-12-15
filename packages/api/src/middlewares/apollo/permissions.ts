@@ -1,8 +1,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError, AuthenticationError } from 'apollo-server-express';
 import { not, rule, shield } from 'graphql-shield';
 =======
+=======
+>>>>>>> Back-End Review
 import {
   ApolloError,
   AuthenticationError,
@@ -13,11 +16,14 @@ import { not, and, or, rule, shield } from 'graphql-shield';
 import { role } from '../../modules';
 import { model as userModel } from '../../modules/user';
 import { ROLES } from '../../modules/role/constants';
+<<<<<<< HEAD
 >>>>>>> Back-End Review
 =======
 import { ApolloError, AuthenticationError } from 'apollo-server-express';
 import { not, rule, shield } from 'graphql-shield';
 >>>>>>> Roles
+=======
+>>>>>>> Back-End Review
 
 const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   if (!user) return new AuthenticationError('You must be logged in.');
@@ -27,11 +33,14 @@ const isAuthenticated = rule()(async (_parent, _args, { user }) => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const permissions = shield(
   {
     Query: {
       listFiles: isAuthenticated,
 =======
+=======
+>>>>>>> Back-End Review
 const isOneOfTheseRoles = (allowedRoles: string[]) =>
   rule()(async (_parent, { projectId }, { user: { id: currentUserId } }) => {
     try {
@@ -59,6 +68,7 @@ const permissions = shield(
   {
     Query: {
       //   listFiles: isAuthenticated,
+<<<<<<< HEAD
 >>>>>>> Back-End Review
 =======
 const permissions = shield(
@@ -66,6 +76,8 @@ const permissions = shield(
     Query: {
       listFiles: isAuthenticated,
 >>>>>>> Roles
+=======
+>>>>>>> Back-End Review
       listProjects: isAuthenticated,
       login: not(
         isAuthenticated,
@@ -78,6 +90,7 @@ const permissions = shield(
       createUser: not(isAuthenticated),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       inviteUserToProject: isAuthenticated,
       createFile: isAuthenticated,
 =======
@@ -88,6 +101,10 @@ const permissions = shield(
       inviteUserToProject: isAuthenticated,
       createFile: isAuthenticated,
 >>>>>>> Roles
+=======
+      // inviteUserToProject: isAuthenticated,
+      //   createFile: and(isAuthenticated, or(isDeveloper, isManagerOrOwner)),
+>>>>>>> Back-End Review
     },
   },
   {

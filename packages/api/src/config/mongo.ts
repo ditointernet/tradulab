@@ -14,6 +14,7 @@ mongoose
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     return console.error(err.message);
   });
 
@@ -29,6 +30,9 @@ export default mongoose;
 >>>>>>> changes
 =======
     return console.error(err);
+=======
+    return console.error(err.message);
+>>>>>>> Back-End Review
   });
 
 export default mongoose;
