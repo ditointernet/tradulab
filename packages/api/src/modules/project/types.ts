@@ -16,16 +16,12 @@ export default gql`
     private: Boolean
 =======
 
-  type ProjectWithUser {
-    id: ID!
-    slug: String!
-    displayName: String!
-    owner: User!
-    private: Boolean!
-    createdAt: Date!
-    updatedAt: Date!
+  input createProjectPayload {
+    name: String!
+    private: Boolean
   }
 
+<<<<<<< HEAD
   extend type Query {
     myProjects: [RoleWithProject!]!
 >>>>>>> we tested everything and it seems ok, including a project fix
@@ -39,5 +35,13 @@ export default gql`
 =======
     createProject(displayName: String!, private: Boolean): ProjectWithUser!
 >>>>>>> we tested everything and it seems ok, including a project fix
+=======
+  extend type Mutation {
+    createProject(payload: createProjectPayload): Project!
+  }
+
+  extend type Query {
+    listProjects: [RoleWithProject!]!
+>>>>>>> Back-End Review
   }
 `;

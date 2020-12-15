@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
   enum InvitedRole {
 =======
   enum RoleSlug {
@@ -49,6 +50,9 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+  enum InvitedRole {
+>>>>>>> Back-End Review
     # viewer
 =======
 <<<<<<< HEAD
@@ -76,6 +80,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -116,6 +121,9 @@ export default gql`
 =======
 
 >>>>>>> Code Review
+=======
+
+>>>>>>> Back-End Review
   type RoleWithProject {
     id: ID!
     role: String!
@@ -132,6 +140,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+<<<<<<< HEAD
   type RoleWithUserAndProject {
     id: ID!
     role: String!
@@ -140,22 +149,43 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+=======
+
+>>>>>>> Back-End Review
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
     role: InvitedRole!
+<<<<<<< HEAD
   }
   input removeUserFromProjectPayload {
     projectId: ID!
     userId: ID!
+=======
+>>>>>>> Back-End Review
   }
   extend type Mutation {
+<<<<<<< HEAD
     inviteUserToProject(
       payload: inviteUserToProjectPayload
     ): RoleWithUserAndProject!
     updateUserProjectRole(payload: inviteUserToProjectPayload): Role!
     removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
   }
+  extend type Query {
+    projectUsers(projectId: ID!): [RoleWithUser!]!
+=======
+    inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+
+    updateUserProjectRole(
+      projectId: ID!
+      userId: ID!
+      role: InvitedRole!
+    ): Role!
+    removeUserFromProject(projectId: ID!, userId: ID!): User!
+>>>>>>> Back-End Review
+  }
+
   extend type Query {
     projectUsers(projectId: ID!): [RoleWithUser!]!
   }

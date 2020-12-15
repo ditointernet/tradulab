@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ApolloError } from 'apollo-server-express';
 import TradulabError from '../../errors';
 import { ERROR_CODES as roleCodes } from './constants';
@@ -82,6 +83,18 @@ import { IRole } from './model';
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+import { ApolloError } from 'apollo-server-express';
+import TradulabError from '../../errors';
+import { ERROR_CODES as roleCodes } from './constants';
+import { ERROR_CODES as projectCodes } from '../project/constants';
+import { ERROR_CODES as userCodes } from '../user/constants';
+import { IRole } from './model';
+import { model as Project } from '../project';
+import { model as Role } from '../role';
+import { model as User } from '../user';
+import { ROLES, ROLES_LIST } from './constants';
+>>>>>>> Back-End Review
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -92,11 +105,15 @@ async function projectUsers(_, args) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Back-End Review
 async function inviteUserToProject(
   _parent,
   { payload: { userId, projectId, role } },
   { user: { _id: ownId } }
 ) {
+<<<<<<< HEAD
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 =======
 async function inviteUserToProject(_, args, context) {
@@ -229,9 +246,25 @@ async function inviteUserToProject(_, args, context) {
     );
 >>>>>>> changes
   }
+=======
+  console.log(
+    'userId, projectId, role',
+    userId,
+    projectId,
+    role,
+    'ownId',
+    ownId
+  );
+  if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 
-  const targetUser = await User.findById(args.userId);
+  const project = await Project.findById(projectId);
 
+  if (!project) throw new TradulabError(projectCodes.PROJECT_NOT_FOUND);
+>>>>>>> Back-End Review
+
+  const targetUser = await User.findById(userId);
+
+<<<<<<< HEAD
   if (!targetUser) {
 <<<<<<< HEAD
     throw new Error('The provided user does not exist.');
@@ -333,6 +366,30 @@ async function inviteUserToProject(_, args, context) {
 >>>>>>> changes
   }
 }
+=======
+  if (!targetUser) throw new TradulabError(userCodes.USER_NOT_FOUND);
+
+  const existingRole = await Role.findOne({
+    project: projectId,
+    user: userId,
+  });
+
+  if (existingRole) throw new TradulabError(roleCodes.INVITED_EXISTING_ROLE);
+
+  const currentUserRole = await Role.findOne({
+    project: projectId,
+    user: ownId,
+  });
+
+  if (!currentUserRole)
+    throw new TradulabError(roleCodes.INVITED_NOT_EXISTING_ROLE);
+
+  const currentUserRoleIndex = ROLES_LIST.indexOf(currentUserRole.role);
+  const targetUserRoleIndex = ROLES_LIST.indexOf(role);
+
+  if (currentUserRoleIndex < targetUserRoleIndex)
+    throw new TradulabError(roleCodes.INVITED_SAME_OR_HIGHER_ROLE);
+>>>>>>> Back-End Review
 
 async function updateUserProjectRole(
   _parent,
@@ -342,12 +399,19 @@ async function updateUserProjectRole(
   if (userId === ownId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
 =======
   try {
-    await targetUserRole.save();
+    const targetUserRole = await new Role({
+      role: ROLES[role.toUpperCase()],
+      project,
+      user: targetUser,
+    }).save();
+    console.log('targetUserRole', targetUserRole);
+    return targetUserRole;
   } catch (err) {
 <<<<<<< HEAD
     await targetUserRole.remove();
 =======
     console.error(err);
+<<<<<<< HEAD
     throw err;
 <<<<<<< HEAD
 =======
@@ -359,9 +423,10 @@ async function updateUserProjectRole(
 >>>>>>> we abstracted the role validation and finished all role mutations
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+>>>>>>> Back-End Review
   }
-
-  return targetUserRole;
 }
 
 async function updateUserProjectRole(parent, args, context) {
@@ -600,4 +665,8 @@ export const mutations = {
 export const queries = { projectUsers };
 =======
 };
+<<<<<<< HEAD
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+export const queries = { projectUsers };
+>>>>>>> Back-End Review

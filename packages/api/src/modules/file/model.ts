@@ -24,6 +24,7 @@ import * as mongoose from 'mongoose';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Criado o module files e a resolver create File
@@ -131,6 +132,9 @@ import { IProject } from '../project/model';
 import { EXTENSION_LIST } from './constants';
 >>>>>>> Criado o module files e a resolver create File
 =======
+=======
+
+>>>>>>> Back-End Review
 import { EXTENSION_LIST } from './constants';
 import { IProject } from '../project/model';
 >>>>>>> changes

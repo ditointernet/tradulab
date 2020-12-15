@@ -17,8 +17,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> update listFiles and error
+=======
+>>>>>>> Back-End Review
 export const ERROR_CODES = {
   MAX_ALLOWED_FILE_SIZE: 'MAX_ALLOWED_FILE_SIZE',
   NOT_A_MEMBER: 'NOT_A_MEMBER',

@@ -27,6 +27,7 @@ export default async function jwtMiddleware(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const isAuthorized = bearerRegex.test(authorization);
 
   if (isAuthorized) {
@@ -61,6 +62,11 @@ export default async function jwtMiddleware(
 >>>>>>> removing comments
   if (bearerRegex.test(authorization)) {
 >>>>>>> Update Role
+=======
+  const isAuthorized = bearerRegex.test(authorization);
+
+  if (isAuthorized) {
+>>>>>>> Back-End Review
     const token = authorization.split(bearerRegex)[1];
 
     try {
@@ -69,8 +75,11 @@ export default async function jwtMiddleware(
         env.getOrThrow('JWT_SECRET')
       );
     } catch (err) {
+<<<<<<< HEAD
       console.error(err);
       // Estes erros devem ficar aqui ou serem movidos para o middle de erro
+=======
+>>>>>>> Back-End Review
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {

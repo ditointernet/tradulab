@@ -37,6 +37,7 @@ services:
     build: packages/api
     command: npm start
 <<<<<<< HEAD
+<<<<<<< HEAD
     ports:
       - "3001:3001"
     volumes:
@@ -48,6 +49,9 @@ services:
   api:
     build: packages/api
     command: npm start
+=======
+    network_mode: host
+>>>>>>> Back-End Review
     ports:
       - "3001:3001"
 <<<<<<< HEAD

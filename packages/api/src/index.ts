@@ -290,6 +290,7 @@ middlewares.apollo(app);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use(middlewares.error);
 =======
 app.use(function (err, req, res, next) {
@@ -500,6 +501,8 @@ console.log("Bolivar")
 
 >>>>>>> fix
 =======
+=======
+>>>>>>> Back-End Review
 app.use(middlewares.error);
 
 <<<<<<< HEAD
