@@ -151,7 +151,19 @@ export default gql`
   }
 =======
 
+<<<<<<< HEAD
 >>>>>>> Back-End Review
+=======
+  type RoleWithUserAndProject {
+    id: ID!
+    role: String!
+    user: User!
+    project: Project!
+    createdAt: Date!
+    updatedAt: Date!
+  }
+
+>>>>>>> Roles
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
@@ -166,6 +178,7 @@ export default gql`
   }
   extend type Mutation {
 <<<<<<< HEAD
+<<<<<<< HEAD
     inviteUserToProject(
       payload: inviteUserToProjectPayload
     ): RoleWithUserAndProject!
@@ -176,6 +189,11 @@ export default gql`
     projectUsers(projectId: ID!): [RoleWithUser!]!
 =======
     inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+=======
+    inviteUserToProject(
+      payload: inviteUserToProjectPayload
+    ): RoleWithUserAndProject!
+>>>>>>> Roles
 
     updateUserProjectRole(
       projectId: ID!
