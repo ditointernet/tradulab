@@ -458,20 +458,27 @@ query listFiles {
 mutation invite {
   inviteUserToProject(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> queries
     payload: {
       projectId: "5fd8236cdea7dc1e623cdfbb"
       userId: "5fd7e99d7ed16045a86cb55b"
       role: contributor
     }
+<<<<<<< HEAD
 =======
     projectId: "5fad9b0a7ed68959e2341a59"
     userId: "5fad9ae37ed68959e2341a57"
     role: manager
 >>>>>>> create docs
+=======
+>>>>>>> queries
   ) {
     id
     role
     user {
+<<<<<<< HEAD
 <<<<<<< HEAD
       nickname
       username
@@ -488,6 +495,15 @@ mutation invite {
       id
       displayName
 >>>>>>> create docs
+=======
+      nickname
+      username
+    }
+    project {
+      slug
+      name
+      owner
+>>>>>>> queries
     }
     createdAt
     updatedAt
