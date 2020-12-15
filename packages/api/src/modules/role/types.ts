@@ -192,8 +192,11 @@ export default gql`
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Back-End Review
 =======
+=======
+>>>>>>> Roles
   type RoleWithUserAndProject {
     id: ID!
     role: String!
@@ -203,9 +206,12 @@ export default gql`
     updatedAt: Date!
   }
 
+<<<<<<< HEAD
 >>>>>>> Roles
 =======
 >>>>>>> Back-End Review
+=======
+>>>>>>> Roles
   input inviteUserToProjectPayload {
     projectId: ID!
     userId: ID!
@@ -234,6 +240,7 @@ export default gql`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     inviteUserToProject(
       payload: inviteUserToProjectPayload
     ): RoleWithUserAndProject!
@@ -244,6 +251,11 @@ export default gql`
     projectUsers(projectId: ID!): [RoleWithUser!]!
 =======
     inviteUserToProject(payload: inviteUserToProjectPayload): Role!
+=======
+    inviteUserToProject(
+      payload: inviteUserToProjectPayload
+    ): RoleWithUserAndProject!
+>>>>>>> Roles
 =======
     inviteUserToProject(
       payload: inviteUserToProjectPayload
