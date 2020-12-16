@@ -10,6 +10,7 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 
 import UploadForm from "./UploadForm";
+import LoginContainer from './containers/LoginContainer';
 
 const uploadLink = createUploadLink({
   uri: "http://localhost:3001/graphql",
@@ -41,7 +42,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <UploadForm />
+      <LoginContainer />
     </ApolloProvider>
   );
 }
