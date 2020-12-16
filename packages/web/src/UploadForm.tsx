@@ -109,6 +109,11 @@ export const UPLOAD_FILE = gql`
     ) {
       id
       filename
+<<<<<<< HEAD
+=======
+      translationProgress
+      approvalProgress
+>>>>>>> Error Middleware
       sourceLanguage
       extension
       project {
@@ -127,6 +132,7 @@ export const UPLOAD_FILE = gql`
 <<<<<<< HEAD
 export default function UploadForm() {
   // Trocar email e password para o que estiver no banco de dados local
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   const { data: dataLogin, error } = useQuery(LOGIN, {
@@ -294,11 +300,18 @@ export default function UploadForm() {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
   });
 
+=======
+  const { data: dataLogin, error } = useQuery(LOGIN, {
+    variables: { email: "julinho2801@gmail.com", password: "123456" },
+  });
+
+>>>>>>> Error Middleware
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
 >>>>>>> formatting changes and some typings
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   console.log(data);
@@ -412,6 +425,8 @@ export default function UploadForm() {
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
 
+=======
+>>>>>>> Error Middleware
   console.log(data);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -428,6 +443,7 @@ export default function UploadForm() {
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -681,11 +697,14 @@ export default function UploadForm() {
       filename: file.name
     }, projectId, sourceLanguage } });
 >>>>>>> list files done
+=======
+>>>>>>> Error Middleware
   };
 
   return (
     <div>
       <h1>Upload File</h1>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -851,3 +870,9 @@ export default function UploadForm() {
 };
 
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+      <input type="file" onChange={handleFileChange} />
+    </div>
+  );
+}
+>>>>>>> Error Middleware

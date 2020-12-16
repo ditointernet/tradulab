@@ -92,7 +92,7 @@ const permissions = shield(
   },
   {
     // https://github.com/maticzav/graphql-shield
-    fallbackError: (err, parent, args, context, info) => {
+    fallbackError: (err, _parent, _args, _context, _info) => {
       if (err instanceof ApolloError) {
         // expected errors
         return err;
