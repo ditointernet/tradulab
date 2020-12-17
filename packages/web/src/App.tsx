@@ -194,6 +194,7 @@ const client = new ApolloClient({
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -492,11 +493,19 @@ function App() {
   if (loading) return <p>Loading...</p>;
 
   if (error) return <Erros message={error.message} />;
+=======
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-  const TOKEN = localStorage.getItem("token");
+import TradulabRouter from "./routes";
 
-  if (!TOKEN) return <Login />;
+import { AuthMiddleware, OtherMiddleware, LayoutRouter } from "./routes";
+>>>>>>> Roteamento: Errors, Paginas, Rotas, Middleware
 
+import { Developer, Error, Home, Login, Projects } from "./pages";
+
+import "./App.css";
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> fix app
@@ -516,4 +525,33 @@ function App() {
 =======
   return <Pages />;
 >>>>>>> Error Middleware
+=======
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exac path="/error" component={Error} />
+        <Route exac path="/login" component={Login} />
+        <TradulabRouter
+          path="/dev"
+          component={Developer}
+          middlewares={[AuthMiddleware, OtherMiddleware]}
+          BaseComponent={LayoutRouter}
+        />
+        <TradulabRouter
+          path="/projects"
+          component={Projects}
+          middlewares={[AuthMiddleware]}
+          BaseComponent={null}
+        />
+        <TradulabRouter
+          path="/"
+          component={Home}
+          middlewares={[AuthMiddleware]}
+          BaseComponent={LayoutRouter}
+        />
+      </Switch>
+    </Router>
+  );
+>>>>>>> Roteamento: Errors, Paginas, Rotas, Middleware
 }
