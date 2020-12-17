@@ -12,7 +12,6 @@ const httpLink = createHttpLink({
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem("token");
   console.log("operation", operation);
-
   if (!["login", "createUser"].includes(operation.operationName)) {
     operation.setContext({
       headers: {
