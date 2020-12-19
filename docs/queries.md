@@ -541,16 +541,15 @@ mutation invite {
 
 mutation update {
   updateUserProjectRole(
-    projectId: "5fad9b0a7ed68959e2341a59"
-    userId: "5fad9ae37ed68959e2341a57"
-    role: manager
+    payload: {
+      projectId: "5fad9b0a7ed68959e2341a59"
+      userId: "5fad9ae37ed68959e2341a57"
+      role: manager
+    }
   ) {
     id
     role
-    user {
-      id
-      displayName
-    }
+    user
     project
     createdAt
     updatedAt
@@ -559,15 +558,11 @@ mutation update {
 
 mutation remove {
   removeUserFromProject(
-    projectId: "5fad9b0a7ed68959e2341a59"
-    userId: "5fad9ac07ed68959e2341a55"
-  ) {
-    id
-    username
-    displayName
-    createdAt
-    updatedAt
-  }
+    payload: {
+      projectId: "5fad9b0a7ed68959e2341a59"
+      userId: "5fad9ac07ed68959e2341a55"
+    }
+  )
 }
 ```
 <<<<<<< HEAD

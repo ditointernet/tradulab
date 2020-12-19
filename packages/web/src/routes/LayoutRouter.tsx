@@ -1,16 +1,11 @@
 import React from "react";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, RouteProps } from "react-router-dom";
 
-export default function LayoutRouter(props: any) {
+export default function LayoutRouter(props: RouteProps) {
   return (
     <Router>
-      <p>Tradulab :)</p>
+      <p>TRADULAB :)</p>
       {props.children}
     </Router>
   );
