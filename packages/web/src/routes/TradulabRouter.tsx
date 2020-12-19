@@ -8,41 +8,38 @@ import {
 } from "react-router-dom";
 
 export default function TradulabRouter({
-  component: Component,
+  Component,
   middlewares = [],
   path,
-  BaseComponent = null,
+  Parent = null,
   ...rest
 }: {
-  component: any;
+  Component: any;
   middlewares: any;
-  BaseComponent: any;
+  Parent: any;
   path: any;
 }) {
   const Middlewares = [...middlewares];
   const current = Middlewares.shift();
 
-  if (middlewares.length > 1)
+  if (current)
     return current(Middlewares, {
-      component: Component,
+      Component,
       path,
-      BaseComponent,
+      Parent,
       ...rest,
     });
 
-  if (middlewares.length === 1)
-    return current([], { component: Component, path, BaseComponent, ...rest });
-
-  if (BaseComponent)
+  if (Parent)
     return (
-      <BaseComponent>
+      <Parent>
         <Route
           {...rest}
           exact
           path={path}
           render={(props) => <Component {...props} />}
         />
-      </BaseComponent>
+      </Parent>
     );
 
   return (

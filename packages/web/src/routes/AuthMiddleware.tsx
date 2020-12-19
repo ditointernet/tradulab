@@ -1,5 +1,5 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React, { ReactComponentElement } from "react";
+import { Redirect, RouteProps, RedirectProps } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import TradulabRouter from "./TradulabRouter";
 

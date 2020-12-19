@@ -77,6 +77,7 @@ import React from "react";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 <<<<<<< HEAD
@@ -381,15 +382,20 @@ function App() {
 
   if (error) return <Erros message={error.message} />;
 =======
+=======
+>>>>>>> Rewind Types and Fix
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import TradulabRouter from "./routes";
+<<<<<<< HEAD
 
 import { AuthMiddleware, OtherMiddleware, LayoutRouter } from "./routes";
 >>>>>>> Roteamento: Errors, Paginas, Rotas, Middleware
 
+=======
+import { AuthMiddleware, RoleMiddleware, LayoutRouter } from "./routes";
+import {} from "./";
+>>>>>>> Rewind Types and Fix
 import { Developer, Error, Home, Login, Projects } from "./pages";
-
 import "./App.css";
 
 <<<<<<< HEAD
@@ -442,25 +448,25 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exac path="/error" component={Error} />
-        <Route exac path="/login" component={Login} />
+        <Route exact path="/error" component={Error} />
+        <Route exact path="/login" component={Login} />
         <TradulabRouter
           path="/dev"
-          component={Developer}
-          middlewares={[AuthMiddleware, OtherMiddleware]}
-          BaseComponent={LayoutRouter}
+          Component={Developer}
+          middlewares={[AuthMiddleware, RoleMiddleware]}
+          Parent={LayoutRouter}
         />
         <TradulabRouter
           path="/projects"
-          component={Projects}
+          Component={Projects}
           middlewares={[AuthMiddleware]}
-          BaseComponent={null}
+          Parent={null}
         />
         <TradulabRouter
           path="/"
-          component={Home}
+          Component={Home}
           middlewares={[AuthMiddleware]}
-          BaseComponent={LayoutRouter}
+          Parent={LayoutRouter}
         />
       </Switch>
     </Router>

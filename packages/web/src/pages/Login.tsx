@@ -14,13 +14,14 @@ export default function Login(props: any) {
       }
     }
   `;
+
   // Quando for trocar o usuário para testar o OtherMiddleware lembre-se de apagar o token no localStorage
   const BOLIVAR = { email: "bolivar@dito.com.br", password: "123456" };
 
   const MIGUEL = { email: "miguel@dito.com.br", password: "123456" };
 
   const { data, error, loading } = useQuery(LOGIN, {
-    variables: MIGUEL,
+    variables: BOLIVAR,
   });
 
   if (loading) return <p>Loading...</p>;
