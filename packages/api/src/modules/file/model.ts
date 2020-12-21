@@ -40,10 +40,7 @@ const schema = new mongoose.Schema(
     },
     filePath: {
       type: String,
-<<<<<<< HEAD
-=======
-      required:true,
->>>>>>> Create file resolver working at front-end and back-end without error treatment
+      required: true,
     },
   },
   {

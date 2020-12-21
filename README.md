@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
->>>>>>> add commands
-docker-compose up -d
+
+> > > > > > > # add commands
+> > > > > > >
+> > > > > > > 5f483dd95552445e1e4c414f03d3c32e13d1659c
+> > > > > > > docker-compose up -d
 
 docker-compose run web npm start
 
@@ -13,10 +17,15 @@ docker-compose down
 docker-compose exec mongo mongo
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
->>>>>>> Create API and WEB Images
-=======
->>>>>>> add commands
+
+> > > > > > > # Create API and WEB Images
+> > > > > > >
+> > > > > > > # add commands
+> > > > > > >
+> > > > > > > 5f483dd95552445e1e4c414f03d3c32e13d1659c
+
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
@@ -34,7 +43,12 @@ Is a running process, with some added encapsulation features applied to it in or
 Each container interacts with its own private filesystem {Docker Image};
 
 ## Docker Image
+
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+> > > > > > > 5f483dd95552445e1e4c414f03d3c32e13d1659c
 
 Is everything needed to run an application - the code or binary, runtimes, dependencies, and any other filesystem ocjects required;
 
@@ -169,12 +183,14 @@ docker volume ls
 docker volume inspect tradulab
 
 docker volume rm tradulab
+<<<<<<< HEAD
 =======
 
 Is everything needed to run an application - the code or binary, runtimes, dependencies, and any other filesystem ocjects required;
 
 The {kernel} decides who will use these resources and for how long and when;
->>>>>>> Create API and WEB Images
+
+> > > > > > > Create API and WEB Images
 
 ## Containers x Virtual Machines
 
@@ -304,7 +320,9 @@ docker volume create tradulab
 docker volume ls
 docker volume inspect tradulab
 
-docker volume rm tradulab
+# docker volume rm tradulab
+
+> > > > > > > 5f483dd95552445e1e4c414f03d3c32e13d1659c
 
 ## Commands
 
@@ -329,6 +347,7 @@ docker-compose down
 docker-compose exec mongo mongo
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 docker-compose images
 docker-compose run web npm start
@@ -336,10 +355,17 @@ docker-compose run web npm start
 
 docker-compose images
 <<<<<<< HEAD
->>>>>>> Create API and WEB Images
-=======
+
+> > > > > > > # Create API and WEB Images
+> > > > > > >
+> > > > > > > docker-compose run web npm start
+> > > > > > > fix
+> > > > > > > =======
+
+docker-compose images
 docker-compose run web npm start
->>>>>>> fix
+
+> > > > > > > 5f483dd95552445e1e4c414f03d3c32e13d1659c
 
 Lists containers.
 $ docker-compose ps
@@ -368,7 +394,3 @@ Create a volume: **docker volume create [my-vol]**
 List volumes: **docker volume ls**
 Inspect a volume: **docker volume inspect [my-vol]**
 Remove a volume: **docker volume rm [my-vol]**
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Create API and WEB Images

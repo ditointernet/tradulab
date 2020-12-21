@@ -1,12 +1,8 @@
 import * as mongoose from 'mongoose';
 import * as slug from 'slug';
 
-<<<<<<< HEAD
 import { ERROR_CODES, REGEXES } from './constants';
 
-=======
-import { ERROR_MESSAGES, REGEXES } from './constants';
->>>>>>> we abstracted the role validation and finished all role mutations
 import { IUser } from '../user/model';
 
 const { Types } = mongoose.Schema;

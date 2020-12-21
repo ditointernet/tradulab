@@ -4,17 +4,6 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    volumes:
-      - tradulab:/var/lib/db
->>>>>>> fix
-=======
->>>>>>> volume api
   api:
     build: packages/api
     command: npm start
@@ -22,42 +11,18 @@ services:
       - "3001:3001"
     volumes:
       - tradulab:/var/lib/files
-<<<<<<< HEAD
-=======
-  api:
-    build: packages/api
-    command: npm start
-    ports:
-      - "3001:3001"
->>>>>>> Create API and WEB Images
-=======
->>>>>>> volume api
   web:
     build: packages/web
     command: npm start
     ports:
       - "3000:3000"
-<<<<<<< HEAD
-<<<<<<< HEAD
     network_mode: host
     depends_on:
       - api
 volumes:
   tradulab:
-=======
-volumes:
   db-data:
->>>>>>> bolivar
-=======
     depends_on:
-      - api
->>>>>>> Create API and WEB Images
-=======
->>>>>>> revert docker compose port
-=======
     network_mode: host
     depends_on:
       - api
-volumes:
-  tradulab:
->>>>>>> fix
