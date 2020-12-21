@@ -19,10 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface INavBarProps {
   username: string;
+  onClick: () => void;
 }
 
 const NavBar: React.FC<INavBarProps> = ({
   username,
+  onClick,
 }) => {
   const classes = useStyles();
 
@@ -35,7 +37,7 @@ const NavBar: React.FC<INavBarProps> = ({
         <IconButton edge="start" color="inherit" aria-label="menu">
           <AccountCircle />
         </IconButton>
-        <Button color="inherit" onClick={() => console.log('teste')}>
+        <Button color="inherit" onClick={onClick}>
           {username}
           <ArrowDropDown className={classes.arrowDropDown} />
         </Button>
