@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
-import * as jwt from 'jsonwebtoken';
+import { NextFunction, Request, Response } from 'express';
 import { env } from '../helpers';
+import * as jwt from 'jsonwebtoken';
 
 interface Session {
   auth: {
@@ -17,15 +17,17 @@ export default async function jwtMiddleware(
 ) {
   const { authorization } = req.headers;
   const bearerRegex = /^Bearer\s/i;
+  const isAuthorized = bearerRegex.test(authorization);
 
-  if (bearerRegex.test(authorization)) {
+  if (isAuthorized) {
     const token = authorization.split(bearerRegex)[1];
-    let decodedToken;
 
     try {
-      decodedToken = await jwt.verify(token, env.getOrThrow('JWT_SECRET'));
+      (req as Request & Session).auth = await jwt.verify(
+        token,
+        env.getOrThrow('JWT_SECRET')
+      );
     } catch (err) {
-      console.error('jwt', err);
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ error: 'JWT Expired.' });
       } else if (err.name === 'JsonWebTokenError') {
@@ -34,8 +36,6 @@ export default async function jwtMiddleware(
         return res.status(401).json({ error: 'Unauthorized.' });
       }
     }
-
-    (req as Request & Session).auth = decodedToken;
   }
 
   return next();

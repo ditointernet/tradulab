@@ -1,27 +1,34 @@
-import { model as Project } from '.';
-import { TradulabError } from '../../errors';
-import { model as Role } from '../role';
-import { ROLES } from '../role/constants';
-import { ERROR_CODES as projectCodes } from './constants';
+import { ApolloError } from 'apollo-server-express';
 
-async function createProject(parent, args, context) {
+import TradulabError from '../../errors';
+import { ERROR_CODES as projectCodes } from './constants';
+import { ROLES } from '../role/constants';
+import { model as Project } from '.';
+import { model as Role } from '../role';
+
+async function createProject(
+  _parent,
+  { payload: { name, private: isPrivate } },
+  { user }
+) {
   const project = new Project({
-    owner: context.user,
-    displayName: args.displayName,
-    private: args.private,
+    name,
+    owner: user,
+    private: isPrivate || false,
   });
 
   const role = new Role({
-    role: ROLES.OWNER,
-    user: context.user,
     project,
+    role: ROLES.OWNER,
+    user,
   });
 
   try {
     await Promise.all([project.save(), role.save()]);
+
+    return project;
   } catch (err) {
-    await project.remove();
-    await role.remove();
+    await Promise.all([project.remove(), role.remove()]);
 
     console.error(JSON.stringify(err, null, 2));
 
@@ -32,7 +39,7 @@ async function createProject(parent, args, context) {
         case 'slug':
           throw new TradulabError(projectCodes.SLUG_ALREADY_IN_USE);
         default:
-          throw err;
+          throw new ApolloError(err.message);
       }
     }
 
@@ -42,19 +49,22 @@ async function createProject(parent, args, context) {
       throw new TradulabError(errorCode);
     }
 
-    throw err;
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
   }
-
-  return project;
 }
 
-async function myProjects(parent, args, context) {
-  const roles = await Role.find({ user: context.user })
-    .populate('project')
-    .exec();
+async function listProjects(_parent, _args, { user }) {
+  try {
+    const roles = await Role.find({ user: user._id })
+      .populate('project')
+      .exec();
 
-  return roles;
+    return roles;
+  } catch (err) {
+    console.error(err);
+    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+  }
 }
 
-export const queries = { myProjects };
 export const mutations = { createProject };
+export const queries = { listProjects };

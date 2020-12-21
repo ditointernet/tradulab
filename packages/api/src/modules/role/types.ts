@@ -1,15 +1,8 @@
 import { gql } from 'apollo-server-express';
 
 export default gql`
-  enum RoleSlug {
-    contributor
-    developer
-    manager
-    owner
-    proofreader
-  }
-
-  enum AvailableRoleSlugs {
+  enum InvitedRole {
+    # viewer
     contributor
     proofreader
     developer
@@ -52,21 +45,28 @@ export default gql`
     updatedAt: Date!
   }
 
-  extend type Query {
-    projectUsers(projectId: ID!): [RoleWithUser!]!
+  input inviteUserToProjectPayload {
+    projectId: ID!
+    userId: ID!
+    role: InvitedRole!
+  }
+
+  input removeUserFromProjectPayload {
+    projectId: ID!
+    userId: ID!
   }
 
   extend type Mutation {
     inviteUserToProject(
-      projectId: ID!
-      userId: ID!
-      role: AvailableRoleSlugs!
+      payload: inviteUserToProjectPayload
     ): RoleWithUserAndProject!
-    updateUserProjectRole(
-      projectId: ID!
-      userId: ID!
-      role: AvailableRoleSlugs!
-    ): RoleWithUser!
-    removeUserFromProject(projectId: ID!, userId: ID!): User!
+
+    updateUserProjectRole(payload: inviteUserToProjectPayload): Role!
+
+    removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
+  }
+
+  extend type Query {
+    projectUsers(projectId: ID!): [RoleWithUser!]!
   }
 `;

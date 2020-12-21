@@ -1,26 +1,24 @@
 import * as mongoose from 'mongoose';
-import { IProject } from '../project/model';
+
 import { EXTENSION_LIST } from './constants';
+import { IProject } from '../project/model';
 
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+    extension: {
+      type: String,
+      enum: EXTENSION_LIST,
+      required: true,
+    },
     filename: {
       type: String,
       index: true,
       required: true,
     },
-    translationProgress: {
-      type: Number,
-      min: [0, 'Out of range'],
-      max: [1, 'Out of range'],
-      required: true,
-    },
-    approvalProgress: {
-      type: Number,
-      min: [0, 'Out of range'],
-      max: [1, 'Out of range'],
+    filePath: {
+      type: String,
       required: true,
     },
     sourceLanguage: {
@@ -29,33 +27,23 @@ const schema = new mongoose.Schema(
     },
     project: {
       type: Types.ObjectId,
+      index: true,
       ref: 'project',
       required: true,
-      index: true,
-    },
-    extension: {
-      type: String,
-      required: true,
-      enum: EXTENSION_LIST,
-    },
-    filePath: {
-      type: String,
     },
   },
   {
-    timestamps: true,
     minimize: false,
+    timestamps: true,
   }
 );
 
 export interface IFile extends mongoose.Document {
-  filename: string;
-  translationProgress: number;
-  approvalProgress: number;
-  project: mongoose.Types.ObjectId | IProject;
-  sourceLanguage: string;
   extension: string;
+  filename: string;
   filePath: string;
+  sourceLanguage: string;
+  project: mongoose.Types.ObjectId | IProject;
   createdAt: Date;
   updateAt: Date;
 }
