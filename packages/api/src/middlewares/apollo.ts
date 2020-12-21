@@ -1,6 +1,4 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {
   ApolloError,
   ApolloServer,
@@ -13,44 +11,16 @@ import cors from 'cors';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import { not, and, or, rule, shield } from 'graphql-shield';
-=======
-import { ApolloServer, gql, GraphQLUpload } from 'apollo-server-express';
-=======
-import { ApolloError, ApolloServer, AuthenticationError, ForbiddenError, gql, GraphQLUpload } from 'apollo-server-express';
->>>>>>> fix issues
-import { buildFederatedSchema } from '@apollo/federation';
-import { applyMiddleware } from 'graphql-middleware';
-import { not, and, rule, shield } from 'graphql-shield';
-import cors from "cors";
->>>>>>> Create file resolver working at front-end and back-end without error treatment
 
 import { auth, user, project, role, file } from '../modules';
 import { ROLES } from '../modules/role/constants';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 const corsOptions: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: ['Authorization', 'content-type'],
 };
 
-=======
-// A GraphQL service is created by defining types and fields on those types, then providing funcions for each field on each type
-// Create e object types;
-// Custon scalar types
->>>>>>> Update Role
-=======
-const corsOptions: cors.CorsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-  allowedHeaders: 'Authorization',  
-};
-
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> remove comments
 const typeDefs = gql`
   scalar Date
 
@@ -177,7 +147,6 @@ const permissions = shield(
 
 export default function ApolloMiddleware(app) {
   const apolloServer = new ApolloServer({
-<<<<<<< HEAD
     schema: applyMiddleware(resolvers, permissions),
     context: async ({ req: { auth, headers } }: any) => {
       const baseContext = {
@@ -185,67 +154,6 @@ export default function ApolloMiddleware(app) {
         user: undefined,
       };
 
-=======
-    schema: applyMiddleware(
-      buildFederatedSchema([
-        {
-          typeDefs,
-          resolvers: {
-            FileUpload: GraphQLUpload,
-            Date: GraphQLDateTime,
-            Query: {
-              ...auth.resolvers.queries,
-              ...user.resolvers.queries,
-              ...project.resolvers.queries,
-              ...role.resolvers.queries,
-            },
-            Mutation: {
-              ...auth.resolvers.mutations,
-              ...project.resolvers.mutations,
-              ...role.resolvers.mutations,
-              ...file.resolvers.mutations,
-            },
-          },
-        },
-      ]),
-      shield(
-        {
-          Query: {
-            login: not(isAuthenticated),
-            me: isAuthenticated,
-            myProjects: isAuthenticated,
-          },
-          Mutation: {
-            createUser: not(isAuthenticated),
-            createProject: isAuthenticated,
-            createFile: isAuthenticated,
-            inviteUserToProject: and(
-              isAuthenticated,
-              isManagerOrOwner
-              // isNotTargetingHigherRoles
-            ),
-            removeUserFromProject: and(
-              isAuthenticated,
-              isManagerOrOwner
-              // isNotTargetingHigherRoles
-            ),
-            updateUserProjectRole: and(
-              isAuthenticated,
-              isManagerOrOwner
-              // isNotTargetingHigherRoles
-            ),
-          },
-        },
-        {
-          fallbackError: (err): Error => {
-            console.error('error:', err);
-            return new Error('Internal error.');
-          },
-        }
-      )
-    ),
-    context: async ({ req: { auth } }: any) => {
->>>>>>> Criado o module files e a resolver create File
       if (typeof auth === 'object' && auth.id) {
         baseContext.user = await user.model.findById(auth.id);
       }

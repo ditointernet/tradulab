@@ -14,24 +14,9 @@ app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({ error: 'JWT Expired.' });
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  console.error('Error: ', err.name);
-=======
-  console.error("Error: ", err.name)
->>>>>>> remove comments
-=======
-  console.log('Error: ', err.name);
->>>>>>> removing comments
-=======
-  console.error("Error: ", err.name)
->>>>>>> conflict
-=======
-  console.error('Error: ', err.name)
->>>>>>> change aspas
-});
+
+console.error("Error: ", err.name)
+
 
 function start() {
   const EXPRESS_PORT = env.getOrThrow('EXPRESS_PORT');

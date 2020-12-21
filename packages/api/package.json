@@ -10,13 +10,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node $npm_package_main",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "dev": "ts-node-dev --respawn src/index.ts",
-=======
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> pull
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
