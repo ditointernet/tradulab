@@ -1,6 +1,7 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Redirect } from "react-router-dom";
+import { LoginContainer } from "../containers";
 // Tipagem da Função
 export default function Login(props: any) {
   const LOGIN = gql`
