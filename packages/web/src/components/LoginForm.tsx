@@ -10,10 +10,25 @@ export interface LoginFormProps {
     value: String;
     error: Boolean;
   };
+  setEmail: React.Dispatch<
+    React.SetStateAction<{
+      value: string;
+      error: boolean;
+    }>
+  >;
+  setPassword: React.Dispatch<
+    React.SetStateAction<{
+      value: string;
+      error: boolean;
+    }>
+  >;
 }
 
-const LoginForm: React.FC<LoginFormProps> = () => (
-  <FormControl>Login Component</FormControl>
-);
+const LoginForm: React.FC<LoginFormProps> = ({
+  email,
+  password,
+  setEmail,
+  setPassword,
+}) => <FormControl>{email.value}</FormControl>;
 
 export default LoginForm;
