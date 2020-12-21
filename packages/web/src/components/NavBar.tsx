@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AppBar, Toolbar, IconButton, Typography, Button, makeStyles, Theme, createStyles } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, makeStyles, Theme, createStyles } from '@material-ui/core';
 import { AccountCircle, ArrowDropDown } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
-    arrowDropDown: {
-      marginLeft: theme.spacing(1),
-    },
+    username: {
+      margin: theme.spacing(0, 1, 0, 1)
+    }
   })
 );
 
@@ -34,12 +34,12 @@ const NavBar: React.FC<INavBarProps> = ({
         <Typography variant="h6" className={classes.title}>
           Tradulab
         </Typography>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <AccountCircle />
-        </IconButton>
         <Button color="inherit" onClick={onClick}>
-          {username}
-          <ArrowDropDown className={classes.arrowDropDown} />
+          <AccountCircle />
+          <Typography variant="body2" className={classes.username}>
+            {username}
+          </Typography>
+          <ArrowDropDown />
         </Button>
       </Toolbar>
     </AppBar>
