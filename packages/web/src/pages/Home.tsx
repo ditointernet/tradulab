@@ -1,5 +1,8 @@
 import React from "react";
+import { RouteProps } from "react-router-dom";
 
-export default function Home() {
+const Home: React.FC<RouteProps> = () => {
   return <p>Home</p>;
-}
+};
+
+export default Home;

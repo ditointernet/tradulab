@@ -1,11 +1,7 @@
 import React from "react";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { Route, RouteProps } from "react-router-dom";
+import { MiddlewareProps } from "./types";
 
 export default function TradulabRouter({
   Component,
@@ -14,20 +10,21 @@ export default function TradulabRouter({
   Parent = null,
   ...rest
 }: {
-  Component: any;
-  middlewares: any;
-  Parent: any;
-  path: any;
+  Component: React.FC<RouteProps>;
+  middlewares?: React.FC<MiddlewareProps>[];
+  Parent?: React.FC<RouteProps> | null;
+  path: string | string[] | undefined;
 }) {
   const Middlewares = [...middlewares];
   const current = Middlewares.shift();
 
   if (current)
-    return current(Middlewares, {
+    return current({
+      middlewares: Middlewares,
       Component,
       path,
       Parent,
-      ...rest,
+      rest,
     });
 
   if (Parent)

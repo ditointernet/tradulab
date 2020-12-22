@@ -1,8 +1,9 @@
-import React, { ReactComponentElement } from "react";
-import { Redirect, RouteProps, RedirectProps } from "react-router-dom";
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { MiddlewareProps } from "./types";
 import { gql, useQuery } from "@apollo/client";
 import TradulabRouter from "./TradulabRouter";
-
+import { RouteProps } from "react-router-dom";
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
     me {
@@ -13,7 +14,10 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-export default function AuthMiddleware(middlewares: any, rest: any) {
+const AuthMiddleware: React.FC<MiddlewareProps> = ({
+  middlewares,
+  ...rest
+}) => {
   const { error, loading } = useQuery(IS_LOGGED_IN);
 
   if (loading) return <p>Loading...</p>;
@@ -31,4 +35,6 @@ export default function AuthMiddleware(middlewares: any, rest: any) {
     );
 
   return <TradulabRouter {...rest} middlewares={middlewares} />;
-}
+};
+
+export default AuthMiddleware;

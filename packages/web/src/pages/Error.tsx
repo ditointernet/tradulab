@@ -1,7 +1,19 @@
 import React, { ReactElement } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, RouteProps } from "react-router-dom";
 import Login from "../pages/Login";
 
-export default function Error(props: any): ReactElement {
-  return <p> {props.location.state.message}</p>;
+interface ErrorProps extends RouteProps {
+  location: {
+    state: { message?: string };
+    pathname: string;
+    search: string;
+    hash: string;
+  };
 }
+
+const Error: React.FC<ErrorProps> = ({ location }) => {
+  if (location && location.state) return <p> {location.state.message}</p>;
+  return <p>Internal Error</p>;
+};
+
+export default Error;
