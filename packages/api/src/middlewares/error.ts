@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Back-End Review
-=======
->>>>>>> Back-End Review
 import { NextFunction, Request, Response } from 'express';
 
 interface Error {
@@ -16,24 +8,6 @@ interface Error {
 export default function errorMiddleware(
   err: Error,
   _req: Request,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> changes
-import { Request, Response, NextFunction } from 'express';
-
-export default function errorMiddleware(
-  err,
-  req: Request,
-<<<<<<< HEAD
->>>>>>> changes
-=======
->>>>>>> Back-End Review
-=======
->>>>>>> changes
-=======
->>>>>>> Back-End Review
   res: Response,
   next: NextFunction
 ) {
