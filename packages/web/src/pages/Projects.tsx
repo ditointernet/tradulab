@@ -1,5 +1,8 @@
 import React from "react";
+import { RouteProps } from "react-router-dom";
 
-export default function Projects() {
+const Projects: React.FC<RouteProps> = () => {
   return <p>Projects</p>;
-}
+};
+
+export default Projects;

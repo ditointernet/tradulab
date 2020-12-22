@@ -1,8 +1,17 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteProps } from "react-router-dom";
+
+interface LoginProps extends RouteProps {
+  location: {
+    state: { path?: string };
+    pathname: string;
+    search: string;
+    hash: string;
+  };
+}
 // Tipagem da Função
-export default function Login(props: any) {
+const Login: React.FC<LoginProps> = ({ location }) => {
   const LOGIN = gql`
     query userBolivar($email: String!, $password: String!) {
       login(payload: { email: $email, password: $password }) {
@@ -21,7 +30,7 @@ export default function Login(props: any) {
   const MIGUEL = { email: "miguel@dito.com.br", password: "123456" };
 
   const { data, error, loading } = useQuery(LOGIN, {
-    variables: BOLIVAR,
+    variables: MIGUEL,
   });
 
   if (loading) return <p>Loading...</p>;
@@ -37,8 +46,10 @@ export default function Login(props: any) {
   console.log("Login Data:", data);
   // Salvar os dados do usuário no estado
 
-  if (props.location.state.path)
-    return <Redirect to={props.location.state.path} />;
+  if (location.state && location.state.path)
+    return <Redirect to={location.state.path} />;
 
   return <Redirect to="/" />;
-}
+};
+
+export default Login;
