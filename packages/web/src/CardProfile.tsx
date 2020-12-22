@@ -32,6 +32,7 @@ interface ICardProfileProps {
   username: string;
   city: string;
   age: string;
+  imageSrc: string;
 }
 
 
@@ -39,6 +40,7 @@ const CardProfile: React.FC<ICardProfileProps> = ({
   username,
   city,
   age,
+  imageSrc,
 }) => {
   const classes = useStyles();
 
@@ -47,7 +49,7 @@ const CardProfile: React.FC<ICardProfileProps> = ({
       <Avatar
         className={`${classes.large} ${classes.avatar}`}
         alt="teste"
-        src="https://i.pinimg.com/originals/b5/dc/a9/b5dca9fac1361023498d6cb66e4d8b13.jpg"
+        src={imageSrc}
       />
       <Typography align="center" variant="h6">
         {username}
