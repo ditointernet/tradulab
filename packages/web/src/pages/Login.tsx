@@ -2,12 +2,14 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Redirect } from "react-router-dom";
 import { LoginContainer } from "../containers";
+// import styled from "styled-components";
+import Grid from "@material-ui/core/Grid";
 // Tipagem da Função
-export default function Login(props: any) {
+const Login: React.FC = () => {
   return (
-    <div>
+    <Grid className="Page">
       <LoginContainer />
-    </div>
+    </Grid>
   );
   // const LOGIN = gql`
   //   query userBolivar($email: String!, $password: String!) {
@@ -47,4 +49,6 @@ export default function Login(props: any) {
   //   return <Redirect to={props.location.state.path} />;
 
   // return <Redirect to="/" />;
-}
+};
+
+export default Login;

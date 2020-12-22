@@ -1,5 +1,7 @@
 import React from "react";
 import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+// import styled from "styled-components";
 
 export interface LoginFormProps {
   email: {
@@ -29,6 +31,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
   password,
   setEmail,
   setPassword,
-}) => <FormControl>{email.value}</FormControl>;
+}) => (
+  <FormControl>
+    <InputLabel>Email</InputLabel>
+  </FormControl>
+);
 
 export default LoginForm;
