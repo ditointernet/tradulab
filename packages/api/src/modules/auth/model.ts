@@ -37,50 +37,12 @@ const schema = new mongoose.Schema(
 );
 
 export interface IAuth extends mongoose.Document {
-<<<<<<< HEAD
-<<<<<<< HEAD
   email: String;
   password: String;
   user: IUser;
   createdAt: Date;
   updateAt: Date;
-};
-=======
-  user: mongoose.Types.ObjectId | IUser;
-  email: string;
-  password: string;
-=======
-  email: String;
-  password: String;
-  user: IUser;
->>>>>>> Back-End Review
-  createdAt: Date;
-  updateAt: Date;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
->>>>>>> we abstracted the role validation and finished all role mutations
-=======
-};
->>>>>>> Unnecessary comments and logs removed, add ApolloErrors
-=======
-}
->>>>>>> changes
-=======
-};
->>>>>>> Unnecessary comments and logs removed, add ApolloErrors
-=======
-};
-=======
-}
->>>>>>> we abstracted the role validation and finished all role mutations
->>>>>>> we abstracted the role validation and finished all role mutations
-=======
-};
->>>>>>> Rebase and resolving conflicts with master
 
 const model = mongoose.model<IAuth>('auth', schema);
 

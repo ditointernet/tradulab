@@ -4,43 +4,15 @@ import { ROLES_LIST } from './constants';
 import { IProject } from '../project/model';
 import { IUser } from '../user/model';
 
-<<<<<<< HEAD
-import { ROLES_LIST } from './constants';
-import { IProject } from '../project/model';
-import { IUser } from '../user/model';
-
-=======
->>>>>>> changes
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
-<<<<<<< HEAD
-<<<<<<< HEAD
     role: {
       type: String,
       enum: ROLES_LIST,
       index: true,
       required: true,
-    },
-=======
->>>>>>> changes
-    project: {
-      type: Types.ObjectId,
-      index: true,
-      ref: 'project',
-      required: true,
-<<<<<<< HEAD
-=======
-    },
-=======
->>>>>>> Back-End Review
-    role: {
-      type: String,
-      enum: ROLES_LIST,
-      index: true,
-      required: true,
->>>>>>> changes
     },
     project: {
       type: Types.ObjectId,

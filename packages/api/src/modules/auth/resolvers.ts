@@ -1,62 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> changes
-import {
-  ApolloError,
-  AuthenticationError,
-  UserInputError,
-} from 'apollo-server-express';
-<<<<<<< HEAD
+import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { model as Auth } from '.';
-import { model as User } from '../user';
-import { env } from '../../helpers';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { TradulabError } from '../../errors';
-=======
-=======
 
->>>>>>> Back-End Review
 import TradulabError from '../../errors';
->>>>>>> update listFiles and error
-=======
-=======
-
->>>>>>> Back-End Review
-import TradulabError from '../../errors';
->>>>>>> update listFiles and error
 import { ERROR_CODES as authCodes } from './constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> changes
-=======
 import { env } from '../../helpers';
 import { model as Auth } from '.';
 import { model as User } from '../user';
->>>>>>> Back-End Review
-=======
-import { AuthenticationError, UserInputError } from 'apollo-server-express';
-=======
->>>>>>> changes
-import * as bcrypt from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
-import { model as Auth } from '.';
-import { model as User } from '../user';
-import { env } from '../../helpers';
->>>>>>> changes
-=======
-import { env } from '../../helpers';
-import { model as Auth } from '.';
-import { model as User } from '../user';
->>>>>>> Back-End Review
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -74,22 +25,13 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Back-End Review
 async function createUser(
   _parent,
   { payload: { email, nickname, password, username } }
 ) {
   if (password.trim().length < 1)
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
-<<<<<<< HEAD
 
-=======
-async function createUser(_, args) {
-<<<<<<< HEAD
->>>>>>> changes
   const user = new User({
     nickname,
     username,
@@ -99,37 +41,10 @@ async function createUser(_, args) {
     email: email.toLowerCase(),
     password: await encryptPassword(password),
     user: user.id,
-=======
-  if (args.user.password.trim().length < 1) {
-    throw new UserInputError('That password is too short.');
-  }
-=======
->>>>>>> Back-End Review
-
-  const user = new User({
-    nickname,
-    username,
-  });
-
-  const auth = new Auth({
-<<<<<<< HEAD
-    email: args.user.email.toLowerCase(),
-    password: await encryptPassword(args.user.password),
-    user,
->>>>>>> changes
-=======
-    email: email.toLowerCase(),
-    password: await encryptPassword(password),
-    user: user.id,
->>>>>>> Back-End Review
   });
 
   try {
     await Promise.all([auth.save(), user.save()]);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Back-End Review
 
     return {
       email: auth.email,
@@ -139,57 +54,6 @@ async function createUser(_, args) {
       id: user.id,
     };
   } catch (err) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // Não entendi a condição
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> update listFiles and error
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
->>>>>>> changes
-=======
-  } catch (err) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // Não entendi a condição
->>>>>>> changes
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
-    //  Duvidas sobre as linhas abaixo
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> update listFiles and error
     if (!auth.isNew) {
       await auth.remove();
     }
@@ -221,74 +85,6 @@ async function createUser(_, args) {
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> changes
-async function login(_, args) {
-  const auth = await Auth.findOne({ email: args.email.toLowerCase() });
-
-  if (!auth || !(await verifyPassword(args.password, auth.password))) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    throw new TradulabError(authCodes.CREDENTIALS_INVALID);
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
-=======
-=======
->>>>>>> Criado o module files e a resolver create File
-    // Error sem estar na constant de error
-    throw new Error('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
-=======
-=======
->>>>>>> changes
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-=======
->>>>>>> changes
-    throw new AuthenticationError('Invalid credentials.');
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
-=======
-    // Error sem estar na constant de error
-    throw new Error('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> Criado o module files e a resolver create File
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Criado o module files e a resolver create File
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-=======
->>>>>>> Back-End Review
 async function login(_parent, { payload: { email, password } }) {
   try {
     const auth = await Auth.findOne({
@@ -309,79 +105,8 @@ async function login(_parent, { payload: { email, password } }) {
     };
   } catch (err) {
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
-<<<<<<< HEAD
->>>>>>> Back-End Review
-=======
->>>>>>> Criado o module files e a resolver create File
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    throw new AuthenticationError('Invalid credentials.');
-=======
-    // Error sem estar na constant de error
-    throw new Error('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
->>>>>>> Criado o module files e a resolver create File
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    throw new AuthenticationError('Invalid credentials.');
-=======
-    // Error sem estar na constant de error
-    throw new Error('Invalid credentials.');
->>>>>>> Criado o module files e a resolver create File
->>>>>>> Criado o module files e a resolver create File
-=======
-    throw new AuthenticationError('Invalid credentials.');
->>>>>>> Corrigido erro de cors pra qualquer request
   }
-<<<<<<< HEAD
-=======
-
-  return { token: await signToken({ id: auth.user }) };
->>>>>>> changes
-=======
-  }
->>>>>>> Back-End Review
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-// Não acho legal este nomes e esta maneira de exportar
-=======
-
-<<<<<<< HEAD
->>>>>>> erase comments
-=======
-// Não acho legal este nomes e esta maneira de exportar
->>>>>>> pull
-=======
-
->>>>>>> erase comments
-=======
-// Não acho legal este nomes e esta maneira de exportar
->>>>>>> pull
-=======
-
->>>>>>> erase comments
-=======
-// Não acho legal este nomes e esta maneira de exportar
->>>>>>> pull
-=======
-
->>>>>>> erase comments
-export const queries = { login };
->>>>>>> pull
-=======
->>>>>>> changes
 export const mutations = { createUser };
 export const queries = { login };
