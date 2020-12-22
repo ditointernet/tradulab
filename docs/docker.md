@@ -1,44 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD:README.md
-=======
-=======
->>>>>>> changes
-<<<<<<<< HEAD:docs/docker.md
 # Main Commands
 
-========
-<<<<<<< HEAD
->>>>>>> changes
-=======
-<<<<<<< HEAD:README.md
->>>>>>> changes
-=======
->>>>>>> changes
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> add commands
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> changes
-=======
-# Main Commands
-
->>>>>>> changes:docs/docker.md
-<<<<<<< HEAD
-=======
->>>>>>>> changes:README.md
->>>>>>> changes
-=======
->>>>>>> changes
-=======
->>>>>>>> changes:README.md
->>>>>>> changes
 docker-compose up -d
 
 docker-compose run web npm start
@@ -47,40 +8,12 @@ docker-compose run api npm start
 
 docker-compose down
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> store
-=======
->>>>>>> store
-=======
->>>>>>> store
 # Iniciar o cotainer do mongo
 
 docker-compose up -d mongo
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> changes
-=======
->>>>>>> store
-=======
->>>>>>> changes
-=======
->>>>>>> store
-=======
->>>>>>> changes
-=======
->>>>>>> store
 docker-compose exec mongo mongo
 
-<<<<<<< HEAD
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
@@ -232,18 +165,12 @@ docker volume ls
 docker volume inspect tradulab
 
 docker volume rm tradulab
-=======
-{
-"lockfileVersion": 1
-lock file in the versions of the full dependency tree
-}
-=======
-=======
->>>>>>> add commands
+
 # LockFileVersion
 
 Lockfile is the version of the full dependency tree
->>>>>>> Create API and WEB Images
+
+> > > > > > > Create API and WEB Images
 
 # Docker
 
@@ -263,10 +190,11 @@ Is everything needed to run an application - the code or binary, runtimes, depen
 
 <<<<<<< HEAD
 Containers x Virtual Machines
->>>>>>> docker
-=======
-The {kernel} decides who will use these resources and for how long and when;
->>>>>>> Create API and WEB Images
+
+> > > > > > > # docker
+> > > > > > >
+> > > > > > > The {kernel} decides who will use these resources and for how long and when;
+> > > > > > > Create API and WEB Images
 
 ## Containers x Virtual Machines
 
@@ -399,31 +327,8 @@ docker volume inspect tradulab
 
 docker volume rm tradulab
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
 
-=======
->>>>>>> changes
-=======
-If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
-
->>>>>>> store
-=======
->>>>>>> changes
-=======
-If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
-
->>>>>>> store
-=======
->>>>>>> changes
-=======
-If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
-
->>>>>>> store
 ## Commands
 
 docker --version
@@ -445,19 +350,9 @@ Compose file format (version 2 - 1.10.0+) - Docker Engine Release
 docker-compose up -d mongo
 docker-compose down
 docker-compose exec mongo mongo
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 docker-compose images
 docker-compose run web npm start
-=======
-
-docker-compose images
-<<<<<<< HEAD
->>>>>>> Create API and WEB Images
-=======
-docker-compose run web npm start
->>>>>>> fix
 
 Lists containers.
 $ docker-compose ps
@@ -486,8 +381,3 @@ Create a volume: **docker volume create [my-vol]**
 List volumes: **docker volume ls**
 Inspect a volume: **docker volume inspect [my-vol]**
 Remove a volume: **docker volume rm [my-vol]**
-<<<<<<< HEAD
-=======
->>>>>>> docker
-=======
->>>>>>> Create API and WEB Images
