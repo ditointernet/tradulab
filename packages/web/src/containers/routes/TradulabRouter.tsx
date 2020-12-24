@@ -1,18 +1,17 @@
 import React from "react";
-
 import { Route, RouteProps } from "react-router-dom";
 import { MiddlewareProps } from "./types";
 
 export default function TradulabRouter({
   Component,
+  Parent = null,
   middlewares = [],
   path,
-  Parent = null,
   ...rest
 }: {
   Component: React.FC<RouteProps>;
-  middlewares?: React.FC<MiddlewareProps>[];
   Parent?: React.FC<RouteProps> | null;
+  middlewares?: React.FC<MiddlewareProps>[];
   path: string | string[] | undefined;
 }) {
   const Middlewares = [...middlewares];
@@ -20,10 +19,10 @@ export default function TradulabRouter({
 
   if (current)
     return current({
-      middlewares: Middlewares,
       Component,
-      path,
       Parent,
+      middlewares: Middlewares,
+      path,
       rest,
     });
 

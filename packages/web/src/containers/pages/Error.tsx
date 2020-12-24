@@ -1,6 +1,5 @@
-import React, { ReactElement } from "react";
-import { Route, RouteProps } from "react-router-dom";
-import Login from "../pages/Login";
+import React from "react";
+import { RouteProps } from "react-router-dom";
 
 interface ErrorProps extends RouteProps {
   location: {

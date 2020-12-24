@@ -1,9 +1,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { MiddlewareProps } from "./types";
 import { gql, useQuery } from "@apollo/client";
-import TradulabRouter from "./TradulabRouter";
-import { RouteProps } from "react-router-dom";
+import TradulabRouter from "../TradulabRouter";
+import { MiddlewareProps } from "../types";
+
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
     me {
