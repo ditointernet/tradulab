@@ -1,8 +1,8 @@
 import React from "react";
-import TradulabRouter from "./TradulabRouter";
-import { MiddlewareProps } from "./types";
 import { Redirect } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
+import TradulabRouter from "../TradulabRouter";
+import { MiddlewareProps } from "../types";
 
 const OTHER_MIDDLEWARE = gql`
   query other {
