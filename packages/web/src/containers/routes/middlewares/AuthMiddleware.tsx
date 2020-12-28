@@ -23,7 +23,9 @@ const AuthMiddleware: React.FC<MiddlewareProps> = ({
   if (loading) return <p>Loading...</p>;
 
   const TOKEN = localStorage.getItem("token");
-
+  console.log("AuthMiddleware");
+  console.log("Error", error?.message);
+  console.log("TOOKEN", TOKEN);
   if (error || !TOKEN)
     return (
       <Redirect

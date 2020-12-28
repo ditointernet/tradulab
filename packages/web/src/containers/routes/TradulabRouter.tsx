@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, RouteProps } from "react-router-dom";
 import { MiddlewareProps } from "./types";
+import { LoginProps } from "../../containers/pages/Login";
 
 export default function TradulabRouter({
   Component,
@@ -9,7 +10,7 @@ export default function TradulabRouter({
   path,
   ...rest
 }: {
-  Component: React.FC<RouteProps>;
+  Component: React.FC<RouteProps> | React.FC<LoginProps>;
   Parent?: React.FC<RouteProps> | null;
   middlewares?: React.FC<MiddlewareProps>[];
   path: string | string[] | undefined;
@@ -29,21 +30,9 @@ export default function TradulabRouter({
   if (Parent)
     return (
       <Parent>
-        <Route
-          {...rest}
-          exact
-          path={path}
-          render={(props) => <Component {...props} />}
-        />
+        <Route {...rest} exact path={path} component={Component} />
       </Parent>
     );
 
-  return (
-    <Route
-      {...rest}
-      exact
-      path={path}
-      render={(props) => <Component {...props} />}
-    />
-  );
+  return <Route {...rest} exact path={path} component={Component} />;
 }
