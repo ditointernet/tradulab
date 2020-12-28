@@ -6,20 +6,26 @@ import { MiddlewareProps } from "../types";
 import { string } from "@hapi/joi";
 import { ReadStream } from "fs";
 
+const IS_LOGGED_IN = gql`
+  query isLoggedIn {
+    me {
+      _id
+      nickname
+      username
+    }
+  }
+`;
+
 const NotAuthMiddleware: React.FC<MiddlewareProps> = ({
   middlewares,
   ...rest
 }) => {
+  const { error, loading } = useQuery(IS_LOGGED_IN);
+  if (loading) return <p>Loading...</p>;
+
   const TOKEN = localStorage.getItem("token");
 
-  if (TOKEN)
-    return (
-      <Redirect
-        to={
-          rest.path && typeof rest.path === "string" ? rest.path : rest.path[0]
-        }
-      />
-    );
+  if (!error || TOKEN) return <Redirect to="./" />;
 
   return <TradulabRouter {...rest} middlewares={middlewares} />;
 };

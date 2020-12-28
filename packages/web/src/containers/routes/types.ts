@@ -1,9 +1,8 @@
 import React from "react";
 import { RouteProps } from "react-router-dom";
-import { LoginProps } from "../pages/Login";
 
 export interface MiddlewareProps {
-  Component: React.FC<RouteProps> | React.FC<LoginProps>;
+  Component: React.FC<RouteProps>;
   Parent: React.FC<RouteProps> | null;
   middlewares: React.FC<MiddlewareProps>[];
   path: string | string[] | undefined;

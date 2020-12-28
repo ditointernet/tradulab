@@ -1,5 +1,6 @@
 import React from "react";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 // import styled from "styled-components";
@@ -41,7 +42,13 @@ import { gql, useLazyQuery, QueryLazyOptions } from "@apollo/client";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 
+=======
+>>>>>>> Clean Files
 import Button from "@material-ui/core/Button";
+import FormControl from "@material-ui/core/FormControl";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import { BLACK_800, BLUE_700, GREEN_400 } from "../constants/colors";
 
 export interface LoginFormProps {
   email: {

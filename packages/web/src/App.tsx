@@ -478,14 +478,8 @@ import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "./services/apollo";
 import Pages from "./containers";
 import "./App.css";
-import {
-  fade,
-  ThemeProvider,
-  withStyles,
-  makeStyles,
-  createMuiTheme,
-} from "@material-ui/core/styles";
-import { PINK_600, GREEN_400, BLUE_700 } from "./constants/colors";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { BLUE_700, GREEN_400, PINK_600 } from "./constants/colors";
 
 const tradulabTheme = createMuiTheme({
   palette: {
@@ -496,9 +490,6 @@ const tradulabTheme = createMuiTheme({
       main: GREEN_400,
     },
     secondary: { main: BLUE_700 },
-    // warning: { main: "" },
-    // info: { main: "" },
-    // success: { main: "" },
   },
 });
 
