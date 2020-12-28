@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useMutation, gql, useQuery } from '@apollo/client';
 =======
@@ -84,6 +85,8 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 >>>>>>> formatting changes and some typings
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+>>>>>>> Resolve Rebase
 import React from "react";
 import { useMutation, gql, useQuery } from "@apollo/client";
 >>>>>>> Create file resolver working at front-end and back-end without error treatment
@@ -109,11 +112,8 @@ export const UPLOAD_FILE = gql`
     ) {
       id
       filename
-<<<<<<< HEAD
-=======
       translationProgress
       approvalProgress
->>>>>>> Error Middleware
       sourceLanguage
       extension
       project {
@@ -125,6 +125,7 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -294,82 +295,27 @@ export default function UploadForm() {
 >>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
+=======
+>>>>>>> Resolve Rebase
 export default function UploadForm() {
   // Trocar email e password para o que estiver no banco de dados local
   const { data: dataLogin, error } = useQuery(LOGIN, {
     variables: { email: "julinho2801@gmail.com", password: "123456" },
   });
 
-=======
-  const { data: dataLogin, error } = useQuery(LOGIN, {
-    variables: { email: "julinho2801@gmail.com", password: "123456" },
-  });
-
->>>>>>> Error Middleware
   if (dataLogin && !error) localStorage.setItem("token", dataLogin.login.token);
->>>>>>> formatting changes and some typings
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  console.log(data);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-<<<<<<< HEAD
-    const file = e.target.files![0]
-    if (!file) return
-    createFile({ variables: { file } })
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    const file = e.target.files![0];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const projectId = "5fb52bfe99f0a22dc58d206b";
-=======
-    const projectId = "5fbf0c80212ed4a6a57c607b";
->>>>>>> bolivar
-=======
-    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
->>>>>>> removido transpile only ts-node-dev, engine node 12
-    const sourceLanguage = "PT-BR";
-    if (!file) return;
-    createFile({ variables: { file, projectId, sourceLanguage } });
-<<<<<<< HEAD
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files![0];
-    const projectId = "5fad9b0a7ed68959e2341a59";
-=======
-    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
->>>>>>> removido transpile only ts-node-dev, engine node 12
-=======
-    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> removido transpile only ts-node-dev, engine node 12
-=======
   console.log(data);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
-    const projectId = "5fb52bfe99f0a22dc58d206b";
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
-<<<<<<< HEAD
->>>>>>> removido transpile only ts-node-dev, engine node 12
+    const projectId = "5fb52bfe99f0a22dc58d206b"; // Trocar id do projeto para o que estiver no banco de dados local
     const sourceLanguage = "PT-BR";
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Corrigido erro de cors pra qualquer request
@@ -703,180 +649,14 @@ export default function UploadForm() {
 >>>>>>> list files done
 =======
 >>>>>>> Error Middleware
+=======
+>>>>>>> Resolve Rebase
   };
 
   return (
     <div>
       <h1>Upload File</h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> formatting changes and some typings
       <input type="file" onChange={handleFileChange} />
     </div>
   );
 }
-=======
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-      <input type='file' onChange={handleFileChange} />
-    </div>
-  )
-};
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-<<<<<<< HEAD
-}
->>>>>>> formatting changes and some typings
-=======
-};
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-}
->>>>>>> formatting changes and some typings
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-<<<<<<< HEAD
-}
->>>>>>> formatting changes and some typings
-=======
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-=======
-      <input type='file' onChange={handleFileChange} />
-    </div>
-  )
->>>>>>> Create file resolver working at front-end and back-end without error treatment
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
->>>>>>> Corrigido erro de cors pra qualquer request
-};
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
-      <input type='file' onChange={handleFileChange} />
-    </div>
-  )
-};
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> formatting changes and some typings
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
->>>>>>> formatting changes and some typings
-=======
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-=======
-      <input type='file' onChange={handleFileChange} />
-    </div>
-  )
->>>>>>> Create file resolver working at front-end and back-end without error treatment
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-=======
-      <input type='file' onChange={handleFileChange} />
-    </div>
-  )
->>>>>>> Create file resolver working at front-end and back-end without error treatment
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-};
-<<<<<<< HEAD
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-<<<<<<< HEAD
-}
->>>>>>> formatting changes and some typings
-<<<<<<< HEAD
->>>>>>> formatting changes and some typings
-=======
-=======
-};
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
->>>>>>> Add Apollo Erros, fix merge conflicts, removing comments
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-}
->>>>>>> formatting changes and some typings
->>>>>>> formatting changes and some typings
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-};
-
->>>>>>> Fix merge errors, add tradulabErrors in the file resolver
-=======
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
-}
->>>>>>> Error Middleware

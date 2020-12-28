@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 <<<<<<< HEAD
@@ -562,6 +563,9 @@ export default function App() {
 >>>>>>> Roteamento: Errors, Paginas, Rotas, Middleware
 }
 =======
+=======
+import React from "react";
+>>>>>>> Resolve Rebase
 import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "./services/apollo";
 import Pages from "./containers";
@@ -574,4 +578,3 @@ const App = () => (
 );
 
 export default App;
->>>>>>> Clean Architeture

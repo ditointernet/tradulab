@@ -3,147 +3,22 @@ services:
   mongo:
     image: mongo
     ports:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       - "27017:27017"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    volumes:
-      - tradulab:/var/lib/db
->>>>>>> fix
-=======
->>>>>>> volume api
-=======
-    volumes:
-      - tradulab:/var/lib/db
->>>>>>> fix
   api:
     build: packages/api
     command: npm start
-<<<<<<< HEAD
-<<<<<<< HEAD
+    network_mode: host
     ports:
       - "3001:3001"
     volumes:
       - tradulab:/var/lib/files
-<<<<<<< HEAD
-=======
-=======
->>>>>>> volume api
-  api:
-    build: packages/api
-    command: npm start
-=======
-    network_mode: host
->>>>>>> Back-End Review
-    ports:
-      - "3001:3001"
-<<<<<<< HEAD
->>>>>>> Create API and WEB Images
-=======
->>>>>>> volume api
-=======
-  api:
-    build: packages/api
-    command: npm start
-=======
-    network_mode: host
->>>>>>> routes scope
-    ports:
-      - "3001:3001"
->>>>>>> Create API and WEB Images
-=======
-    volumes:
-      - tradulab:/var/lib/files
->>>>>>> volume api
   web:
     build: packages/web
     command: npm start
     ports:
       - "3000:3000"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix
     network_mode: host
     depends_on:
       - api
 volumes:
   tradulab:
-<<<<<<< HEAD
-=======
-      - "27018:27018"
->>>>>>> Update Role
-=======
-      - "27017:27017"
->>>>>>> docker
-=======
-volumes:
-  db-data:
->>>>>>> bolivar
-=======
-    depends_on:
-      - api
->>>>>>> Create API and WEB Images
-=======
-    network_mode: host
-    depends_on:
-      - api
-volumes:
-  tradulab:
->>>>>>> fix
-=======
-      - "27018:27018"
->>>>>>> Update Role
-=======
-      - "27017:27017"
->>>>>>> docker
-=======
-volumes:
-  db-data:
->>>>>>> bolivar
-=======
-    depends_on:
-      - api
->>>>>>> Create API and WEB Images
-=======
-      - "27017:27017"
->>>>>>> revert docker compose port
-=======
->>>>>>> fix
-=======
-      - "27018:27018"
->>>>>>> Update Role
-=======
-      - "27017:27017"
->>>>>>> revert docker compose port
-=======
-      - "27018:27018"
->>>>>>> Update Role
-=======
-      - "27017:27017"
->>>>>>> revert docker compose port
-=======
-      - "27018:27018"
->>>>>>> Update Role
-=======
-      - "27017:27017"
->>>>>>> revert docker compose port

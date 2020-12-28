@@ -1,37 +1,4 @@
 import { ApolloError } from 'apollo-server-express';
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-import TradulabError from '../../errors';
-import { ERROR_CODES as projectCodes } from './constants';
-import { ROLES } from '../role/constants';
-import { model as Project } from '.';
-=======
-import { model as Project } from '.';
-import TradulabError from '../../errors';
->>>>>>> update listFiles and error
-import { model as Role } from '../role';
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
 import TradulabError from '../../errors';
 import { ERROR_CODES as projectCodes } from './constants';
@@ -39,73 +6,11 @@ import { ROLES } from '../role/constants';
 import { model as Project } from '.';
 import { model as Role } from '../role';
 
->>>>>>> Back-End Review
 async function createProject(
   _parent,
   { payload: { name, private: isPrivate } },
   { user }
 ) {
-<<<<<<< HEAD
-=======
-//Significado de context
-
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Significado de context
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-async function createProject(parent, args, context) {
->>>>>>> Criado o module files e a resolver create File
-=======
-async function createProject(_, args, context) {
->>>>>>> update listFiles and error
-=======
->>>>>>> Back-End Review
   const project = new Project({
     name,
     owner: user,
@@ -148,98 +53,11 @@ async function createProject(_, args, context) {
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Back-End Review
 async function listProjects(_parent, _args, { user }) {
   try {
     const roles = await Role.find({ user: user._id })
       .populate('project')
       .exec();
-<<<<<<< HEAD
-=======
-//Duvidas populate
-
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-//Duvidas populate
-
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-async function myProjects(parent, args, context) {
-=======
-// Não estamos tratando o Erro do roles.exect(), conflito com tipagem
-async function myProjects(_, __, context) {
->>>>>>> update listFiles and error
-  const roles = await Role.find({ user: context.user })
-    .populate('project')
-    .exec();
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Back-End Review
 
     return roles;
   } catch (err) {

@@ -9,94 +9,9 @@
     "lint": "eslint",
     "build": "tsc",
     "prestart": "npm run build",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "predev": "npm run build && docker-compose up -d mongo",
     "start": "node $npm_package_main",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> pull
     "dev": "ts-node-dev --respawn src/index.ts",
-=======
-    "start": "node $npm_package_main",
->>>>>>> Feita lógica de restrição de convites de cargos no módulo role
-=======
-=======
-    "predev": "npm run build && docker-compose up -d mongo",
->>>>>>> update listFiles and error
-    "start": "node $npm_package_main",
->>>>>>> Criado o module files e a resolver create File
-=======
-    "start": "node $npm_package_main",
->>>>>>> pull
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-=======
->>>>>>> Criado o module files e a resolver create File
->>>>>>> Criado o module files e a resolver create File
-=======
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-    "dev": "ts-node-dev --respawn src/index.ts",
->>>>>>> removido transpile only ts-node-dev, engine node 12
-=======
-    "dev": "ts-node-dev --respawn src/index.ts",
->>>>>>> removido transpile only ts-node-dev, engine node 12
-=======
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-=======
->>>>>>> Criado o module files e a resolver create File
->>>>>>> Criado o module files e a resolver create File
-=======
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-    "dev": "ts-node-dev --respawn src/index.ts",
->>>>>>> removido transpile only ts-node-dev, engine node 12
-=======
-    "dev": "ts-node-dev --respawn src/index.ts",
-=======
->>>>>>> Criado o module files e a resolver create File
->>>>>>> Criado o module files e a resolver create File
-=======
-<<<<<<< HEAD
-=======
->>>>>>> removido transpile only ts-node-dev, engine node 12
-    "dev": "ts-node-dev --respawn src/index.ts",
-=======
->>>>>>> Criado o module files e a resolver create File
-=======
->>>>>>> Feita lógica de restrição de convites de cargos no módulo role
->>>>>>> Feita lógica de restrição de convites de cargos no módulo role
-=======
->>>>>>> pull
-=======
-    "dev": "ts-node-dev --respawn src/index.ts",
->>>>>>> removido transpile only ts-node-dev, engine node 12
-=======
-    "dev": "ts-node-dev --respawn src/index.ts",
->>>>>>> Fix merge errors, add tradulabErrors in the file resolver
-=======
-    "predev": "npm run build",
-    "start": "node $npm_package_main",
-    "dev": "ts-node-dev --respawn --transpile-only src/index",
->>>>>>> changes
     "lint:all": "npm run lint \"src/**/*.ts\""
   },
   "engines": {
@@ -109,42 +24,14 @@
     "@apollo/federation": "0.16.2",
     "apollo-server-express": "2.14.2",
     "bcryptjs": "2.4.3",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "cors": "2.8.5",
-=======
-    "cors": "^2.8.5",
->>>>>>> changes
-=======
-    "cors": "2.8.5",
->>>>>>> list files done
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "graphql": "15.0.0",
     "graphql-iso-date": "3.6.1",
     "graphql-middleware": "4.0.2",
     "graphql-shield": "7.3.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "graphql-upload": "11.0.0",
-=======
-    "graphql-upload": "^11.0.0",
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-    "graphql-upload": "^11.0.0",
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-    "graphql-upload": "^11.0.0",
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-    "graphql-upload": "^11.0.0",
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-    "graphql-upload": "11.0.0",
->>>>>>> list files done
     "jsonwebtoken": "8.5.1",
     "mongoose": "5.9.16",
     "ramda": "0.27.0",
