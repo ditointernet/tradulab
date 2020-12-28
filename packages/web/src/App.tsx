@@ -568,12 +568,12 @@ import React from "react";
 >>>>>>> Resolve Rebase
 import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "./services/apollo";
-import Pages from "./containers";
+import Routes from "./containers";
 import "./App.css";
 
 const App = () => (
   <ApolloProvider client={ApolloClient}>
-    <Pages />
+    <Routes />
   </ApolloProvider>
 );
 

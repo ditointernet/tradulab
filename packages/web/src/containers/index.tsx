@@ -9,7 +9,7 @@ import { Developer, Error, Home, Login, Projects } from "./pages";
 import { TradulabRouter, AuthMiddleware, RoleMiddleware } from "./routes";
 import { TradulabHeader } from "../components";
 
-const Pages: React.FC = () => (
+const Routes: React.FC = () => (
   <Router>
     <Switch>
       <Route component={Error} exact path="/error" />
@@ -35,5 +35,9 @@ const Pages: React.FC = () => (
   </Router>
 );
 
+<<<<<<< HEAD
 export default Pages;
 >>>>>>> Clean Architeture
+=======
+export default Routes;
+>>>>>>> Change name: Pages -> Routes
