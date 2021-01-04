@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CardProfile from './CardProfile';
+import CardProfile from '../components/CardProfile';
 
 const CardProfileContainer: React.FC = () => {
   const userInfos = [{
