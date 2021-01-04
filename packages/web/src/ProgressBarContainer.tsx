@@ -12,6 +12,7 @@ const ProgressBarContainer: React.FC = () => {
     <ProgressBar
       approvalPercentage={file.approvalProgress}
       translatePercentage={file.translateProgress}
+      containerWidth="100%"
     />
   );
 };
