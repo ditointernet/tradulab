@@ -21,16 +21,18 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IProgressBarProps {
   approvalPercentage: number,
   translatePercentage: number,
+  containerWidth: string;
 }
 
 const ProgressBar: React.FC<IProgressBarProps> = ({
   approvalPercentage,
   translatePercentage,
+  containerWidth,
 }) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root} width="100%">
+    <Box className={classes.root} width={containerWidth || "100%"}>
       <Box className={classes.approval} width={`${approvalPercentage}%`} />
       <Box className={classes.translate} width={`${translatePercentage - approvalPercentage}%`} />
     </Box>
