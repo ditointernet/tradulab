@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menu: {
       "& .MuiPaper-root": {
+        border: "1px solid white",
         backgroundColor: '#59AB6C',
         color: 'white',
       }
@@ -38,7 +39,7 @@ interface INavBarProps {
   handleMenu: (event: React.MouseEvent<HTMLElement>) => void;
   menuAnchorEl: HTMLElement | null;
   openMenu: boolean;
-  handleClick: (event: any) => void;
+  handleClick: (event: React.MouseEvent<HTMLElement>) => void;
   handleCloseMenu: () => void;
 }
 
@@ -68,9 +69,11 @@ const NavBar: React.FC<INavBarProps> = ({
         <Menu
           className={classes.menu}
           id="menu-appbar"
+          elevation={0}
+          getContentAnchorEl={null}
           anchorEl={menuAnchorEl}
           anchorOrigin={{
-            vertical: 'top',
+            vertical: 'bottom',
             horizontal: 'right',
           }}
           keepMounted
@@ -81,13 +84,13 @@ const NavBar: React.FC<INavBarProps> = ({
           open={openMenu}
           onClose={handleCloseMenu}
         >
-          <MenuItem onClick={handleClick}>
-            <Typography id="config" variant="body1">
+          <MenuItem id="config" onClick={handleClick}>
+            <Typography variant="body1">
               Configurações
             </Typography>
           </MenuItem>
-          <MenuItem onClick={handleClick}>
-            <Typography id="logout" variant="body1">
+          <MenuItem id="logout" onClick={handleClick}>
+            <Typography variant="body1">
               Sair
             </Typography>
           </MenuItem>

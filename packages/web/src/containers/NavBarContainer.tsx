@@ -15,8 +15,8 @@ const NavBarContainer = () => {
     setMenuAnchorEl(null);
   }
 
-  const handleClick = (event: any) => {
-    const { id } = event.target;
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const { id } = event.currentTarget;
     if (id === "config") {
       setMenuAnchorEl(null);
       console.log('entrar em config')
