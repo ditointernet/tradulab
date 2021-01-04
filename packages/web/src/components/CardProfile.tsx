@@ -48,7 +48,7 @@ const CardProfile: React.FC<ICardProfileProps> = ({
     <Paper className={classes.paper} elevation={3}>
       <Avatar
         className={`${classes.large} ${classes.avatar}`}
-        alt="teste"
+        alt="profile picture"
         src={imageSrc}
       />
       <Typography align="center" variant="h6">
