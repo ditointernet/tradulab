@@ -1,8 +1,5 @@
 import React from 'react';
 import './App.css';
-
-import { Home } from './containers';
-
 import {
   ApolloProvider,
   ApolloClient,
@@ -11,7 +8,7 @@ import {
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
-import CardProfileContainer from './CardProfileContainer';
+import { Home, CardProfileContainer } from './containers';
 import MyProjectsContainer from './MyProjectsContainer';
 
 const uploadLink = createUploadLink({
