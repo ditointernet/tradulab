@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 interface IHomeProps {
-  children?: any;
+  children?: JSX.Element | string;
 }
 
 const Home: React.FC<IHomeProps> = ({ children }) => {
