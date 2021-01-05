@@ -9,8 +9,8 @@ import {
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 
-import UploadForm from "./UploadForm";
-import CardProfileContainer from './CardProfileContainer';
+import CardProfileContainer from "./CardProfileContainer";
+import MyProjects from "./MyProjects";
 
 const uploadLink = createUploadLink({
   uri: "http://localhost:3001/graphql",
@@ -42,7 +42,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <CardProfileContainer />
+      <div style={{display: 'flex', justifyContent: 'space-around'}}>
+        <CardProfileContainer />
+        <MyProjects />
+      </div>
     </ApolloProvider>
   );
 }
