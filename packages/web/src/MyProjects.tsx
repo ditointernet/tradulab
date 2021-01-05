@@ -14,6 +14,8 @@ import {
 
 import { Search as SearchIcon } from '@material-ui/icons';
 
+import Table from './Table';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
@@ -49,6 +51,7 @@ const MyProjects = () => {
           </InputAdornment>
         }
       />
+      <Table />
     </Paper>
   );
 };
