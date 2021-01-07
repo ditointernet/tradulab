@@ -5,31 +5,26 @@ export { default as ProfileCardContainer } from './ProfileCardContainer';
 =======
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Developer, Error, Home, Login, Projects } from "./pages";
-import { TradulabRouter, AuthMiddleware, RoleMiddleware } from "./routes";
-import { TradulabHeader } from "../components";
+import { Error, Login } from "./pages";
+import { Developer, Home, Projects } from "./routes";
 
 const Routes: React.FC = () => (
   <Router>
     <Switch>
       <Route component={Error} exact path="/error" />
       <Route component={Login} exact path="/login" />
-      <TradulabRouter
-        Component={Developer}
-        Parent={TradulabHeader}
-        middlewares={[AuthMiddleware, RoleMiddleware]}
+      <Route
         path="/dev"
+        render={({ location }) => <Developer path={location.pathname} />}
       />
-      <TradulabRouter
-        Component={Projects}
-        middlewares={[AuthMiddleware]}
+      <Route
         path="/projects"
+        render={({ location }) => <Projects path={location.pathname} />}
       />
-      <TradulabRouter
-        Component={Home}
-        Parent={TradulabHeader}
-        middlewares={[AuthMiddleware]}
+      <Route
+        exact
         path="/"
+        render={({ location }) => <Home path={location.pathname} />}
       />
     </Switch>
   </Router>

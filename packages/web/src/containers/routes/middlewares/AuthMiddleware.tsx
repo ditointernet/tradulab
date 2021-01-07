@@ -1,8 +1,6 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
-import TradulabRouter from "../TradulabRouter";
-import { MiddlewareProps } from "../types";
+import { useHistory } from "react-router-dom";
 
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
@@ -14,27 +12,19 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-const AuthMiddleware: React.FC<MiddlewareProps> = ({
-  middlewares,
-  ...rest
-}) => {
+const AuthMiddleware = (props: any) => {
+  const history = useHistory();
   const { error, loading } = useQuery(IS_LOGGED_IN);
+  const TOKEN = localStorage.getItem("token");
 
   if (loading) return <p>Loading...</p>;
 
-  const TOKEN = localStorage.getItem("token");
+  if (error || !TOKEN) {
+    history.push("/login", { redirect: props.redirect });
+    return null;
+  }
 
-  if (error || !TOKEN)
-    return (
-      <Redirect
-        to={{
-          pathname: "/login",
-          state: { path: rest.path },
-        }}
-      />
-    );
-
-  return <TradulabRouter {...rest} middlewares={middlewares} />;
+  return props.children;
 };
 
 export default AuthMiddleware;

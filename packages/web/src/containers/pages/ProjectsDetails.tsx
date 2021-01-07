@@ -2,12 +2,12 @@ import React from "react";
 import { RouteProps } from "react-router-dom";
 import { TradulabHeader } from "../../components/layout";
 
-const Home: React.FC<RouteProps> = () => {
+const ProjectsDetails: React.FC<RouteProps> = () => {
   return (
     <TradulabHeader>
-      <p>Home</p>
+      <p>Projects Details</p>
     </TradulabHeader>
   );
 };
 
-export default Home;
+export default ProjectsDetails;
