@@ -14,7 +14,12 @@ import {
 
 import { Search as SearchIcon } from '@material-ui/icons';
 
-import Table from './Table';
+import ProjectsTable, { Row } from './ProjectsTable';
+
+interface IMyProjects {
+  rows: Row[];
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const MyProjects = () => {
+const MyProjects: React.FC<IMyProjects> = ({ rows, onInputChange }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.paper}>
@@ -50,8 +55,9 @@ const MyProjects = () => {
             <SearchIcon />
           </InputAdornment>
         }
+        onChange={onInputChange}
       />
-      <Table />
+      <ProjectsTable rows={rows} />
     </Paper>
   );
 };
