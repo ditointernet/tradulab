@@ -1,31 +1,31 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
 import {
   ApolloProvider,
   ApolloClient,
   InMemoryCache,
   ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
+} from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 
-import CardProfileContainer from "./CardProfileContainer";
-import MyProjects from "./MyProjects";
+import CardProfileContainer from './CardProfileContainer';
+import MyProjectsContainer from './MyProjectsContainer';
 
 const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
+  uri: 'http://localhost:3001/graphql',
+  credentials: 'include',
 });
 
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
-  if (!["login", "createUser"].includes(operation.operationName)) {
+  if (!['login', 'createUser'].includes(operation.operationName)) {
     // Use the setContext method to set the HTTP headers.
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: token ? `Bearer ${token}` : '',
       },
     });
   }
@@ -42,9 +42,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div style={{display: 'flex', justifyContent: 'space-around'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <CardProfileContainer />
-        <MyProjects />
+        <MyProjectsContainer />
       </div>
     </ApolloProvider>
   );

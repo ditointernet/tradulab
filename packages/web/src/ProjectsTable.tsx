@@ -13,20 +13,14 @@ import {
   Typography,
 } from '@material-ui/core';
 
-const rowsMock = [
-  { project: 'Jornadas', role: 'Dono' },
-  { project: 'Tradulab', role: 'Desenvolvedor' },
-  { project: 'Agenda', role: 'Revisor' },
-  { project: 'Jornadas', role: 'Dono' },
-  { project: 'Tradulab', role: 'Desenvolvedor' },
-  { project: 'Agenda', role: 'Revisor' },
-  { project: 'Jornadas', role: 'Dono' },
-  { project: 'Tradulab', role: 'Desenvolvedor' },
-  { project: 'Agenda', role: 'Revisor' },
-  { project: 'Jornadas', role: 'Dono' },
-  { project: 'Tradulab', role: 'Desenvolvedor' },
-  { project: 'Agenda', role: 'Revisor' },
-];
+export type Row = {
+  project: string;
+  role: string;
+};
+
+interface IProjectsTable {
+  rows: Row[];
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function StickyHeadTable() {
+const ProjectsTable: React.FC<IProjectsTable> = ({ rows }) => {
   const classes = useStyles();
 
   return (
@@ -61,7 +55,7 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rowsMock.map((row) => (
+            {rows.map((row) => (
               <TableRow hover tabIndex={-1}>
                 <TableCell align="left">{row.project}</TableCell>
                 <TableCell align="left">{row.role}</TableCell>
@@ -72,4 +66,6 @@ export default function StickyHeadTable() {
       </TableContainer>
     </Paper>
   );
-}
+};
+
+export default ProjectsTable;
