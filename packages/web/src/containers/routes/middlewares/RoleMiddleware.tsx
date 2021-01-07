@@ -3,7 +3,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useHistory, RouteChildrenProps } from "react-router-dom";
 
 const OTHER_MIDDLEWARE = gql`
-  query other {
+  query roleMiddleware {
     me {
       _id
       nickname
