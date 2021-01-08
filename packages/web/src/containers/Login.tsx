@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { gql, useLazyQuery } from "@apollo/client";
 import { Redirect, useHistory, RouteProps } from "react-router-dom";
 import { LoginForm } from "../components";
-import TradulabBackground from "../../images/tradulab-background.png";
+import TradulabBackground from "../images/tradulab-background.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { BLUE_700, BLACK_800 } from "../constants/colors";
 import Grid from "@material-ui/core/Grid";
