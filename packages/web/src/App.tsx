@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 <<<<<<< HEAD
@@ -73,20 +74,9 @@ import './App.css';
 >>>>>>> formatting changes and some typings
 =======
 >>>>>>> Fix merge errors, add tradulabErrors in the file resolver
-import React from "react";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 =======
-
-<<<<<<< HEAD
-import { gql, useQuery } from "@apollo/client";
-import Pages from "./pages";
-import Login from "./pages/Login";
-import Erros from "./erros";
->>>>>>> Error Middleware
+>>>>>>> Rebase Master
+import React from "react";
 import "./App.css";
 >>>>>>> routes
 
@@ -99,7 +89,12 @@ import {
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
+<<<<<<< HEAD
 import { TradulabLayout, ProfileCardContainer } from './containers';
+=======
+<<<<<<< HEAD
+import CardProfileContainer from './CardProfileContainer';
+>>>>>>> Rebase Master
 import MyProjectsContainer from './MyProjectsContainer';
 
 const uploadLink = createUploadLink({
@@ -151,85 +146,12 @@ function App() {
       </TradulabLayout>
     </ApolloProvider>
 =======
+=======
+import UploadForm from "./UploadForm";
+import CardProfileContainer from "./CardProfileContainer";
+import { LoginContainer } from "./containers";
+>>>>>>> Rebase Master
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
-=======
-import React from 'react';
-import './App.css';
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-
-import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, createHttpLink } from '@apollo/client';
-import { createUploadLink } from 'apollo-upload-client';
-
-import UploadForm from './UploadForm';
-=======
-export default function App() {
-  const { data, error, loading } = useQuery(IS_LOGGED_IN);
-  console.log("APP DATA", data);
-  if (loading) return <p>Loading...</p>;
-
-  if (error) {
-    console.error(error);
-    return <Erros message={error.message} />;
-  }
->>>>>>> Error Middleware
-
-const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
-  credentials: 'include'
-});
-
-const uploadLink = createUploadLink({
-  uri: 'http://localhost:3001/graphql',
-  credentials: 'include',
-});
-
-<<<<<<< HEAD
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWFmOWQ2YTBiODk2NTcwMjIyNTU1OCIsImlhdCI6MTYwNTE4NzA5NiwiZXhwIjoxNjA1MTg4ODk2fQ.I3M_qSK97WWPdlayaM4_5InAmoJwcLFIH686iKXWnXs';
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : "",
-//     }
-//   }
-// });
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWFmOWQ2YTBiODk2NTcwMjIyNTU1OCIsImlhdCI6MTYwNTIxODQwOSwiZXhwIjoxNjA1MjIwMjA5fQ.ap1cFPws7qrZnGvA_pjHfZPzhjJIodZ0X5tqPmn_oZU';
-
-  // Use the setContext method to set the HTTP headers.
-  operation.setContext({
-    headers: {
-      authorization: token ? `Bearer ${token}` : '',
-    }
-  });
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-=======
-import React from "react";
-import "./App.css";
->>>>>>> formatting changes and some typings
-
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-
-import UploadForm from "./UploadForm";
 
 const uploadLink = createUploadLink({
   uri: "http://localhost:3001/graphql",
@@ -257,249 +179,18 @@ const client = new ApolloClient({
   link: authLink.concat(uploadLink),
   cache: new InMemoryCache(),
 });
-=======
-import React from "react";
-import "./App.css";
->>>>>>> formatting changes and some typings
 
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-
-import UploadForm from "./UploadForm";
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  }
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-=======
-import React from "react";
-import "./App.css";
->>>>>>> formatting changes and some typings
-
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-
-import UploadForm from "./UploadForm";
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  }
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-=======
-import React from "react";
-import "./App.css";
->>>>>>> formatting changes and some typings
-
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  ApolloLink,
-} from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-
-import UploadForm from "./UploadForm";
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-=======
-import { gql, useQuery } from "@apollo/client";
-import Pages from "./pages";
-import Login from "./pages/Login";
-import Erros from "./erros";
-import "./App.css";
-
-const IS_LOGGED_IN = gql`
-  query isLoggedIn {
-    me {
-      id
-    }
-  }
-`;
->>>>>>> routes scope
-
-=======
->>>>>>> fix app
-function App() {
-  const { data, error, loading } = useQuery(IS_LOGGED_IN);
-
-  if (loading) return <p>Loading...</p>;
-
-  if (error) return <Erros message={error.message} />;
-=======
-=======
->>>>>>> Rewind Types and Fix
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import TradulabRouter from "./routes";
-<<<<<<< HEAD
-
-import { AuthMiddleware, OtherMiddleware, LayoutRouter } from "./routes";
->>>>>>> Roteamento: Errors, Paginas, Rotas, Middleware
-
-=======
-import { AuthMiddleware, RoleMiddleware, LayoutRouter } from "./routes";
-import {} from "./";
->>>>>>> Rewind Types and Fix
-import { Developer, Error, Home, Login, Projects } from "./pages";
-import "./App.css";
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 function App() {
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Router>
-      <Switch></Switch>
-    </Router>
->>>>>>> routes
-=======
     <ApolloProvider client={client}>
-      <UploadForm />
+      <Router>
+        <Switch>
+          <Route component={CardProfileContainer} exact path="/" />
+          <Route component={LoginContainer} exact path="/login" />
+        </Switch>
+      </Router>
     </ApolloProvider>
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    <ApolloProvider client={client}>
-      <UploadForm />
-    </ApolloProvider>
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    <ApolloProvider client={client}>
-      <UploadForm />
-    </ApolloProvider>
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    <ApolloProvider client={client}>
-      <UploadForm />
-    </ApolloProvider>
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-    <ApolloProvider client={client}>
-      <UploadForm />
-    </ApolloProvider>
->>>>>>> Create file resolver working at front-end and back-end without error treatment
   );
-=======
-  return <Pages />;
->>>>>>> routes scope
-=======
-  return <Pages />;
->>>>>>> Error Middleware
-=======
-export default function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/error" component={Error} />
-        <Route exact path="/login" component={Login} />
-        <TradulabRouter
-          path="/dev"
-          Component={Developer}
-          middlewares={[AuthMiddleware, RoleMiddleware]}
-          Parent={LayoutRouter}
-        />
-        <TradulabRouter
-          path="/projects"
-          Component={Projects}
-          middlewares={[AuthMiddleware]}
-        />
-        <TradulabRouter
-          path="/"
-          Component={Home}
-          middlewares={[AuthMiddleware]}
-          Parent={LayoutRouter}
-        />
-      </Switch>
-    </Router>
-  );
->>>>>>> Roteamento: Errors, Paginas, Rotas, Middleware
 }
-=======
-import { ApolloProvider } from "@apollo/client";
-import ApolloClient from "./services/apollo";
-import Pages from "./containers";
-import "./App.css";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { BLUE_700, GREEN_400, PINK_600 } from "./constants/colors";
-
-const tradulabTheme = createMuiTheme({
-  palette: {
-    error: {
-      main: PINK_600,
-    },
-    primary: {
-      main: GREEN_400,
-    },
-    secondary: { main: BLUE_700 },
-  },
-});
-
-const App = () => (
-  <ApolloProvider client={ApolloClient}>
-    <ThemeProvider theme={tradulabTheme}>
-      <Pages />
-    </ThemeProvider>
-  </ApolloProvider>
-);
 
 export default App;
->>>>>>> Clean Architeture

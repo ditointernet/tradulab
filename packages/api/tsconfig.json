@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-    "compilerOptions": {
-      "module": "commonjs",
-      "noImplicitReturns": true,
-      // "noImplicitAny": true,
-      "outDir": "lib",
-      "sourceMap": true,
-      "target": "ES2019",
-      "allowSyntheticDefaultImports": true
-    },
-    "compileOnSave": true,
-    "include": ["src"]
-  }
-=======
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitReturns": true,
@@ -23,6 +9,5 @@
     "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": ["src"],
 }
->>>>>>> fix tsconfig target

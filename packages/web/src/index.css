@@ -30,19 +30,6 @@ body {
   padding: 0;
 }
 
-<<<<<<< HEAD
 .Page {
   height: inherit;
-=======
-@media screen and (max-width: 800px) {
-  #root {
-    font-size: 6vw;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  #root {
-    font-size: 9vw;
-  }
->>>>>>> login
 }

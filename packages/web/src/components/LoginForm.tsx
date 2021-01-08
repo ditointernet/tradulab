@@ -1,49 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-// import styled from "styled-components";
-
-export interface LoginFormProps {
-  email: {
-    value: String;
-    error: Boolean;
-  };
-  password: {
-    value: String;
-    error: Boolean;
-  };
-  setEmail: React.Dispatch<
-    React.SetStateAction<{
-      value: string;
-      error: boolean;
-    }>
-  >;
-  setPassword: React.Dispatch<
-    React.SetStateAction<{
-      value: string;
-      error: boolean;
-    }>
-  >;
-}
-=======
-import {
-  fade,
-  ThemeProvider,
-  withStyles,
-  makeStyles,
-  createMuiTheme,
-} from "@material-ui/core/styles";
-import { BLUE_700, GREEN_400, BLACK_800, BLACK_600 } from "../constants/colors";
-import InputBase from "@material-ui/core/InputBase";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import { gql, useLazyQuery, QueryLazyOptions } from "@apollo/client";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-
-=======
->>>>>>> Clean Files
 import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
@@ -140,20 +95,10 @@ const useStyles = makeStyles(() => ({
     },
   },
 }));
->>>>>>> login
 
 const LoginForm: React.FC<LoginFormProps> = ({
   email,
   password,
-<<<<<<< HEAD
-  setEmail,
-  setPassword,
-}) => (
-  <FormControl>
-    <InputLabel>Email</InputLabel>
-  </FormControl>
-);
-=======
   handleEmail,
   handlePassword,
   handleLogin,
@@ -223,6 +168,5 @@ const LoginForm: React.FC<LoginFormProps> = ({
     </FormControl>
   );
 };
->>>>>>> login
 
 export default LoginForm;
