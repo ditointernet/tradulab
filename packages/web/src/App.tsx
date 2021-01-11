@@ -14,6 +14,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 import React from 'react';
+<<<<<<< HEAD
 import './App.css';
 <<<<<<< HEAD
 =======
@@ -94,14 +95,20 @@ import "./App.css";
 import "./App.css";
 
 >>>>>>> Add packages]
+<<<<<<< HEAD
 >>>>>>> Add packages]
+=======
+=======
+>>>>>>> Merge Master
+>>>>>>> Merge Master
 import {
-  ApolloProvider,
   ApolloClient,
-  InMemoryCache,
   ApolloLink,
+  ApolloProvider,
+  InMemoryCache,
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import { TradulabLayout, ProfileCardContainer } from './containers';
@@ -110,6 +117,9 @@ import { TradulabLayout, ProfileCardContainer } from './containers';
 import CardProfileContainer from './CardProfileContainer';
 >>>>>>> Rebase Master
 import MyProjectsContainer from './MyProjectsContainer';
+=======
+import { Login, Profile, Projects } from './containers';
+>>>>>>> Merge Master
 
 const uploadLink = createUploadLink({
 <<<<<<< HEAD
@@ -153,12 +163,20 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+<<<<<<< HEAD
       <TradulabLayout>
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           <ProfileCardContainer />
           <MyProjectsContainer />
         </div>
       </TradulabLayout>
+=======
+      {/* <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Profile />
+        <Projects />
+      </div> */}
+      <Login />
+>>>>>>> Merge Master
     </ApolloProvider>
 =======
 =======

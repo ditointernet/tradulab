@@ -12,15 +12,7 @@ import {
   TableRow,
   Typography,
 } from '@material-ui/core';
-
-export type Row = {
-  project: string;
-  role: string;
-};
-
-interface IProjectsTable {
-  rows: Row[];
-}
+import { IProjectsTable } from '../types/Projects';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

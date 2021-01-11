@@ -1,9 +1,9 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import { BLACK_800, BLUE_700, GREEN_400 } from "../constants/colors";
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { BLACK_800, BLUE_700, GREEN_400 } from '../constants/colors';
 
 export interface LoginFormProps {
   email: {
@@ -24,74 +24,74 @@ export interface LoginFormProps {
 
 const useStyles = makeStyles(() => ({
   root: {
-    display: "flex",
-    flexWrap: "wrap",
-    height: "60%",
-    justifyContent: "space-around",
+    display: 'flex',
+    flexWrap: 'wrap',
+    height: '60%',
+    justifyContent: 'space-around',
     border: `5px solid ${BLACK_800}`,
-    padding: "1% 15%",
-    backgroundColor: "white",
-    borderRadius: "20px",
+    padding: '1% 15%',
+    backgroundColor: 'white',
+    borderRadius: '20px',
 
-    "@media (max-width: 800px)": {
-      height: "50%",
-      padding: "1% 10%",
+    '@media (max-width: 800px)': {
+      height: '50%',
+      padding: '1% 10%',
     },
 
-    "@media (max-width: 500px)": {
-      padding: "1% 5%",
-      height: "50%",
-      alignItems: "center",
+    '@media (max-width: 500px)': {
+      padding: '1% 5%',
+      height: '50%',
+      alignItems: 'center',
     },
   },
 
   buttonLogin: {
-    height: "15%",
+    height: '15%',
     color: BLACK_800,
     fontWeight: 600,
-    "@media (max-width: 800px)": {
-      height: "10%",
+    '@media (max-width: 800px)': {
+      height: '10%',
     },
   },
 
   buttonNewUser: {
-    height: "10%",
+    height: '10%',
     color: BLACK_800,
     fontWeight: 600,
-    "@media (max-width: 800px)": {
-      height: "8%",
+    '@media (max-width: 800px)': {
+      height: '8%',
     },
   },
 
   input: {
-    height: "20%",
+    height: '20%',
 
-    "& label": {
-      fontSize: "30%",
-      "@media (max-width: 800px)": {
-        fontSize: "50%",
+    '& label': {
+      fontSize: '30%',
+      '@media (max-width: 800px)': {
+        fontSize: '50%',
       },
     },
-    "& input:invalid:hover + fieldset": {
+    '& input:invalid:hover + fieldset': {
       borderColor: BLUE_700,
 
       borderWidth: 2,
     },
-    "& input + fieldset, label": {
+    '& input + fieldset, label': {
       borderColor: BLACK_800,
       color: BLACK_800,
       borderWidth: 2,
     },
-    "& input:hover + fieldset, label": {
+    '& input:hover + fieldset, label': {
       borderColor: GREEN_400,
       color: BLACK_800,
       borderWidth: 2,
     },
 
-    "& input:valid:focus + fieldset": {
+    '& input:valid:focus + fieldset': {
       borderLeftWidth: 6,
 
-      padding: "4px !important", // override inline-style
+      padding: '4px !important', // override inline-style
     },
   },
 }));
@@ -106,13 +106,13 @@ const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
   const classes = useStyles();
 
-  const emailError = email.error === "" ? false : true;
+  const emailError = Boolean(email.error);
 
-  const passwordError = password.error === "" ? false : true;
+  const passwordError = Boolean(password.error);
 
-  const emailFilled = email.value == "" ? false : true;
+  const emailFilled = Boolean(email.value);
 
-  const passwordFilled = password.value == "" ? false : true;
+  const passwordFilled = Boolean(password.value);
 
   return (
     <FormControl component="form" className={classes.root}>
@@ -146,7 +146,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         variant="contained"
         color="primary"
         className={classes.buttonLogin}
-        onClick={() =>
+        onSubmit={() =>
           handleLogin({
             variables: { email: email.value, password: password.value },
           })
@@ -161,7 +161,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         variant="contained"
         color="secondary"
         className={classes.buttonNewUser}
-        onClick={() => handleRegister()}
+        onClick={handleRegister}
       >
         Novo Usuário
       </Button>
