@@ -11,10 +11,6 @@ const NavBarContainer = () => {
     setMenuAnchorEl(event.currentTarget);
   };
 
-  const handleCloseMenu = () => {
-    setMenuAnchorEl(null);
-  }
-
   const handleClose = (event: React.MouseEvent<HTMLElement>) => {
     const { id } = event.currentTarget;
     if (id === "config") {
