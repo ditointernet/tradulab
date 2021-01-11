@@ -1,20 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React from 'react';
+import { ApolloProvider } from '@apollo/client';
+import ApolloClient from './services/apollo';
+import Routes from './containers';
 import './App.css';
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -570,6 +559,8 @@ import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "./services/apollo";
 import Routes from "./containers";
 import "./App.css";
+=======
+>>>>>>> Rebase Master
 
 const App = () => (
   <ApolloProvider client={ApolloClient}>

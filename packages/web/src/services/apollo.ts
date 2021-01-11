@@ -3,20 +3,20 @@ import {
   ApolloLink,
   createHttpLink,
   InMemoryCache,
-} from "@apollo/client";
+} from '@apollo/client';
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
+  uri: 'http://localhost:3001/graphql',
+  credentials: 'include',
 });
 
 const authLink = new ApolloLink((operation, forward) => {
-  const token = localStorage.getItem("token");
-  console.log("operation", operation);
-  if (!["login", "createUser"].includes(operation.operationName)) {
+  const token = localStorage.getItem('token');
+  console.log('operation', operation);
+  if (!['loginUser', 'createUser'].includes(operation.operationName)) {
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: token ? `Bearer ${token}` : '',
       },
     });
   }
