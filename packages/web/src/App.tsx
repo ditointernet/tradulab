@@ -78,6 +78,7 @@ import './App.css';
 >>>>>>> Rebase Master
 import React from "react";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import "./App.css";
 >>>>>>> routes
 
@@ -86,7 +87,14 @@ import "./App.css";
 =======
 =======
 >>>>>>> Installs Packages
+<<<<<<< HEAD
 >>>>>>> Installs Packages
+=======
+=======
+import "./App.css";
+
+>>>>>>> Add packages]
+>>>>>>> Add packages]
 import {
   ApolloProvider,
   ApolloClient,
@@ -135,6 +143,7 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
+<<<<<<< HEAD
 const client = new ApolloClient({
   link: authLink.concat(uploadLink),
   cache: new InMemoryCache(),
@@ -158,6 +167,10 @@ import CardProfileContainer from "./CardProfileContainer";
 import { LoginContainer } from "./containers";
 >>>>>>> Rebase Master
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+=======
+import CardProfileContainer from "./CardProfileContainer";
+import MyProjectsContainer from "./MyProjectsContainer";
+>>>>>>> Add packages]
 
 const uploadLink = createUploadLink({
   uri: "http://localhost:3001/graphql",
@@ -189,12 +202,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Switch>
-          <Route component={CardProfileContainer} exact path="/" />
-          <Route component={LoginContainer} exact path="/login" />
-        </Switch>
-      </Router>
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <CardProfileContainer />
+        <MyProjectsContainer />
+      </div>
     </ApolloProvider>
   );
 }
