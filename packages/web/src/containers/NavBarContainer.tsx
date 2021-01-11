@@ -15,15 +15,17 @@ const NavBarContainer = () => {
     setMenuAnchorEl(null);
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClose = (event: React.MouseEvent<HTMLElement>) => {
     const { id } = event.currentTarget;
     if (id === "config") {
       setMenuAnchorEl(null);
-      console.log('entrar em config')
+      console.log('entrar em config');
+      return null;
     }
     if (id === "logout") {
       setMenuAnchorEl(null);
       console.log('sair');
+      return null;
     }
     setMenuAnchorEl(null);
   };
@@ -31,7 +33,7 @@ const NavBarContainer = () => {
 
   return (
     <NavBar
-      {...{ username, handleMenu, handleClick, openMenu, menuAnchorEl, handleCloseMenu }}
+      {...{ username, handleMenu, handleClose, openMenu, menuAnchorEl }}
     />
   );
 };

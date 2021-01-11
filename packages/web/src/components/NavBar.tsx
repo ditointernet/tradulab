@@ -39,8 +39,7 @@ interface INavBarProps {
   handleMenu: (event: React.MouseEvent<HTMLElement>) => void;
   menuAnchorEl: HTMLElement | null;
   openMenu: boolean;
-  handleClick: (event: React.MouseEvent<HTMLElement>) => void;
-  handleCloseMenu: () => void;
+  handleClose: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const NavBar: React.FC<INavBarProps> = ({
@@ -48,8 +47,7 @@ const NavBar: React.FC<INavBarProps> = ({
   handleMenu,
   menuAnchorEl,
   openMenu,
-  handleClick,
-  handleCloseMenu,
+  handleClose,
 }) => {
   const classes = useStyles();
 
@@ -82,14 +80,14 @@ const NavBar: React.FC<INavBarProps> = ({
             horizontal: 'right',
           }}
           open={openMenu}
-          onClose={handleCloseMenu}
+          onClose={handleClose}
         >
-          <MenuItem id="config" onClick={handleClick}>
+          <MenuItem id="config" onClick={handleClose}>
             <Typography variant="body1">
               Configurações
             </Typography>
           </MenuItem>
-          <MenuItem id="logout" onClick={handleClick}>
+          <MenuItem id="logout" onClick={handleClose}>
             <Typography variant="body1">
               Sair
             </Typography>
