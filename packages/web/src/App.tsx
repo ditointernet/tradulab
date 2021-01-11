@@ -1,19 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React from 'react';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import './App.css';
 <<<<<<< HEAD
@@ -101,6 +87,8 @@ import "./App.css";
 =======
 >>>>>>> Merge Master
 >>>>>>> Merge Master
+=======
+>>>>>>> Resolve Rebase Conflicts
 import {
   ApolloClient,
   ApolloLink,
@@ -108,6 +96,7 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -118,21 +107,13 @@ import CardProfileContainer from './CardProfileContainer';
 >>>>>>> Rebase Master
 import MyProjectsContainer from './MyProjectsContainer';
 =======
+=======
+>>>>>>> Resolve Rebase Conflicts
 import { Login, Profile, Projects } from './containers';
->>>>>>> Merge Master
 
 const uploadLink = createUploadLink({
-<<<<<<< HEAD
-<<<<<<< HEAD
   uri: 'http://localhost:3001/graphql',
   credentials: 'include',
-=======
-  uri: "http://localhost:3001",
-  credentials: "include",
->>>>>>> changes
-=======
-  uri: "http://localhost:3001/graphql",
->>>>>>> list files done
 });
 
 const authLink = new ApolloLink((operation, forward) => {
@@ -148,18 +129,15 @@ const authLink = new ApolloLink((operation, forward) => {
     });
   }
 
-<<<<<<< HEAD
   // Call the next link in the middleware chain.
   return forward(operation);
 });
 
-<<<<<<< HEAD
 const client = new ApolloClient({
   link: authLink.concat(uploadLink),
   cache: new InMemoryCache(),
 });
 
-<<<<<<< HEAD
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -177,53 +155,6 @@ function App() {
       </div> */}
       <Login />
 >>>>>>> Merge Master
-    </ApolloProvider>
-=======
-=======
-import UploadForm from "./UploadForm";
-import CardProfileContainer from "./CardProfileContainer";
-import { LoginContainer } from "./containers";
->>>>>>> Rebase Master
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-=======
-import CardProfileContainer from "./CardProfileContainer";
-import MyProjectsContainer from "./MyProjectsContainer";
->>>>>>> Add packages]
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  }
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <CardProfileContainer />
-        <MyProjectsContainer />
-      </div>
     </ApolloProvider>
   );
 }
