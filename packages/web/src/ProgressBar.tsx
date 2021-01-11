@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IProgressBarProps {
   approvalPercentage: number,
   translatePercentage: number,
-  containerWidth: string;
+  containerWidth?: string;
 }
 
 const ProgressBar: React.FC<IProgressBarProps> = ({
