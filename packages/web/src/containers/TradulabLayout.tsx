@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-interface IHomeProps {
+interface ITradulabLayoutProps {
   children?: JSX.Element | string;
 }
 
-const Home: React.FC<IHomeProps> = ({ children }) => {
+const TradulabLayout: React.FC<ITradulabLayoutProps> = ({ children }) => {
   const classes = useStyles();
 
   return (
@@ -38,4 +38,4 @@ const Home: React.FC<IHomeProps> = ({ children }) => {
   );
 };
 
-export default Home;
+export default TradulabLayout;
