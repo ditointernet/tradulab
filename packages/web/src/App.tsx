@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
-import { Home, CardProfileContainer } from './containers';
+import { TradulabLayout, ProfileCardContainer } from './containers';
 import MyProjectsContainer from './MyProjectsContainer';
 
 const uploadLink = createUploadLink({
@@ -41,10 +41,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <CardProfileContainer />
-        <MyProjectsContainer />
-      </div>
+      <TradulabLayout>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <ProfileCardContainer />
+          <MyProjectsContainer />
+        </div>
+      </TradulabLayout>
     </ApolloProvider>
   );
 }
