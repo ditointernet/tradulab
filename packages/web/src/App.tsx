@@ -11,7 +11,6 @@ import { createUploadLink } from 'apollo-upload-client';
 
 import CardProfileContainer from './CardProfileContainer';
 import MyProjectsContainer from './MyProjectsContainer';
-import ProgressBarContainer from "./ProgressBarContainer";
 
 const uploadLink = createUploadLink({
   uri: 'http://localhost:3001/graphql',
@@ -47,7 +46,6 @@ function App() {
         <CardProfileContainer />
         <MyProjectsContainer />
       </div>
-      <ProgressBarContainer />
     </ApolloProvider>
   );
 }
