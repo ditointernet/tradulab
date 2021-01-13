@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface ICardProfileProps {
+interface IProfileCardProps {
   username: string;
   city: string;
   age: string;
@@ -36,7 +36,7 @@ interface ICardProfileProps {
 }
 
 
-const CardProfile: React.FC<ICardProfileProps> = ({
+const ProfileCard: React.FC<IProfileCardProps> = ({
   username,
   city,
   age,
@@ -68,4 +68,4 @@ const CardProfile: React.FC<ICardProfileProps> = ({
   );
 };
 
-export default CardProfile;
+export default ProfileCard;

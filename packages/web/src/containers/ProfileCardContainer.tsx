@@ -1,8 +1,8 @@
 import React from 'react';
 
-import CardProfile from '../components/CardProfile';
+import ProfileCard from '../components/ProfileCard';
 
-const CardProfileContainer: React.FC = () => {
+const ProfileCardContainer: React.FC = () => {
   const userInfos = {
     username: 'Julio Cezar Taveira Araujo',
     city: 'Belo Horizonte',
@@ -11,7 +11,7 @@ const CardProfileContainer: React.FC = () => {
   };
 
   return (
-    <CardProfile
+    <ProfileCard
       username={userInfos.username}
       city={userInfos.city}
       age={userInfos.age}
@@ -20,4 +20,4 @@ const CardProfileContainer: React.FC = () => {
   );
 };
 
-export default CardProfileContainer;
+export default ProfileCardContainer;

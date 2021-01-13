@@ -1,3 +1,3 @@
-export { default as Home } from './Home';
+export { default as TradulabLayout } from './TradulabLayout';
 export { default as NavBarContainer } from './NavBarContainer';
-export { default as CardProfileContainer } from './CardProfileContainer';
+export { default as ProfileCardContainer } from './ProfileCardContainer';
