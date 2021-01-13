@@ -1,43 +1,8 @@
 import React, { useState } from 'react';
+import { RouteProps, useHistory } from 'react-router-dom';
 import { gql, useLazyQuery } from '@apollo/client';
-import { Redirect, useHistory, RouteProps } from 'react-router-dom';
-import { LoginForm } from '../components';
-import TradulabBackground from '../images/tradulab-background.png';
-import { makeStyles } from '@material-ui/core/styles';
-import { BLUE_700, BLACK_800 } from '../constants/colors';
-import Grid from '@material-ui/core/Grid';
 import Joi from '@hapi/joi';
-import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles(() => ({
-  root: {
-    backgroundImage: `url(${TradulabBackground})`,
-    display: 'flex',
-    flexFlow: 'column wrap',
-    height: '100%',
-    padding: '2% 30% 2% 10%',
-    '@media (max-width: 800px)': {
-      padding: '2% 20% 2% 10%',
-    },
-    '@media (max-width: 500px)': {
-      padding: '2%',
-    },
-  },
-  title: {
-    backgroundColor: BLACK_800,
-    borderRadius: '100px',
-    color: 'white',
-    fontFamily: 'Open Sans',
-    fontSize: '100%',
-    textAlign: 'center',
-    '& span': {
-      color: BLUE_700,
-    },
-    '@media (max-width: 500px)': {
-      textAlign: 'center',
-    },
-  },
-}));
+import { LoginForm, Loading, Dashboard, TradulabTitle } from '../../components';
 
 const LOGIN = gql`
   query loginUser($email: String!, $password: String!) {
@@ -51,23 +16,21 @@ const LOGIN = gql`
   }
 `;
 
-interface LoginProps extends RouteProps {
+interface ILogin extends RouteProps {
   location: {
-    state: { path?: string };
+    state: { redirect?: string };
     pathname: string;
     search: string;
     hash: string;
   };
 }
 
-const Login: React.FC<any> = ({ location }) => {
+const Login: React.FC<ILogin> = ({ location }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
 
   const [password, setPassword] = useState({ value: '', error: '' });
 
   const [handleLogin, { loading, data, error }] = useLazyQuery(LOGIN);
-
-  const classes = useStyles();
 
   const history = useHistory();
 
@@ -106,30 +69,29 @@ const Login: React.FC<any> = ({ location }) => {
   };
 
   const handleRegister = () => {
-    history.push('./register');
+    history.push('/register');
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
 
-  if (error)
-    return (
-      <Redirect
-        to={{ pathname: '/error', state: { message: error.message } }}
-      />
-    );
+  if (error) {
+    history.push('/error');
+    return null;
+  }
 
   if (data && !error) {
     localStorage.setItem('token', data.login.token);
-    if (location.state.path) return <Redirect to={location.state.path} />;
-
-    return <Redirect to="./" />;
+    if (location.state.redirect) {
+      history.push(location.state.redirect);
+    } else {
+      history.push('/');
+    }
+    return null;
   }
 
   return (
-    <Grid className={classes.root}>
-      <Typography className={classes.title}>
-        Tradu<span>lab</span>
-      </Typography>
+    <Dashboard>
+      <TradulabTitle />
       <LoginForm
         email={email}
         password={password}
@@ -138,7 +100,7 @@ const Login: React.FC<any> = ({ location }) => {
         handleLogin={handleLogin}
         handleRegister={handleRegister}
       />
-    </Grid>
+    </Dashboard>
   );
 };
 

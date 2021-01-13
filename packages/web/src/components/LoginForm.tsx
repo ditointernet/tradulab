@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import { BLACK_800, BLUE_700, GREEN_400 } from '../constants/colors';
 
-export interface LoginFormProps {
+interface ILoginForm {
   email: {
     value: string;
     error: string;
@@ -24,47 +24,43 @@ export interface LoginFormProps {
 
 const useStyles = makeStyles(() => ({
   root: {
+    alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
-    height: '60%',
+    height: '50%',
     justifyContent: 'space-around',
     border: `5px solid ${BLACK_800}`,
     padding: '1% 15%',
     backgroundColor: 'white',
     borderRadius: '20px',
-
     '@media (max-width: 800px)': {
-      height: '50%',
       padding: '1% 10%',
     },
-
     '@media (max-width: 500px)': {
       padding: '1% 5%',
-      height: '50%',
-      alignItems: 'center',
     },
   },
 
-  buttonLogin: {
+  button: {
     height: '15%',
     color: BLACK_800,
     fontWeight: 600,
+    width: '40%',
     '@media (max-width: 800px)': {
-      height: '10%',
+      width: '50%',
     },
-  },
-
-  buttonNewUser: {
-    height: '10%',
-    color: BLACK_800,
-    fontWeight: 600,
-    '@media (max-width: 800px)': {
-      height: '8%',
+    '@media (max-width: 500px)': {
+      width: '70%',
     },
   },
 
   input: {
     height: '20%',
+    width: '80%',
+
+    '@media (max-width: 800px)': {
+      width: '90%',
+    },
 
     '& label': {
       fontSize: '30%',
@@ -90,13 +86,12 @@ const useStyles = makeStyles(() => ({
 
     '& input:valid:focus + fieldset': {
       borderLeftWidth: 6,
-
       padding: '4px !important', // override inline-style
     },
   },
 }));
 
-const LoginForm: React.FC<LoginFormProps> = ({
+const LoginForm: React.FC<ILoginForm> = ({
   email,
   password,
   handleEmail,
@@ -143,25 +138,25 @@ const LoginForm: React.FC<LoginFormProps> = ({
         required
       />
       <Button
-        variant="contained"
         color="primary"
-        className={classes.buttonLogin}
-        onSubmit={() =>
+        className={classes.button}
+        disabled={
+          emailError || passwordError || !emailFilled || !passwordFilled
+        }
+        onClick={() =>
           handleLogin({
             variables: { email: email.value, password: password.value },
           })
         }
-        disabled={
-          emailError || passwordError || !emailFilled || !passwordFilled
-        }
+        variant="contained"
       >
         Login
       </Button>
       <Button
-        variant="contained"
         color="secondary"
-        className={classes.buttonNewUser}
+        className={classes.button}
         onClick={handleRegister}
+        variant="contained"
       >
         Novo Usuário
       </Button>
