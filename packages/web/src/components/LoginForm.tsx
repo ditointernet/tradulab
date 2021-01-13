@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { BLACK_800, BLUE_700, GREEN_400 } from '../constants/colors';
 
 interface ILoginForm {
@@ -22,7 +22,7 @@ interface ILoginForm {
   handleRegister: () => void;
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     alignItems: 'center',
     display: 'flex',
@@ -30,14 +30,14 @@ const useStyles = makeStyles(() => ({
     height: '50%',
     justifyContent: 'space-around',
     border: `5px solid ${BLACK_800}`,
-    padding: '1% 15%',
+    padding: theme.spacing(1, 15),
     backgroundColor: 'white',
-    borderRadius: '20px',
+    borderRadius: theme.spacing(10),
     '@media (max-width: 800px)': {
-      padding: '1% 10%',
+      padding: theme.spacing(1, 10),
     },
     '@media (max-width: 500px)': {
-      padding: '1% 5%',
+      padding: theme.spacing(1, 5),
     },
   },
 
