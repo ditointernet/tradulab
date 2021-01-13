@@ -2,12 +2,12 @@ import React from 'react';
 import { RouteProps } from 'react-router-dom';
 import { TradulabHeader } from '../../components';
 
-const Developer: React.FC<RouteProps> = () => {
+const ProjectDetails: React.FC<RouteProps> = () => {
   return (
     <TradulabHeader>
-      <p>Only Developers or higher roles can see it</p>
+      <p>Projects Details</p>
     </TradulabHeader>
   );
 };
 
-export default Developer;
+export default ProjectDetails;

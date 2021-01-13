@@ -1,11 +1,27 @@
-import React from "react";
-import { RouteProps } from "react-router-dom";
-import { TradulabHeader } from "../../components/layout";
+import React from 'react';
+import { RouteProps } from 'react-router-dom';
+import { TradulabHeader, ProfileCard } from '../../components';
 
 const Home: React.FC<RouteProps> = () => {
+  // Vindo do estado global
+  const userInfos = [
+    {
+      username: 'Julio Cezar Taveira Araujo',
+      city: 'Belo Horizonte',
+      age: '31',
+      imageSrc:
+        'https://i.pinimg.com/originals/b5/dc/a9/b5dca9fac1361023498d6cb66e4d8b13.jpg',
+    },
+  ];
+
   return (
     <TradulabHeader>
-      <p>Home</p>
+      <ProfileCard
+        username={userInfos[0].username}
+        city={userInfos[0].city}
+        age={userInfos[0].age}
+        imageSrc={userInfos[0].imageSrc}
+      />
     </TradulabHeader>
   );
 };

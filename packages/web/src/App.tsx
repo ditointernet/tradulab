@@ -1,7 +1,8 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
-import ApolloClient from './services/apollo';
+import { ApolloClient } from './services';
 import Routes from './containers';
+<<<<<<< HEAD
 import './App.css';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -561,6 +562,8 @@ import Routes from "./containers";
 import "./App.css";
 =======
 >>>>>>> Rebase Master
+=======
+>>>>>>> Router Update
 
 const App = () => (
   <ApolloProvider client={ApolloClient}>

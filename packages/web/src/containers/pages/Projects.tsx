@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { RouteProps } from 'react-router-dom';
 import {
   Paper,
   makeStyles,
@@ -11,15 +11,23 @@ import {
   Input,
   InputAdornment,
 } from '@material-ui/core';
-
 import { Search as SearchIcon } from '@material-ui/icons';
+import { ProjectsTable } from '../../components';
 
-import ProjectsTable, { Row } from './ProjectsTable';
-
-interface IMyProjects {
-  rows: Row[];
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+const rowsBackEnd = [
+  { project: 'Jornadas', role: 'Desenvolvedor' },
+  { project: 'Tradulab', role: 'Contribuidor' },
+  { project: 'Agenda', role: 'Dono' },
+  { project: 'Jornadas', role: 'Desenvolvedor' },
+  { project: 'Tradulab', role: 'Contribuidor' },
+  { project: 'Agenda', role: 'Dono' },
+  { project: 'Jornadas', role: 'Desenvolvedor' },
+  { project: 'Tradulab', role: 'Contribuidor' },
+  { project: 'Agenda', role: 'Dono' },
+  { project: 'Jornadas', role: 'Desenvolvedor' },
+  { project: 'Tradulab', role: 'Contribuidor' },
+  { project: 'Agenda', role: 'Dono' },
+];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,8 +45,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const MyProjects: React.FC<IMyProjects> = ({ rows, onInputChange }) => {
+const Projects: React.FC<RouteProps> = () => {
+  const [rows, setRows] = useState(rowsBackEnd);
   const classes = useStyles();
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const filter = e.target.value;
+    const filteredRows = rowsBackEnd.filter(({ project }) =>
+      project.toUpperCase().includes(filter.toUpperCase())
+    );
+    setRows(filteredRows);
+    console.log(filter, filteredRows);
+  };
+
   return (
     <Paper className={classes.paper}>
       <Box display="flex" justifyContent="space-between">
@@ -62,4 +80,4 @@ const MyProjects: React.FC<IMyProjects> = ({ rows, onInputChange }) => {
   );
 };
 
-export default MyProjects;
+export default Projects;

@@ -1,7 +1,7 @@
-import React from "react";
-import { gql, useLazyQuery } from "@apollo/client";
-import { RouteProps, Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { gql, useLazyQuery } from '@apollo/client';
+import { RouteProps, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 interface LoginProps extends RouteProps {
   location: {
@@ -23,26 +23,25 @@ const LOGIN = gql`
   }
 `;
 
-// Tipagem da Função
-const Login: React.FC<any> = (props) => {
+const Login: React.FC<LoginProps> = (props) => {
   const history = useHistory();
   const [handleLogin, { loading, data, error }] = useLazyQuery(LOGIN);
 
   // Quando for trocar o usuário para testar o OtherMiddleware lembre-se de apagar o token no localStorage
-  const BOLIVAR = { email: "bolivar@dito.com.br", password: "123456" };
+  const BOLIVAR = { email: 'bolivar@dito.com.br', password: '123456' };
 
-  const MIGUEL = { email: "miguel@dito.com.br", password: "123456" };
+  const MIGUEL = { email: 'miguel@dito.com.br', password: '123456' };
 
   if (loading) return <p>Loading...</p>;
 
   if (error) {
-    history.push("/error", { message: error.message });
+    history.push('/error', { message: error.message });
   }
 
   if (data && !error) {
-    localStorage.setItem("token", data.login.token);
+    localStorage.setItem('token', data.login.token);
     console.log(props.location);
-    history.push(props.location?.state?.redirect || "/");
+    history.push(props.location?.state?.redirect || '/');
   }
 
   return (

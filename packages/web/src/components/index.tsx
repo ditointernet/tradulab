@@ -1,1 +1,0 @@
-export { TradulabHeader } from "./layout";
