@@ -18,10 +18,11 @@ interface ICreateFileArgs {
 
 async function createFile(_, args: ICreateFileArgs, context) {
   const {
-    file: { filename },
     sourceLanguage,
     projectId,
   } = args;
+
+  const { filename } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
     throw new TradulabError('File size exceeded, limit is 5MB.');
@@ -73,5 +74,30 @@ async function listFiles(_, args: IListFileArgs, context) {
   return files || [];
 }
 
-export const mutations = { createFile };
+interface IUpdateFileArgs {
+  newFilename: string;
+  projectId: string;
+  fileId: string;
+}
+
+async function updateFile(_parent, args: IUpdateFileArgs) {
+
+  const file = await File.findOne({ _id: args.fileId });
+
+  if (!file) {
+    throw new TradulabError(ERROR_CODES.FILE_DOESNT_EXIST);
+  }
+
+  try {
+    file.filename = args.newFilename;
+    await file.save();
+  } catch (err) {
+    console.error(err);
+    throw new ApolloError(err.message);
+  }
+
+  return file;
+};
+
+export const mutations = { createFile, updateFile };
 export const queries = { listFiles };

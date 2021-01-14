@@ -1,5 +1,5 @@
 import { ApolloError, AuthenticationError } from 'apollo-server-express';
-import { not, rule, shield } from 'graphql-shield';
+import { and, not, rule, shield } from 'graphql-shield';
 
 const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   if (!user) return new AuthenticationError('You must be logged in.');
@@ -23,6 +23,7 @@ const permissions = shield(
       createUser: not(isAuthenticated),
       inviteUserToProject: isAuthenticated,
       createFile: isAuthenticated,
+      updateFile: isAuthenticated,
     },
   },
   {
