@@ -19,7 +19,7 @@ const schema = new mongoose.Schema(
     },
     filePath: {
       type: String,
-      required: true,
+      required: false,
     },
     sourceLanguage: {
       type: String,

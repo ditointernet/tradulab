@@ -3,8 +3,12 @@ import { useMutation, gql, useQuery } from '@apollo/client';
 
 export const LOGIN = gql`
   query login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+    login(payload: { email: $email,  password: $password }) {
       token
+      nickname
+      username
+      email
+      id
     }
   }
 `;
@@ -22,12 +26,10 @@ export const UPLOAD_FILE = gql`
     ) {
       id
       filename
-      translationProgress
-      approvalProgress
       sourceLanguage
       extension
       project {
-        displayName
+        name
       }
       createdAt
       updatedAt
@@ -49,7 +51,7 @@ export default function UploadForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
-    const projectId = '5fb52bfe99f0a22dc58d206b'; // Trocar id do projeto para o que estiver no banco de dados local
+    const projectId = '6000396f8dfb8455984266dc'; // Trocar id do projeto para o que estiver no banco de dados local
     const sourceLanguage = 'PT-BR';
     if (!file) return;
     createFile({ variables: { file, projectId, sourceLanguage } });

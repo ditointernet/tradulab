@@ -27,6 +27,11 @@ export default gql`
       projectId: ID!
       sourceLanguage: String!
     ): File!
+    updateFile(
+      newFilename: String!
+      fileId: ID!
+      projectId: ID!
+    ): File!
   }
   extend type Query {
     listFiles(projectId: ID!): [File]
