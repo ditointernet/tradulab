@@ -16,12 +16,12 @@ const NavBarContainer = () => {
     if (id === "config") {
       setMenuAnchorEl(null);
       console.log('entrar em config');
-      return null;
+      return;
     }
     if (id === "logout") {
       setMenuAnchorEl(null);
       console.log('sair');
-      return null;
+      return;
     }
     setMenuAnchorEl(null);
   };
