@@ -43,12 +43,7 @@ interface IProfileCardProps {
   imageSrc: string;
 }
 
-<<<<<<< HEAD:packages/web/src/components/ProfileCard.tsx
-
 const ProfileCard: React.FC<IProfileCardProps> = ({
-=======
-const ProfileCard: React.FC<ICardProfileProps> = ({
->>>>>>> Router Update:packages/web/src/CardProfile.tsx
   username,
   city,
   age,
