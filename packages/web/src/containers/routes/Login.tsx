@@ -1,6 +1,5 @@
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
-import { NotAuthMiddleware } from './middlewares';
 import { Login } from '../pages';
 
 interface ILogin extends RouteProps {
@@ -13,11 +12,7 @@ interface ILogin extends RouteProps {
 }
 
 const LoginRouter: React.FC<ILogin> = (props) => {
-  return (
-    <NotAuthMiddleware>
-      <Login {...props} />
-    </NotAuthMiddleware>
-  );
+  return <Login {...props} />;
 };
 
 export default LoginRouter;
