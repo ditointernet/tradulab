@@ -18,7 +18,7 @@ export type Row = {
   role: string;
 };
 
-interface IProjectsTable {
+export interface IProjectsTable {
   rows: Row[];
 }
 
