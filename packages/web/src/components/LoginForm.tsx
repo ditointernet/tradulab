@@ -101,19 +101,11 @@ const LoginForm: React.FC<ILoginForm> = ({
 }) => {
   const classes = useStyles();
 
-  const emailError = Boolean(email.error);
-
-  const passwordError = Boolean(password.error);
-
-  const emailFilled = Boolean(email.value);
-
-  const passwordFilled = Boolean(password.value);
-
   return (
     <FormControl component="form" className={classes.root}>
       <TextField
         className={classes.input}
-        error={emailError}
+        error={!!email.error}
         helperText={email.error}
         id="validation-outlined-input"
         label="Email"
@@ -128,7 +120,7 @@ const LoginForm: React.FC<ILoginForm> = ({
         className={classes.input}
         margin="normal"
         size="small"
-        error={passwordError}
+        error={!!password.error}
         helperText={password.error}
         id="validation-outlined-input"
         label="Senha"
@@ -141,7 +133,7 @@ const LoginForm: React.FC<ILoginForm> = ({
         color="primary"
         className={classes.button}
         disabled={
-          emailError || passwordError || !emailFilled || !passwordFilled
+          !!email.error || !!password.error || !email.value || !password.value
         }
         onClick={() =>
           handleLogin({
