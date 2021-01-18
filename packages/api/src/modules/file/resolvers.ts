@@ -5,6 +5,7 @@ import {
   INTERNAL_ERROR,
   MAX_ALLOWED_FILE_SIZE_IN_BYTES,
 } from './constants';
+import { ROLES } from '../role/constants';
 import { model as File } from '.';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
@@ -32,6 +33,11 @@ async function createFile(_, args: ICreateFileArgs, context) {
 
   if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
 
+  const role = await Role.findOne({ user: context.user._id, project: projectId });
+
+  if (![ROLES.OWNER, ROLES.MANAGER, ROLES.DEVELOPER].includes(role.role))
+    throw new TradulabError(ERROR_CODES.NOT_ALLOWED);
+
   const file = new File({
     extension: filename.split('.').pop(),
     filename,
@@ -57,7 +63,7 @@ interface IListFileArgs {
 async function listFiles(_, args: IListFileArgs, context) {
   const { projectId } = args;
 
-  const role = Role.findOne({ user: context.user.id, project: projectId });
+  const role = await Role.findOne({ user: context.user._id, project: projectId });
 
   if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
@@ -80,13 +86,25 @@ interface IUpdateFileArgs {
   fileId: string;
 }
 
-async function updateFile(_parent, args: IUpdateFileArgs) {
+async function updateFile(_parent, args: IUpdateFileArgs, context) {
+  const { projectId, fileId } = args;
 
-  const file = await File.findOne({ _id: args.fileId });
+  const file = await File.findOne({ _id: fileId });
 
   if (!file) {
     throw new TradulabError(ERROR_CODES.FILE_DOESNT_EXIST);
   }
+
+  const project = await Project.findOne({ _id: projectId });
+
+  if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
+
+  const role = await Role.findOne({ user: context.user._id, project: projectId });
+
+  if (![ROLES.OWNER, ROLES.MANAGER, ROLES.DEVELOPER].includes(role.role))
+    throw new TradulabError(ERROR_CODES.NOT_ALLOWED);
+
+  if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
   try {
     file.filename = args.newFilename;

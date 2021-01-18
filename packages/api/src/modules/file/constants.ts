@@ -3,6 +3,7 @@ export const ERROR_CODES = {
   NOT_A_MEMBER: 'NOT_A_MEMBER',
   PROJECT_NOT_FOUND: 'PROJECT_NOT_FOUND',
   FILE_DOESNT_EXIST: 'FILE_DOESNT_EXIST',
+  NOT_ALLOWED: 'NOT_ALLOWED',
 };
 
 export const ERROR_MESSAGES = {
@@ -10,6 +11,7 @@ export const ERROR_MESSAGES = {
   NOT_A_MEMBER: "You don't have a role in this project",
   PROJECT_NOT_FOUND: 'The provided project does not exist.',
   FILE_DOESNT_EXIST: 'The provided file does not exist.',
+  NOT_ALLOWED: "You don't have permission to execute this action.",
 };
 
 export const INTERNAL_ERROR = 'INTERNAL_ERROR';
