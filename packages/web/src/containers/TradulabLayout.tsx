@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, createStyles, makeStyles, Theme } from '@material-ui/core';
 
-import NavBarContainer from './NavBarContainer';
+import NavBarContainer from './NavBar';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,14 +13,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     mainContent: {
       flexGrow: 1,
-      margin: theme.spacing(1, 3, 0, 3)
+      margin: theme.spacing(1, 3, 0, 3),
     },
     footerContent: {
       backgroundColor: 'red',
-    }
+    },
   })
 );
-
 
 interface ITradulabLayoutProps {
   children?: JSX.Element | string;

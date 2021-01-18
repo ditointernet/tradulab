@@ -2,9 +2,11 @@ import React from 'react';
 
 import NavBar from '../components/NavBar';
 
-const NavBarContainer = () => {
+const NavBarContainer: React.FC = () => {
   const username = 'Julio Cezar';
-  const [menuAnchorEl, setMenuAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState<null | HTMLElement>(
+    null
+  );
   const openMenu = Boolean(menuAnchorEl);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -13,19 +15,18 @@ const NavBarContainer = () => {
 
   const handleClose = (event: React.MouseEvent<HTMLElement>) => {
     const { id } = event.currentTarget;
-    if (id === "config") {
+    if (id === 'config') {
       setMenuAnchorEl(null);
       console.log('entrar em config');
       return;
     }
-    if (id === "logout") {
+    if (id === 'logout') {
       setMenuAnchorEl(null);
       console.log('sair');
       return;
     }
     setMenuAnchorEl(null);
   };
-
 
   return (
     <NavBar
