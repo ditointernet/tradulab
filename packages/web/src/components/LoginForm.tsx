@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { BLACK_800, BLUE_700, GREEN_400 } from '../constants/colors';
+import { BLACK_800, BLUE_700, GREEN_400 } from '../utils/colors';
 
 interface ILoginForm {
   email: {
