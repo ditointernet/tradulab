@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
-    height: '50%',
+    height: '60%',
     justifyContent: 'space-around',
     border: `5px solid ${BLACK_800}`,
     padding: theme.spacing(1, 15),
