@@ -30,10 +30,6 @@ const schema = new mongoose.Schema(
       // Faz sentido ter erro de tamanho da string aqui? Se sim, que tamanhos máximo e
       // mínimo seriam esses, dado que uma "frase" pode ser uma palavra só ou até um texto?
     },
-    private: {
-      type: Boolean,
-      default: false,
-    },
     rating: {
       // Preciso pesquisar como tipar um "objeto" no mongoose, se realmente formos deixar
       // o rating daquela forma. Se alguém souber já me fala.
