@@ -28,15 +28,15 @@ async function createFile(_, args: ICreateFileArgs, context) {
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
     throw new TradulabError('File size exceeded, limit is 5MB.');
   }
-
   const project = await Project.findOne({ _id: projectId });
 
   if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
 
-  const role = await Role.findOne({ user: context.user._id, project: projectId });
+  // CODIGO COMENTADO ABAIXO SERÁ ALTERADO NA BRANCH DE RULES
+  // const role = await Role.findOne({ user: context.user._id, project: projectId });
 
-  if (![ROLES.OWNER, ROLES.MANAGER, ROLES.DEVELOPER].includes(role.role))
-    throw new TradulabError(ERROR_CODES.NOT_ALLOWED);
+  // if (![ROLES.OWNER, ROLES.MANAGER, ROLES.DEVELOPER].includes(role.role))
+  //   throw new TradulabError(ERROR_CODES.NOT_ALLOWED);
 
   const file = new File({
     extension: filename.split('.').pop(),
@@ -95,16 +95,17 @@ async function updateFile(_parent, args: IUpdateFileArgs, context) {
     throw new TradulabError(ERROR_CODES.FILE_DOESNT_EXIST);
   }
 
-  const project = await Project.findOne({ _id: projectId });
+  // CODIGO COMENTADO ABAIXO SERÁ ALTERADO NA BRANCH DE RULES
+  // const project = await Project.findOne({ _id: projectId });
 
-  if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
+  // if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
 
-  const role = await Role.findOne({ user: context.user._id, project: projectId });
+  // const role = await Role.findOne({ user: context.user._id, project: projectId });
 
-  if (![ROLES.OWNER, ROLES.MANAGER, ROLES.DEVELOPER].includes(role.role))
-    throw new TradulabError(ERROR_CODES.NOT_ALLOWED);
+  // if (![ROLES.OWNER, ROLES.MANAGER, ROLES.DEVELOPER].includes(role.role))
+  //   throw new TradulabError(ERROR_CODES.NOT_ALLOWED);
 
-  if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
+  // if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
   try {
     file.filename = args.newFilename;
