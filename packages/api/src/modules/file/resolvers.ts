@@ -26,7 +26,7 @@ async function createFile(_, args: ICreateFileArgs, context) {
   const { filename } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
-    throw new TradulabError('File size exceeded, limit is 5MB.');
+    throw new TradulabError(ERROR_CODES.FILE_SIZE_EXCEED);
   }
   const project = await Project.findOne({ _id: projectId });
 
@@ -92,7 +92,7 @@ async function updateFile(_parent, args: IUpdateFileArgs, context) {
   const file = await File.findOne({ _id: fileId });
 
   if (!file) {
-    throw new TradulabError(ERROR_CODES.FILE_DOESNT_EXIST);
+    throw new TradulabError(ERROR_CODES.FILE_NOT_FOUND);
   }
 
   // CODIGO COMENTADO ABAIXO SERÁ ALTERADO NA BRANCH DE RULES
