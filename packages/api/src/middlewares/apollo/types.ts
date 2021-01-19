@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server-express';
-import { auth, file, project, role, user } from '../../modules';
+import { auth, file, project, role, user, suggestion } from '../../modules';
 
 const typeDefs = gql`
   scalar Date
@@ -9,6 +9,7 @@ const typeDefs = gql`
   ${project.types}
   ${role.types}
   ${user.types}
+  ${suggestion.types}
 `;
 
 export default typeDefs;
