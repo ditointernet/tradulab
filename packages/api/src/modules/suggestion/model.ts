@@ -39,6 +39,9 @@ const suggestionSchema = new mongoose.Schema(
       type: ratingSchema,
       required: true,
     },
+    approved: {
+      type: Boolean,
+    }
   },
   {
     timestamps: true,
