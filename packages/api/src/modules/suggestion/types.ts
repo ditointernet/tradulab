@@ -6,10 +6,11 @@ export default gql`
     en-us
   }
 
-  # É uma boa ideia fazer o rating assim?
   type Rating {
-    votes: [ID!]!
-    score: Number!
+    allVotes: [ID!]!
+    positiveVotes: [ID!]!
+    negativeVotes: [ID!]!
+    score: Number
   }
 
   type Suggestion {
