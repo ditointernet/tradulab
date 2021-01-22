@@ -20,6 +20,7 @@ export const ROLES_LIST = [
 ];
 
 export const ERROR_CODES = {
+  NOT_AUTHORIZED: 'NOT_AUTHORIZED',
   INVITED_EXISTING_ROLE: 'INVITED_EXISTING_ROLE',
   INVITED_NOT_AVAILABLE: 'INVITED_NOT_AVAILABLE',
   INVITED_NOT_EXISTING_ROLE: 'INVITED_NOT_EXISTING_ROLE',
@@ -35,6 +36,7 @@ export const ERROR_CODES = {
 };
 
 export const ERROR_MESSAGES = {
+  NOT_AUTHORIZED: 'Not authorized to perform operation.',
   INVITED_EXISTING_ROLE: 'The provided user is already part of the project.',
   INVITED_NOT_AVAILABLE: 'Only manager and owner can invite users to a project',
   INVITED_NOT_EXISTING_ROLE: "You don't have a role in this project",

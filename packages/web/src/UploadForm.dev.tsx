@@ -47,8 +47,6 @@ export default function UploadForm() {
 
   const [createFile, { data }] = useMutation(UPLOAD_FILE);
 
-  console.log(data);
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     const projectId = '6000396f8dfb8455984266dc'; // Trocar id do projeto para o que estiver no banco de dados local

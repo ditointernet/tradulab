@@ -1,19 +1,17 @@
 import {
   ApolloClient,
   ApolloLink,
-  createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 
-const httpLink = createHttpLink({
+const uploadLink = createUploadLink({
   uri: 'http://localhost:3001/graphql',
   credentials: 'include',
 });
 
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token');
-
-  // console.log('operation', operation);
 
   if (!['loginUser', 'createUser'].includes(operation.operationName)) {
     operation.setContext({
@@ -28,7 +26,7 @@ const authLink = new ApolloLink((operation, forward) => {
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
+  link: authLink.concat(uploadLink),
 });
 
 export default client;
