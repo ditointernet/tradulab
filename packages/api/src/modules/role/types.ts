@@ -8,6 +8,7 @@ export default gql`
     developer
     manager
   }
+
   type Role {
     id: ID!
     role: String!
@@ -16,6 +17,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+
   type RoleWithProject {
     id: ID!
     role: String!
@@ -24,6 +26,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+
   type RoleWithUser {
     id: ID!
     role: String!
@@ -32,6 +35,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+
   type RoleWithUserAndProject {
     id: ID!
     role: String!
@@ -40,22 +44,23 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
-  input inviteUserToProjectPayload {
-    projectId: ID!
-    userId: ID!
-    role: InvitedRole!
-  }
-  input removeUserFromProjectPayload {
-    projectId: ID!
-    userId: ID!
-  }
+
   extend type Mutation {
     inviteUserToProject(
-      payload: inviteUserToProjectPayload
+      projectId: ID!
+      userId: ID!
+      role: InvitedRole!
     ): RoleWithUserAndProject!
-    updateUserProjectRole(payload: inviteUserToProjectPayload): Role!
-    removeUserFromProject(payload: removeUserFromProjectPayload): Boolean
+
+    updateUserProjectRole(
+      projectId: ID!
+      userId: ID!
+      role: InvitedRole!
+    ): Role!
+
+    removeUserFromProject(projectId: ID!, userId: ID!): Boolean
   }
+
   extend type Query {
     projectUsers(projectId: ID!): [RoleWithUser!]!
   }

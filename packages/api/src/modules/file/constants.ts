@@ -13,7 +13,7 @@ export const ERROR_MESSAGES = {
   PROJECT_NOT_FOUND: 'The provided project does not exist.',
   FILE_NOT_FOUND: 'The provided file does not exist.',
   NOT_ALLOWED: "You don't have permission to execute this action.",
-  FILE_SIZE_EXCEED: "File size exceeded, limit is 5MB."
+  FILE_SIZE_EXCEED: 'File size exceeded, limit is 5MB.',
 };
 
 export const INTERNAL_ERROR = 'INTERNAL_ERROR';

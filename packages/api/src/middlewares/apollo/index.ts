@@ -44,7 +44,7 @@ export default function ApolloMiddleware(app) {
     context,
     formatError: (err) => {
       console.error(err);
-      throw new ApolloError(err.message, err.extensions.code);
+      return err;
     },
   };
 

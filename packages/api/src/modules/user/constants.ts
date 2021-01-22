@@ -1,27 +1,28 @@
 export const ERROR_CODES = {
-  NICKNAME_ALREADY_IN_USE: 'NICKNAME_ALREADY_IN_USE',
-  NICKNAME_INVALID: 'NICKNAME_INVALID',
-  NICKNAME_LONG: 'NICKNAME_LONG',
-  NICKNAME_SHORT: 'NICKNAME_SHORT',
   USER_NOT_FOUND: 'USER_NOT_FOUND',
+  USERNAME_ALREADY_IN_USE: 'USERNAME_ALREADY_IN_USE',
   USERNAME_INVALID: 'USERNAME_INVALID',
   USERNAME_LONG: 'USERNAME_LONG',
   USERNAME_SHORT: 'USERNAME_SHORT',
+  DISPLAYNAME_INVALID: 'DISPLAYNAME_INVALID',
+  DISPLAYNAME_LONG: 'DISPLAYNAME_LONG',
+  DISPLAYNAME_SHORT: 'DISPLAYNAME_SHORT',
 };
 
 export const ERROR_MESSAGES = {
-  NICKNAME_ALREADY_IN_USE: 'That nickname is already in use.',
-  NICKNAME_INVALID: 'That nickname is invalid.',
-  NICKNAME_LONG: 'That display name is too long.',
-  NICKNAME_SHORT: 'That display name is too short.',
   USER_NOT_FOUND: 'The provided user does not exist.',
+  USERNAME_ALREADY_IN_USE: 'That username is already in use.',
   USERNAME_INVALID: 'That username is invalid.',
   USERNAME_LONG: 'That username is too long.',
   USERNAME_SHORT: 'That username is too short.',
+  DISPLAYNAME_INVALID: 'That display name is invalid.',
+  DISPLAYNAME_LONG: 'That display name is too long.',
+  DISPLAYNAME_SHORT: 'That display name is too short.',
 };
 
+// Quais regex vão ser de username e displayName?
 export const REGEXES = {
   // Instagram username regex
-  NICKNAME: /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,32}$/,
-  USERNAME: /^[^\s][a-zA-Z\s]*[a-zA-z]$/,
+  // NICKNAME: /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,32}$/,
+  // USERNAME: /^[^\s][a-zA-Z\s]*[a-zA-z]$/,
 };

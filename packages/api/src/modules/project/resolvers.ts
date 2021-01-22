@@ -6,11 +6,7 @@ import { ROLES } from '../role/constants';
 import { model as Project } from '.';
 import { model as Role } from '../role';
 
-async function createProject(
-  _parent,
-  { payload: { name, private: isPrivate } },
-  { user }
-) {
+async function createProject(_parent, { name, private: isPrivate }, { user }) {
   const project = new Project({
     name,
     owner: user,
@@ -30,7 +26,7 @@ async function createProject(
   } catch (err) {
     await Promise.all([project.remove(), role.remove()]);
 
-    console.error(JSON.stringify(err, null, 2));
+    console.error(err);
 
     if (err.name === 'MongoError' && err.code === 11000) {
       const duplicatedField = Object.keys(err.keyPattern)[0];
@@ -39,7 +35,7 @@ async function createProject(
         case 'slug':
           throw new TradulabError(projectCodes.SLUG_ALREADY_IN_USE);
         default:
-          throw new ApolloError(err.message);
+          throw err;
       }
     }
 
@@ -49,20 +45,18 @@ async function createProject(
       throw new TradulabError(errorCode);
     }
 
-    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+    throw err;
   }
 }
 
 async function listProjects(_parent, _args, { user }) {
   try {
-    const roles = await Role.find({ user: user._id })
-      .populate('project')
-      .exec();
+    const roles = await Role.find({ user }).populate('project').exec();
 
     return roles;
   } catch (err) {
     console.error(err);
-    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+    throw err;
   }
 }
 

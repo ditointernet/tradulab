@@ -1,7 +1,7 @@
 import { ApolloError, AuthenticationError } from 'apollo-server-express';
 import { and, not, or, rule, shield } from 'graphql-shield';
-import TradulabError from '../../errors';
 
+import TradulabError from '../../errors';
 import { role } from '../../modules';
 import { ROLES, ERROR_CODES } from '../../modules/role/constants';
 
