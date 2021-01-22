@@ -10,7 +10,7 @@ export default gql`
     allVotes: [ID!]!
     positiveVotes: [ID!]!
     negativeVotes: [ID!]!
-    score: Number
+    score: Number!
   }
 
   type Suggestion {
@@ -20,6 +20,7 @@ export default gql`
     lang: Lang!
     text: String!
     rating: Rating!
+    approved: Boolean
     createdAt: Date!
     updatedAt: Date!
   }
