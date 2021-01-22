@@ -9,7 +9,7 @@ export const ROLES = {
 
 export const ROLES_AVAILABLE_INVITE_USER = [ROLES.OWNER, ROLES.MANAGER];
 
-// Array ordenado Hierarquicamente
+// Array ordenado hierarquicamente
 export const ROLES_LIST = [
   ROLES.OWNER,
   ROLES.MANAGER,

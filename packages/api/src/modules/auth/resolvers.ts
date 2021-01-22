@@ -25,16 +25,14 @@ function signToken(payload) {
   return jwt.sign(payload, env.getOrThrow('JWT_SECRET'), options);
 }
 
-async function createUser(
-  _parent,
-  { payload: { email, nickname, password, username } }
-) {
-  if (password.trim().length < 1)
+async function createUser(_parent, { email, password, username, displayName }) {
+  if (password.trim().length < 1) {
     throw new TradulabError(authCodes.PASSWORD_EMPTY);
+  }
 
   const user = new User({
-    nickname,
     username,
+    displayName,
   });
 
   const auth = new Auth({
@@ -47,20 +45,16 @@ async function createUser(
     await Promise.all([auth.save(), user.save()]);
 
     return {
-      email: auth.email,
-      nickname: user.nickname,
-      token: await signToken({ id: user.id }),
-      username: user.username,
       id: user.id,
+      username: user.username,
+      displayName: user.displayName,
+      email: auth.email,
+      token: await signToken({ id: user.id }),
     };
   } catch (err) {
-    if (!auth.isNew) {
-      await auth.remove();
-    }
+    await Promise.all([auth.remove(), user.remove()]);
 
-    await user.remove();
-
-    console.error(JSON.stringify(err, null, 2));
+    console.error(err);
 
     if (err.name === 'MongoError' && err.code === 11000) {
       const duplicatedField = Object.keys(err.keyPattern)[0];
@@ -68,8 +62,8 @@ async function createUser(
       switch (duplicatedField) {
         case 'email':
           throw new TradulabError(authCodes.EMAIL_ALREADY_IN_USE);
-        case 'nickname':
-          throw new TradulabError(userCodes.NICKNAME_ALREADY_IN_USE);
+        case 'username':
+          throw new TradulabError(userCodes.USERNAME_ALREADY_IN_USE);
         default:
           throw err;
       }
@@ -81,11 +75,11 @@ async function createUser(
       throw new TradulabError(errorCode);
     }
 
-    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+    throw err;
   }
 }
 
-async function login(_parent, { payload: { email, password } }) {
+async function login(_parent, { email, password }) {
   try {
     const auth = await Auth.findOne({
       email: email.toLowerCase(),
@@ -97,14 +91,14 @@ async function login(_parent, { payload: { email, password } }) {
       throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 
     return {
-      token: await signToken({ id: auth.user }),
-      email: auth.email,
-      nickname: auth.user.nickname,
-      username: auth.user.username,
       id: auth.user.id,
+      username: auth.user.username,
+      displayName: auth.user.displayName,
+      email: auth.email,
+      token: await signToken({ id: auth.user }),
     };
   } catch (err) {
-    throw new ApolloError(err.message, 'INTERNAL_ERROR');
+    throw err;
   }
 }
 

@@ -1,13 +1,17 @@
 import { ApolloError } from 'apollo-server-express';
-import TradulabError from '../../errors';
-import { ERROR_CODES as roleCodes } from './constants';
+
+import {
+  ROLES,
+  ROLES_LIST,
+  ROLES_AVAILABLE_INVITE_USER,
+  ERROR_CODES as roleCodes,
+} from './constants';
 import { ERROR_CODES as projectCodes } from '../project/constants';
 import { ERROR_CODES as userCodes } from '../user/constants';
-import { IRole } from './model';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
 import { model as User } from '../user';
-import { ROLES, ROLES_LIST, ROLES_AVAILABLE_INVITE_USER } from './constants';
+import TradulabError from '../../errors';
 
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
@@ -19,8 +23,8 @@ async function projectUsers(_, args) {
 
 async function inviteUserToProject(
   _parent,
-  { payload: { userId, projectId, role } },
-  { user: { _id: ownId } }
+  { userId, projectId, role },
+  { user: ownId }
 ) {
   if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 
@@ -72,8 +76,8 @@ async function inviteUserToProject(
 
 async function updateUserProjectRole(
   _parent,
-  { payload: { userId, projectId, role } },
-  { user: { _id: ownId } }
+  { userId, projectId, role },
+  { user: ownId }
 ) {
   if (userId === ownId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
 
@@ -116,8 +120,8 @@ async function updateUserProjectRole(
 
 async function removeUserFromProject(
   _parent,
-  { payload: { userId, projectId } },
-  { user: { _id: ownId } }
+  { userId, projectId },
+  { user: ownId }
 ) {
   const targetUserRole = await Role.findOne({
     user: userId,

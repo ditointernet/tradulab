@@ -1,11 +1,7 @@
 import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
-import {
-  ERROR_CODES,
-  INTERNAL_ERROR,
-  MAX_ALLOWED_FILE_SIZE_IN_BYTES,
-} from './constants';
-import { ROLES } from '../role/constants';
+
+import { ERROR_CODES, MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
 import { model as File } from '.';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
@@ -18,10 +14,7 @@ interface ICreateFileArgs {
 }
 
 async function createFile(_, args: ICreateFileArgs, context) {
-  const {
-    sourceLanguage,
-    projectId,
-  } = args;
+  const { sourceLanguage, projectId } = args;
 
   const { filename } = await args.file;
 
@@ -63,7 +56,10 @@ interface IListFileArgs {
 async function listFiles(_, args: IListFileArgs, context) {
   const { projectId } = args;
 
-  const role = await Role.findOne({ user: context.user._id, project: projectId });
+  const role = await Role.findOne({
+    user: context.user,
+    project: projectId,
+  });
 
   if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
@@ -86,8 +82,8 @@ interface IUpdateFileArgs {
   fileId: string;
 }
 
-async function updateFile(_parent, args: IUpdateFileArgs, context) {
-  const { projectId, fileId } = args;
+async function updateFile(_parent, args: IUpdateFileArgs) {
+  const { fileId } = args;
 
   const file = await File.findOne({ _id: fileId });
 
@@ -116,7 +112,7 @@ async function updateFile(_parent, args: IUpdateFileArgs, context) {
   }
 
   return file;
-};
+}
 
 export const mutations = { createFile, updateFile };
 export const queries = { listFiles };
