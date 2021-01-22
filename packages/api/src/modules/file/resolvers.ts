@@ -140,5 +140,27 @@ async function updateFile(_parent, args: IUpdateFileArgs) {
   return file;
 }
 
-export const mutations = { createFile, updateFile };
+interface IDeleteFileArgs {
+  projectId: string;
+  fileId: string;
+}
+
+async function deleteFile(_parent, args: IDeleteFileArgs) {
+  const file = await File.findOne({ _id: args.fileId });
+
+  if (!file) {
+    throw new TradulabError(ERROR_CODES.FILE_NOT_FOUND);
+  }
+
+  try {
+    file.remove();
+  } catch (err) {
+    console.error(err);
+    throw new ApolloError(err.message);
+  }
+
+  return true;
+}
+
+export const mutations = { createFile, updateFile, deleteFile };
 export const queries = { listFiles };

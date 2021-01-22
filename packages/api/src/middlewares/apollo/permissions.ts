@@ -53,6 +53,8 @@ const permissions = shield(
       updateUserProjectRole: and(isAuthenticated, or(isManager, isOwner)),
       createFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       updateFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
+      deleteFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
+      createPhrase: isAuthenticated,
     },
   },
   {
