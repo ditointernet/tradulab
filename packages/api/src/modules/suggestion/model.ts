@@ -33,7 +33,7 @@ const suggestionSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: [1, ERROR_CODES.TEXT_SHORT],
-      maxlength: [10000, ERROR_CODES.TEXT_LONG],
+      maxlength: [1024, ERROR_CODES.TEXT_LONG],
     },
     rating: {
       type: ratingSchema,
