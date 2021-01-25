@@ -40,7 +40,7 @@ export default gql`
     deleteFile(
       fileId: ID!
       projectId: ID!
-    ): Boolean!
+    ): Boolean
   }
 
   extend type Query {
