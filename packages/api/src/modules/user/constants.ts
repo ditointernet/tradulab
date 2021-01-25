@@ -20,9 +20,6 @@ export const ERROR_MESSAGES = {
   DISPLAYNAME_SHORT: 'That display name is too short.',
 };
 
-// Quais regex vão ser de username e displayName?
 export const REGEXES = {
-  // Instagram username regex
-  // NICKNAME: /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,32}$/,
-  // USERNAME: /^[^\s][a-zA-Z\s]*[a-zA-z]$/,
+  USERNAME: /^[a-z0-9_]+/, // pode ser melhorado depois
 };
