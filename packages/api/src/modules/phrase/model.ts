@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 const { Types } = mongoose.Schema;
 
-const phraseSchema = new mongoose.Schema(
+const schema = new mongoose.Schema(
   {
     file: {
       type: Types.ObjectId,
@@ -20,6 +20,11 @@ const phraseSchema = new mongoose.Schema(
   }
 );
 
-const model = mongoose.model('phrase', phraseSchema);
+export interface IPhrase extends mongoose.Document {
+  file: mongoose.Types.ObjectId;
+  text: String;
+}
+
+const model = mongoose.model<IPhrase>('phrase', schema);
 
 export default model;
