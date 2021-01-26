@@ -1,10 +1,9 @@
 import { ApolloError } from 'apollo-server-express';
 
 import { ERROR_CODES } from './constants';
+import Phrase from './model';
 import { model as File } from '../file';
-import { model as Phrase } from '.';
 import TradulabError from '../../errors';
-
 interface ICreatePhraseArgs {
   fileId: string;
   text: string;
