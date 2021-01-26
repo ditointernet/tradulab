@@ -298,6 +298,21 @@ mutation remove {
 }
 ```
 
+# Phrase
+
+```gql
+mutation projectTradulab {
+  createPhrase({ name: "Tradulab" }) {
+    owner
+    name
+    slug
+    private
+    _id
+  }
+}
+
+```
+
 # Header
 
 {
