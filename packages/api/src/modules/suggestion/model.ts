@@ -41,7 +41,7 @@ const suggestionSchema = new mongoose.Schema(
     },
     approved: {
       type: Boolean,
-    }
+    },
   },
   {
     timestamps: true,
@@ -49,6 +49,21 @@ const suggestionSchema = new mongoose.Schema(
   }
 );
 
-const model = mongoose.model('suggestion', suggestionSchema);
+type Rating = {
+  positiveVotes: mongoose.Types.ObjectId[];
+  negativeVotes: mongoose.Types.ObjectId[];
+};
+
+export interface ISuggestion extends mongoose.Document {
+  phrase: mongoose.Types.ObjectId;
+  user: mongoose.Types.ObjectId;
+  lang: string;
+  text: string;
+  rating: Rating;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+const model = mongoose.model<ISuggestion>('suggestion', suggestionSchema);
 
 export default model;
