@@ -7,4 +7,4 @@ export const ERROR_MESSAGES = {
   TEXT_LONG: 'The suggestion text is too long.',
 };
 
-export const LANGS_LIST = ['PT_BR', 'EN_US'];
+export const LANGS_LIST = ['pt_br', 'en_us'];
