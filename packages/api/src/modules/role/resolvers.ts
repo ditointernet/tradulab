@@ -24,9 +24,9 @@ async function projectUsers(_, args) {
 async function inviteUserToProject(
   _parent,
   { userId, projectId, role },
-  { user: ownId }
+  { user: currentUserId }
 ) {
-  if (userId === ownId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
+  if (userId === currentUserId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
 
   const project = await Project.findById(projectId);
 
@@ -45,7 +45,7 @@ async function inviteUserToProject(
 
   const currentUserRole = await Role.findOne({
     project: projectId,
-    user: ownId,
+    user: currentUserId,
   });
 
   if (!currentUserRole)
@@ -77,9 +77,9 @@ async function inviteUserToProject(
 async function updateUserProjectRole(
   _parent,
   { userId, projectId, role },
-  { user: ownId }
+  { user: currentUserId }
 ) {
-  if (userId === ownId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
+  if (userId === currentUserId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
 
   const targetUserRole = await Role.findOne({
     user: userId,
@@ -90,7 +90,7 @@ async function updateUserProjectRole(
     throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
 
   const currentUserRole = await Role.findOne({
-    user: ownId,
+    user: currentUserId,
     project: projectId,
   });
 
@@ -121,7 +121,7 @@ async function updateUserProjectRole(
 async function removeUserFromProject(
   _parent,
   { userId, projectId },
-  { user: ownId }
+  { user: currentUserId }
 ) {
   const targetUserRole = await Role.findOne({
     user: userId,
@@ -131,12 +131,12 @@ async function removeUserFromProject(
   if (!targetUserRole)
     throw new TradulabError(roleCodes.REMOVED_NOT_EXISTING_ROLE);
 
-  if (userId === ownId && targetUserRole.role === ROLES.OWNER)
+  if (userId === currentUserId && targetUserRole.role === ROLES.OWNER)
     throw new TradulabError(roleCodes.REMOVED_YOURSELF_AS_OWNER);
 
-  if (userId !== ownId) {
+  if (userId !== currentUserId) {
     const currentUserRole = await Role.findOne({
-      user: ownId,
+      user: currentUserId,
       project: projectId,
     });
 
