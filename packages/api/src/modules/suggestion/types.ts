@@ -2,15 +2,15 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   enum Lang {
-    pt-br
-    en-us
+    PT_BR
+    EN_US
   }
 
   type Rating {
     allVotes: [ID!]!
     positiveVotes: [ID!]!
     negativeVotes: [ID!]!
-    score: Number!
+    score: Int!
   }
 
   type Suggestion {
