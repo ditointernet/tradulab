@@ -6,15 +6,18 @@ export default gql`
     en_us
   }
 
+  enum Vote {
+    positive
+    negative
+  }
+
   type Rating {
-    allVotes: [ID!]!
     positiveVotes: [ID!]!
     negativeVotes: [ID!]!
-    score: Int!
   }
 
   type Suggestion {
-    _id: ID!
+    id: ID!
     phrase: ID!
     user: ID!
     lang: Lang!
@@ -23,5 +26,13 @@ export default gql`
     approved: Boolean
     createdAt: Date!
     updatedAt: Date!
+  }
+
+  extend type Mutation {
+    rateSuggestion(
+      projectId: ID!
+      suggestionId: ID!
+      vote: Vote!
+    ): Rating
   }
 `;
