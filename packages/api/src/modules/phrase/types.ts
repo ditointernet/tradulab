@@ -8,6 +8,7 @@ export default gql`
     createdAt: Date!
     updatedAt: Date!
   }
+
   extend type Mutation {
     createPhrase(fileId: ID!, text: String!): Phrase!
   }
