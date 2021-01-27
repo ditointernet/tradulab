@@ -1,8 +1,7 @@
 import { ApolloError } from 'apollo-server-express';
 
-import { ERROR_CODES } from './constants';
 import Phrase from './model';
-import { model as File } from '../file';
+import { model as File, constants as FileConstants } from '../file';
 import TradulabError from '../../errors';
 interface ICreatePhraseArgs {
   fileId: string;
@@ -14,7 +13,7 @@ async function createPhrase(_, args: ICreatePhraseArgs) {
 
   const file = await File.findById(fileId);
 
-  if (!file) throw new TradulabError(ERROR_CODES.FILE_NOT_EXIST);
+  if (!file) throw new TradulabError(FileConstants.ERROR_CODES.FILE_NOT_FOUND);
 
   const phrase = new Phrase({
     file: fileId,
