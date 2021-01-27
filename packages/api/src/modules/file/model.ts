@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import { EXTENSION_LIST } from './constants';
+import { EXTENSION_LIST, PROCESS_STATUSES } from './constants';
 import { IProject } from '../project/model';
 
 const { Types } = mongoose.Schema;
@@ -31,6 +31,12 @@ const schema = new mongoose.Schema(
       ref: 'project',
       required: true,
     },
+    processedStatus: {
+      type: String,
+      enum: PROCESS_STATUSES,
+      required: true,
+    },
+    processedAt: Date,
   },
   {
     minimize: false,
@@ -44,6 +50,8 @@ export interface IFile extends mongoose.Document {
   filePath: string;
   sourceLanguage: string;
   project: mongoose.Types.ObjectId | IProject;
+  processedStatus: 'pending' | 'done' | 'failed';
+  processedAt: Date;
   createdAt: Date;
   updateAt: Date;
 }
