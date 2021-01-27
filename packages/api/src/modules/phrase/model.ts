@@ -1,9 +1,16 @@
 import * as mongoose from 'mongoose';
 
+import { IFile } from '../file/model';
+
 const { Types } = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
+    key: {
+      type: String,
+      index: true,
+      required: true,
+    },
     file: {
       type: Types.ObjectId,
       ref: 'file',
@@ -21,7 +28,7 @@ const schema = new mongoose.Schema(
 );
 
 export interface IPhrase extends mongoose.Document {
-  file: mongoose.Types.ObjectId;
+  file: IFile | mongoose.Types.ObjectId;
   text: String;
 }
 
