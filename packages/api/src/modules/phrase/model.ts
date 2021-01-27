@@ -28,8 +28,9 @@ const schema = new mongoose.Schema(
 );
 
 export interface IPhrase extends mongoose.Document {
+  key: string;
   file: IFile | mongoose.Types.ObjectId;
-  text: String;
+  text: string;
 }
 
 const model = mongoose.model<IPhrase>('phrase', schema);
