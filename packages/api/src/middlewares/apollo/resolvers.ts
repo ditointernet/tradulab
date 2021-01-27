@@ -1,6 +1,6 @@
 import { GraphQLUpload } from 'apollo-server-express';
 import { GraphQLDateTime } from 'graphql-iso-date';
-import { auth, file, project, role, user, phrase } from '../../modules';
+import { auth, file, project, role, user } from '../../modules';
 
 const resolvers = {
   FileUpload: GraphQLUpload,
@@ -17,7 +17,6 @@ const resolvers = {
     ...file.resolvers.mutations,
     ...project.resolvers.mutations,
     ...role.resolvers.mutations,
-    ...phrase.resolvers.mutations,
   },
 };
 
