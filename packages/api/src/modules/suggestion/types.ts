@@ -2,8 +2,8 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   enum Lang {
-    PT_BR
-    EN_US
+    pt_br
+    en_us
   }
 
   type Rating {
