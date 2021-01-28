@@ -9,6 +9,7 @@ export default gql`
   enum Vote {
     positive
     negative
+    clear
   }
 
   type Rating {
@@ -29,10 +30,6 @@ export default gql`
   }
 
   extend type Mutation {
-    rateSuggestion(
-      projectId: ID!
-      suggestionId: ID!
-      vote: Vote!
-    ): Rating
+    rateSuggestion(projectId: ID!, suggestionId: ID!, vote: Vote!): Rating
   }
 `;
