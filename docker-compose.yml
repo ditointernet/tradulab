@@ -2,8 +2,10 @@ version: '2'
 services:
   mongo:
     image: mongo
+    hostname: mongodb
     ports:
       - '27017:27017'
+    command: ['--replSet', 'rs0', '--bind_ip_all']
   api:
     build: packages/api
     command: npm start

@@ -1,10 +1,11 @@
 import * as mongoose from 'mongoose';
 import { env } from '../helpers';
 
-const DEFAULT_MONGO_OPTIONS = {
+const DEFAULT_MONGO_OPTIONS: mongoose.ConnectionOptions = {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  replicaSet: 'rs0',
 };
 
 mongoose
