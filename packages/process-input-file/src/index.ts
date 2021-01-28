@@ -14,22 +14,25 @@ function start() {
   console.info('🚀: microservice started');
 
   console.time('processFile');
+  const fileId = '6012ac2013f28e2ccc96a1f6';
 
   const pipeline = chain([
     fs.createReadStream('./dashboard.pt_BR.json'),
     parser(),
     streamObject(),
     batch({ batchSize: 500 }),
+    async function (pairArr: Pair[]) {
+      // console.log(pairArr);
+      await bulkCreatePhrases(fileId, pairArr);
+      return [pairArr];
+    },
   ]);
 
-  const fileId = '6012ac2013f28e2ccc96a1f6';
-
   pipeline
-    .on('data', async (pairArr: Pair[]) => {
-      await bulkCreatePhrases(fileId, pairArr);
-    })
+    .on('data', () => null)
     .on('error', (...args) => {
       console.timeEnd('processFile');
+      console.log;
       console.log('error', ...args);
     })
     .on('end', (...args) => {
@@ -78,7 +81,7 @@ async function bulkCreatePhrases(fileId: string, phrases: Pair[]) {
       )
     );
 
-    await session.commitTransaction();
+    console.log(await session.commitTransaction());
   } catch (err) {
     console.error(err);
     await session.abortTransaction();
