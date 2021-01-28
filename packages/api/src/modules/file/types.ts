@@ -3,18 +3,26 @@ import { gql } from 'apollo-server-express';
 export default gql`
   scalar FileUpload
 
-  enum Extentions {
+  enum Extensions {
     csv
     json
     txt
   }
 
+  enum ProcessStatuses {
+    pending
+    done
+    failed
+  }
+
   type File {
     id: ID!
-    extension: Extentions
+    extension: Extensions!
     filename: String!
     project: Project!
     sourceLanguage: String!
+    processedStatus: ProcessStatuses!
+    processedAt: Date
     createdAt: Date!
     updatedAt: Date!
   }

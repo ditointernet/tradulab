@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { ApolloError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 
@@ -16,7 +17,7 @@ interface ICreateFileArgs {
 async function createFile(_, args: ICreateFileArgs, context) {
   const { sourceLanguage, projectId } = args;
 
-  const { filename } = await args.file;
+  const { filename, createReadStream } = await args.file;
 
   if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
     throw new TradulabError(ERROR_CODES.FILE_SIZE_EXCEED);
@@ -36,12 +37,37 @@ async function createFile(_, args: ICreateFileArgs, context) {
     filename,
     project,
     sourceLanguage,
+    processedStatus: 'pending',
+    processedAt: null,
   });
+
+  file.filePath = [
+    '/var/lib/files',
+    projectId,
+    file._id,
+    `${new Date().toISOString()}.${file.extension}`,
+  ].join('/');
+
+  // create the path if it doesnt exist
+  fs.mkdirSync(file.filePath.split('/').slice(0, -1).join('/'), {
+    recursive: true,
+  });
+
+  await new Promise((resolve) =>
+    createReadStream()
+      .pipe(fs.createWriteStream(file.filePath))
+      .on('close', resolve)
+      .on('error', (err) => {
+        console.error(err);
+        // tratar um erro do apollo
+      })
+  );
 
   try {
     await file.save();
   } catch (err) {
     console.error(err);
+    fs.rmSync(file.filePath);
 
     throw new ApolloError(err.message);
   }
