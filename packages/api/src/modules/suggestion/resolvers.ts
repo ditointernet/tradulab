@@ -7,7 +7,7 @@ import { ERROR_CODES } from './constants';
 interface IRateSuggestionArgs {
   projectId: Types.ObjectId;
   suggestionId: Types.ObjectId;
-  vote: 'positive' | 'negative';
+  vote: 'positive' | 'negative' | 'clear';
 }
 
 async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
@@ -20,21 +20,39 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
   }
 
   const {
-    positiveVotes: curPositiveArr,
-    negativeVotes: curNegativeArr,
+    positiveVotes: currentPositiveVotes,
+    negativeVotes: currentNegativeVotes,
   } = suggestion.rating;
 
-  suggestion.rating.positiveVotes =
-    (vote === 'positive' && curPositiveArr.includes(user)) ||
-    vote === 'negative'
-      ? curPositiveArr.filter((id) => id !== user)
-      : curPositiveArr.concat(user);
-
-  suggestion.rating.negativeVotes =
-    (vote === 'negative' && curNegativeArr.includes(user)) ||
-    vote === 'positive'
-      ? curNegativeArr.filter((id) => id !== user)
-      : curNegativeArr.concat(user);
+  switch (vote) {
+    case 'clear': {
+      suggestion.rating.positiveVotes = currentPositiveVotes.filter(
+        (id) => id !== user
+      );
+      suggestion.rating.negativeVotes = currentNegativeVotes.filter(
+        (id) => id !== user
+      );
+      break;
+    }
+    case 'positive':
+      if (currentNegativeVotes.includes(user)) {
+        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING)
+      }
+      if (!currentPositiveVotes.includes(user)) {
+        suggestion.rating.positiveVotes = currentPositiveVotes.concat(user);
+      }
+      break;
+    case 'negative':
+      if (currentPositiveVotes.includes(user)) {
+        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING)
+      }
+      if (!currentNegativeVotes.includes(user)) {
+        suggestion.rating.negativeVotes = currentNegativeVotes.concat(user);
+      }
+      break;
+    default:
+      break;
+  }
 
   try {
     await suggestion.save();
