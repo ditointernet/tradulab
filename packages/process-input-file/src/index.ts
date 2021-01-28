@@ -1,29 +1,41 @@
 import * as fs from 'fs';
-import * as jsonstream from 'jsonstream';
+import { chain } from 'stream-chain';
+import { parser } from 'stream-json';
+import { streamObject } from 'stream-json/streamers/StreamObject';
+import { batch } from 'stream-json/utils/Batch';
 
 import { mongo } from './config';
 
 import { File, Phrase } from './models';
-import { IPhrase } from './models/phrase';
+
+type Pair = { key: string; value: string };
 
 function start() {
   console.info('🚀: microservice started');
 
-  const parser = jsonstream.parse([true, { emitKey: true }], function (row) {
-    console.log('map:', row);
-    return row;
-  });
+  console.time('processFile');
 
-  parser.on('data', (...args) => console.log('log: ', ...args));
-  parser.on('header', (...args) => console.log('header: ', ...args));
-  parser.on('footer', (...args) => console.log('footer: ', ...args));
-  parser.on('end', (...args) => console.log('end: ', ...args));
-  parser.on('exit', (...args) => console.log('exit: ', ...args));
-  parser.on('error', (...args) => console.log('error: ', ...args));
+  const pipeline = chain([
+    fs.createReadStream('./dashboard.pt_BR.json'),
+    parser(),
+    streamObject(),
+    batch({ batchSize: 500 }),
+  ]);
 
-  fs.createReadStream('./dashboard.json')
-    .pipe(parser)
-    .on('error', (...args) => console.log('error: ', ...args));
+  const fileId = '6012ac2013f28e2ccc96a1f6';
+
+  pipeline
+    .on('data', async (pairArr: Pair[]) => {
+      await bulkCreatePhrases(fileId, pairArr);
+    })
+    .on('error', (...args) => {
+      console.timeEnd('processFile');
+      console.log('error', ...args);
+    })
+    .on('end', (...args) => {
+      console.timeEnd('processFile');
+      console.log('end: ', ...args);
+    });
 
   // mongoose:   fazer um loop de busca no banco por files não processados
   // mongoose:   pegar o caminho do file no sistema
@@ -51,7 +63,7 @@ function updateFailedFile(fileId: string) {
   );
 }
 
-async function bulkCreatePhrases(fileId: string, phrases: IPhrase[]) {
+async function bulkCreatePhrases(fileId: string, phrases: Pair[]) {
   const session = await mongo.startSession();
   session.startTransaction();
 
@@ -60,7 +72,7 @@ async function bulkCreatePhrases(fileId: string, phrases: IPhrase[]) {
       phrases.map((phrase) =>
         Phrase.updateOne(
           { key: phrase.key },
-          { $set: phrase },
+          { $set: { key: phrase.key, text: phrase.value, file: fileId } },
           { upsert: true, session }
         )
       )
