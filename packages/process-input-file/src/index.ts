@@ -10,42 +10,56 @@ import { File, Phrase } from './models';
 
 type Pair = { key: string; value: string };
 
-function start() {
+async function start() {
   console.info('🚀: microservice started');
 
-  console.time('processFile');
-  const fileId = '6012ac2013f28e2ccc96a1f6';
+  const unprocessedFiles = await getUnprocessedFiles();
 
-  const pipeline = chain([
-    fs.createReadStream('./dashboard.pt_BR.json'),
-    parser(),
-    streamObject(),
-    batch({ batchSize: 500 }),
-    async function (pairArr: Pair[]) {
-      // console.log(pairArr);
-      await bulkCreatePhrases(fileId, pairArr);
-      return [pairArr];
-    },
-  ]);
+  // mongoose: fazer um loop de busca no banco por files não processados
+  for (const file of unprocessedFiles) {
+    console.time('processFile');
 
-  pipeline
-    .on('data', () => null)
-    .on('error', (...args) => {
+    try {
+      // alternar entre métodos de processamento baseado na extensão
+      switch (file.extension) {
+        case 'json': {
+          // mongoose: pegar o caminho do file no sistema
+          // stream-json: ler o file gradualmente
+          const pipeline = chain([
+            fs.createReadStream(file.filePath),
+            parser(),
+            streamObject(),
+            batch({ batchSize: 200 }),
+            async function (pairArr: Pair[]) {
+              // mongoose: criar phrases a partir dos conteudos do arquivo
+              await bulkCreatePhrases(file.id, pairArr);
+              return null;
+            },
+          ]);
+
+          await new Promise((resolve) =>
+            pipeline
+              .on('data', () => null)
+              .on('end', resolve)
+              .on('error', (err) => {
+                throw err;
+              })
+          );
+          break;
+        }
+        default:
+          break;
+      }
+
+      // mongoose: atualizar o documento do file indicando que foi processado
+      await updateProcessedFile(file.id);
+    } catch (err) {
+      console.error(err);
+      await updateFailedFile(file.id);
+    } finally {
       console.timeEnd('processFile');
-      console.log;
-      console.log('error', ...args);
-    })
-    .on('end', (...args) => {
-      console.timeEnd('processFile');
-      console.log('end: ', ...args);
-    });
-
-  // mongoose:   fazer um loop de busca no banco por files não processados
-  // mongoose:   pegar o caminho do file no sistema
-  // alternar entre métodos de processamento baseado na extensão
-  // jsonstream: ler o file gradualmente
-  // mongoose:   criar phrases a partir dos conteudos do arquivo
-  // mongoose:   atualizar o documento do file indicando que foi processado
+    }
+  }
 }
 
 function getUnprocessedFiles() {
@@ -54,14 +68,14 @@ function getUnprocessedFiles() {
 
 function updateProcessedFile(fileId: string) {
   return File.updateOne(
-    { id: fileId },
+    { _id: fileId },
     { $set: { processedStatus: 'done', processedAt: new Date() } }
   );
 }
 
 function updateFailedFile(fileId: string) {
   return File.updateOne(
-    { id: fileId },
+    { _id: fileId },
     { $set: { processedStatus: 'failed', processedAt: null } }
   );
 }
@@ -81,7 +95,7 @@ async function bulkCreatePhrases(fileId: string, phrases: Pair[]) {
       )
     );
 
-    console.log(await session.commitTransaction());
+    await session.commitTransaction();
   } catch (err) {
     console.error(err);
     await session.abortTransaction();
