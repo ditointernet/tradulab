@@ -39,5 +39,10 @@ export default gql`
       language: String!
       projectId: ID!
     ): Boolean
+    approveSuggestion(
+      projectId: ID!
+      suggestionId: ID!
+      approve: Boolean!
+    ): Boolean
   }
 `;

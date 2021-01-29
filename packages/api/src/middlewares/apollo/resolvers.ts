@@ -19,6 +19,7 @@ const resolvers = {
     ...project.resolvers.queries,
     ...role.resolvers.queries,
     ...user.resolvers.queries,
+    ...suggestion.resolvers.queries,
   },
   Mutation: {
     ...auth.resolvers.mutations,
