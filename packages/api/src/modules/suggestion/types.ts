@@ -31,17 +31,13 @@ export default gql`
   }
 
   extend type Mutation {
-<<<<<<< HEAD
     rateSuggestion(projectId: ID!, suggestionId: ID!, vote: Vote!): Rating
-
     deleteSuggestion(projectId: ID!, suggestionID: ID!): Boolean
-  }
-=======
     createSuggestion(
-      text: String!;
-      phraseId: ID!;
-      sourceLanguage: String!;
+      text: String!
+      phraseId: ID!
+      sourceLanguage: String!
       projectId: ID!
     ): Boolean
->>>>>>> create types, constants
+  }
 `;

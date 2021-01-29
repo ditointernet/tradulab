@@ -111,9 +111,9 @@ async function createSuggestion(_parent, args: ICreateSuggestionArgs, context) {
   const { text, phraseId, sourceLanguage } = args;
   const { user } = context;
 
-  // const phrase = await Phrases.findById(phraseId);
+  const phrase = await Phrases.findById(phraseId);
 
-  // if (!phrase) throw new TradulabError(ERROR_CODES.PHRASE_NOT_FOUND);
+  if (!phrase) throw new TradulabError(ERROR_CODES.PHRASE_NOT_FOUND);
 
   const suggestions = new Suggestion({
     text,
