@@ -33,6 +33,9 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
 const isManager = isOneOfTheseRoles([ROLES.MANAGER]);
 const isOwner = isOneOfTheseRoles([ROLES.OWNER]);
 const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
+const isProofreader = isOneOfTheseRoles([ROLES.PROOFREADER]);
+const isContributor = isOneOfTheseRoles([ROLES.CONTRIBUTOR]);
+// const isViewer = isOneOfTheseRoles([ROLES.VIEWER]);
 
 const permissions = shield(
   {
@@ -55,6 +58,8 @@ const permissions = shield(
       updateFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       deleteFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       createPhrase: isAuthenticated,
+      createSuggestion: and(isAuthenticated, 
+        or(isManager, isOwner, isDeveloper, isProofreader, isContributor)),
     },
   },
   {
