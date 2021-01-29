@@ -62,10 +62,12 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
   }
 
   const { positiveVotes, negativeVotes } = suggestion.rating;
+  const score = positiveVotes.length - negativeVotes.length;
 
   return {
     positiveVotes,
     negativeVotes,
+    score,
   };
 }
 

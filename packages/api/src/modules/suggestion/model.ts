@@ -7,6 +7,7 @@ const { Types } = mongoose.Schema;
 const ratingSchema = new mongoose.Schema({
   positiveVotes: [Types.ObjectId],
   negativeVotes: [Types.ObjectId],
+  score: Types.Number,
 });
 
 const suggestionSchema = new mongoose.Schema(
@@ -52,6 +53,7 @@ const suggestionSchema = new mongoose.Schema(
 type Rating = {
   positiveVotes: mongoose.Types.ObjectId[];
   negativeVotes: mongoose.Types.ObjectId[];
+  score: number;
 };
 
 export interface ISuggestion extends mongoose.Document {
