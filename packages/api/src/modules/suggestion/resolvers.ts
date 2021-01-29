@@ -99,5 +99,17 @@ async function deleteSuggestion(_parent, args: IDeleteSuggestionArgs, context) {
   return true;
 }
 
+interface ICreateSuggestionArgs {
+  text: string;
+  phraseId: string;
+  language: string;
+}
+
+async function createSuggestion(
+  _parent,
+  args: ICreateSuggestionArgs,
+  context
+) {}
+
 export const mutations = { rateSuggestion, deleteSuggestion };
 export const queries = {};
