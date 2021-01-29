@@ -31,5 +31,7 @@ export default gql`
 
   extend type Mutation {
     rateSuggestion(projectId: ID!, suggestionId: ID!, vote: Vote!): Rating
+
+    deleteSuggestion(projectId: ID!, suggestionID: ID!): Boolean
   }
 `;
