@@ -1,8 +1,4 @@
-import {
-  ApolloError,
-  ApolloServer,
-  ApolloServerExpressConfig,
-} from 'apollo-server-express';
+import { ApolloServer, ApolloServerExpressConfig } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { applyMiddleware } from 'graphql-middleware';
 import cors from 'cors';

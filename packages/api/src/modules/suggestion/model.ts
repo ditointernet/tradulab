@@ -62,6 +62,7 @@ export interface ISuggestion extends mongoose.Document {
   lang: string;
   text: string;
   rating: Rating;
+  approved?: boolean;
   createdAt: Date;
   updateAt: Date;
 }

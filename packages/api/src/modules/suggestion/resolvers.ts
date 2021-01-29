@@ -102,6 +102,41 @@ async function deleteSuggestion(_parent, args: IDeleteSuggestionArgs, context) {
   return true;
 }
 
+interface IApproveSuggestionArgs {
+  projectId: Types.ObjectId;
+  suggestionId: Types.ObjectId;
+  approve: boolean;
+}
+
+async function approveSuggestion(_parent, args: IApproveSuggestionArgs) {
+  const { suggestionId, approve } = args;
+
+  const currentSuggestion = await Suggestion.findOne({ id: suggestionId });
+
+  if (!currentSuggestion) {
+    throw new TradulabError(ERROR_CODES.SUGGESTION_NOT_FOUND);
+  }
+
+  if (approve) {
+    const someAlreadyApproved = await Suggestion.findOne({ approved: true });
+    if (currentSuggestion._id !== someAlreadyApproved._id) {
+      throw new TradulabError(ERROR_CODES.CONTRADICTORY_APPROVAL);
+    }
+    currentSuggestion.approved = true;
+  } else {
+    delete currentSuggestion.approved;
+  }
+
+  try {
+    await currentSuggestion.save();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+  return true;
+}
+
 interface ICreateSuggestionArgs {
   text: string;
   phraseId: string;
@@ -137,5 +172,10 @@ async function createSuggestion(_parent, args: ICreateSuggestionArgs, context) {
   return true;
 }
 
-export const mutations = { createSuggestion, rateSuggestion, deleteSuggestion };
+export const mutations = {
+  createSuggestion,
+  rateSuggestion,
+  deleteSuggestion,
+  approveSuggestion,
+};
 export const queries = {};

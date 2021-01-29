@@ -3,7 +3,7 @@ import { and, not, or, rule, shield } from 'graphql-shield';
 
 import TradulabError from '../../errors';
 import { role } from '../../modules';
-import { ROLES, ERROR_CODES } from '../../modules/role/constants';
+import { ROLES, ROLES_LIST, ERROR_CODES } from '../../modules/role/constants';
 
 const isAuthenticated = rule()(async (_parent, _args, { user }) => {
   if (!user) return new AuthenticationError('You must be logged in.');
@@ -36,6 +36,12 @@ const isDeveloper = isOneOfTheseRoles([ROLES.DEVELOPER]);
 const isProofreader = isOneOfTheseRoles([ROLES.PROOFREADER]);
 const isContributor = isOneOfTheseRoles([ROLES.CONTRIBUTOR]);
 // const isViewer = isOneOfTheseRoles([ROLES.VIEWER]);
+const isProofreaderOrHigher = isOneOfTheseRoles(
+  ROLES_LIST.slice(0, ROLES_LIST.indexOf(ROLES.PROOFREADER) + 1)
+);
+const isContributorOrHigher = isOneOfTheseRoles(
+  ROLES_LIST.slice(0, ROLES_LIST.indexOf(ROLES.CONTRIBUTOR) + 1)
+);
 
 const permissions = shield(
   {
@@ -58,8 +64,12 @@ const permissions = shield(
       updateFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       deleteFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       createPhrase: isAuthenticated,
-      createSuggestion: and(isAuthenticated, 
-        or(isManager, isOwner, isDeveloper, isProofreader, isContributor)),
+      createSuggestion: and(
+        isAuthenticated,
+        or(isManager, isOwner, isDeveloper, isProofreader, isContributor)
+      ),
+      approveSuggestion: and(isAuthenticated, isProofreaderOrHigher),
+      rateSuggestion: and(isAuthenticated, isContributorOrHigher),
     },
   },
   {
