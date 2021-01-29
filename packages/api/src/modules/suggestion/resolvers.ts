@@ -36,7 +36,7 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
     }
     case 'positive':
       if (currentNegativeVotes.includes(user)) {
-        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING)
+        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING);
       }
       if (!currentPositiveVotes.includes(user)) {
         suggestion.rating.positiveVotes = currentPositiveVotes.concat(user);
@@ -44,7 +44,7 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
       break;
     case 'negative':
       if (currentPositiveVotes.includes(user)) {
-        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING)
+        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING);
       }
       if (!currentNegativeVotes.includes(user)) {
         suggestion.rating.negativeVotes = currentNegativeVotes.concat(user);
@@ -62,10 +62,12 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
   }
 
   const { positiveVotes, negativeVotes } = suggestion.rating;
+  const score = positiveVotes.length - negativeVotes.length;
 
   return {
     positiveVotes,
     negativeVotes,
+    score,
   };
 }
 

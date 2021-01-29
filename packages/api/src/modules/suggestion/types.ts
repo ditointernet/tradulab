@@ -15,6 +15,7 @@ export default gql`
   type Rating {
     positiveVotes: [ID!]!
     negativeVotes: [ID!]!
+    score: Int!
   }
 
   type Suggestion {
