@@ -36,7 +36,7 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
     }
     case 'positive':
       if (currentNegativeVotes.includes(user)) {
-        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING)
+        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING);
       }
       if (!currentPositiveVotes.includes(user)) {
         suggestion.rating.positiveVotes = currentPositiveVotes.concat(user);
@@ -44,7 +44,7 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
       break;
     case 'negative':
       if (currentPositiveVotes.includes(user)) {
-        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING)
+        throw new TradulabError(ERROR_CODES.CONTRADICTORY_RATING);
       }
       if (!currentNegativeVotes.includes(user)) {
         suggestion.rating.negativeVotes = currentNegativeVotes.concat(user);
@@ -69,5 +69,33 @@ async function rateSuggestion(_parent, args: IRateSuggestionArgs, { user }) {
   };
 }
 
-export const mutations = { rateSuggestion };
+interface IDeleteSuggestionArgs {
+  projectId: Types.ObjectId;
+  suggestionId: Types.ObjectId;
+}
+
+async function deleteSuggestion(_parent, args: IDeleteSuggestionArgs, context) {
+  const { suggestionId } = args;
+
+  const suggestion = await Suggestion.findOne({ id: suggestionId });
+
+  if (!suggestion) {
+    throw new TradulabError(ERROR_CODES.SUGGESTION_NOT_FOUND);
+  }
+
+  if (suggestion.user !== context.user) {
+    throw new TradulabError(ERROR_CODES.FORBIDDEN_FOR_OTHERS);
+  }
+
+  try {
+    await suggestion.remove();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+  return true;
+}
+
+export const mutations = { rateSuggestion, deleteSuggestion };
 export const queries = {};
