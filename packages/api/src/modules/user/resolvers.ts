@@ -16,3 +16,4 @@ async function me(_parent, _args, context) {
 }
 
 export const queries = { me };
+export const mutations = {};

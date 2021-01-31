@@ -3,5 +3,5 @@ export const ERROR_CODES = {
 };
 
 export const ERROR_MESSAGES = {
-  PHRASE_NOT_FOUND: 'Phrase does not exist.',
+  PHRASE_NOT_FOUND: 'The provided phrase does not exist.',
 };

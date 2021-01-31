@@ -46,13 +46,14 @@ const isContributorOrHigher = isOneOfTheseRoles(
 const permissions = shield(
   {
     Query: {
-      listFiles: isAuthenticated,
-      listProjects: isAuthenticated,
       login: not(
         isAuthenticated,
         new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')
       ),
       me: isAuthenticated,
+      listFiles: isAuthenticated,
+      listProjects: isAuthenticated,
+      listPhrases: isAuthenticated,
     },
     Mutation: {
       createProject: isAuthenticated,
