@@ -32,15 +32,8 @@ export default gql`
       projectId: ID!
       sourceLanguage: String!
     ): File!
-    updateFile(
-      newFilename: String!
-      fileId: ID!
-      projectId: ID!
-    ): File!
-    deleteFile(
-      fileId: ID!
-      projectId: ID!
-    ): Boolean
+    updateFile(newFilename: String!, fileId: ID!, projectId: ID!): File!
+    deleteFile(fileId: ID!, projectId: ID!): Boolean
   }
 
   extend type Query {

@@ -4,8 +4,14 @@ export default gql`
   type Phrase {
     id: ID!
     file: ID!
+    key: String!
     text: String!
+    file: File!
     createdAt: Date!
     updatedAt: Date!
+  }
+
+  extend type Query {
+    listPhrases(projectId: ID!, fileId: ID!): [Phrase!]
   }
 `;

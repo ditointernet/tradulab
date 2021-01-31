@@ -6,7 +6,7 @@ import {
   project,
   role,
   user,
-  // phrase,
+  phrase,
   suggestion,
 } from '../../modules';
 
@@ -15,19 +15,21 @@ const resolvers = {
   Date: GraphQLDateTime,
   Query: {
     ...auth.resolvers.queries,
-    ...file.resolvers.queries,
-    ...project.resolvers.queries,
-    ...role.resolvers.queries,
     ...user.resolvers.queries,
     ...suggestion.resolvers.queries,
+    ...role.resolvers.queries,
+    ...project.resolvers.queries,
+    ...file.resolvers.queries,
+    ...phrase.resolvers.queries,
   },
   Mutation: {
     ...auth.resolvers.mutations,
-    ...file.resolvers.mutations,
-    ...project.resolvers.mutations,
+    ...user.resolvers.mutations,
     ...role.resolvers.mutations,
-    // ...phrase.resolvers.mutations,
     ...suggestion.resolvers.mutations,
+    ...project.resolvers.mutations,
+    ...file.resolvers.mutations,
+    ...phrase.resolvers.mutations,
   },
 };
 
