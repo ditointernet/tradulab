@@ -36,7 +36,7 @@ export default gql`
     createSuggestion(
       text: String!
       phraseId: ID!
-      sourceLanguage: String!
+      language: String!
       projectId: ID!
     ): Boolean
   }

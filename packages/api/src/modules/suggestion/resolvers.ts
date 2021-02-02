@@ -4,6 +4,7 @@ import { Types } from 'mongoose';
 import Suggestion from './model';
 import TradulabError from '../../errors';
 import { ERROR_CODES } from './constants';
+import { ERROR_CODES as ERROR_PHRASES } from '../phrase/constants';
 import { model as Phrases } from '../phrase';
 
 interface IRateSuggestionArgs {
@@ -104,11 +105,11 @@ async function deleteSuggestion(_parent, args: IDeleteSuggestionArgs, context) {
 interface ICreateSuggestionArgs {
   text: string;
   phraseId: string;
-  sourceLanguage: string;
+  language: string;
 }
 
 async function createSuggestion(_parent, args: ICreateSuggestionArgs, context) {
-  const { text, phraseId, sourceLanguage } = args;
+  const { text, phraseId, language } = args;
   const { user } = context;
 
   const phrase = await Phrases.findById(phraseId);
@@ -119,7 +120,7 @@ async function createSuggestion(_parent, args: ICreateSuggestionArgs, context) {
     text,
     user,
     phrase: phraseId,
-    lang: sourceLanguage,
+    lang: language,
     rating: {
       positiveVotes: [],
       negativeVotes: [],
