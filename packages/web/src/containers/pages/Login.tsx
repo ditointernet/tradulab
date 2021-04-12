@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RouteProps, useHistory } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router';
 import { gql, useLazyQuery } from '@apollo/client';
 import Joi from '@hapi/joi';
 
@@ -13,23 +13,13 @@ const LOGIN = gql`
   }
 `;
 
-interface ILogin extends RouteProps {
-  location: {
-    state: { redirect?: string };
-    pathname: string;
-    search: string;
-    hash: string;
-  };
-}
-
-const Login: React.FC<ILogin> = ({ location }) => {
+const Login: React.FC = () => {
   const [email, setEmail] = useState({ value: '', error: '' });
-
   const [password, setPassword] = useState({ value: '', error: '' });
 
   const [handleLogin, { loading, data, error }] = useLazyQuery(LOGIN);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleEmail = (value: string) => {
     const emailSchema = Joi.string()
@@ -63,39 +53,30 @@ const Login: React.FC<ILogin> = ({ location }) => {
     }
   };
 
-  const handleRegister = () => {
-    history.push('/register');
-  };
+  const handleRegister = () => navigate('/register', { replace: true });
 
   if (loading) return <Loading />;
 
-  if (error) {
-    history.push('/error');
-    return null;
-  }
-
   if (data && !error) {
-    localStorage.setItem('token', data.login.token);
-    if (location.state.redirect) {
-      history.push(location.state.redirect);
-    } else {
-      history.push('/');
-    }
-    return null;
+    localStorage.setItem('token', data?.login?.token);
   }
 
   return (
-    <Dashboard>
-      <TradulabTitle />
-      <LoginForm
-        email={email}
-        password={password}
-        handleEmail={handleEmail}
-        handlePassword={handlePassword}
-        handleLogin={handleLogin}
-        handleRegister={handleRegister}
-      />
-    </Dashboard>
+    <>
+      {!!error && <Navigate to="../error" replace={true} />}
+      {!error && data?.login?.token && <Navigate to="../home" replace={true} />}
+      <Dashboard>
+        <TradulabTitle />
+        <LoginForm
+          email={email}
+          password={password}
+          handleEmail={handleEmail}
+          handlePassword={handlePassword}
+          handleLogin={handleLogin}
+          handleRegister={handleRegister}
+        />
+      </Dashboard>
+    </>
   );
 };
 

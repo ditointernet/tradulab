@@ -1,9 +1,8 @@
 import React from 'react';
-import { RouteProps } from 'react-router-dom';
 
 import { TradulabHeader, ProfileCard } from '../../components';
 
-const Home: React.FC<RouteProps> = () => {
+const Home: React.FC = () => {
   // Vindo do estado global
   const userInfos = [
     {

@@ -1,19 +1,7 @@
 import React from 'react';
-import { RouteProps } from 'react-router-dom';
 
 import { Error } from '../pages';
 
-interface IError extends RouteProps {
-  location: {
-    state: { message?: string };
-    pathname: string;
-    search: string;
-    hash: string;
-  };
-}
+const ErrorRoute: React.FC = (props) => <Error {...props} />;
 
-const ErrorRouter: React.FC<IError> = (props) => {
-  return <Error {...props} />;
-};
-
-export default ErrorRouter;
+export default ErrorRoute;

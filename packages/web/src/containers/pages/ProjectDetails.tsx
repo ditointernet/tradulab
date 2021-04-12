@@ -1,9 +1,8 @@
 import React from 'react';
-import { RouteProps } from 'react-router-dom';
 
 import TradulabHeader from '../../components/TradulabHeader';
 
-const ProjectDetails: React.FC<RouteProps> = () => {
+const ProjectDetails: React.FC = () => {
   return (
     <TradulabHeader>
       <p>Projects Details</p>

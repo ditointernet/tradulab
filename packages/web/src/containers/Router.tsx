@@ -1,17 +1,19 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Home, Login, Error, Developer, Projects } from './routes';
 
 const Router: React.FC = () => (
   <BrowserRouter>
-    <Switch>
-      <Route component={Login} exact path="/login" />
-      <Route component={Error} exact path="/error" />
-      <Route component={Developer} path="/dev" />
-      <Route component={Projects} path="/projects" />
-      <Route component={Home} exact path="/" />
-    </Switch>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/error" element={<Error />} />
+      <Route path="/dev" element={<Developer path="/login" />} />
+      <Route path="/projects" element={<Projects path="/login" />} />
+      <Route path="/home" element={<Home path="/login" />} />
+      <Navigate to="/login" replace={true} />
+    </Routes>
   </BrowserRouter>
 );
 

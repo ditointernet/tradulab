@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
 
 const IS_LOGGED_IN = gql`
@@ -16,14 +16,14 @@ interface IAuthMiddleware {
 }
 
 const AuthMiddleware: React.FC<IAuthMiddleware> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { error, loading } = useQuery(IS_LOGGED_IN);
   const TOKEN = localStorage.getItem('token');
 
   if (loading) return <p>Loading...</p>;
 
   if (error || !TOKEN) {
-    history.push('/login', { redirect: props.redirect });
+    navigate('/login');
     return null;
   }
 

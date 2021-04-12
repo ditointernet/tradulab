@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { AuthMiddleware, RoleMiddleware } from './middlewares';
 import { ProjectDetails, Projects } from '../pages';
@@ -11,12 +11,16 @@ interface IProjects {
 const ProjectsRouter: React.FC<IProjects> = ({ path }) => {
   return (
     <AuthMiddleware redirect={path}>
-      <Switch>
-        <Route exact path="/projects" component={Projects} />
+      <Routes>
+        <Route path="/projects">
+          <Projects />
+        </Route>
         <RoleMiddleware role="Miguel">
-          <Route exact path="/projects/details" component={ProjectDetails} />
+          <Route path="/projects/details">
+            <ProjectDetails />
+          </Route>
         </RoleMiddleware>
-      </Switch>
+      </Routes>
     </AuthMiddleware>
   );
 };

@@ -1,19 +1,7 @@
 import React from 'react';
-import { RouteProps } from 'react-router-dom';
 
 import { Login } from '../pages';
 
-interface ILogin extends RouteProps {
-  location: {
-    state: { redirect?: string };
-    pathname: string;
-    search: string;
-    hash: string;
-  };
-}
+const LoginRoute: React.FC = (props) => <Login {...props} />;
 
-const LoginRouter: React.FC<ILogin> = (props) => {
-  return <Login {...props} />;
-};
-
-export default LoginRouter;
+export default LoginRoute;
