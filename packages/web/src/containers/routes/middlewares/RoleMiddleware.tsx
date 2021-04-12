@@ -5,8 +5,7 @@ import { gql, useQuery } from '@apollo/client';
 const OTHER_MIDDLEWARE = gql`
   query roleMiddleware {
     me {
-      _id
-      nickname
+      id
       username
     }
   }

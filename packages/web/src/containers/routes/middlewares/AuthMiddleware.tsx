@@ -5,8 +5,7 @@ import { gql, useQuery } from '@apollo/client';
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
     me {
-      _id
-      nickname
+      id
       username
     }
   }

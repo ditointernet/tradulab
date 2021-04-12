@@ -7,12 +7,8 @@ import { LoginForm, Loading, Dashboard, TradulabTitle } from '../../components';
 
 const LOGIN = gql`
   query loginUser($email: String!, $password: String!) {
-    login(payload: { email: $email, password: $password }) {
+    login(email: $email, password: $password) {
       token
-      nickname
-      username
-      email
-      id
     }
   }
 `;
@@ -53,12 +49,10 @@ const Login: React.FC<ILogin> = ({ location }) => {
   };
 
   const handlePassword = (value: string) => {
-    const passwordSchema = Joi.string()
-      .pattern(/^.*(.*\d){6,}/)
-      .messages({
-        'string.empty': 'Password is not allowed to be empty',
-        'string.pattern.base': 'Password must contain at least 6 numbers',
-      });
+    const passwordSchema = Joi.string().messages({
+      'string.empty': 'Password is not allowed to be empty',
+      'string.pattern.base': 'Password must contain at least 6 numbers',
+    });
 
     const { error } = passwordSchema.validate(value);
 

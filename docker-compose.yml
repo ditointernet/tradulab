@@ -25,10 +25,13 @@ services:
   web:
     build: packages/web
     command: npm start
+    environment:
+      CI: 'true'
+    volumes:
+      - ./packages/web/src/:/usr/src/tradulab/web/src
     ports:
       - '3000:3000'
-    network_mode: host
-    depends_on:
+    links:
       - api
 volumes:
   tradulab:
