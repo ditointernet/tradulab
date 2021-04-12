@@ -3,7 +3,6 @@ import { gql } from 'apollo-server-express';
 export default gql`
   type Phrase {
     id: ID!
-    file: ID!
     key: String!
     text: String!
     file: File!

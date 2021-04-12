@@ -2,18 +2,21 @@ version: '3.4'
 services:
   mongo:
     image: mongo
-    hostname: mongodb
-    ports:
-      - '27017:27017'
     command: ['--replSet', 'rs0', '--bind_ip_all']
   api:
     build: packages/api
-    command: npm start
-    network_mode: host
+    command: npm run dev
+    environment:
+      MONGO_CONNECTION_URI: mongodb://mongo/tradulab
+      JWT_SECRET: morango
+      EXPRESS_PORT: 3001
     ports:
       - '3001:3001'
     volumes:
+      - ./packages/api/src/:/usr/src/tradulab/api/src
       - tradulab:/var/lib/files
+    links:
+      - mongo
   process-input-file:
     build: packages/process-input-file
     command: npm start

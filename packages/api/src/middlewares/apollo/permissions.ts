@@ -64,7 +64,6 @@ const permissions = shield(
       createFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       updateFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       deleteFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
-      createPhrase: isAuthenticated,
       createSuggestion: and(
         isAuthenticated,
         or(isManager, isOwner, isDeveloper, isProofreader, isContributor)
