@@ -4,9 +4,8 @@ export default gql`
   scalar FileUpload
 
   enum Extensions {
-    csv
+    # csv
     json
-    txt
   }
 
   enum ProcessStatuses {
