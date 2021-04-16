@@ -1,5 +1,5 @@
 import React from 'react';
-import { TradulabHeader } from '../../components';
+import { TradulabHeader } from '../components';
 
 const Developer: React.FC = () => {
   return (

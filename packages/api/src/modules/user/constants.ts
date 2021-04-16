@@ -21,5 +21,5 @@ export const ERROR_MESSAGES = {
 };
 
 export const REGEXES = {
-  USERNAME: /^[a-z0-9_]+/, // pode ser melhorado depois
+  USERNAME: /^[a-z0-9_\-\.]+$/, // pode ser melhorado depois
 };

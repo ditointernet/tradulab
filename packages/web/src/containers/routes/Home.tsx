@@ -1,18 +1,13 @@
 import React from 'react';
 
-import { Home } from '../pages';
-import { AuthMiddleware } from './middlewares';
+import { Home } from '../../pages';
 
 interface IHome {
   path: string;
 }
 
 const HomeRouter: React.FC<IHome> = ({ path }) => {
-  return (
-    <AuthMiddleware redirect={path}>
-      <Home />
-    </AuthMiddleware>
-  );
+  return <Home />;
 };
 
 export default HomeRouter;

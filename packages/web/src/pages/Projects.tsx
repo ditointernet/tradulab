@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
 
-import ProjectsTable from '../../components/ProjectsTable';
+import ProjectsTable from '../components/ProjectsTable';
 
 const rowsBackEnd = [
   { project: 'Jornadas', role: 'Desenvolvedor' },

@@ -1,8 +1,4 @@
-import {
-  ApolloClient,
-  ApolloLink,
-  InMemoryCache,
-} from '@apollo/client';
+import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
 const uploadLink = createUploadLink({
@@ -13,7 +9,7 @@ const uploadLink = createUploadLink({
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token');
 
-  if (!['loginUser', 'createUser'].includes(operation.operationName)) {
+  if (!['web_login', 'web_register'].includes(operation.operationName)) {
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : '',

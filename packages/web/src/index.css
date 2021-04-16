@@ -1,27 +1,17 @@
 body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fff;
+  font-size: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
 }
 
 #root {
-  align-items: stretch;
-  background-color: 'white';
-  box-sizing: border-box;
   display: flex;
-  flex-flow: column wrap;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 5vw;
-  height: 100vh;
-  padding: 0;
-}
-
-@media screen and (max-width: 800px) {
-  #root {
-    font-size: 6vw;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  #root {
-    font-size: 9vw;
-  }
+  flex-flow: column;
 }

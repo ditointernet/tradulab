@@ -1,2 +1,2 @@
-export { default as ApolloClient } from './ApolloClient';
-export { default as TradulabTheme } from './TradulabTheme';
+export { default as apollo } from './apollo';
+export { default as createTradulabTheme } from './theme';

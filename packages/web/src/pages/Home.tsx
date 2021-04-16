@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TradulabHeader, ProfileCard } from '../../components';
+import { TradulabHeader, ProfileCard } from '../components';
 
 const Home: React.FC = () => {
   // Vindo do estado global

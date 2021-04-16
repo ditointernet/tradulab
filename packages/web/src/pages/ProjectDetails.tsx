@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TradulabHeader from '../../components/TradulabHeader';
+import TradulabHeader from '../components/TradulabHeader';
 
 const ProjectDetails: React.FC = () => {
   return (
