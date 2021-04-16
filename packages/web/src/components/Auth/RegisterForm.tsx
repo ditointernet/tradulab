@@ -12,27 +12,18 @@ import {
   VisibilityOff,
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { FormikProps } from 'formik';
-import { ApolloError } from '@apollo/client';
 
-import AuthPageTemplate from './PageTemplate';
+import AuthPageTemplate, { AuthPageProps } from './PageTemplate';
 import FormikTextField from '../FormikTextField';
 import { RegisterVariables } from '../../pages/Register';
 
-type RegisterFormProps = FormikProps<RegisterVariables> & {
-  isLoading: boolean;
-  passwordVisibility: boolean;
-  togglePasswordVisibility: () => void;
-  registerError?: ApolloError;
-};
-
-const RegisterForm: React.FC<RegisterFormProps> = ({
+const RegisterForm: React.FC<AuthPageProps<RegisterVariables>> = ({
   handleSubmit,
   togglePasswordVisibility,
   passwordVisibility,
   isSubmitting,
   isLoading,
-  registerError,
+  authError,
 }) => {
   const passwordCommonProps: TextFieldProps = {
     type: passwordVisibility ? 'text' : 'password',
@@ -55,7 +46,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   };
 
   return (
-    <AuthPageTemplate title="Register" isLoading={isLoading}>
+    <AuthPageTemplate title="Register" {...{ isLoading, authError }}>
       <FormControl fullWidth component="form" onSubmit={handleSubmit}>
         <FormikTextField
           label="Email"
@@ -118,7 +109,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         >
           Login
         </Button>
-        {!!registerError && registerError.message}
       </FormControl>
     </AuthPageTemplate>
   );

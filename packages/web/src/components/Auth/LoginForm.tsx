@@ -11,29 +11,20 @@ import {
   VisibilityOff,
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { FormikProps } from 'formik';
-import { ApolloError } from '@apollo/client';
 
-import AuthPageTemplate from './PageTemplate';
+import AuthPageTemplate, { AuthPageProps } from './PageTemplate';
 import FormikTextField from '../FormikTextField';
 import { LoginVariables } from '../../pages/Login';
 
-type LoginFormProps = FormikProps<LoginVariables> & {
-  isLoading: boolean;
-  passwordVisibility: boolean;
-  togglePasswordVisibility: () => void;
-  loginError?: ApolloError;
-};
-
-const LoginForm: React.FC<LoginFormProps> = ({
+const LoginForm: React.FC<AuthPageProps<LoginVariables>> = ({
   handleSubmit,
   togglePasswordVisibility,
   passwordVisibility,
   isSubmitting,
   isLoading,
-  loginError,
+  authError,
 }) => (
-  <AuthPageTemplate title="Login" isLoading={isLoading}>
+  <AuthPageTemplate title="Login" {...{ isLoading, authError }}>
     <FormControl fullWidth component="form" onSubmit={handleSubmit}>
       <FormikTextField
         label="Email"
@@ -87,7 +78,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
       >
         Register
       </Button>
-      {!!loginError && loginError.message}
     </FormControl>
   </AuthPageTemplate>
 );

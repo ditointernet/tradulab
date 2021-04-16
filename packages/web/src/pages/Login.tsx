@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navigate } from 'react-router';
 import { gql, useLazyQuery } from '@apollo/client';
 import { Formik } from 'formik';
@@ -56,7 +56,7 @@ const Login: React.FC = () => {
               {...formikProps}
               {...{
                 isLoading: loading,
-                loginError: error,
+                authError: error,
                 passwordVisibility,
                 togglePasswordVisibility: () =>
                   setPasswordVisiblity((state) => !state),

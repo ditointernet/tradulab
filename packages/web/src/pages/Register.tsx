@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navigate } from 'react-router';
 import { gql, useMutation } from '@apollo/client';
 import { Formik } from 'formik';
@@ -105,7 +105,7 @@ const Register: React.FC = () => {
             {...formikProps}
             {...{
               isLoading: loading,
-              registerError: error,
+              authError: error,
               passwordVisibility,
               togglePasswordVisibility: () =>
                 setPasswordVisiblity((state) => !state),

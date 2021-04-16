@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -7,7 +8,10 @@ import {
   Container,
   LinearProgress,
   Fade,
+  Snackbar,
 } from '@material-ui/core';
+import { ApolloError } from '@apollo/client';
+import { FormikProps } from 'formik';
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -21,14 +25,33 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type AuthPageTemplateProps = { title: string; isLoading?: boolean };
+type AuthPageTemplateProps = {
+  title: string;
+  isLoading?: boolean;
+  authError?: ApolloError;
+};
+
+export type AuthPageProps<T> = FormikProps<T> & {
+  isLoading: boolean;
+  passwordVisibility: boolean;
+  togglePasswordVisibility: () => void;
+  authError?: ApolloError;
+};
 
 const AuthPageTemplate: React.FC<AuthPageTemplateProps> = ({
   title,
   isLoading = false,
+  authError,
   children,
 }) => {
   const styles = useStyles();
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
+
+  useEffect(() => {
+    setErrorMessage(authError?.message);
+  }, [authError?.message]);
+
+  const onSnackbarClose = () => setErrorMessage(undefined);
 
   return (
     <>
@@ -45,6 +68,13 @@ const AuthPageTemplate: React.FC<AuthPageTemplateProps> = ({
       ) : (
         <div className={styles.loadingPlaceholder} />
       )}
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={!!errorMessage}
+        message={errorMessage}
+        autoHideDuration={6000}
+        onClose={onSnackbarClose}
+      />
       <Container maxWidth="sm">
         <Card variant="outlined" className={styles.card}>
           <CardHeader
