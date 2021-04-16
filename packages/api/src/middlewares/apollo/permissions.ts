@@ -51,9 +51,11 @@ const permissions = shield(
         new ApolloError('Someone is already logged in.', 'ALREADY_LOGGED_IN')
       ),
       me: isAuthenticated,
+      myRole: isAuthenticated,
       listFiles: isAuthenticated,
       listProjects: isAuthenticated,
       listPhrases: isAuthenticated,
+      projectUsers: isAuthenticated,
     },
     Mutation: {
       createProject: isAuthenticated,

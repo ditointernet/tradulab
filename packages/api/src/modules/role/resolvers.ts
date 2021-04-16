@@ -13,6 +13,10 @@ import { model as Role } from '../role';
 import { model as User } from '../user';
 import TradulabError from '../../errors';
 
+function myRole(_, args, context) {
+  return Role.findOne({ project: args.projectId, user: context.user });
+}
+
 async function projectUsers(_, args) {
   const roles = await Role.find({ project: args.projectId })
     .populate('user')
@@ -26,7 +30,8 @@ async function inviteUserToProject(
   { userId, projectId, role },
   { user: currentUserId }
 ) {
-  if (userId === currentUserId) throw new TradulabError(roleCodes.INVITED_YOURSELF);
+  if (userId === currentUserId)
+    throw new TradulabError(roleCodes.INVITED_YOURSELF);
 
   const project = await Project.findById(projectId);
 
@@ -79,7 +84,8 @@ async function updateUserProjectRole(
   { userId, projectId, role },
   { user: currentUserId }
 ) {
-  if (userId === currentUserId) throw new TradulabError(roleCodes.UPDATED_YOURSELF);
+  if (userId === currentUserId)
+    throw new TradulabError(roleCodes.UPDATED_YOURSELF);
 
   const targetUserRole = await Role.findOne({
     user: userId,
@@ -160,4 +166,4 @@ export const mutations = {
   removeUserFromProject,
   updateUserProjectRole,
 };
-export const queries = { projectUsers };
+export const queries = { myRole, projectUsers };

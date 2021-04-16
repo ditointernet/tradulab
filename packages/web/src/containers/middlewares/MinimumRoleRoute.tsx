@@ -13,7 +13,7 @@ const MY_ROLE_QUERY = gql`
   }
 `;
 
-type MyRoleResult = { myRole: { role: string } };
+type MyRoleResult = { myRole: null | { role: string } };
 
 export enum ROLES {
   CONTRIBUTOR = 'contributor',
@@ -61,9 +61,9 @@ const MinimumRoleRoute: React.FC<MinimumRoleRouteProps> = ({
     },
     onCompleted: (data) => {
       if (promise.current && promise.current.resolve) {
-        const currentRoleIndex = ROLES_LIST.indexOf(data.myRole.role as ROLES);
+        const currentRoleIndex = ROLES_LIST.indexOf(data.myRole?.role as ROLES);
 
-        if (currentRoleIndex <= minimumRoleIndex) {
+        if (currentRoleIndex !== -1 && currentRoleIndex <= minimumRoleIndex) {
           promise.current.resolve(true);
         } else {
           promise.current.resolve(false);

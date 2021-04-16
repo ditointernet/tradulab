@@ -63,5 +63,6 @@ export default gql`
 
   extend type Query {
     projectUsers(projectId: ID!): [RoleWithUser!]!
+    myRole(projectId: ID!): Role
   }
 `;
