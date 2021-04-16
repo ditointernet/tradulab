@@ -5,15 +5,15 @@ import AsyncConditionalRoute from './AsyncConditionalRoute';
 import { gql, useQuery } from '@apollo/client';
 import { useRef } from 'react';
 
-const ME_ROLE_QUERY = gql`
-  query web_meRole($projectId: ID!) {
-    meRole(projectId: $projectId) {
+const MY_ROLE_QUERY = gql`
+  query web_myRole($projectId: ID!) {
+    myRole(projectId: $projectId) {
       role
     }
   }
 `;
 
-type MeRoleResult = { meRole: { role: string } };
+type MyRoleResult = { myRole: { role: string } };
 
 export enum ROLES {
   CONTRIBUTOR = 'contributor',
@@ -52,7 +52,7 @@ const MinimumRoleRoute: React.FC<MinimumRoleRouteProps> = ({
     promise: new Promise<boolean>(() => null),
   });
 
-  useQuery<MeRoleResult>(ME_ROLE_QUERY, {
+  useQuery<MyRoleResult>(MY_ROLE_QUERY, {
     variables: { projectId },
     onError: () => {
       if (promise.current && promise.current.reject) {
@@ -61,7 +61,7 @@ const MinimumRoleRoute: React.FC<MinimumRoleRouteProps> = ({
     },
     onCompleted: (data) => {
       if (promise.current && promise.current.resolve) {
-        const currentRoleIndex = ROLES_LIST.indexOf(data.meRole.role as ROLES);
+        const currentRoleIndex = ROLES_LIST.indexOf(data.myRole.role as ROLES);
 
         if (currentRoleIndex <= minimumRoleIndex) {
           promise.current.resolve(true);
