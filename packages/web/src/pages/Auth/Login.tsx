@@ -4,7 +4,7 @@ import { gql, useLazyQuery } from '@apollo/client';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import LoginForm from '../components/Auth/LoginForm';
+import LoginForm from '../../components/Auth/LoginForm';
 
 const LOGIN_QUERY = gql`
   query web_login($email: String!, $password: String!) {
@@ -17,7 +17,7 @@ const LOGIN_QUERY = gql`
 type LoginResult = { login: { token: string } };
 export type LoginVariables = { email: string; password: string };
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
   const [passwordVisibility, setPasswordVisiblity] = useState<boolean>(false);
   const [handleLogin, { loading, data, error }] = useLazyQuery<
     LoginResult,
@@ -69,4 +69,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

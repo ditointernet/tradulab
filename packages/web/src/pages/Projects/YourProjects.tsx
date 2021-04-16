@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
-import ProjectsList from '../components/ProjectsList';
+import ProjectsList from '../../components/ProjectsList';
 
 const PROJECTS_QUERY = gql`
   query web_listProjects {
@@ -10,7 +10,6 @@ const PROJECTS_QUERY = gql`
       createdAt
       project {
         id
-        slug
         name
         private
       }
@@ -23,7 +22,6 @@ export type ProjectRole = {
   createdAt: string;
   project: {
     id: string;
-    slug: string;
     name: string;
     private: boolean;
   };
@@ -33,7 +31,7 @@ type ProjectsResult = {
   listProjects: ProjectRole[];
 };
 
-const Projects: React.FC = () => {
+const YourProjectsPage: React.FC = () => {
   const { loading, error, data } = useQuery<ProjectsResult>(PROJECTS_QUERY);
   const [filter, setFilter] = useState<string>('');
 
@@ -58,7 +56,7 @@ const Projects: React.FC = () => {
 };
 
 function escapeRegex(input: string) {
-  return input.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  return input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
-export default Projects;
+export default YourProjectsPage;

@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { ApolloError } from '@apollo/client';
 
 import PageTemplate from '../components/PageTemplate';
-import { ProjectRole } from '../pages/Projects';
+import { ProjectRole } from '../pages/Projects/YourProjects';
 
 const useStyles = makeStyles((theme) => ({
   controls: { marginBottom: theme.spacing(3) },
@@ -72,7 +72,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
         {rows.map((projectRole) => (
           <Link
             className={styles.link}
-            to={`./${projectRole.project.slug}`}
+            to={`./${projectRole.project.id}`}
             key={projectRole.project.id}
           >
             <Card>

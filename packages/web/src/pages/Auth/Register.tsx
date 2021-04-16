@@ -4,7 +4,7 @@ import { gql, useMutation } from '@apollo/client';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import RegisterForm from '../components/Auth/RegisterForm';
+import RegisterForm from '../../components/Auth/RegisterForm';
 
 const REGISTER_QUERY = gql`
   mutation web_register(
@@ -30,7 +30,7 @@ export type RegisterVariables = Record<
   string
 >;
 
-const Register: React.FC = () => {
+const RegisterPage: React.FC = () => {
   const [passwordVisibility, setPasswordVisiblity] = useState<boolean>(false);
   const [handleRegister, { loading, data, error }] = useMutation<
     RegisterResult,
@@ -117,4 +117,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

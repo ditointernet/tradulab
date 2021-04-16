@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 
 import AuthPageTemplate from '../PageTemplate';
 import FormikTextField from '../FormikTextField';
-import { LoginVariables } from '../../pages/Login';
+import { LoginVariables } from '../../pages/Auth/Login';
 import { AuthPageProps } from './types';
 
 const LoginForm: React.FC<AuthPageProps<LoginVariables>> = ({

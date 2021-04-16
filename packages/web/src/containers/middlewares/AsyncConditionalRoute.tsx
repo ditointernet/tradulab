@@ -27,10 +27,10 @@ const AsyncConditionalRoute: React.FC<ConditionalRouteProps> = ({
   });
 
   useEffect(() => {
-    condition().then((canRender) => {
-      setState({ isLoading: false, canRender });
-    });
-  }, []);
+    condition()
+      .then((canRender) => setState({ isLoading: false, canRender }))
+      .catch(() => setState({ isLoading: false, canRender: false }));
+  }, [condition]);
 
   if (isLoading) {
     return <>{fallback}</>;

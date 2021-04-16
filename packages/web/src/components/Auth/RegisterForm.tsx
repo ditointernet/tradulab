@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 import PageTemplate from '../PageTemplate';
 import FormikTextField from '../FormikTextField';
-import { RegisterVariables } from '../../pages/Register';
+import { RegisterVariables } from '../../pages/Auth/Register';
 import { AuthPageProps } from './types';
 
 const RegisterForm: React.FC<AuthPageProps<RegisterVariables>> = ({
