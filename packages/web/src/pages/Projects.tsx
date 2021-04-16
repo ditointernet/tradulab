@@ -1,86 +1,64 @@
 import React, { useState } from 'react';
-import {
-  Paper,
-  makeStyles,
-  createStyles,
-  Theme,
-  Box,
-  Typography,
-  Button,
-  Input,
-  InputAdornment,
-} from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+import { gql, useQuery } from '@apollo/client';
 
-import ProjectsTable from '../components/ProjectsTable';
+import ProjectsList from '../components/ProjectsList';
 
-const rowsBackEnd = [
-  { project: 'Jornadas', role: 'Desenvolvedor' },
-  { project: 'Tradulab', role: 'Contribuidor' },
-  { project: 'Agenda', role: 'Dono' },
-  { project: 'Jornadas', role: 'Desenvolvedor' },
-  { project: 'Tradulab', role: 'Contribuidor' },
-  { project: 'Agenda', role: 'Dono' },
-  { project: 'Jornadas', role: 'Desenvolvedor' },
-  { project: 'Tradulab', role: 'Contribuidor' },
-  { project: 'Agenda', role: 'Dono' },
-  { project: 'Jornadas', role: 'Desenvolvedor' },
-  { project: 'Tradulab', role: 'Contribuidor' },
-  { project: 'Agenda', role: 'Dono' },
-];
+const PROJECTS_QUERY = gql`
+  query web_listProjects {
+    listProjects {
+      role
+      createdAt
+      project {
+        id
+        slug
+        name
+        private
+      }
+    }
+  }
+`;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      display: 'flex',
-      flexDirection: 'column',
-      padding: theme.spacing(4),
-      width: theme.spacing(100),
-      height: theme.spacing(50),
-    },
-    input: {
-      marginTop: theme.spacing(4),
-      width: theme.spacing(30),
-    },
-  })
-);
+export type ProjectRole = {
+  role: string;
+  createdAt: string;
+  project: {
+    id: string;
+    slug: string;
+    name: string;
+    private: boolean;
+  };
+};
+
+type ProjectsResult = {
+  listProjects: ProjectRole[];
+};
 
 const Projects: React.FC = () => {
-  const [rows, setRows] = useState(rowsBackEnd);
-  const classes = useStyles();
+  const { loading, error, data } = useQuery<ProjectsResult>(PROJECTS_QUERY);
+  const [filter, setFilter] = useState<string>('');
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const filter = e.target.value;
-    const filteredRows = rowsBackEnd.filter(({ project }) =>
-      project.toUpperCase().includes(filter.toUpperCase())
-    );
+  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setFilter(e.target.value);
 
-    setRows(filteredRows);
-
-    // console.log(filter, filteredRows);
-  };
+  const projectRoles =
+    data?.listProjects.filter((role) =>
+      new RegExp(escapeRegex(filter), 'ig').test(role.project.name)
+    ) ?? [];
 
   return (
-    <Paper className={classes.paper}>
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h4">Meus projetos</Typography>
-        <Button variant="contained" color="primary">
-          Criar projeto
-        </Button>
-      </Box>
-      <Input
-        placeholder="Buscar"
-        className={classes.input}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        onChange={onInputChange}
-      />
-      <ProjectsTable rows={rows} />
-    </Paper>
+    <ProjectsList
+      {...{
+        isLoading: loading,
+        apolloError: error,
+        onSearchChange,
+        rows: projectRoles,
+      }}
+    />
   );
 };
+
+function escapeRegex(input: string) {
+  return input.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
 
 export default Projects;

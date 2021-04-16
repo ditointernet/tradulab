@@ -11,7 +11,6 @@ import {
   Snackbar,
 } from '@material-ui/core';
 import { ApolloError } from '@apollo/client';
-import { FormikProps } from 'formik';
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -25,31 +24,26 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type AuthPageTemplateProps = {
+type PageTemplateProps = {
   title: string;
   isLoading?: boolean;
-  authError?: ApolloError;
+  apolloError?: ApolloError;
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false;
 };
 
-export type AuthPageProps<T> = FormikProps<T> & {
-  isLoading: boolean;
-  passwordVisibility: boolean;
-  togglePasswordVisibility: () => void;
-  authError?: ApolloError;
-};
-
-const AuthPageTemplate: React.FC<AuthPageTemplateProps> = ({
+const PageTemplate: React.FC<PageTemplateProps> = ({
   title,
   isLoading = false,
-  authError,
+  apolloError,
+  maxWidth = 'sm',
   children,
 }) => {
   const styles = useStyles();
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
   useEffect(() => {
-    setErrorMessage(authError?.message);
-  }, [authError?.message]);
+    setErrorMessage(apolloError?.message);
+  }, [apolloError?.message]);
 
   const onSnackbarClose = () => setErrorMessage(undefined);
 
@@ -75,7 +69,7 @@ const AuthPageTemplate: React.FC<AuthPageTemplateProps> = ({
         autoHideDuration={6000}
         onClose={onSnackbarClose}
       />
-      <Container maxWidth="sm">
+      <Container maxWidth={maxWidth}>
         <Card variant="outlined" className={styles.card}>
           <CardHeader
             title={title}
@@ -93,4 +87,4 @@ const AuthPageTemplate: React.FC<AuthPageTemplateProps> = ({
   );
 };
 
-export default AuthPageTemplate;
+export default PageTemplate;

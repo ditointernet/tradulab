@@ -12,9 +12,10 @@ import {
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
-import AuthPageTemplate, { AuthPageProps } from './PageTemplate';
+import AuthPageTemplate from '../PageTemplate';
 import FormikTextField from '../FormikTextField';
 import { LoginVariables } from '../../pages/Login';
+import { AuthPageProps } from './types';
 
 const LoginForm: React.FC<AuthPageProps<LoginVariables>> = ({
   handleSubmit,
@@ -22,9 +23,9 @@ const LoginForm: React.FC<AuthPageProps<LoginVariables>> = ({
   passwordVisibility,
   isSubmitting,
   isLoading,
-  authError,
+  apolloError,
 }) => (
-  <AuthPageTemplate title="Login" {...{ isLoading, authError }}>
+  <AuthPageTemplate title="Login" {...{ isLoading, apolloError }}>
     <FormControl fullWidth component="form" onSubmit={handleSubmit}>
       <FormikTextField
         label="Email"

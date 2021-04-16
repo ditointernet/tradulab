@@ -13,9 +13,10 @@ import {
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
-import AuthPageTemplate, { AuthPageProps } from './PageTemplate';
+import PageTemplate from '../PageTemplate';
 import FormikTextField from '../FormikTextField';
 import { RegisterVariables } from '../../pages/Register';
+import { AuthPageProps } from './types';
 
 const RegisterForm: React.FC<AuthPageProps<RegisterVariables>> = ({
   handleSubmit,
@@ -23,7 +24,7 @@ const RegisterForm: React.FC<AuthPageProps<RegisterVariables>> = ({
   passwordVisibility,
   isSubmitting,
   isLoading,
-  authError,
+  apolloError,
 }) => {
   const passwordCommonProps: TextFieldProps = {
     type: passwordVisibility ? 'text' : 'password',
@@ -46,7 +47,7 @@ const RegisterForm: React.FC<AuthPageProps<RegisterVariables>> = ({
   };
 
   return (
-    <AuthPageTemplate title="Register" {...{ isLoading, authError }}>
+    <PageTemplate title="Register" {...{ isLoading, apolloError }}>
       <FormControl fullWidth component="form" onSubmit={handleSubmit}>
         <FormikTextField
           label="Email"
@@ -110,7 +111,7 @@ const RegisterForm: React.FC<AuthPageProps<RegisterVariables>> = ({
           Login
         </Button>
       </FormControl>
-    </AuthPageTemplate>
+    </PageTemplate>
   );
 };
 

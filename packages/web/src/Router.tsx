@@ -27,7 +27,11 @@ const Router: React.FC = () => (
           <AuthenticatedRoute>
             <Route path="/error" element={<ErrorPage />} />
             <Route path="/dev" element={<Developer path="/login" />} />
-            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects">
+              <Route path="/" element={<ProjectsPage />} />
+              <Route path="create" element={<h1>create</h1>} />
+              <Route path=":slug" element={<h1>details</h1>} />
+            </Route>
             <Route path="/home" element={<Home path="/login" />} />
             <Navigate to="/auth/login" replace={true} />
             <Route path="*" element={<h1>404</h1>} />
