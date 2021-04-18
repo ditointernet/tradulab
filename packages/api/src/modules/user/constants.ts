@@ -7,6 +7,7 @@ export const ERROR_CODES = {
   DISPLAYNAME_INVALID: 'DISPLAYNAME_INVALID',
   DISPLAYNAME_LONG: 'DISPLAYNAME_LONG',
   DISPLAYNAME_SHORT: 'DISPLAYNAME_SHORT',
+  SEARCH_TERM_SHORT: 'SEARCH_TERM_SHORT',
 };
 
 export const ERROR_MESSAGES = {
@@ -18,6 +19,8 @@ export const ERROR_MESSAGES = {
   DISPLAYNAME_INVALID: 'That display name is invalid.',
   DISPLAYNAME_LONG: 'That display name is too long.',
   DISPLAYNAME_SHORT: 'That display name is too short.',
+  SEARCH_TERM_SHORT:
+    'The provided search term must contain at least 3 characters.',
 };
 
 export const REGEXES = {
