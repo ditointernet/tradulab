@@ -3,6 +3,7 @@ import { gql, useQuery } from '@apollo/client';
 import { useParams } from 'react-router';
 
 import RolesList from '../../components/RolesList';
+import { escapeRegex } from '../../helpers';
 
 const PROJECTS_QUERY = gql`
   query web_projectUsers($projectId: ID!) {
@@ -76,9 +77,5 @@ const ProjectRolesPage: React.FC = () => {
     />
   );
 };
-
-function escapeRegex(input: string) {
-  return input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
-}
 
 export default ProjectRolesPage;

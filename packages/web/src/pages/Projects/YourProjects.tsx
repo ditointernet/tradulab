@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
 import ProjectsList from '../../components/ProjectsList';
+import { escapeRegex } from '../../helpers';
 
 const PROJECTS_QUERY = gql`
   query web_listMyProjects {
@@ -74,9 +75,5 @@ const YourProjectsPage: React.FC = () => {
     />
   );
 };
-
-function escapeRegex(input: string) {
-  return input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
-}
 
 export default YourProjectsPage;
