@@ -1,10 +1,14 @@
-import { ApolloError } from 'apollo-server-express';
-
 import TradulabError from '../../errors';
 import { ERROR_CODES as projectCodes } from './constants';
 import { ROLES } from '../role/constants';
 import { model as Project } from '.';
 import { model as Role } from '../role';
+import { IRole } from '../role/model';
+import {
+  buildConnectionQuery,
+  buildConnectionResponse,
+  ConnectionArgs,
+} from '../../helpers/mappers';
 
 async function createProject(_parent, { name, private: isPrivate }, { user }) {
   const project = new Project({
@@ -49,11 +53,23 @@ async function createProject(_parent, { name, private: isPrivate }, { user }) {
   }
 }
 
-async function listProjects(_parent, _args, { user }) {
-  try {
-    const roles = await Role.find({ user }).populate('project').exec();
+function getProjectBySlug(_parent, args: { slug: string }) {
+  return Project.findOne({ slug: args.slug });
+}
 
-    return roles;
+async function listMyProjects(_parent, args: ConnectionArgs, { user }) {
+  const { where, limit } = buildConnectionQuery<IRole>(args);
+
+  where.user = user;
+
+  try {
+    const roles = await Role.find(where)
+      .limit(limit + 1)
+      .sort('-createdAt')
+      .populate('project')
+      .exec();
+
+    return buildConnectionResponse<IRole>(roles, limit);
   } catch (err) {
     console.error(err);
     throw err;
@@ -61,4 +77,4 @@ async function listProjects(_parent, _args, { user }) {
 }
 
 export const mutations = { createProject };
-export const queries = { listProjects };
+export const queries = { listMyProjects, getProjectBySlug };

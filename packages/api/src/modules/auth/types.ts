@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 export default gql`
-  type UserWithToken {
+  type UserWithEmailAndToken {
     id: ID!
     username: String!
     displayName: String!
@@ -15,10 +15,10 @@ export default gql`
       password: String!
       username: String!
       displayName: String!
-    ): UserWithToken!
+    ): UserWithEmailAndToken!
   }
 
   extend type Query {
-    login(email: String!, password: String!): UserWithToken!
+    login(email: String!, password: String!): UserWithEmailAndToken!
   }
 `;

@@ -12,17 +12,33 @@ import { model as Project } from '../project';
 import { model as Role } from '../role';
 import { model as User } from '../user';
 import TradulabError from '../../errors';
+import {
+  buildConnectionQuery,
+  buildConnectionResponse,
+  ConnectionArgs,
+} from '../../helpers/mappers';
+import { IRole } from './model';
 
-function myRole(_, args, context) {
+function myRole(_parent, args, context) {
   return Role.findOne({ project: args.projectId, user: context.user });
 }
 
-async function projectUsers(_, args) {
-  const roles = await Role.find({ project: args.projectId })
+interface ProjectUserArgs extends ConnectionArgs {
+  projectId: string;
+}
+
+async function projectUsers(_parent, args: ProjectUserArgs) {
+  const { where, limit } = buildConnectionQuery<IRole>(args);
+
+  where.project = args.projectId;
+
+  const roles = await Role.find(where)
+    .limit(limit + 1)
+    .sort('-createdAt')
     .populate('user')
     .exec();
 
-  return roles;
+  return buildConnectionResponse(roles, limit);
 }
 
 async function inviteUserToProject(

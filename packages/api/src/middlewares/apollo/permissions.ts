@@ -53,9 +53,12 @@ const permissions = shield(
       me: isAuthenticated,
       myRole: isAuthenticated,
       listFiles: isAuthenticated,
-      listProjects: isAuthenticated,
+      listMyProjects: isAuthenticated,
       listPhrases: isAuthenticated,
       projectUsers: isAuthenticated,
+      findUsersByUsername: isAuthenticated,
+      getProjectBySlug: isAuthenticated,
+      getUserByUsername: isAuthenticated,
     },
     Mutation: {
       createProject: isAuthenticated,

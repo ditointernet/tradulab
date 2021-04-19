@@ -41,13 +41,11 @@ const schema = new mongoose.Schema(
   }
 );
 
-export interface IProject extends mongoose.Document {
+export interface IProject extends mongoose.IDocument {
   name: String;
   private: Boolean;
   slug: String;
   owner: IUser | mongoose.Types.ObjectId;
-  createdAt: Date;
-  updateAt: Date;
 }
 
 schema.pre<IProject>('validate', function preValidate(next) {

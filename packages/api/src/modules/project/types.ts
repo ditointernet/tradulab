@@ -11,11 +11,21 @@ export default gql`
     updatedAt: Date!
   }
 
+  type RoleWithProjectNode {
+    node: RoleWithProject!
+  }
+
+  type RoleWithProjectConnection {
+    edges: [RoleWithProjectNode!]!
+    pageInfo: PageInfo!
+  }
+
   extend type Mutation {
     createProject(name: String!, private: Boolean): Project!
   }
 
   extend type Query {
-    listProjects: [RoleWithProject!]!
+    getProjectBySlug: Project
+    listMyProjects(limit: Int, startAfter: String): RoleWithProjectConnection!
   }
 `;

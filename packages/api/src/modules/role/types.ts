@@ -45,6 +45,15 @@ export default gql`
     updatedAt: Date!
   }
 
+  type RoleWithUserNode {
+    node: RoleWithUser!
+  }
+
+  type RoleWithUserConnection {
+    edges: [RoleWithUserNode!]!
+    pageInfo: PageInfo!
+  }
+
   extend type Mutation {
     inviteUserToProject(
       projectId: ID!
@@ -62,7 +71,11 @@ export default gql`
   }
 
   extend type Query {
-    projectUsers(projectId: ID!): [RoleWithUser!]!
+    projectUsers(
+      projectId: ID!
+      limit: Int
+      startAfter: String
+    ): RoleWithUserConnection!
     myRole(projectId: ID!): Role
   }
 `;
