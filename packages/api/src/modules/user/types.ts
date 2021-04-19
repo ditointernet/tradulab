@@ -23,7 +23,7 @@ export default gql`
   }
 
   type PageInfo {
-    endCursor: String
+    startAfter: String
     hasNextPage: Boolean
   }
 

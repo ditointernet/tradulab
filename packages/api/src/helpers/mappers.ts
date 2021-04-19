@@ -37,7 +37,7 @@ export function buildConnectionResponse<DocType extends mongoose.Document>(
     edges: documents.map((node) => ({ node })),
     pageInfo: {
       hasNextPage,
-      endCursor: lastDocument
+      startAfter: lastDocument
         ? toBase64((lastDocument as any).createdAt.toISOString())
         : undefined,
     },

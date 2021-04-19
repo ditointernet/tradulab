@@ -1,6 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
-import { env } from '../helpers';
 import * as jwt from 'jsonwebtoken';
+import { NextFunction, Request, Response } from 'express';
+import { formatApolloErrors } from 'apollo-server-errors';
+
+import { env } from '../helpers';
+import TradulabError from '../errors';
+import { ERROR_CODES } from '../constants';
 
 interface Session {
   auth: {
@@ -29,14 +33,27 @@ export default async function jwtMiddleware(
       );
     } catch (err) {
       if (err.name === 'TokenExpiredError') {
-        return res.status(401).json({ error: 'JWT Expired.' });
+        return res
+          .status(200)
+          .json(buildError(new TradulabError(ERROR_CODES.EXPIRED_TOKEN)));
       } else if (err.name === 'JsonWebTokenError') {
-        return res.status(401).json({ error: 'Invalid JWT.' });
+        return res
+          .status(200)
+          .json(buildError(new TradulabError(ERROR_CODES.INVALID_TOKEN)));
       } else {
-        return res.status(401).json({ error: 'Unauthorized.' });
+        return res
+          .status(200)
+          .json(buildError(new TradulabError(ERROR_CODES.UNAUTHORIZED)));
       }
     }
   }
 
   return next();
+}
+
+function buildError(err: TradulabError) {
+  return {
+    errors: formatApolloErrors([err]),
+    data: null,
+  };
 }

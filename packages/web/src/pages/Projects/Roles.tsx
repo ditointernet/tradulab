@@ -7,15 +7,33 @@ import RolesList from '../../components/RolesList';
 const PROJECTS_QUERY = gql`
   query web_projectUsers($projectId: ID!) {
     projectUsers(projectId: $projectId) {
-      role
-      createdAt
-      user {
-        id
-        displayName
+      edges {
+        node {
+          role
+          createdAt
+          user {
+            id
+            displayName
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        startAfter
       }
     }
   }
 `;
+
+type PageInfo = {
+  hasNextPage: boolean;
+  startAfter: string | null;
+};
+
+type UserRoleConnection = {
+  edges: Array<{ node: UserRole }>;
+  pageInfo: PageInfo;
+};
 
 export type UserRole = {
   role: string;
@@ -27,7 +45,7 @@ export type UserRole = {
 };
 
 type ProjectsResult = {
-  projectUsers: UserRole[];
+  projectUsers: UserRoleConnection;
 };
 
 const ProjectRolesPage: React.FC = () => {
@@ -41,9 +59,11 @@ const ProjectRolesPage: React.FC = () => {
     setFilter(e.target.value);
 
   const projectRoles =
-    data?.projectUsers.filter((role) =>
-      new RegExp(escapeRegex(filter), 'ig').test(role.user.displayName)
-    ) ?? [];
+    data?.projectUsers.edges
+      .filter((role) =>
+        new RegExp(escapeRegex(filter), 'ig').test(role.node.user.displayName)
+      )
+      .map((node) => node.node) ?? [];
 
   return (
     <RolesList

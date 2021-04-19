@@ -41,8 +41,6 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
   const styles = useStyles();
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
-  console.log(errorMessage, apolloError);
-
   useEffect(() => {
     setErrorMessage(apolloError?.message);
   }, [apolloError?.message]);
