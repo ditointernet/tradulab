@@ -7,6 +7,8 @@ import permissions from './permissions';
 import resolvers from './resolvers';
 import typeDefs from './types';
 import { IUser } from '../../modules/user/model';
+import TradulabError from '../../errors';
+import { ERROR_CODES } from '../../constants';
 
 export default function ApolloMiddleware(app) {
   const schema = buildFederatedSchema([{ typeDefs, resolvers }]);
@@ -39,7 +41,12 @@ export default function ApolloMiddleware(app) {
     schema: applyMiddleware(schema, permissions),
     context,
     formatError: (err) => {
-      console.error(err);
+      console.error(err.originalError);
+
+      if (err.originalError.name.startsWith('MongoError')) {
+        throw new TradulabError(ERROR_CODES.INTERNAL_DB_ERROR);
+      }
+
       return err;
     },
   };

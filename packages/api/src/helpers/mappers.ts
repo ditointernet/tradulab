@@ -5,7 +5,7 @@ export interface ConnectionArgs {
   startAfter?: string;
 }
 
-export function buildConnectionQuery<DocType extends mongoose.IDocument>(
+export function buildConnectionQuery<DocType extends mongoose.Document>(
   args: ConnectionArgs
 ) {
   const where: mongoose.FilterQuery<DocType> = {};
@@ -23,7 +23,7 @@ export function buildConnectionQuery<DocType extends mongoose.IDocument>(
   return { where, limit };
 }
 
-export function buildConnectionResponse<DocType extends mongoose.IDocument>(
+export function buildConnectionResponse<DocType extends mongoose.Document>(
   documents: DocType[],
   limit: number
 ) {
@@ -38,7 +38,7 @@ export function buildConnectionResponse<DocType extends mongoose.IDocument>(
     pageInfo: {
       hasNextPage,
       endCursor: lastDocument
-        ? toBase64(lastDocument.createdAt.toISOString())
+        ? toBase64((lastDocument as any).createdAt.toISOString())
         : undefined,
     },
   };

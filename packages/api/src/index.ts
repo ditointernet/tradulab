@@ -1,4 +1,6 @@
 import * as express from 'express';
+import * as cors from 'cors';
+
 import { mongo } from './config';
 import { env } from './helpers';
 import * as middlewares from './middlewares';
@@ -7,6 +9,13 @@ const app = express();
 
 app.locals.mongo = mongo;
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+    allowedHeaders: ['Authorization', 'content-type'],
+  })
+);
 app.use(middlewares.jwt);
 
 middlewares.apollo(app);

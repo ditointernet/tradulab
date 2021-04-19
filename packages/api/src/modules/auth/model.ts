@@ -39,9 +39,7 @@ const schema = new mongoose.Schema(
 export interface IAuth extends mongoose.Document {
   email: String;
   password: String;
-  user: IUser;
-  createdAt: Date;
-  updateAt: Date;
+  user: IUser | mongoose.Types.ObjectId;
 }
 
 const model = mongoose.model<IAuth>('auth', schema);

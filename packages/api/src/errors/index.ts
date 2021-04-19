@@ -7,6 +7,7 @@ import { ERROR_MESSAGES as user } from '../modules/user/constants';
 import { ERROR_MESSAGES as file } from '../modules/file/constants';
 import { ERROR_MESSAGES as suggestion } from '../modules/suggestion/constants';
 import { ERROR_MESSAGES as phrase } from '../modules/phrase/constants';
+import { ERROR_MESSAGES as apollo } from '../constants';
 
 const errorMessages = {
   ...auth,
@@ -16,6 +17,7 @@ const errorMessages = {
   ...file,
   ...suggestion,
   ...phrase,
+  ...apollo,
 };
 
 export default class TradulabError extends ApolloError {

@@ -105,7 +105,7 @@ const RegisterPage: React.FC = () => {
             {...formikProps}
             {...{
               isLoading: loading,
-              authError: error,
+              apolloError: error,
               passwordVisibility,
               togglePasswordVisibility: () =>
                 setPasswordVisiblity((state) => !state),

@@ -1,4 +1,3 @@
-import { ApolloError } from 'apollo-server-express';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
@@ -8,6 +7,7 @@ import { ERROR_CODES as userCodes } from '../user/constants';
 import { env } from '../../helpers';
 import { model as Auth } from '.';
 import { model as User } from '../user';
+import { IUser } from '../user/model';
 
 function encryptPassword(password) {
   return bcrypt.hash(password, 10);
@@ -45,9 +45,7 @@ async function createUser(_parent, { email, password, username, displayName }) {
     await Promise.all([auth.save(), user.save()]);
 
     return {
-      id: user.id,
-      username: user.username,
-      displayName: user.displayName,
+      ...user.toObject(),
       email: auth.email,
       token: await signToken({ id: user.id }),
     };
@@ -91,9 +89,7 @@ async function login(_parent, { email, password }) {
       throw new TradulabError(authCodes.CREDENTIALS_INVALID);
 
     return {
-      id: auth.user.id,
-      username: auth.user.username,
-      displayName: auth.user.displayName,
+      ...(auth.user as IUser).toObject(),
       email: auth.email,
       token: await signToken({ id: auth.user }),
     };

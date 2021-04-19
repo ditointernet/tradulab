@@ -26,7 +26,7 @@ const schema = new mongoose.Schema(
   }
 );
 
-export interface IUser extends mongoose.IDocument {
+export interface IUser extends mongoose.Document {
   username: String;
   displayName: String;
   createdAt: Date;

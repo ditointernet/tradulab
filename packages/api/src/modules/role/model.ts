@@ -33,7 +33,7 @@ const schema = new mongoose.Schema(
   }
 );
 
-export interface IRole extends mongoose.IDocument {
+export interface IRole extends mongoose.Document {
   role: string;
   project: mongoose.Types.ObjectId | IProject;
   user: mongoose.Types.ObjectId | IUser;

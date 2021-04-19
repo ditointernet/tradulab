@@ -7,6 +7,8 @@ export default gql`
     displayName: String!
     email: String!
     token: String!
+    createdAt: Date!
+    updatedAt: Date!
   }
 
   extend type Mutation {

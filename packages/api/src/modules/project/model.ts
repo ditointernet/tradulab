@@ -41,7 +41,7 @@ const schema = new mongoose.Schema(
   }
 );
 
-export interface IProject extends mongoose.IDocument {
+export interface IProject extends mongoose.Document {
   name: String;
   private: Boolean;
   slug: String;
