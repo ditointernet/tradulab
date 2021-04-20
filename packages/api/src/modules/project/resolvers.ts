@@ -24,7 +24,8 @@ async function createProject(_parent, { name, private: isPrivate }, { user }) {
   });
 
   try {
-    await Promise.all([project.save(), role.save()]);
+    await project.save();
+    await role.save();
 
     return project;
   } catch (err) {
@@ -68,6 +69,8 @@ async function listMyProjects(_parent, args: ConnectionArgs, { user }) {
       .sort('-createdAt')
       .populate('project')
       .exec();
+
+    console.log(roles);
 
     return buildConnectionResponse<IRole>(roles, limit);
   } catch (err) {

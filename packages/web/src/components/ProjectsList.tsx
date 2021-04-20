@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   Chip,
+  createStyles,
   Input,
   InputAdornment,
   makeStyles,
@@ -19,18 +20,24 @@ import { ProjectRole } from '../pages/Projects/YourProjects';
 import { ClassNameMap } from '@material-ui/styles';
 import { repeat, spaces } from '../helpers';
 
-const useStyles = makeStyles((theme) => ({
-  controls: { marginBottom: theme.spacing(3) },
-  card: { '&:not(:last-of-type)': { marginBottom: theme.spacing(2) } },
-  flex: { display: 'flex' },
-  link: { textDecoration: 'none' },
-  role: { textTransform: 'capitalize', marginRight: theme.spacing(1) },
-}));
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    controls: { marginBottom: theme.spacing(3) },
+    card: { '&:not(:last-of-type)': { marginBottom: theme.spacing(2) } },
+    flex: { display: 'flex' },
+    link: {
+      textDecoration: 'none',
+      marginBottom: theme.spacing(2),
+    },
+    role: { textTransform: 'capitalize', marginRight: theme.spacing(1) },
+  })
+);
 
 type ProjectsListProps = {
   isLoading: boolean;
   apolloError?: ApolloError;
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  openProjectCreation: () => void;
   rows: ProjectRole[];
 };
 
@@ -38,6 +45,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
   isLoading,
   apolloError,
   onSearchChange,
+  openProjectCreation,
   rows,
 }) => {
   const styles = useStyles();
@@ -67,8 +75,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
           <Button
             variant="contained"
             color="primary"
-            component={Link}
-            to="./create"
+            onClick={openProjectCreation}
           >
             Create project
           </Button>

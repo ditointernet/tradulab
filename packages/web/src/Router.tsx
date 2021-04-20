@@ -32,7 +32,6 @@ const Router: React.FC = () => (
             <Route path="/error" element={<ErrorPage />} />
             <Route path="/projects">
               <Route path="/" element={<YourProjectsPage />} />
-              <Route path="create" element={<h1>create</h1>} />
               <Route path=":projectId">
                 <Route path="/" element={<ProjectDetailsPage />} />
                 <MinimumRoleRoute
