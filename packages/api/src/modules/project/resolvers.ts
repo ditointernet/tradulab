@@ -70,8 +70,6 @@ async function listMyProjects(_parent, args: ConnectionArgs, { user }) {
       .populate('project')
       .exec();
 
-    console.log(roles);
-
     return buildConnectionResponse<IRole>(roles, limit);
   } catch (err) {
     console.error(err);

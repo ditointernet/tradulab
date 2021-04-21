@@ -46,7 +46,7 @@ const CreateProjectDialog: React.FC<CreateProjectDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onClose={onClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Create a Project</DialogTitle>
+      <DialogTitle>Create a Project</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Give your project a meaningful and descriptive name, this will also be

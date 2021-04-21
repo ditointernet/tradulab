@@ -23,11 +23,13 @@ import { repeat, spaces } from '../helpers';
 const useStyles = makeStyles((theme) =>
   createStyles({
     controls: { marginBottom: theme.spacing(3) },
-    card: { '&:not(:last-of-type)': { marginBottom: theme.spacing(2) } },
     flex: { display: 'flex' },
     link: {
       textDecoration: 'none',
-      marginBottom: theme.spacing(2),
+      display: 'block',
+      '&:not(:last-child)': {
+        marginBottom: theme.spacing(2),
+      },
     },
     role: { textTransform: 'capitalize', marginRight: theme.spacing(1) },
   })
@@ -133,7 +135,7 @@ type ProjectCardProps = {
   role: string;
   isPrivate: boolean;
   isLoading: boolean;
-  styles: ClassNameMap<'flex' | 'role' | 'card'>;
+  styles: ClassNameMap<'flex' | 'role'>;
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -144,7 +146,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   isLoading,
   styles,
 }) => (
-  <Card className={styles.card}>
+  <Card>
     <CardContent>
       <Box justifyContent="space-between" className={styles.flex}>
         <Box flexDirection="column" className={styles.flex}>

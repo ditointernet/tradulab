@@ -42,10 +42,12 @@ async function createUser(_parent, { email, password, username, displayName }) {
   });
 
   try {
-    await Promise.all([auth.save(), user.save()]);
+    await auth.save();
+    await user.save();
 
     return {
       ...user.toObject(),
+      id: user._id,
       email: auth.email,
       token: await signToken({ id: user.id }),
     };

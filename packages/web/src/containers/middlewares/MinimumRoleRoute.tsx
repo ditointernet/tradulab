@@ -5,7 +5,7 @@ import AsyncConditionalRoute from './AsyncConditionalRoute';
 import { gql, useQuery } from '@apollo/client';
 import { useRef } from 'react';
 
-const MY_ROLE_QUERY = gql`
+export const MY_ROLE_QUERY = gql`
   query web_myRole($projectId: ID!) {
     myRole(projectId: $projectId) {
       role
@@ -13,7 +13,7 @@ const MY_ROLE_QUERY = gql`
   }
 `;
 
-type MyRoleResult = { myRole: null | { role: string } };
+export type MyRoleResult = { myRole: null | { role: string } };
 
 export enum ROLES {
   CONTRIBUTOR = 'contributor',

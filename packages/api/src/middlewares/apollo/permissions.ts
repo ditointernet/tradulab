@@ -19,7 +19,7 @@ const isOneOfTheseRoles = (allowedRoles: string[]) =>
         user,
       });
       if (allowedRoles.includes(projectRole?.role)) {
-        user.role = projectRole;
+        // user.role = projectRole;
         return true;
       }
     } catch (err) {

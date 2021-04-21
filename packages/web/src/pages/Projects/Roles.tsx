@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 
 import RolesList from '../../components/RolesList';
 import { escapeRegex } from '../../helpers';
+import InviteUserDialogContainer from '../../containers/InviteUserDialog';
 
 const PROJECTS_QUERY = gql`
   query web_projectUsers($projectId: ID!) {
@@ -54,6 +55,7 @@ const ProjectRolesPage: React.FC = () => {
   const { loading, error, data } = useQuery<ProjectsResult>(PROJECTS_QUERY, {
     variables: { projectId },
   });
+  const [isInviting, setInvitingState] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>('');
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -67,14 +69,21 @@ const ProjectRolesPage: React.FC = () => {
       .map((node) => node.node) ?? [];
 
   return (
-    <RolesList
-      {...{
-        isLoading: loading,
-        apolloError: error,
-        onSearchChange,
-        rows: projectRoles,
-      }}
-    />
+    <>
+      <InviteUserDialogContainer
+        isOpen={isInviting}
+        closeModal={() => setInvitingState(false)}
+      />
+      <RolesList
+        {...{
+          isLoading: loading,
+          apolloError: error,
+          onSearchChange,
+          rows: projectRoles,
+          openUserInviteModal: () => setInvitingState(true),
+        }}
+      />
+    </>
   );
 };
 

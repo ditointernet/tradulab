@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { Search } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
 import { ApolloError } from '@apollo/client';
 
 import PageTemplate from '../components/PageTemplate';
@@ -30,6 +29,7 @@ type RolesListProps = {
   isLoading: boolean;
   apolloError?: ApolloError;
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  openUserInviteModal: () => void;
   rows: UserRole[];
 };
 
@@ -37,6 +37,7 @@ const RolesList: React.FC<RolesListProps> = ({
   isLoading,
   apolloError,
   onSearchChange,
+  openUserInviteModal,
   rows,
 }) => {
   const styles = useStyles();
@@ -66,8 +67,7 @@ const RolesList: React.FC<RolesListProps> = ({
           <Button
             variant="contained"
             color="primary"
-            component={Link}
-            to="./create"
+            onClick={openUserInviteModal}
           >
             Invite user
           </Button>
