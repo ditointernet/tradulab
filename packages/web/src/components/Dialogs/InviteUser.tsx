@@ -18,7 +18,7 @@ import {
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { ROLES } from '../../containers/middlewares/MinimumRoleRoute';
-import { User } from '../../containers/InviteUserDialog';
+import { User } from '../../containers/Dialogs/InviteUser';
 import React from 'react';
 import { SetState } from '../../types';
 import LoadingBar from '../LoadingBar';

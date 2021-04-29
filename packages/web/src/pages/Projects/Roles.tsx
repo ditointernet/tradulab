@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 
 import RolesList from '../../components/RolesList';
 import { escapeRegex } from '../../helpers';
-import InviteUserDialogContainer from '../../containers/InviteUserDialog';
+import InviteUserDialogContainer from '../../containers/Dialogs/InviteUser';
 
 const PROJECTS_QUERY = gql`
   query web_projectUsers($projectId: ID!) {

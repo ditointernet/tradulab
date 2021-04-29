@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router';
 
-import CreateProjectDialog from '../components/Dialogs/CreateProject';
+import CreateProjectDialog from '../../components/Dialogs/CreateProject';
 
 const CREATE_PROJECT_MUTATION = gql`
   mutation web_createProject($name: String!, $private: Boolean) {

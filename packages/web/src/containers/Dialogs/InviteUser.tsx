@@ -6,8 +6,8 @@ import {
   MY_ROLE_QUERY,
   ROLES,
   MyRoleResult,
-} from './middlewares/MinimumRoleRoute';
-import InviteUserDialog from '../components/Dialogs/InviteUser';
+} from '../middlewares/MinimumRoleRoute';
+import InviteUserDialog from '../../components/Dialogs/InviteUser';
 
 const FIND_USERS_BY_USERNAME_QUERY = gql`
   query web_findUsersByUsername($searchTerm: String!) {
