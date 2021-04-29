@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 export function escapeRegex(input: string) {
   return input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
@@ -7,4 +9,6 @@ export function repeat<T>(length: number, content: () => T): T[] {
 }
 
 export const spaces = (length: number) =>
-  repeat<React.ReactNode>(length, () => <>&nbsp;</>);
+  repeat<React.ReactNode>(length, () => (
+    <Fragment key={btoa(Math.random() + '')}>&nbsp;</Fragment>
+  ));

@@ -10,6 +10,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
+import { ClassNameMap } from '@material-ui/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { Search } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
@@ -17,7 +18,6 @@ import { ApolloError } from '@apollo/client';
 
 import PageTemplate from '../components/PageTemplate';
 import { ProjectRole } from '../pages/Projects/YourProjects';
-import { ClassNameMap } from '@material-ui/styles';
 import { repeat, spaces } from '../helpers';
 
 const useStyles = makeStyles((theme) =>
@@ -82,10 +82,13 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
             Create project
           </Button>
         </Box>
-        {(isLoading ? MOCK_SKELETON_ROWS : rows).map((projectRole) => {
-          const children = (
+        {(isLoading ? MOCK_SKELETON_ROWS : rows).map((projectRole) => (
+          <Link
+            className={styles.link}
+            to={`./${!isLoading ? projectRole.project.id : ''}`}
+            key={projectRole.project.id}
+          >
             <ProjectCard
-              key={projectRole.project.id}
               styles={styles}
               name={projectRole.project.name}
               isPrivate={projectRole.project.private}
@@ -98,22 +101,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
                 )
               }
             />
-          );
-
-          if (!isLoading) {
-            return (
-              <Link
-                className={styles.link}
-                to={`./${projectRole.project.id}`}
-                key={projectRole.project.id}
-              >
-                {children}
-              </Link>
-            );
-          }
-
-          return children;
-        })}
+          </Link>
+        ))}
       </PageTemplate>
     </>
   );
