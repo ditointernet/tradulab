@@ -59,13 +59,13 @@ const InviteUserDialogContainer: React.FC<InviteUserDialogContainerProps> = ({
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [selectedRole, setSelectedRole] = useState<ROLES>(ROLES.CONTRIBUTOR);
   const [options, setOptions] = useState<User[]>([]);
-  const [findUsers] = useLazyQuery<FindUsersResult, FindUsersVariables>(
-    FIND_USERS_BY_USERNAME_QUERY,
-    {
-      onCompleted: (response) =>
-        setOptions(response.findUsersByUsername.edges.map((node) => node.node)),
-    }
-  );
+  const [findUsers, { loading: isLoadingUsers }] = useLazyQuery<
+    FindUsersResult,
+    FindUsersVariables
+  >(FIND_USERS_BY_USERNAME_QUERY, {
+    onCompleted: (response) =>
+      setOptions(response.findUsersByUsername.edges.map((node) => node.node)),
+  });
   const [inviteUser, { loading: isSubmitting }] = useMutation<
     InviteUserResult,
     InviteUserVariables
@@ -94,6 +94,7 @@ const InviteUserDialogContainer: React.FC<InviteUserDialogContainerProps> = ({
       {...{
         isOwner,
         isSubmitting,
+        isLoadingUsers,
         isOpen,
         projectId,
         selectedRole,

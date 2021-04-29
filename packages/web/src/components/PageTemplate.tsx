@@ -6,22 +6,14 @@ import {
   CardContent,
   Theme,
   Container,
-  LinearProgress,
-  Fade,
   Snackbar,
 } from '@material-ui/core';
 import { ApolloError } from '@apollo/client';
+import LoadingBar from './LoadingBar';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  card: {
-    margin: theme.spacing(1),
-  },
-  title: {
-    fontWeight: 'bold',
-  },
-  loadingPlaceholder: {
-    height: theme.spacing(0.5),
-  },
+  card: { margin: theme.spacing(1) },
+  title: { fontWeight: 'bold' },
 }));
 
 type PageTemplateProps = {
@@ -49,19 +41,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
 
   return (
     <>
-      {isLoading ? (
-        <Fade
-          in={isLoading}
-          style={{
-            transitionDelay: isLoading ? '800ms' : '0ms',
-          }}
-          unmountOnExit
-        >
-          <LinearProgress />
-        </Fade>
-      ) : (
-        <div className={styles.loadingPlaceholder} />
-      )}
+      <LoadingBar isLoading={isLoading} />
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={!!errorMessage}

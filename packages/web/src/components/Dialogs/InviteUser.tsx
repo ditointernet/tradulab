@@ -6,15 +6,14 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Fade,
   FormControl,
   Grid,
   InputLabel,
-  LinearProgress,
   Select,
   TextField,
   Typography,
   makeStyles,
+  MenuItem,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
@@ -22,14 +21,12 @@ import { ROLES } from '../../containers/middlewares/MinimumRoleRoute';
 import { User } from '../../containers/InviteUserDialog';
 import React from 'react';
 import { SetState } from '../../types';
+import LoadingBar from '../LoadingBar';
 
 const useStyles = makeStyles((theme) => ({
   inputs: { display: 'flex' },
   userInput: { display: 'flex', flex: '1' },
   select: { marginLeft: theme.spacing(2) },
-  loadingPlaceholder: {
-    height: theme.spacing(0.5),
-  },
 }));
 
 type InviteUserDialogProps = {
@@ -42,6 +39,7 @@ type InviteUserDialogProps = {
   projectId: string;
   selectedUser: User | null;
   selectedRole: ROLES;
+  isLoadingUsers: boolean;
   isSubmitting: boolean;
   isOwner: boolean;
   isOpen: boolean;
@@ -57,6 +55,7 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
   projectId,
   selectedUser,
   selectedRole,
+  isLoadingUsers,
   isSubmitting,
   isOwner,
   isOpen,
@@ -74,10 +73,14 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
         <Box className={styles.inputs}>
           <Autocomplete
             className={styles.userInput}
+            loading={isLoadingUsers}
+            loadingText={'Loading users'}
+            noOptionsText="No users were found"
             options={options}
             value={selectedUser}
             onChange={(e, newValue) => setSelectedUser(newValue)}
             getOptionLabel={(option) => option.displayName}
+            getOptionSelected={(option) => selectedUser?.id === option.id}
             onInputChange={(_e, newInputValue) =>
               setAutocompleteValue(newInputValue)
             }
@@ -86,7 +89,7 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
                 {...params}
                 fullWidth
                 label="Username"
-                placeholder="Start typing the username you want to invite"
+                placeholder="Type the username you want to invite"
                 variant="outlined"
               />
             )}
@@ -102,18 +105,38 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
           <FormControl variant="outlined" className={styles.select}>
             <InputLabel htmlFor="role">Role</InputLabel>
             <Select
-              native
+              native={isSafari(navigator.userAgent)}
               label="Role"
               value={selectedRole}
               onChange={(event) => setSelectedRole(event.target.value as ROLES)}
               inputProps={{ id: 'role' }}
-              defaultValue="contributor"
             >
-              {/* <option value="viewer">Viewer</option> */}
-              <option value={ROLES.CONTRIBUTOR}>Contributor</option>
-              <option value={ROLES.PROOFREADER}>Proofreader</option>
-              <option value={ROLES.DEVELOPER}>Developer</option>
-              {isOwner && <option value={ROLES.MANAGER}>Manager</option>}
+              {(() => {
+                const Option: React.FC<{ value: string }> = (props) => (
+                  <option {...props} />
+                );
+                const Component = isSafari(navigator.userAgent)
+                  ? Option
+                  : MenuItem;
+
+                return [
+                  // <Component value="viewer">Viewer</Component>,
+                  <Component key={ROLES.CONTRIBUTOR} value={ROLES.CONTRIBUTOR}>
+                    Contributor
+                  </Component>,
+                  <Component key={ROLES.PROOFREADER} value={ROLES.PROOFREADER}>
+                    Proofreader
+                  </Component>,
+                  <Component key={ROLES.DEVELOPER} value={ROLES.DEVELOPER}>
+                    Developer
+                  </Component>,
+                  isOwner && (
+                    <Component key={ROLES.MANAGER} value={ROLES.MANAGER}>
+                      Manager
+                    </Component>
+                  ),
+                ];
+              })()}
             </Select>
           </FormControl>
         </Box>
@@ -132,21 +155,12 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
           Invite
         </Button>
       </DialogActions>
-      {isSubmitting ? (
-        <Fade
-          in={isSubmitting}
-          style={{
-            transitionDelay: isSubmitting ? '800ms' : '0ms',
-          }}
-          unmountOnExit
-        >
-          <LinearProgress />
-        </Fade>
-      ) : (
-        <div className={styles.loadingPlaceholder} />
-      )}
+      <LoadingBar isLoading={isSubmitting} />
     </Dialog>
   );
 };
+
+const isSafari = (ua: string) =>
+  ua.includes('Safari') && !ua.includes('Chrome');
 
 export default InviteUserDialog;

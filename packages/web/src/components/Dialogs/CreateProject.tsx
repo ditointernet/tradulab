@@ -6,19 +6,15 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Fade,
   FormControlLabel,
-  LinearProgress,
   makeStyles,
   Switch,
   TextField,
 } from '@material-ui/core';
+import LoadingBar from '../LoadingBar';
 
 const useStyles = makeStyles((theme) => ({
   inputs: { display: 'flex' },
-  loadingPlaceholder: {
-    height: theme.spacing(0.5),
-  },
 }));
 
 type CreateProjectDialogProps = {
@@ -81,19 +77,7 @@ const CreateProjectDialog: React.FC<CreateProjectDialogProps> = ({
           Create
         </Button>
       </DialogActions>
-      {isLoading ? (
-        <Fade
-          in={isLoading}
-          style={{
-            transitionDelay: isLoading ? '800ms' : '0ms',
-          }}
-          unmountOnExit
-        >
-          <LinearProgress />
-        </Fade>
-      ) : (
-        <div className={styles.loadingPlaceholder} />
-      )}
+      <LoadingBar isLoading={isLoading} />
     </Dialog>
   );
 };
