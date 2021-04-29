@@ -33,6 +33,12 @@ const INVITE_USER_QUERY = gql`
   ) {
     inviteUserToProject(projectId: $projectId, userId: $userId, role: $role) {
       id
+      role
+      createdAt
+      user {
+        id
+        displayName
+      }
     }
   }
 `;
@@ -72,7 +78,41 @@ const InviteUserDialogContainer: React.FC<InviteUserDialogContainerProps> = ({
     InviteUserResult,
     InviteUserVariables
   >(INVITE_USER_QUERY, {
+    onCompleted: () => closeModal(),
     onError: (err) => setErrorMessage(err.message),
+
+    update(cache, { data }) {
+      if (!data) return;
+
+      const newUserWithRoleRef = cache.writeFragment({
+        id: cache.identify(data.inviteUserToProject),
+        data: { node: data.inviteUserToProject },
+        fragment: gql`
+          fragment NewUserWithRoleNode on UserWithRoleNode {
+            node {
+              id
+              role
+              createdAt
+              user {
+                id
+                displayName
+              }
+            }
+          }
+        `,
+      });
+
+      cache.modify({
+        fields: {
+          projectUsers(existingConnection) {
+            return {
+              ...existingConnection,
+              edges: [...existingConnection.edges, newUserWithRoleRef],
+            };
+          },
+        },
+      });
+    },
   });
   const { data } = useQuery<MyRoleResult>(MY_ROLE_QUERY, {
     variables: { projectId },

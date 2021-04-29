@@ -84,7 +84,7 @@ async function inviteUserToProject(
   try {
     const targetUserRole = await new Role({
       role: ROLES[role.toUpperCase()],
-      project,
+      project: project._id,
       user: targetUser,
     }).save();
 
@@ -106,7 +106,9 @@ async function updateUserProjectRole(
   const targetUserRole = await Role.findOne({
     user: userId,
     project: projectId,
-  });
+  })
+    .populate('user')
+    .exec();
 
   if (!targetUserRole)
     throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);

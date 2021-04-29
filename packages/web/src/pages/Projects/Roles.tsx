@@ -9,11 +9,12 @@ import { Connnection } from '../../types';
 import RemoveRoleDialogContainer from '../../containers/Dialogs/RemoveRole';
 import UpdateRoleContainer from '../../containers/Dialogs/UpdateRole';
 
-const PROJECTS_QUERY = gql`
+const ROLES_QUERY = gql`
   query web_projectUsers($projectId: ID!) {
     projectUsers(projectId: $projectId) {
       edges {
         node {
+          id
           role
           createdAt
           user {
@@ -31,6 +32,7 @@ const PROJECTS_QUERY = gql`
 `;
 
 export type UserRole = {
+  id: string;
   role: string;
   createdAt: string;
   user: {
@@ -45,7 +47,7 @@ type ProjectsResult = {
 
 const ProjectRolesPage: React.FC = () => {
   const { projectId } = useParams();
-  const { loading, error, data } = useQuery<ProjectsResult>(PROJECTS_QUERY, {
+  const { loading, error, data } = useQuery<ProjectsResult>(ROLES_QUERY, {
     variables: { projectId },
   });
   const [isInviting, setInvitingState] = useState<boolean>(false);

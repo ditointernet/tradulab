@@ -33,7 +33,24 @@ const RemoveRoleDialogContainer: React.FC<RemoveRoleDialogContainerProps> = ({
     RemoveRoleResult,
     RemoveRoleVariables
   >(REMOVE_ROLE_QUERY, {
+    onCompleted: () => closeModal(),
     onError: (err) => setErrorMessage(err.message),
+
+    update(cache) {
+      cache.modify({
+        fields: {
+          projectUsers(existingConnection, { readField }) {
+            return {
+              ...existingConnection,
+              edges: existingConnection.edges.filter(
+                (nodeRef: { node: UserRole }) =>
+                  userRole.id !== readField('id', nodeRef.node)
+              ),
+            };
+          },
+        },
+      });
+    },
   });
 
   function onClose() {

@@ -36,15 +36,6 @@ export default gql`
     updatedAt: Date!
   }
 
-  type RoleWithUserAndProject {
-    id: ID!
-    role: String!
-    user: User!
-    project: Project!
-    createdAt: Date!
-    updatedAt: Date!
-  }
-
   type RoleWithUserNode {
     node: RoleWithUser!
   }
@@ -59,13 +50,13 @@ export default gql`
       projectId: ID!
       userId: ID!
       role: InvitedRole!
-    ): RoleWithUserAndProject!
+    ): RoleWithUser!
 
     updateUserProjectRole(
       projectId: ID!
       userId: ID!
       role: InvitedRole!
-    ): Role!
+    ): RoleWithUser!
 
     removeUserFromProject(projectId: ID!, userId: ID!): Boolean
   }

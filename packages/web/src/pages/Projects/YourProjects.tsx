@@ -11,6 +11,7 @@ const PROJECTS_QUERY = gql`
     listMyProjects {
       edges {
         node {
+          id
           role
           createdAt
           project {
@@ -29,6 +30,7 @@ const PROJECTS_QUERY = gql`
 `;
 
 export type ProjectRole = {
+  id: string;
   role: string;
   createdAt: string;
   project: {

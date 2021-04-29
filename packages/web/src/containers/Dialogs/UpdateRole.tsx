@@ -19,6 +19,7 @@ const UPDATE_ROLE_QUERY = gql`
   ) {
     updateUserProjectRole(projectId: $projectId, userId: $userId, role: $role) {
       id
+      role
     }
   }
 `;
@@ -44,6 +45,7 @@ const UpdateRoleContainer: React.FC<UpdateRoleContainerProps> = ({
     UpdateRoleResult,
     UpdateRoleVariables
   >(UPDATE_ROLE_QUERY, {
+    onCompleted: () => closeModal(),
     onError: (err) => setErrorMessage(err.message),
   });
   const { data } = useQuery<MyRoleResult>(MY_ROLE_QUERY, {

@@ -21,7 +21,7 @@ export default gql`
   }
 
   extend type Mutation {
-    createProject(name: String!, private: Boolean): Project!
+    createProject(name: String!, private: Boolean): RoleWithProject!
   }
 
   extend type Query {

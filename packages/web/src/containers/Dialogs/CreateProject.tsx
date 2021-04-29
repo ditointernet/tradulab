@@ -33,6 +33,40 @@ const CreateProjectDialogContainer: React.FC<CreateProjectDialogContainerProps> 
     CreateProjectVariables
   >(CREATE_PROJECT_MUTATION, {
     onError: (err) => setErrorMessage(err.message),
+
+    update(cache, { data }) {
+      if (!data) return;
+
+      const newRoleWithProjectRef = cache.writeFragment({
+        id: cache.identify(data.createProject),
+        data: { node: data.createProject },
+        fragment: gql`
+          fragment NewRoleWithProjectNode on RoleWithProjectNode {
+            node {
+              id
+              role
+              createdAt
+              project {
+                id
+                name
+                private
+              }
+            }
+          }
+        `,
+      });
+
+      cache.modify({
+        fields: {
+          listMyProjects(existingConnection) {
+            return {
+              ...existingConnection,
+              edges: [...existingConnection.edges, newRoleWithProjectRef],
+            };
+          },
+        },
+      });
+    },
   });
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [inputError, setInputError] = useState<string | undefined>();

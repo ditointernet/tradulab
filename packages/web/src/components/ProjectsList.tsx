@@ -86,7 +86,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
           <Link
             className={styles.link}
             to={`./${!isLoading ? projectRole.project.id : ''}`}
-            key={projectRole.project.id}
+            key={projectRole.id}
           >
             <ProjectCard
               styles={styles}
@@ -109,6 +109,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
 };
 
 const MOCK_SKELETON_ROWS = repeat<ProjectRole>(3, () => ({
+  id: Math.random() + '',
   role: '',
   createdAt: new Date().toISOString(),
   project: {

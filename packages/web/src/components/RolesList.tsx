@@ -82,7 +82,7 @@ const RolesList: React.FC<RolesListProps> = ({
         </Box>
         {(isLoading ? MOCK_SKELETON_ROWS : rows).map((userRole) => (
           <RoleCard
-            key={userRole.user.id}
+            key={userRole.id}
             styles={styles}
             displayName={userRole.user.displayName}
             role={userRole.role}
@@ -101,6 +101,7 @@ const RolesList: React.FC<RolesListProps> = ({
 };
 
 const MOCK_SKELETON_ROWS = repeat<UserRole>(3, () => ({
+  id: Math.random() + '',
   user: { id: Math.random() + '', displayName: '' },
   role: '',
   createdAt: new Date().toISOString(),

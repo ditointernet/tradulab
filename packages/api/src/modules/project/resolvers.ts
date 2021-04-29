@@ -27,7 +27,7 @@ async function createProject(_parent, { name, private: isPrivate }, { user }) {
     await project.save();
     await role.save();
 
-    return project;
+    return role;
   } catch (err) {
     await Promise.all([project.remove(), role.remove()]);
 
