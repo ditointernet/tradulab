@@ -98,21 +98,21 @@ async function inviteUserToProject(
 async function updateUserProjectRole(
   _parent,
   { userId, projectId, role },
-  { user: currentUserId }
+  { user: currentUser }
 ) {
-  if (userId === currentUserId)
+  if (userId === currentUser._id)
     throw new TradulabError(roleCodes.UPDATED_YOURSELF);
 
   const targetUserRole = await Role.findOne({
     user: userId,
     project: projectId,
-  }).exec();
+  });
 
   if (!targetUserRole)
     throw new TradulabError(roleCodes.UPDATED_NOT_EXISTING_ROLE);
 
   const currentUserRole = await Role.findOne({
-    user: currentUserId,
+    user: currentUser,
     project: projectId,
   });
 
@@ -127,13 +127,11 @@ async function updateUserProjectRole(
     throw new TradulabError(roleCodes.UPDATED_FROM_SAME_OR_HIGHER_ROLE);
 
   try {
-    const inviteUserRole = await new Role({
-      user: userId,
-      project: projectId,
-      role,
-    }).save();
+    targetUserRole.role = role;
 
-    return inviteUserRole;
+    await targetUserRole.save();
+
+    return targetUserRole;
   } catch (err) {
     console.error(err);
     throw new ApolloError(err.message, 'INTERNAL_ERROR');
