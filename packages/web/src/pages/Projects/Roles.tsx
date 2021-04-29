@@ -6,6 +6,8 @@ import RolesList from '../../components/RolesList';
 import { escapeRegex } from '../../helpers';
 import InviteUserDialogContainer from '../../containers/Dialogs/InviteUser';
 import { Connnection } from '../../types';
+import RemoveRoleDialogContainer from '../../containers/Dialogs/RemoveRole';
+import UpdateRoleContainer from '../../containers/Dialogs/UpdateRole';
 
 const PROJECTS_QUERY = gql`
   query web_projectUsers($projectId: ID!) {
@@ -47,6 +49,9 @@ const ProjectRolesPage: React.FC = () => {
     variables: { projectId },
   });
   const [isInviting, setInvitingState] = useState<boolean>(false);
+  const [isRemoving, setRemovingState] = useState<boolean>(false);
+  const [isUpdating, setUpdatingState] = useState<boolean>(false);
+  const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
   const [filter, setFilter] = useState<string>('');
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -65,6 +70,26 @@ const ProjectRolesPage: React.FC = () => {
         isOpen={isInviting}
         closeModal={() => setInvitingState(false)}
       />
+      {!!selectedRole && (
+        <>
+          <RemoveRoleDialogContainer
+            userRole={selectedRole}
+            isOpen={isRemoving}
+            closeModal={() => {
+              setRemovingState(false);
+              setSelectedRole(null);
+            }}
+          />
+          <UpdateRoleContainer
+            userRole={selectedRole}
+            isOpen={isUpdating}
+            closeModal={() => {
+              setUpdatingState(false);
+              setSelectedRole(null);
+            }}
+          />
+        </>
+      )}
       <RolesList
         {...{
           isLoading: loading,
@@ -72,6 +97,16 @@ const ProjectRolesPage: React.FC = () => {
           onSearchChange,
           rows: projectRoles,
           openUserInviteModal: () => setInvitingState(true),
+          openRemoveRoleModal: (role) => {
+            setRemovingState(true);
+            setSelectedRole(role);
+            return true;
+          },
+          openUpdateRoleModal: (role) => {
+            setUpdatingState(true);
+            setSelectedRole(role);
+            return true;
+          },
         }}
       />
     </>

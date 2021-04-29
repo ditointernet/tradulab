@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { gql, useLazyQuery, useMutation, useQuery } from '@apollo/client';
+import { Snackbar } from '@material-ui/core';
 
 import {
   MY_ROLE_QUERY,
@@ -9,7 +10,6 @@ import {
 } from '../middlewares/MinimumRoleRoute';
 import InviteUserDialog from '../../components/Dialogs/InviteUser';
 import { Connnection } from '../../types';
-import { Snackbar } from '@material-ui/core';
 
 const FIND_USERS_BY_USERNAME_QUERY = gql`
   query web_findUsersByUsername($searchTerm: String!) {

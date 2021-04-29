@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Box,
   Button,
@@ -19,9 +20,9 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { ROLES } from '../../containers/middlewares/MinimumRoleRoute';
 import { User } from '../../containers/Dialogs/InviteUser';
-import React from 'react';
 import { SetState } from '../../types';
 import LoadingBar from '../LoadingBar';
+import { ROLE_NAMES } from '../../constants/roles';
 
 const useStyles = makeStyles((theme) => ({
   inputs: { display: 'flex' },
@@ -62,6 +63,13 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
   isOpen,
 }) => {
   const styles = useStyles();
+
+  const roleOptions = [
+    { id: ROLES.CONTRIBUTOR },
+    { id: ROLES.PROOFREADER },
+    { id: ROLES.DEVELOPER },
+    { id: ROLES.MANAGER, hidden: isOwner },
+  ];
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
@@ -122,23 +130,11 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
                   ? Option
                   : MenuItem;
 
-                return [
-                  // <Component value="viewer">Viewer</Component>,
-                  <Component key={ROLES.CONTRIBUTOR} value={ROLES.CONTRIBUTOR}>
-                    Contributor
-                  </Component>,
-                  <Component key={ROLES.PROOFREADER} value={ROLES.PROOFREADER}>
-                    Proofreader
-                  </Component>,
-                  <Component key={ROLES.DEVELOPER} value={ROLES.DEVELOPER}>
-                    Developer
-                  </Component>,
-                  isOwner && (
-                    <Component key={ROLES.MANAGER} value={ROLES.MANAGER}>
-                      Manager
-                    </Component>
-                  ),
-                ];
+                return roleOptions.map((role) => (
+                  <Component key={role.id} value={role.id}>
+                    {ROLE_NAMES[role.id]}
+                  </Component>
+                ));
               })()}
             </Select>
           </FormControl>
