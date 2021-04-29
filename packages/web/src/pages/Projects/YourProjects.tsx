@@ -4,7 +4,6 @@ import { gql, useQuery } from '@apollo/client';
 import ProjectsList from '../../components/ProjectsList';
 import { escapeRegex } from '../../helpers';
 import CreateProjectDialogContainer from '../../containers/CreateProjectDialog';
-import InviteUserDialogContainer from '../../containers/InviteUserDialog';
 
 const PROJECTS_QUERY = gql`
   query web_listMyProjects {
