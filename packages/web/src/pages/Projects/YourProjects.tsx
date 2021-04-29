@@ -4,6 +4,7 @@ import { gql, useQuery } from '@apollo/client';
 import ProjectsList from '../../components/ProjectsList';
 import { escapeRegex } from '../../helpers';
 import CreateProjectDialogContainer from '../../containers/Dialogs/CreateProject';
+import { Connnection } from '../../types';
 
 const PROJECTS_QUERY = gql`
   query web_listMyProjects {
@@ -27,16 +28,6 @@ const PROJECTS_QUERY = gql`
   }
 `;
 
-type PageInfo = {
-  hasNextPage: boolean;
-  startAfter: string | null;
-};
-
-type ProjectRoleConnection = {
-  edges: Array<{ node: ProjectRole }>;
-  pageInfo: PageInfo;
-};
-
 export type ProjectRole = {
   role: string;
   createdAt: string;
@@ -48,7 +39,7 @@ export type ProjectRole = {
 };
 
 type ProjectsResult = {
-  listMyProjects: ProjectRoleConnection;
+  listMyProjects: Connnection<ProjectRole>;
 };
 
 const YourProjectsPage: React.FC = () => {

@@ -31,14 +31,15 @@ const useStyles = makeStyles((theme) => ({
 
 type InviteUserDialogProps = {
   onClose: () => void;
-  setSelectedUser: SetState<User | null>;
+  setSelectedUser: (user: User | null) => void;
   setAutocompleteValue: SetState<string>;
   setSelectedRole: SetState<ROLES>;
-  inviteUser: (projectId: string, selectedUser: string, role: ROLES) => void;
+  inviteUser: () => void;
   options: User[];
   projectId: string;
   selectedUser: User | null;
   selectedRole: ROLES;
+  inputError: string | null;
   isLoadingUsers: boolean;
   isSubmitting: boolean;
   isOwner: boolean;
@@ -51,8 +52,8 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
   setAutocompleteValue,
   setSelectedRole,
   inviteUser,
+  inputError,
   options,
-  projectId,
   selectedUser,
   selectedRole,
   isLoadingUsers,
@@ -74,7 +75,7 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
           <Autocomplete
             className={styles.userInput}
             loading={isLoadingUsers}
-            loadingText={'Loading users'}
+            loadingText="Loading users"
             noOptionsText="No users were found"
             options={options}
             value={selectedUser}
@@ -91,6 +92,8 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
                 label="Username"
                 placeholder="Type the username you want to invite"
                 variant="outlined"
+                error={!!inputError}
+                helperText={inputError}
               />
             )}
             renderOption={(option) => (
@@ -145,13 +148,7 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
         <Button color="default" onClick={onClose}>
           Cancel
         </Button>
-        <Button
-          color="secondary"
-          onClick={() =>
-            !!selectedUser &&
-            inviteUser(projectId, selectedUser.id, selectedRole)
-          }
-        >
+        <Button color="secondary" onClick={inviteUser}>
           Invite
         </Button>
       </DialogActions>

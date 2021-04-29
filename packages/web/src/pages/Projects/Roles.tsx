@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import RolesList from '../../components/RolesList';
 import { escapeRegex } from '../../helpers';
 import InviteUserDialogContainer from '../../containers/Dialogs/InviteUser';
+import { Connnection } from '../../types';
 
 const PROJECTS_QUERY = gql`
   query web_projectUsers($projectId: ID!) {
@@ -27,16 +28,6 @@ const PROJECTS_QUERY = gql`
   }
 `;
 
-type PageInfo = {
-  hasNextPage: boolean;
-  startAfter: string | null;
-};
-
-type UserRoleConnection = {
-  edges: Array<{ node: UserRole }>;
-  pageInfo: PageInfo;
-};
-
 export type UserRole = {
   role: string;
   createdAt: string;
@@ -47,7 +38,7 @@ export type UserRole = {
 };
 
 type ProjectsResult = {
-  projectUsers: UserRoleConnection;
+  projectUsers: Connnection<UserRole>;
 };
 
 const ProjectRolesPage: React.FC = () => {

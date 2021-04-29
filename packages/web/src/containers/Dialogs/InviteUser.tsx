@@ -8,6 +8,8 @@ import {
   MyRoleResult,
 } from '../middlewares/MinimumRoleRoute';
 import InviteUserDialog from '../../components/Dialogs/InviteUser';
+import { Connnection } from '../../types';
+import { Snackbar } from '@material-ui/core';
 
 const FIND_USERS_BY_USERNAME_QUERY = gql`
   query web_findUsersByUsername($searchTerm: String!) {
@@ -37,9 +39,7 @@ const INVITE_USER_QUERY = gql`
 
 export type User = { id: string; username: string; displayName: string };
 
-type FindUsersResult = {
-  findUsersByUsername: { edges: Array<{ node: User }> };
-};
+type FindUsersResult = { findUsersByUsername: Connnection<User> };
 type FindUsersVariables = { searchTerm: string };
 
 type InviteUserResult = { inviteUserToProject: { id: string } };
@@ -59,6 +59,8 @@ const InviteUserDialogContainer: React.FC<InviteUserDialogContainerProps> = ({
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [selectedRole, setSelectedRole] = useState<ROLES>(ROLES.CONTRIBUTOR);
   const [options, setOptions] = useState<User[]>([]);
+  const [inputError, setInputError] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [findUsers, { loading: isLoadingUsers }] = useLazyQuery<
     FindUsersResult,
     FindUsersVariables
@@ -69,7 +71,9 @@ const InviteUserDialogContainer: React.FC<InviteUserDialogContainerProps> = ({
   const [inviteUser, { loading: isSubmitting }] = useMutation<
     InviteUserResult,
     InviteUserVariables
-  >(INVITE_USER_QUERY);
+  >(INVITE_USER_QUERY, {
+    onError: (err) => setErrorMessage(err.message),
+  });
   const { data } = useQuery<MyRoleResult>(MY_ROLE_QUERY, {
     variables: { projectId },
   });
@@ -81,33 +85,58 @@ const InviteUserDialogContainer: React.FC<InviteUserDialogContainerProps> = ({
     closeModal();
   }
 
-  // todo: handle error if user is not selected
-
   useEffect(() => {
     if (autocompleteValue.length < 3) return;
 
     findUsers({ variables: { searchTerm: autocompleteValue } });
   }, [autocompleteValue, findUsers]);
 
+  const onSnackbarClose = () => setErrorMessage(undefined);
+
   return (
-    <InviteUserDialog
-      {...{
-        isOwner,
-        isSubmitting,
-        isLoadingUsers,
-        isOpen,
-        projectId,
-        selectedRole,
-        selectedUser,
-        options,
-        setAutocompleteValue,
-        setSelectedRole,
-        setSelectedUser,
-        onClose,
-        inviteUser: (projectId, userId, role) =>
-          inviteUser({ variables: { projectId, userId, role } }),
-      }}
-    />
+    <>
+      <InviteUserDialog
+        {...{
+          isOwner,
+          isSubmitting,
+          isLoadingUsers,
+          isOpen,
+          projectId,
+          selectedRole,
+          selectedUser,
+          options,
+          setAutocompleteValue,
+          setSelectedRole,
+          setSelectedUser: (user) => {
+            setInputError(null);
+            setSelectedUser(user);
+          },
+          onClose,
+          inputError,
+          inviteUser: () => {
+            if (!selectedUser) {
+              setInputError('You must select an user to invite');
+              return;
+            }
+
+            inviteUser({
+              variables: {
+                projectId,
+                userId: selectedUser.id,
+                role: selectedRole,
+              },
+            });
+          },
+        }}
+      />
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={!!errorMessage}
+        message={errorMessage}
+        autoHideDuration={6000}
+        onClose={onSnackbarClose}
+      />
+    </>
   );
 };
 
