@@ -3,40 +3,44 @@ import { gql } from 'apollo-server-express';
 export default gql`
   scalar FileUpload
 
-  enum Extensions {
-    # csv
-    json
-  }
+  # enum Extensions {
+  #   # csv
+  #   json
+  # }
 
   enum ProcessStatuses {
-    pending
-    done
-    failed
+    SUCCESS
+    CREATED
+    # failed
   }
 
   type File {
     id: ID!
-    extension: Extensions!
-    filename: String!
-    project: Project!
-    sourceLanguage: String!
+    project: ID!
     processedStatus: ProcessStatuses!
-    processedAt: Date
-    createdAt: Date!
-    updatedAt: Date!
+    # filename: String!
+    # sourceLanguage: String!
+    # processedAt: Date
+    # createdAt: Date!
+    # updatedAt: Date!
+  }
+
+  type FileWithUploadLink {
+    id: ID!
+    upload_url: String!
   }
 
   extend type Mutation {
-    createFile(
-      file: FileUpload!
+    createFile(projectId: ID!, filename: String!): FileWithUploadLink!
+    uploadFile(
       projectId: ID!
-      sourceLanguage: String!
-    ): File!
-    updateFile(newFilename: String!, fileId: ID!, projectId: ID!): File!
-    deleteFile(fileId: ID!, projectId: ID!): Boolean
+      fileId: ID!
+      filename: String!
+    ): FileWithUploadLink!
   }
 
   extend type Query {
-    listFiles(projectId: ID!): [File]
+    # TODO: make this a connection
+    listFiles(projectId: ID!): [File!]!
   }
 `;
