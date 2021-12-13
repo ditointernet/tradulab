@@ -3,6 +3,8 @@ services:
   mongo:
     image: mongo
     command: ['--replSet', 'rs0', '--bind_ip_all']
+    networks:
+     - tradulab
   api:
     build: packages/api
     command: npm run dev
@@ -10,11 +12,15 @@ services:
       MONGO_CONNECTION_URI: mongodb://mongo/tradulab
       JWT_SECRET: morango
       EXPRESS_PORT: 3001
+    networks:
+     - tradulab
     ports:
       - '3001:3001'
     volumes:
       - ./packages/api/src/:/usr/src/tradulab/api/src
       - tradulab:/var/lib/files
+    external_links:
+      - "web"
     links:
       - mongo
   process-input-file:
@@ -22,7 +28,7 @@ services:
     command: npm start
     volumes:
       - tradulab:/var/lib/files
-  web:
+  react-web:
     build: packages/web
     command: npm start
     environment:
@@ -33,5 +39,9 @@ services:
       - '3000:3000'
     links:
       - api
+networks:
+  tradulab:
+    name: tradulab
+    external: true
 volumes:
   tradulab:

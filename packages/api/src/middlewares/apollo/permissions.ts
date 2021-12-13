@@ -55,6 +55,7 @@ const permissions = shield(
       listFiles: isAuthenticated,
       listMyProjects: isAuthenticated,
       listPhrases: isAuthenticated,
+      getPhraseById: isAuthenticated,
       projectUsers: isAuthenticated,
       findUsersByUsername: isAuthenticated,
       getProjectBySlug: isAuthenticated,
@@ -67,8 +68,7 @@ const permissions = shield(
       removeUserFromProject: and(isAuthenticated, or(isManager, isOwner)),
       updateUserProjectRole: and(isAuthenticated, or(isManager, isOwner)),
       createFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
-      updateFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
-      deleteFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
+      uploadFile: and(isAuthenticated, or(isManager, isOwner, isDeveloper)),
       createSuggestion: and(
         isAuthenticated,
         or(isManager, isOwner, isDeveloper, isProofreader, isContributor)

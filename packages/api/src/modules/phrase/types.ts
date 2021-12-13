@@ -4,13 +4,21 @@ export default gql`
   type Phrase {
     id: ID!
     key: String!
-    text: String!
-    file: File!
-    createdAt: Date!
-    updatedAt: Date!
+    content: String!
+    file: ID!
+  }
+
+  type PhraseEdge {
+    node: Phrase!
+  }
+
+  type PhraseConnection {
+    edges: [PhraseEdge!]!
+    pageInfo: PageInfo!
   }
 
   extend type Query {
-    listPhrases(projectId: ID!, fileId: ID!): [Phrase!]
+    listPhrases(fileId: ID!, page: Int!): PhraseConnection!
+    getPhraseById(phraseId: ID!): Phrase!
   }
 `;

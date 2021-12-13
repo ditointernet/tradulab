@@ -1,79 +1,65 @@
-import * as fs from 'fs';
 import { ApolloError } from 'apollo-server-express';
-import { FileUpload } from 'graphql-upload';
+import fetch from 'node-fetch';
 
-import { ERROR_CODES, MAX_ALLOWED_FILE_SIZE_IN_BYTES } from './constants';
+import { ERROR_CODES } from './constants';
 import { model as File } from '.';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
 import TradulabError from '../../errors';
 
-interface ICreateFileArgs {
-  file: FileUpload;
-  projectId: string;
-  sourceLanguage: string;
-}
+type CreateFileArgs = Record<'projectId' | 'filename', string>;
+type CreateFileResponse =
+  | Record<'id' | 'message' | 'url', string>
+  | { error: string };
 
-async function createFile(_, args: ICreateFileArgs, context) {
-  const { sourceLanguage, projectId } = args;
+const TRADULAB_HOST = 'http://web:8080';
 
-  const { filename, createReadStream } = await args.file;
+async function createFile(_, args: CreateFileArgs) {
+  const { projectId, filename } = args;
 
-  if (context.contentLength > MAX_ALLOWED_FILE_SIZE_IN_BYTES) {
-    throw new TradulabError(ERROR_CODES.FILE_SIZE_EXCEED);
-  }
   const project = await Project.findOne({ _id: projectId });
 
   if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
 
-  const file = new File({
-    extension: filename.split('.').pop(),
-    filename,
-    project,
-    sourceLanguage,
-    processedStatus: 'pending',
-    processedAt: null,
-  });
-
-  file.filePath = [
-    '/var/lib/files',
-    projectId,
-    file._id,
-    `${new Date().toISOString()}.${file.extension}`,
-  ].join('/');
-
-  // create the path if it doesnt exist
-  fs.mkdirSync(file.filePath.split('/').slice(0, -1).join('/'), {
-    recursive: true,
-  });
-
-  await new Promise((resolve) =>
-    createReadStream()
-      .pipe(fs.createWriteStream(file.filePath))
-      .on('close', resolve)
-      .on('error', (err) => {
-        console.error(err);
-        // tratar um erro do apollo
-      })
-  );
-
   try {
-    await file.save();
+    const response = await fetch(TRADULAB_HOST + '/files', {
+      method: 'POST',
+      body: JSON.stringify({
+        project_id: projectId,
+        file_name: filename,
+      }),
+    }).then((res) => res.json() as Promise<CreateFileResponse>);
+
+    if ('error' in response) {
+      throw new Error(response.error);
+    }
+
+    return {
+      id: response.id,
+      upload_url: response.url,
+    };
   } catch (err) {
     console.error(err);
-    fs.rmSync(file.filePath);
 
     throw new ApolloError(err.message);
   }
-
-  return file;
 }
 
-interface IListFileArgs {
-  projectId: string;
-}
+type File = {
+  ID: string;
+  ProjectID: string;
+  Status: 'SUCCESS' | 'CREATED';
+};
 
-async function listFiles(_, args: IListFileArgs, context) {
+type ListFileResponse =
+  | {
+      files: File[];
+    }
+  | {
+      message: string;
+    };
+
+async function listFiles(_, args: { projectId: string }, context) {
   const { projectId } = args;
 
   const role = await Role.findOne({
@@ -83,66 +69,61 @@ async function listFiles(_, args: IListFileArgs, context) {
 
   if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
-  const files = File.find({ project: projectId }).populate('project');
-
   try {
-    files.exec();
+    const response = await fetch(
+      TRADULAB_HOST + '/files?projectId=' + projectId
+    ).then((res) => res.json() as Promise<ListFileResponse>);
+
+    if ('message' in response) {
+      throw new Error(response.message);
+    }
+
+    return response.files.map(
+      ({ ID: id, ProjectID: project, Status: processedStatus }) => ({
+        id,
+        project,
+        processedStatus,
+      })
+    );
   } catch (err) {
     console.error(err);
 
     throw new ApolloError(err.message);
   }
-
-  return files || [];
 }
 
-interface IUpdateFileArgs {
-  newFilename: string;
-  projectId: string;
-  fileId: string;
-}
+type UploadFileArgs = Record<'projectId' | 'fileId' | 'filename', string>;
 
-async function updateFile(_parent, args: IUpdateFileArgs) {
-  const { fileId } = args;
+type UploadFileResponse = Record<'ID' | 'url', string> | { error: string };
 
-  const file = await File.findOne({ _id: fileId });
-
-  if (!file) {
-    throw new TradulabError(ERROR_CODES.FILE_NOT_FOUND);
-  }
+async function uploadFile(_parent, args: UploadFileArgs) {
+  const { projectId, filename, fileId } = args;
 
   try {
-    file.filename = args.newFilename;
-    await file.save();
+    const response = await fetch(
+      TRADULAB_HOST + `/files/${fileId}/signed-url`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          project_id: projectId,
+          file_name: filename,
+        }),
+      }
+    ).then((res) => res.json() as Promise<UploadFileResponse>);
+
+    if ('error' in response) {
+      throw new Error(response.error);
+    }
+
+    return {
+      id: response.ID,
+      upload_url: response.url,
+    };
   } catch (err) {
     console.error(err);
     throw new ApolloError(err.message);
   }
-
-  return file;
 }
 
-interface IDeleteFileArgs {
-  projectId: string;
-  fileId: string;
-}
-
-async function deleteFile(_parent, args: IDeleteFileArgs) {
-  const file = await File.findOne({ _id: args.fileId });
-
-  if (!file) {
-    throw new TradulabError(ERROR_CODES.FILE_NOT_FOUND);
-  }
-
-  try {
-    file.remove();
-  } catch (err) {
-    console.error(err);
-    throw new ApolloError(err.message);
-  }
-
-  return true;
-}
-
-export const mutations = { createFile, updateFile, deleteFile };
+export const mutations = { createFile, uploadFile };
 export const queries = { listFiles };
