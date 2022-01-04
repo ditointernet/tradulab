@@ -15,9 +15,9 @@ function querystringify<T>(query: T): string {
   );
 }
 
-type Phrase = Record<'ID' | 'FileID' | 'Key' | 'Content', string>;
+type Phrase = Record<'Id' | 'Key' | 'FileId' | 'Content', string>;
 
-type ListPhrasesResponse = { phrases: Phrase[] } | { error: string };
+type ListPhrasesResponse = { Phrases: Phrase[] } | { error: string };
 
 async function listPhrases(_parent, args: { fileId: string; page: number }) {
   const { fileId, page } = args;
@@ -34,8 +34,8 @@ async function listPhrases(_parent, args: { fileId: string; page: number }) {
     }
 
     return {
-      edges: response.phrases.map(
-        ({ ID: id, FileID: file, Key: key, Content: content }) => ({
+      edges: response.Phrases.map(
+        ({ Id: id, FileId: file, Key: key, Content: content }) => ({
           node: {
             id,
             file,
@@ -45,7 +45,7 @@ async function listPhrases(_parent, args: { fileId: string; page: number }) {
         })
       ),
       pageInfo: {
-        hasNextPage: response.phrases.length === 100,
+        hasNextPage: response.Phrases.length === 100,
         startAfter: `${page + 1}`,
       },
     };
@@ -55,9 +55,7 @@ async function listPhrases(_parent, args: { fileId: string; page: number }) {
   }
 }
 
-type GetPhraseByIdResponse =
-  | Record<'id' | 'key' | 'fileId' | 'content', string>
-  | { error: string };
+type GetPhraseByIdResponse = Phrase | { error: string };
 
 async function getPhraseById(_parent, args: { phraseId: string }) {
   const { phraseId } = args;
@@ -72,9 +70,10 @@ async function getPhraseById(_parent, args: { phraseId: string }) {
     }
 
     return {
-      ...response,
-      file: response.fileId,
-      fileId: undefined,
+      id: response.Id,
+      key: response.Key,
+      file: response.FileId,
+      content: response.Content,
     };
   } catch (err) {
     console.error(err);

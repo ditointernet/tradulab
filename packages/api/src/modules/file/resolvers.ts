@@ -9,7 +9,7 @@ import TradulabError from '../../errors';
 
 type CreateFileArgs = Record<'projectId' | 'filename', string>;
 type CreateFileResponse =
-  | Record<'id' | 'message' | 'url', string>
+  | Record<'Id' | 'Message' | 'Url', string>
   | { error: string };
 
 const TRADULAB_HOST = 'http://web:8080';
@@ -35,8 +35,8 @@ async function createFile(_, args: CreateFileArgs) {
     }
 
     return {
-      id: response.id,
-      upload_url: response.url,
+      id: response.Id,
+      upload_url: response.Url,
     };
   } catch (err) {
     console.error(err);
@@ -46,8 +46,8 @@ async function createFile(_, args: CreateFileArgs) {
 }
 
 type File = {
-  ID: string;
-  ProjectID: string;
+  Id: string;
+  ProjectId: string;
   Status: 'SUCCESS' | 'CREATED';
 };
 
@@ -79,7 +79,7 @@ async function listFiles(_, args: { projectId: string }, context) {
     }
 
     return response.files.map(
-      ({ ID: id, ProjectID: project, Status: processedStatus }) => ({
+      ({ Id: id, ProjectId: project, Status: processedStatus }) => ({
         id,
         project,
         processedStatus,
@@ -94,7 +94,7 @@ async function listFiles(_, args: { projectId: string }, context) {
 
 type UploadFileArgs = Record<'projectId' | 'fileId' | 'filename', string>;
 
-type UploadFileResponse = Record<'ID' | 'url', string> | { error: string };
+type UploadFileResponse = Record<'Id' | 'Url', string> | { error: string };
 
 async function uploadFile(_parent, args: UploadFileArgs) {
   const { projectId, filename, fileId } = args;
@@ -116,8 +116,8 @@ async function uploadFile(_parent, args: UploadFileArgs) {
     }
 
     return {
-      id: response.ID,
-      upload_url: response.url,
+      id: response.Id,
+      upload_url: response.Url,
     };
   } catch (err) {
     console.error(err);
