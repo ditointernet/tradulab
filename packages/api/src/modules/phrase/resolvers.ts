@@ -2,41 +2,34 @@
 // import { Types } from 'mongoose';
 
 // import TradulabError from '../../errors';
-import { request, querystringify, get } from '../../helpers/http';
+import { AxiosError } from 'axios';
+import { get } from '../../helpers/http';
 
 type Phrase = Record<'Id' | 'Key' | 'FileId' | 'Content', string>;
 
+type ListPhraseQuery = { fileId: string; page: number };
 type ListPhrasesResponse =
   | { Phrases: Phrase[] }
   | { error: string }
   | { message: string };
 
-async function listPhrases(_parent, args: { fileId: string; page: number }) {
-  const { fileId, page } = args;
-
+async function listPhrases(_parent, args: ListPhraseQuery) {
   try {
-    let totalCount: number;
+    const response = await get<ListPhrasesResponse>('/phrases', args);
 
-    const querystring = querystringify({ fileId, page });
+    const body = response.data;
+    const totalCount = parseInt(response.headers['x-total-count']);
 
-    const response = await request('GET', '/phrases' + querystring).then(
-      (res) => {
-        totalCount = parseInt(res.headers.get('x-total-count'));
-
-        return res.json() as Promise<ListPhrasesResponse>;
-      }
-    );
-
-    if ('error' in response) {
-      throw new Error(response.error);
-    } else if ('message' in response) {
-      throw new Error(response.message);
+    if ('error' in body) {
+      throw new Error(body.error);
+    } else if ('message' in body) {
+      throw new Error(body.message);
     }
 
-    const hasNextPage = page * 100 < totalCount;
+    const hasNextPage = args.page * 100 < totalCount;
 
     return {
-      edges: response.Phrases.map(
+      edges: body.Phrases.map(
         ({ Id: id, FileId: file, Key: key, Content: content }) => ({
           node: {
             id,
@@ -48,12 +41,20 @@ async function listPhrases(_parent, args: { fileId: string; page: number }) {
       ),
       pageInfo: {
         hasNextPage,
-        startAfter: hasNextPage ? `${page + 1}` : null,
+        startAfter: hasNextPage ? `${args.page + 1}` : null,
       },
     };
   } catch (err) {
-    console.error(err);
-    throw err;
+    const error = err as AxiosError<ListPhrasesResponse>;
+    const body = error.response.data;
+
+    if ('error' in body) {
+      throw new Error(body.error);
+    } else if ('message' in body) {
+      throw new Error(body.message);
+    } else {
+      throw new Error('internal error');
+    }
   }
 }
 
@@ -64,16 +65,17 @@ async function getPhraseById(_parent, args: { phraseId: string }) {
 
   try {
     const response = await get<GetPhraseByIdResponse>('/phrases/' + phraseId);
+    const body = response.data;
 
-    if ('error' in response) {
-      throw new Error(response.error);
+    if ('error' in body) {
+      throw new Error(body.error);
     }
 
     return {
-      id: response.Id,
-      key: response.Key,
-      file: response.FileId,
-      content: response.Content,
+      id: body.Id,
+      key: body.Key,
+      file: body.FileId,
+      content: body.Content,
     };
   } catch (err) {
     console.error(err);
