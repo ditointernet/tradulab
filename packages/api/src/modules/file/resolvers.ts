@@ -24,14 +24,15 @@ async function createFile(_, args: CreateFileArgs) {
       project_id: projectId,
       file_name: filename,
     });
+    const body = response.data;
 
-    if ('error' in response) {
-      throw new Error(response.error);
+    if ('error' in body) {
+      throw new Error(body.error);
     }
 
     return {
-      id: response.Id,
-      upload_url: response.Url,
+      id: body.Id,
+      upload_url: body.Url,
     };
   } catch (err) {
     console.error(err);
@@ -68,12 +69,13 @@ async function listFiles(_, args: ListFileQuery, context) {
 
   try {
     const response = await get<ListFileResponse, ListFileQuery>('/files', args);
+    const body = response.data;
 
-    if ('message' in response) {
-      throw new Error(response.message);
+    if ('message' in body) {
+      throw new Error(body.message);
     }
 
-    return response.files.map(
+    return body.files.map(
       ({ Id: id, ProjectId: project, Status: processedStatus }) => ({
         id,
         project,
@@ -100,13 +102,15 @@ async function uploadFile(_parent, args: UploadFileArgs) {
       { project_id, file_name }
     );
 
-    if ('error' in response) {
-      throw new Error(response.error);
+    const body = response.data;
+
+    if ('error' in body) {
+      throw new Error(body.error);
     }
 
     return {
-      id: response.Id,
-      upload_url: response.Url,
+      id: body.Id,
+      upload_url: body.Url,
     };
   } catch (err) {
     console.error(err);
