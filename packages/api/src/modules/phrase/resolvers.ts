@@ -1,19 +1,8 @@
 // import { ApolloError } from 'apollo-server-express';
 // import { Types } from 'mongoose';
-import fetch from 'node-fetch';
 
 // import TradulabError from '../../errors';
-
-const TRADULAB_HOST = 'http://web:8080';
-
-function querystringify<T>(query: T): string {
-  return (
-    '?' +
-    Object.entries(query)
-      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-      .join('&')
-  );
-}
+import { request, querystringify, get } from '../../helpers/http';
 
 type Phrase = Record<'Id' | 'Key' | 'FileId' | 'Content', string>;
 
@@ -25,12 +14,12 @@ type ListPhrasesResponse =
 async function listPhrases(_parent, args: { fileId: string; page: number }) {
   const { fileId, page } = args;
 
-  const querystring = querystringify({ fileId, page });
-
   try {
     let totalCount: number;
 
-    const response = await fetch(TRADULAB_HOST + '/phrases' + querystring).then(
+    const querystring = querystringify({ fileId, page });
+
+    const response = await request('GET', '/phrases' + querystring).then(
       (res) => {
         totalCount = parseInt(res.headers.get('x-total-count'));
 
@@ -74,9 +63,7 @@ async function getPhraseById(_parent, args: { phraseId: string }) {
   const { phraseId } = args;
 
   try {
-    const response = await fetch(TRADULAB_HOST + '/phrases/' + phraseId).then(
-      (res) => res.json() as Promise<GetPhraseByIdResponse>
-    );
+    const response = await get<GetPhraseByIdResponse>('/phrases/' + phraseId);
 
     if ('error' in response) {
       throw new Error(response.error);

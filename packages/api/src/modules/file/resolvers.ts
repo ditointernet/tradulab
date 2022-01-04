@@ -1,18 +1,16 @@
 import { ApolloError } from 'apollo-server-express';
-import fetch from 'node-fetch';
 
 import { ERROR_CODES } from './constants';
 import { model as File } from '.';
 import { model as Project } from '../project';
 import { model as Role } from '../role';
+import { get, post } from '../../helpers/http';
 import TradulabError from '../../errors';
 
 type CreateFileArgs = Record<'projectId' | 'filename', string>;
 type CreateFileResponse =
   | Record<'Id' | 'Message' | 'Url', string>
   | { error: string };
-
-const TRADULAB_HOST = 'http://web:8080';
 
 async function createFile(_, args: CreateFileArgs) {
   const { projectId, filename } = args;
@@ -22,13 +20,10 @@ async function createFile(_, args: CreateFileArgs) {
   if (!project) throw new TradulabError(ERROR_CODES.PROJECT_NOT_FOUND);
 
   try {
-    const response = await fetch(TRADULAB_HOST + '/files', {
-      method: 'POST',
-      body: JSON.stringify({
-        project_id: projectId,
-        file_name: filename,
-      }),
-    }).then((res) => res.json() as Promise<CreateFileResponse>);
+    const response = await post<CreateFileResponse>('/files', {
+      project_id: projectId,
+      file_name: filename,
+    });
 
     if ('error' in response) {
       throw new Error(response.error);
@@ -59,7 +54,9 @@ type ListFileResponse =
       message: string;
     };
 
-async function listFiles(_, args: { projectId: string }, context) {
+type ListFileQuery = { projectId: string };
+
+async function listFiles(_, args: ListFileQuery, context) {
   const { projectId } = args;
 
   const role = await Role.findOne({
@@ -70,9 +67,7 @@ async function listFiles(_, args: { projectId: string }, context) {
   if (!role) throw new TradulabError(ERROR_CODES.NOT_A_MEMBER);
 
   try {
-    const response = await fetch(
-      TRADULAB_HOST + '/files?projectId=' + projectId
-    ).then((res) => res.json() as Promise<ListFileResponse>);
+    const response = await get<ListFileResponse, ListFileQuery>('/files', args);
 
     if ('message' in response) {
       throw new Error(response.message);
@@ -97,19 +92,13 @@ type UploadFileArgs = Record<'projectId' | 'fileId' | 'filename', string>;
 type UploadFileResponse = Record<'Id' | 'Url', string> | { error: string };
 
 async function uploadFile(_parent, args: UploadFileArgs) {
-  const { projectId, filename, fileId } = args;
+  const { projectId: project_id, filename: file_name, fileId } = args;
 
   try {
-    const response = await fetch(
-      TRADULAB_HOST + `/files/${fileId}/signed-url`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          project_id: projectId,
-          file_name: filename,
-        }),
-      }
-    ).then((res) => res.json() as Promise<UploadFileResponse>);
+    const response = await post<UploadFileResponse>(
+      `/files/${fileId}/signed-url`,
+      { project_id, file_name }
+    );
 
     if ('error' in response) {
       throw new Error(response.error);
