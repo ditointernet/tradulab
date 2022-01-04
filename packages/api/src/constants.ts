@@ -13,3 +13,5 @@ export const ERROR_MESSAGES = {
   INVALID_TOKEN: 'The provided token is not a valid JWT.',
   UNAUTHORIZED: 'You are not authorized to access this resource.',
 };
+
+export const TRADULAB_SERVICE_HOST = 'http://web:8080';
