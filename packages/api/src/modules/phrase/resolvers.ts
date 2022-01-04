@@ -17,7 +17,10 @@ function querystringify<T>(query: T): string {
 
 type Phrase = Record<'Id' | 'Key' | 'FileId' | 'Content', string>;
 
-type ListPhrasesResponse = { Phrases: Phrase[] } | { error: string };
+type ListPhrasesResponse =
+  | { Phrases: Phrase[] }
+  | { error: string }
+  | { message: string };
 
 async function listPhrases(_parent, args: { fileId: string; page: number }) {
   const { fileId, page } = args;
@@ -25,13 +28,23 @@ async function listPhrases(_parent, args: { fileId: string; page: number }) {
   const querystring = querystringify({ fileId, page });
 
   try {
+    let totalCount: number;
+
     const response = await fetch(TRADULAB_HOST + '/phrases' + querystring).then(
-      (res) => res.json() as Promise<ListPhrasesResponse>
+      (res) => {
+        totalCount = parseInt(res.headers.get('x-total-count'));
+
+        return res.json() as Promise<ListPhrasesResponse>;
+      }
     );
 
     if ('error' in response) {
       throw new Error(response.error);
+    } else if ('message' in response) {
+      throw new Error(response.message);
     }
+
+    const hasNextPage = page * 100 < totalCount;
 
     return {
       edges: response.Phrases.map(
@@ -45,8 +58,8 @@ async function listPhrases(_parent, args: { fileId: string; page: number }) {
         })
       ),
       pageInfo: {
-        hasNextPage: response.Phrases.length === 100,
-        startAfter: `${page + 1}`,
+        hasNextPage,
+        startAfter: hasNextPage ? `${page + 1}` : null,
       },
     };
   } catch (err) {
